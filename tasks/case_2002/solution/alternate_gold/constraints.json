@@ -1,0 +1,50 @@
+{
+  "max_delays": [
+    {
+      "from": [
+        "alert_in[0]",
+        "alert_in[1]",
+        "alert_in[2]",
+        "alert_in[3]",
+        "alert_in[4]",
+        "alert_in[5]",
+        "alert_in[6]",
+        "alert_in[7]"
+      ],
+      "to": [
+        "alert_out[0]",
+        "alert_out[1]",
+        "alert_out[2]",
+        "alert_out[3]",
+        "alert_out[4]",
+        "alert_out[5]",
+        "alert_out[6]",
+        "alert_out[7]"
+      ],
+      "ns": 9.0
+    },
+    {
+      "from": [
+        "trace_in[0]",
+        "trace_in[1]",
+        "trace_in[2]",
+        "trace_in[3]",
+        "trace_in[4]",
+        "trace_in[5]",
+        "trace_in[6]",
+        "trace_in[7]"
+      ],
+      "to": [
+        "trace_out[0]",
+        "trace_out[1]",
+        "trace_out[2]",
+        "trace_out[3]",
+        "trace_out[4]",
+        "trace_out[5]",
+        "trace_out[6]",
+        "trace_out[7]"
+      ],
+      "ns": 10.0
+    }
+  ]
+}

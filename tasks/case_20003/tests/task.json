@@ -1,0 +1,119 @@
+{
+  "case_id": "case_20003",
+  "task_id": "case_20003",
+  "version": 1,
+  "title": "Fix biRISC-V Dual-Parcel Speculative/Architectural RAS Recovery, Two-Slot BTB Evaluation, and Fetch Redirect Handshake",
+  "repo_id": "repo_44",
+  "repository": "ultraembedded/biriscv",
+  "topic": "frontend_branch_prediction_and_fetch",
+  "family": "functional",
+  "editable_files": [
+    "code/biriscv_npc.v",
+    "code/biriscv_fetch.v"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_20003",
+    "version": 1,
+    "frozen_utc": "2026-11-11T19:02:27.696681+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/biriscv_npc.v",
+      "code/biriscv_fetch.v"
+    ],
+    "public_hashes": {
+      "BUILD.md": "70a289c2b70559fd24df77e20ab0e3445460ce143ce81f5e52eb567825a96b1b",
+      "code/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "code/biriscv_decode.v": "77ee30273be3456f4df3b7d60a863f65b0551f3b08d69811798d8a3b6b18e0a8",
+      "code/biriscv_decoder.v": "47805ee880fdba67b735eb77da1259a48cdfc10d21757ada1cdbf6b18e07e481",
+      "code/biriscv_defs.v": "dcfb61c19a3d12cd7e1fb419dcce2bac0a815c21f293593c033efd8b3d225292",
+      "code/biriscv_exec.v": "93b11cc356986baa3861ace143f71fe2b5da44109afa2328a252778fc58055b6",
+      "code/biriscv_fetch.v": "bfe0afa48a744da203924e4776e227a0a9e07af839e0a24f45312aad6dfe47af",
+      "code/biriscv_frontend.v": "e3524075ae1feb3de8a6f726319e4e0e96a10810d8f42ffee03ff3b0be353bf5",
+      "code/biriscv_issue.v": "3ba90dc520a538e654b5a2b8793a2e9377eed7ed163d36cf898e8d8c60ba0875",
+      "code/biriscv_npc.v": "f6c9e984d80d1ef4236d6e7dbbf7d651306f7a18e8c3a649212c78c5018dafb7",
+      "issue.md": "616bcd328b6e77c24511e4e950f7868264d42751aab3f599eb24db4ddafa936b"
+    },
+    "gold_hashes": {
+      "code/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "code/biriscv_decode.v": "77ee30273be3456f4df3b7d60a863f65b0551f3b08d69811798d8a3b6b18e0a8",
+      "code/biriscv_decoder.v": "47805ee880fdba67b735eb77da1259a48cdfc10d21757ada1cdbf6b18e07e481",
+      "code/biriscv_defs.v": "dcfb61c19a3d12cd7e1fb419dcce2bac0a815c21f293593c033efd8b3d225292",
+      "code/biriscv_exec.v": "93b11cc356986baa3861ace143f71fe2b5da44109afa2328a252778fc58055b6",
+      "code/biriscv_fetch.v": "c683576d6971cd803235ea9b9620ba3c4c9c54ce6671f8e1239596de16119039",
+      "code/biriscv_frontend.v": "e3524075ae1feb3de8a6f726319e4e0e96a10810d8f42ffee03ff3b0be353bf5",
+      "code/biriscv_issue.v": "3ba90dc520a538e654b5a2b8793a2e9377eed7ed163d36cf898e8d8c60ba0875",
+      "code/biriscv_npc.v": "315769782c6b7d499a9cabd6fbef19b78b1483d4cbd180c43e00fe644dfdffcb"
+    },
+    "grader_hashes": {
+      "run.py": "a98cc91fd56e245c581e31ee7095881ec801c3caa99f9fb71c196375a29fdb25"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 2,
+      "wrong_fix_fail_runs": 4,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 10,
+      "mutant_total": 10
+    },
+    "test_hashes": {
+      "tb.sv": "47b8683a62a17d8b03f6731e6cb256fa63a1a126c22c68141a071a0390a5b555"
+    },
+    "grader_revalidated_utc": "2026-11-16T10:17:42.058352+00:00"
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+  "problem_type_label": "Architectural & Protocol Bug Repair",
+  "primary_domain": "Core_RISCV_Processors",
+  "multi_domains": [
+    "Core_RISCV_Processors"
+  ],
+  "pdk_profile": {
+    "pdk_id": "rtl_dual_sim_standard",
+    "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+    "location": "Unified base image (/opt/siliconbench/tools)",
+    "customized": false,
+    "notes": "Pure RTL/protocol/synthesis check without external PDK Liberty files."
+  },
+  "public_hashes": {
+    "BUILD.md": "70a289c2b70559fd24df77e20ab0e3445460ce143ce81f5e52eb567825a96b1b",
+    "code/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "code/biriscv_decode.v": "77ee30273be3456f4df3b7d60a863f65b0551f3b08d69811798d8a3b6b18e0a8",
+    "code/biriscv_decoder.v": "47805ee880fdba67b735eb77da1259a48cdfc10d21757ada1cdbf6b18e07e481",
+    "code/biriscv_defs.v": "dcfb61c19a3d12cd7e1fb419dcce2bac0a815c21f293593c033efd8b3d225292",
+    "code/biriscv_exec.v": "93b11cc356986baa3861ace143f71fe2b5da44109afa2328a252778fc58055b6",
+    "code/biriscv_fetch.v": "bfe0afa48a744da203924e4776e227a0a9e07af839e0a24f45312aad6dfe47af",
+    "code/biriscv_frontend.v": "e3524075ae1feb3de8a6f726319e4e0e96a10810d8f42ffee03ff3b0be353bf5",
+    "code/biriscv_issue.v": "3ba90dc520a538e654b5a2b8793a2e9377eed7ed163d36cf898e8d8c60ba0875",
+    "code/biriscv_npc.v": "f6c9e984d80d1ef4236d6e7dbbf7d651306f7a18e8c3a649212c78c5018dafb7",
+    "issue.md": "616bcd328b6e77c24511e4e950f7868264d42751aab3f599eb24db4ddafa936b"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 2,
+    "wrong_fix_fail_runs": 4,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 10,
+    "mutant_total": 10
+  }
+}

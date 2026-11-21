@@ -1,0 +1,119 @@
+{
+  "case_id": "case_21015",
+  "task_id": "case_21015",
+  "version": 1,
+  "title": "Fix Streaming AXI4 DMA Unaligned 4KB/Max-Burst Splitting, Framing Drain/Flush, Zero-Length Ordering, Sticky Error Priority, and Descriptor Mux Tag Routing",
+  "flow_scenario": "S4_interconnect_nic_dma_protocol",
+  "coupling_mode": "deep_stage_authentic",
+  "repo_id": "repo_40",
+  "repository": "alexforencich/verilog-axi",
+  "topic": "verification_debug",
+  "family": "functional",
+  "editable_files": [
+    "code/axi_dma_wr.v",
+    "code/axi_dma_rd.v",
+    "code/axi_dma_desc_mux.v"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_21015",
+    "version": 1,
+    "frozen_utc": "2026-11-11T15:26:34.586439+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/axi_dma_wr.v",
+      "code/axi_dma_rd.v",
+      "code/axi_dma_desc_mux.v"
+    ],
+    "public_hashes": {
+      "BUILD.md": "c389918f0eea816952f7b144c23b119d4860c43be4f9e05d8a3aff0c7144fa5d",
+      "code/COPYING": "ba81481b2d63a33e0dce336d9e736130709549feeaf6cd424b34beba712baa50",
+      "code/arbiter.v": "a001507c82843e36e133dea75491fc044f56660fac0aff0127cf3afec7f927e0",
+      "code/axi_dma.v": "6063279cc0ae29d663108dd7e1aab17fa1b8143ca7f98dfb802efd2c76b0d6b6",
+      "code/axi_dma_desc_mux.v": "c1f9b402b27846ded1877ce314d58cbd6b5782daee6d506fb68bf0acd4ab7a40",
+      "code/axi_dma_rd.v": "ef11f559545c85b8756984aac74fe2a888397d1136ad7567a7baf397c93c6d90",
+      "code/axi_dma_wr.v": "8966877af44d35cd2bbaf45144032141b9189dcd4849e2fda8fb900f8358d10a",
+      "code/priority_encoder.v": "df28220d95b47df349a72803a9751aad331eb8e1435416e8686d00572a974dd5",
+      "issue.md": "e49ddc92f5c8b5975b5059951479abfbf4226efe92d66297454dd867665b23d4"
+    },
+    "gold_hashes": {
+      "code/COPYING": "ba81481b2d63a33e0dce336d9e736130709549feeaf6cd424b34beba712baa50",
+      "code/arbiter.v": "a001507c82843e36e133dea75491fc044f56660fac0aff0127cf3afec7f927e0",
+      "code/axi_dma.v": "6063279cc0ae29d663108dd7e1aab17fa1b8143ca7f98dfb802efd2c76b0d6b6",
+      "code/axi_dma_desc_mux.v": "28d786e67a6a2fb2df792820cf8fc6e9a17eff5bb14b46060cc87b3109350fdf",
+      "code/axi_dma_rd.v": "07a8009c26b8b713fb7ca3f4d39f3ffd8a11ae9f329ed4394e2571a43061c2b2",
+      "code/axi_dma_wr.v": "add8e858a291b1645a057407f6639aa24d0cbd2e07f3066bd49d237b3a1f8682",
+      "code/priority_encoder.v": "df28220d95b47df349a72803a9751aad331eb8e1435416e8686d00572a974dd5"
+    },
+    "grader_hashes": {
+      "run.py": "8c4c4d34a15202c74dd74d5f0d76f4f1a830023b518ad72d4dfa85a79f39425f"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 12,
+      "mutant_total": 12
+    },
+    "test_hashes": {
+      "sim_main.cpp": "4130a7310baf6ce999cf8d9585b79dc6ca46c3f466645cc2e58022f84329ec37",
+      "tb_iverilog_params.sv": "236af5287e3ae1578038297f9e10ae24a133fd9a473e1d63304230d272da2908",
+      "tb_verilator_top.v": "6cfd06f85bc54eda53c51ce4ec99a95a04441a69aedb950146613efb84d2f5df"
+    },
+    "grader_revalidated_utc": "2026-11-13T20:03:55.623117+00:00"
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+  "problem_type_label": "Architectural & Protocol Bug Repair",
+  "primary_domain": "HighSpeed_AXI_NIC_Cache_DMA",
+  "multi_domains": [
+    "HighSpeed_AXI_NIC_Cache_DMA"
+  ],
+  "pdk_profile": {
+    "pdk_id": "ihp_sg13g2_130nm_8sram",
+    "pdk_name": "IHP SG13G2 130nm Open PDK + RM_IHPSG13_1P Hard-SRAM Macros",
+    "location": "Task-bundled in environment/public/pdk/ and tests/private/pdk/",
+    "customized": true,
+    "notes": "Includes task-bundled IHP SG13G2 standard-cell LEF/Liberty and single-port hard-SRAM macro LEF/Liberty/Verilog models."
+  },
+  "public_hashes": {
+    "BUILD.md": "c389918f0eea816952f7b144c23b119d4860c43be4f9e05d8a3aff0c7144fa5d",
+    "code/COPYING": "ba81481b2d63a33e0dce336d9e736130709549feeaf6cd424b34beba712baa50",
+    "code/arbiter.v": "a001507c82843e36e133dea75491fc044f56660fac0aff0127cf3afec7f927e0",
+    "code/axi_dma.v": "6063279cc0ae29d663108dd7e1aab17fa1b8143ca7f98dfb802efd2c76b0d6b6",
+    "code/axi_dma_desc_mux.v": "c1f9b402b27846ded1877ce314d58cbd6b5782daee6d506fb68bf0acd4ab7a40",
+    "code/axi_dma_rd.v": "ef11f559545c85b8756984aac74fe2a888397d1136ad7567a7baf397c93c6d90",
+    "code/axi_dma_wr.v": "8966877af44d35cd2bbaf45144032141b9189dcd4849e2fda8fb900f8358d10a",
+    "code/priority_encoder.v": "df28220d95b47df349a72803a9751aad331eb8e1435416e8686d00572a974dd5",
+    "issue.md": "e49ddc92f5c8b5975b5059951479abfbf4226efe92d66297454dd867665b23d4"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 12,
+    "mutant_total": 12
+  }
+}

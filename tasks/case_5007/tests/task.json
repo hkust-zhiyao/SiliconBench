@@ -1,0 +1,149 @@
+{
+  "case_id": "case_5007",
+  "task_id": "case_5007",
+  "version": 1,
+  "repo_id": "repo_05",
+  "repository": "openhwfoundation/cva6",
+  "title": "CVA6 Non-Blocking DCache Tag Arbiter Grant Exclusivity, Pipelined Store/Kill Control, Miss-Handler Multi-Way/32b-AMO Completion, and Area/Timing Closure",
+  "topic": "std_nbdcache_tag_cmp_cache_ctrl_miss_handler_ppa",
+  "editable_files": [
+    "code/cache_ctrl.sv",
+    "code/miss_handler.sv",
+    "code/tag_cmp.sv"
+  ],
+  "editable": [
+    "code/cache_ctrl.sv",
+    "code/miss_handler.sv",
+    "code/tag_cmp.sv"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_5007",
+    "version": 1,
+    "frozen_utc": "2026-11-04T08:48:27.145678+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/cache_ctrl.sv",
+      "code/miss_handler.sv",
+      "code/tag_cmp.sv"
+    ],
+    "public_hashes": {
+      "BUILD.md": "48a5b4b108da9e50db1c107ace61eaf9ab08db936007ba9768cf13544d9d2ea5",
+      "code/LICENSE": "b41106a9d0de1cf6ab4ea56bedf677503085c0570248f37fe2cdf657a5e72601",
+      "code/ariane_pkg.sv": "f492b1dda7044c4d202df1a1e4609a53fbecc94ad3f08b5d6d9a150b4569d2d7",
+      "code/axi_adapter.sv": "42d22f83e977503622210bffe7b1e2ffe4a722e19ddcbdf71b0ab58158994c7a",
+      "code/axi_pkg.sv": "76b3797792ee5b95ab5937f3d457b48852e5c427de48298dafbdde43d0916ac2",
+      "code/cache_ctrl.sv": "85f79f86158cb1c1e591dd14c30d87916282593eb185eaa24642b5dbed60c3b6",
+      "code/config_pkg.sv": "f6f193daa7dfe1161689f651d6aa6e2b1fdec6560fc83c1313385e944ce4c97c",
+      "code/cv64a60ax_config_pkg.sv": "6b2bd15f21283ff8eac2c8daa62030b7be5d2b342437f4b863baa0c74b88688c",
+      "code/lfsr.sv": "91f6c37be706ca7648cb66635e3f46a210e517f7addb8569ec28e4738599f7d7",
+      "code/lfsr_8bit.sv": "b6caa6223650523ccf68435e0718fdd2c6942cca031a445cd427f749ad416e06",
+      "code/miss_handler.sv": "941a51abdab9c350a73d769267bc68815c70f4351a9171bc28235069a17e3e7b",
+      "code/riscv_pkg.sv": "225881e0df4c08d0d9768999408c7c93186a59270955a391bccd63f34b95777a",
+      "code/sram.sv": "3350a570916eb2170edf374d6611de21eb320e979e7f50b3797fa5f76f7b2f16",
+      "code/std_cache_pkg.sv": "a0e01186dfdb63a059fbc7ffcc7bde10322f337c39c05bd0a17ad67995ba668f",
+      "code/std_nbdcache.sv": "628a504680fe0cd9530a7873b32c04b4c55dcd292c4d75239407eb6b780aafc0",
+      "code/tag_cmp.sv": "5f9f6f5e1e3576c4f033105129b33733f789b845866ca8dadb2b481c01ba2e20",
+      "code/tc_sram.sv": "32e9cb89cf89902e9fa566a66f931f6fe00a616cd426ba440b1e634d0caeb607",
+      "code/tc_sram_wrapper.sv": "9aa0ccac1617b8d2a13edd050999f18869738898f72c653d0c9edba6090eb6b8",
+      "flow/dcache_ctrl_top.sv": "c3d4fef71621abc9b6d60048006e19897215a20072aad78ac2714441adf07966",
+      "include/common_cells/LICENSE.Apache-2.0": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "include/common_cells/assertions.svh": "d39c7afa893656e235b0019233c1bcf12491cd421639791c827cc53236bd4841",
+      "issue.md": "7870bce5cdd40a16486fff1e663b7ef0e8c01674e908a445b9bd04b4750ae1c9",
+      "lef/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+      "lef/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+      "lib/LICENSE_NANGATE": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+      "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+    },
+    "gold_hashes": {
+      "code/cache_ctrl.sv": "b7c4179723ae0a760f82216b2c1332957d8977ba25ede5feda96fb704cfa07ac",
+      "code/miss_handler.sv": "ad8170188064b63d9c0500dc5d6c09d365bb7266b307d5b2f83f08e93a17d6d4",
+      "code/tag_cmp.sv": "4c4f1ad8e8a44074b3dbdff87269e3f0508a82e9af2cfc24c07c926c2d050cc9"
+    },
+    "grader_hashes": {
+      "run.py": "79c6bf2734bbd231230a7adfa29faf1d796e281782b813511b2c1b7e8decd07f"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 4,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 10,
+      "mutant_total": 10
+    }
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+  "problem_type_label": "Architectural & Protocol Bug Repair",
+  "primary_domain": "protocol_control",
+  "multi_domains": [
+    "arithmetic_datapath",
+    "gatelevel_physical_effects",
+    "protocol_control",
+    "rtl_integration",
+    "synthesis_qor"
+  ],
+  "pdk_profile": {
+    "pdk_id": "nangate45_plus_multicorner_lib",
+    "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+    "location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+    "customized": true,
+    "notes": "Uses shared Nangate45 library for synthesis plus task-bundled fast/slow/scan corner timing views."
+  },
+  "public_hashes": {
+    "BUILD.md": "48a5b4b108da9e50db1c107ace61eaf9ab08db936007ba9768cf13544d9d2ea5",
+    "code/LICENSE": "b41106a9d0de1cf6ab4ea56bedf677503085c0570248f37fe2cdf657a5e72601",
+    "code/ariane_pkg.sv": "f492b1dda7044c4d202df1a1e4609a53fbecc94ad3f08b5d6d9a150b4569d2d7",
+    "code/axi_adapter.sv": "42d22f83e977503622210bffe7b1e2ffe4a722e19ddcbdf71b0ab58158994c7a",
+    "code/axi_pkg.sv": "76b3797792ee5b95ab5937f3d457b48852e5c427de48298dafbdde43d0916ac2",
+    "code/cache_ctrl.sv": "85f79f86158cb1c1e591dd14c30d87916282593eb185eaa24642b5dbed60c3b6",
+    "code/config_pkg.sv": "f6f193daa7dfe1161689f651d6aa6e2b1fdec6560fc83c1313385e944ce4c97c",
+    "code/cv64a60ax_config_pkg.sv": "6b2bd15f21283ff8eac2c8daa62030b7be5d2b342437f4b863baa0c74b88688c",
+    "code/lfsr.sv": "91f6c37be706ca7648cb66635e3f46a210e517f7addb8569ec28e4738599f7d7",
+    "code/lfsr_8bit.sv": "b6caa6223650523ccf68435e0718fdd2c6942cca031a445cd427f749ad416e06",
+    "code/miss_handler.sv": "941a51abdab9c350a73d769267bc68815c70f4351a9171bc28235069a17e3e7b",
+    "code/riscv_pkg.sv": "225881e0df4c08d0d9768999408c7c93186a59270955a391bccd63f34b95777a",
+    "code/sram.sv": "3350a570916eb2170edf374d6611de21eb320e979e7f50b3797fa5f76f7b2f16",
+    "code/std_cache_pkg.sv": "a0e01186dfdb63a059fbc7ffcc7bde10322f337c39c05bd0a17ad67995ba668f",
+    "code/std_nbdcache.sv": "628a504680fe0cd9530a7873b32c04b4c55dcd292c4d75239407eb6b780aafc0",
+    "code/tag_cmp.sv": "5f9f6f5e1e3576c4f033105129b33733f789b845866ca8dadb2b481c01ba2e20",
+    "code/tc_sram.sv": "32e9cb89cf89902e9fa566a66f931f6fe00a616cd426ba440b1e634d0caeb607",
+    "code/tc_sram_wrapper.sv": "9aa0ccac1617b8d2a13edd050999f18869738898f72c653d0c9edba6090eb6b8",
+    "flow/dcache_ctrl_top.sv": "c3d4fef71621abc9b6d60048006e19897215a20072aad78ac2714441adf07966",
+    "include/common_cells/LICENSE.Apache-2.0": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "include/common_cells/assertions.svh": "d39c7afa893656e235b0019233c1bcf12491cd421639791c827cc53236bd4841",
+    "issue.md": "7870bce5cdd40a16486fff1e663b7ef0e8c01674e908a445b9bd04b4750ae1c9",
+    "lef/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+    "lef/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+    "lib/LICENSE_NANGATE": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+    "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 4,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 10,
+    "mutant_total": 10
+  }
+}

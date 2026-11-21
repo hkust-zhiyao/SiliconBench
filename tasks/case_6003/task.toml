@@ -1,0 +1,57 @@
+version = "1.0"
+
+[metadata]
+task_id = "case_6003"
+title = "VeeR-EH1 LSU AXI4-to-AHB Bridge, DMA AHB-to-AXI4 Slave Gasket, 4-Entry DMA/Debug Controller, and Transparent Sideband Timing Closure"
+repository = "chipsalliance/cores-veer-eh1"
+repo_id = "repo_06"
+split = "test"
+eda_stage = "stage3_sta_cdc"
+eda_stage_name = "Stage 3: Static Timing (STA) & CDC/RDC Closure"
+problem_type = "PT3_Timing_Area_PPA_Closure"
+problem_type_label = "High-Frequency Timing & Area Optimization"
+primary_domain = "rtl_integration"
+domains = ["protocol_control", "rtl_integration", "sdc_sta", "verification_debug"]
+public_rtl_files = 8
+public_rtl_loc = 2927
+editable_files_count = 4
+editable_loc = 1483
+
+[agent]
+timeout_sec = 5400
+
+[environment]
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+workdir = "/workspace"
+allow_internet = false
+cpus = 4
+memory_mb = 16384
+
+[environment.variables]
+OMP_NUM_THREADS = "1"
+OPENBLAS_NUM_THREADS = "1"
+MKL_NUM_THREADS = "1"
+MAKEFLAGS = "-j1"
+SILICONBENCH_TOOLS = "/opt/siliconbench/tools"
+SILICONBENCH_NANGATE45 = "/opt/siliconbench/pdk/Nangate45"
+
+[verifier]
+environment_mode = "separate"
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+timeout_sec = 960
+entrypoint = "/tests/test.sh"
+reward_file = "/logs/verifier/reward.txt"
+reward_json = "/logs/verifier/reward.json"
+
+[verifier.environment]
+allow_internet = false
+
+[siliconbench]
+allowed_edits = ["code/axi4_to_ahb.sv", "code/ahb_to_axi4.sv", "code/dma_ctrl.sv", "constraints.json"]
+pdk_id = "nangate45_plus_multicorner_lib"
+pdk_name = "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC"
+pdk_customized = true
+accepts_seed = true
+grading_seeds = [101, 202]

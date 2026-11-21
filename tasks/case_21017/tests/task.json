@@ -1,0 +1,128 @@
+{
+  "case_id": "case_21017",
+  "task_id": "case_21017",
+  "version": 1,
+  "title": "Multi-Region Overlapping Aperture Decode, Coupled Write Arbitration, and Gate-Level Zero-X Parity in AXI4-Lite Crossbar",
+  "repo_id": "repo_40",
+  "repository": "alexforencich/verilog-axi",
+  "topic": "axi_interconnect_synth_parity",
+  "family": "axil_crossbar_decode_parity",
+  "flow_scenario": "S2_elab_synth_sim_parity",
+  "coupling_mode": "natural_cross_stage",
+  "editable_files": [
+    "code/axil_crossbar.v",
+    "code/axil_crossbar_addr.v",
+    "code/axil_crossbar_wr.v",
+    "code/axil_crossbar_rd.v"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_21017",
+    "version": 1,
+    "frozen_utc": "2026-11-12T01:01:18.764400+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/axil_crossbar.v",
+      "code/axil_crossbar_addr.v",
+      "code/axil_crossbar_wr.v",
+      "code/axil_crossbar_rd.v"
+    ],
+    "public_hashes": {
+      "BUILD.md": "a06121eeac28fb8e938a0cd39cf02cf5bae61170c76d4a9fade7d5e232a49757",
+      "code/COPYING": "ba81481b2d63a33e0dce336d9e736130709549feeaf6cd424b34beba712baa50",
+      "code/arbiter.v": "a001507c82843e36e133dea75491fc044f56660fac0aff0127cf3afec7f927e0",
+      "code/axil_crossbar.v": "f48acdb965988038196bc0742f2f18174a1ecd35386a061f634bc64ccf6adb27",
+      "code/axil_crossbar_addr.v": "a687cef2780b571b1a1b85746e4e093d0d7131d77bf9d6c610f333b0e27480c0",
+      "code/axil_crossbar_rd.v": "b43f1a86164949e78e01e29864c9a2cad5bd442be8356231d2993beaeb3d4e99",
+      "code/axil_crossbar_wr.v": "6b415d4d265a6694810913b67f62f93bd01128c59afe962d2784d45b9f310663",
+      "code/axil_register_rd.v": "ae1a35af8be25b3fa0f2245ce0ca33287f566279ea5bcf04d822d417ffa5f463",
+      "code/axil_register_wr.v": "af7fd3bc697c3e2d8e921105bf33fab62199a211e4aca031ba28bf08054b6563",
+      "code/priority_encoder.v": "df28220d95b47df349a72803a9751aad331eb8e1435416e8686d00572a974dd5",
+      "issue.md": "25121015a99eeb95cd1d0e61b49ac61194d81183728208a152f4acfbd9a0e861"
+    },
+    "gold_hashes": {
+      "BUILD.md": "f2797725884bbca6b503df5e496cd026f34d8c47171cd95bd367eb30fd3a7740",
+      "code/COPYING": "ba81481b2d63a33e0dce336d9e736130709549feeaf6cd424b34beba712baa50",
+      "code/arbiter.v": "a001507c82843e36e133dea75491fc044f56660fac0aff0127cf3afec7f927e0",
+      "code/axil_crossbar.v": "e9f5e208425604e86fe42306fb7263944ce30acd21c84e4fafd9d407fd468c7d",
+      "code/axil_crossbar_addr.v": "63dfbab972fab9880da55c8cc95afe5e76d9284ee2c87dc0a84e78c6639a4b53",
+      "code/axil_crossbar_rd.v": "1f1e07eecfb540b7c12db2f0c8b478ce222746b6cad9fcca6c1af516163331e1",
+      "code/axil_crossbar_wr.v": "5647702ec6c710a585217718b5c6446bd7aa4df4bc36cd0ce436e33a24a85318",
+      "code/axil_register_rd.v": "ae1a35af8be25b3fa0f2245ce0ca33287f566279ea5bcf04d822d417ffa5f463",
+      "code/axil_register_wr.v": "af7fd3bc697c3e2d8e921105bf33fab62199a211e4aca031ba28bf08054b6563",
+      "code/priority_encoder.v": "df28220d95b47df349a72803a9751aad331eb8e1435416e8686d00572a974dd5",
+      "issue.md": "25121015a99eeb95cd1d0e61b49ac61194d81183728208a152f4acfbd9a0e861"
+    },
+    "grader_hashes": {
+      "run.py": "399421f583f37cc828650c307f00e77e472ad730b04aa3d6ea62fad2b126b57f"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 2,
+      "wrong_fix_fail_runs": 4,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 10,
+      "mutant_total": 10
+    },
+    "test_hashes": {
+      "tb.sv": "3cb327db69de0cc049606e4fea556d5358606d242dcd23d98a241667ab535c5e",
+      "tb_gl.sv": "44faf14768b939faa3c35b468c7ae14ec8d1413d29bb7fcd3b860d55d1d33d2c"
+    },
+    "grader_revalidated_utc": "2026-11-16T10:17:42.058352+00:00"
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT4_GateLevel_Security_CDC",
+  "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+  "primary_domain": "HighSpeed_AXI_NIC_Cache_DMA",
+  "multi_domains": [
+    "HighSpeed_AXI_NIC_Cache_DMA"
+  ],
+  "pdk_profile": {
+    "pdk_id": "rtl_dual_sim_standard",
+    "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+    "location": "Unified base image (/opt/siliconbench/tools)",
+    "customized": false,
+    "notes": "Pure RTL/protocol/synthesis check without external PDK Liberty files."
+  },
+  "public_hashes": {
+    "BUILD.md": "a06121eeac28fb8e938a0cd39cf02cf5bae61170c76d4a9fade7d5e232a49757",
+    "code/COPYING": "ba81481b2d63a33e0dce336d9e736130709549feeaf6cd424b34beba712baa50",
+    "code/arbiter.v": "a001507c82843e36e133dea75491fc044f56660fac0aff0127cf3afec7f927e0",
+    "code/axil_crossbar.v": "f48acdb965988038196bc0742f2f18174a1ecd35386a061f634bc64ccf6adb27",
+    "code/axil_crossbar_addr.v": "a687cef2780b571b1a1b85746e4e093d0d7131d77bf9d6c610f333b0e27480c0",
+    "code/axil_crossbar_rd.v": "b43f1a86164949e78e01e29864c9a2cad5bd442be8356231d2993beaeb3d4e99",
+    "code/axil_crossbar_wr.v": "6b415d4d265a6694810913b67f62f93bd01128c59afe962d2784d45b9f310663",
+    "code/axil_register_rd.v": "ae1a35af8be25b3fa0f2245ce0ca33287f566279ea5bcf04d822d417ffa5f463",
+    "code/axil_register_wr.v": "af7fd3bc697c3e2d8e921105bf33fab62199a211e4aca031ba28bf08054b6563",
+    "code/priority_encoder.v": "df28220d95b47df349a72803a9751aad331eb8e1435416e8686d00572a974dd5",
+    "issue.md": "25121015a99eeb95cd1d0e61b49ac61194d81183728208a152f4acfbd9a0e861"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 2,
+    "wrong_fix_fail_runs": 4,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 10,
+    "mutant_total": 10
+  }
+}

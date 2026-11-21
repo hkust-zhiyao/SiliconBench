@@ -1,0 +1,14 @@
+{
+  "max_delays": [
+    {
+      "from": ["pmp_in[0]", "pmp_in[1]", "pmp_in[2]", "pmp_in[3]", "pmp_in[4]", "pmp_in[5]", "pmp_in[6]", "pmp_in[7]"],
+      "to": ["pmp_out[0]", "pmp_out[1]", "pmp_out[2]", "pmp_out[3]", "pmp_out[4]", "pmp_out[5]", "pmp_out[6]", "pmp_out[7]"],
+      "ns": 8.75
+    },
+    {
+      "from": ["dbg_in[0]", "dbg_in[1]", "dbg_in[2]", "dbg_in[3]", "dbg_in[4]", "dbg_in[5]", "dbg_in[6]", "dbg_in[7]"],
+      "to": ["dbg_out[0]", "dbg_out[1]", "dbg_out[2]", "dbg_out[3]", "dbg_out[4]", "dbg_out[5]", "dbg_out[6]", "dbg_out[7]"],
+      "ns": 9.75
+    }
+  ]
+}

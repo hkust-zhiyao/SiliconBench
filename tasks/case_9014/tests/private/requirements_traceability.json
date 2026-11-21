@@ -1,0 +1,17 @@
+{
+  "case_id": "case_9014",
+  "obligations": [
+    {
+      "id": "REQ-RTL-SCRUB-RELAY-AND-XOR",
+      "behavior": "code/banked.sv implements 4-cluster 128-bit SRAM subword byte-reverse/XOR low-to-high relay data and byte-enable masking and 4-cluster bitwise XOR readback without extra flip-flops or latches.",
+      "public_source": "public/issue.md paragraph 1",
+      "enforced_by": "private/tests/tb.sv, private/grader/run.py; killed by baseline, wf5, mutant_01..mutant_06"
+    },
+    {
+      "id": "REQ-MACRO-CTS-AND-ROUTED-CLOSURE",
+      "behavior": "plan/placement.json places all 8 macros legally inside north/south bays with >= 20 um clearance, achieving rise A_CLK spread <= 0.00400 ns, setup slack >= 2.70 ns, hold slack >= 0.00 ns, and Metal2-Metal5 wirelength <= 1,110,000.0 um.",
+      "public_source": "public/issue.md paragraph 2, public/BUILD.md \u00a73",
+      "enforced_by": "private/grader/run.py; killed by wf1..wf4, mutant_07..mutant_10"
+    }
+  ]
+}

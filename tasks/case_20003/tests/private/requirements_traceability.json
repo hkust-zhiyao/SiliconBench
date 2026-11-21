@@ -1,0 +1,48 @@
+{
+  "case_id": "case_20003",
+  "obligations": [
+    {
+      "id": "REQ-RAS-RECOVERY",
+      "behavior": "Cold RAS push on RAS_INVALID slots, JALR call unconditional prediction, and full architectural RAS stack+index tracking/rollback across predicted calls and conditional mispredicts.",
+      "public_source": "public/issue.md item 1",
+      "verified_by": [
+        "Test1",
+        "Test2",
+        "Test5",
+        "wf1_ras_call_gated_by_invalid_lsb",
+        "wf2_real_ras_only_updates_on_mispredict",
+        "m01_jalr_call_missing_uncond_taken",
+        "m02_ras_stack_not_restored_on_cond_mispredict",
+        "m03_upper_call_pushes_lower_return_addr"
+      ]
+    },
+    {
+      "id": "REQ-DUAL-SLOT-BTB",
+      "behavior": "Valid-gated BTB with invalidate_i clear, fallthrough from not-taken lower BTB slot to upper BTB slot, and mid-parcel (pc[2]==1) Slot-0 suppression.",
+      "public_source": "public/issue.md item 2",
+      "verified_by": [
+        "Test1a",
+        "Test3",
+        "Test5",
+        "wf3_skip_upper_btb_on_ntaken_lower",
+        "m04_upper_taken_sets_bit0_killing_slot1",
+        "m05_mid_parcel_pc_evaluates_slot0",
+        "m06_invalidate_ignores_btb_clear"
+      ]
+    },
+    {
+      "id": "REQ-FETCH-REDIRECT-SKID-FLUSH",
+      "behavior": "Clean redirect suppression/drain in SUPPORT_MMU=1/0, exact pc_accept_o handshake, multi-cycle skid retention + redirect clear, and icache_flush_o retention.",
+      "public_source": "public/issue.md item 3",
+      "verified_by": [
+        "Test4",
+        "Test5",
+        "wf4_fetch_pc_accept_and_flush_drop",
+        "m07_fetch_skid_dropped_after_one_stall_cycle",
+        "m08_fetch_skid_not_cleared_on_redirect",
+        "m09_fetch_does_not_drop_inflight_resp_on_redirect",
+        "m10_fetch_priv_ignored_when_mmu_enabled"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "case_id": "case_21021",
+  "task_id": "case_21021",
+  "version": 1,
+  "title": "External-Memory AXI4 Virtual FIFO Write-Commit Ordering, Drain Accounting, and Soft-Flush Recovery",
+  "repo_id": "repo_40",
+  "repository": "alexforencich/verilog-axi",
+  "topic": "axi_virtual_fifo_packet_buffer",
+  "family": "axi_vfifo_subsystem",
+  "flow_scenario": "S4_interconnect_nic_dma_protocol",
+  "coupling_mode": "deep_stage_authentic",
+  "editable_files": [
+    "code/axi_vfifo.v",
+    "code/axi_vfifo_enc.v",
+    "code/axi_vfifo_dec.v",
+    "code/axi_vfifo_raw.v",
+    "code/axi_vfifo_raw_wr.v",
+    "code/axi_vfifo_raw_rd.v"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_21021",
+    "version": 1,
+    "frozen_utc": "2026-11-12T03:36:33.629648+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/axi_vfifo.v",
+      "code/axi_vfifo_enc.v",
+      "code/axi_vfifo_dec.v",
+      "code/axi_vfifo_raw.v",
+      "code/axi_vfifo_raw_wr.v",
+      "code/axi_vfifo_raw_rd.v"
+    ],
+    "public_hashes": {
+      "BUILD.md": "eb2d6daf1228a4817c5fb30d770f82e846123cc6f89a66f7faa20eef661f73ff",
+      "code/COPYING": "ba81481b2d63a33e0dce336d9e736130709549feeaf6cd424b34beba712baa50",
+      "code/axi_vfifo.v": "1fed2250a36b21275d22bd05eeb3ce6185c38bdfbb367c5fa862e374698bbee6",
+      "code/axi_vfifo_dec.v": "c8f86151e2721bd9c4e96e9845c8efccbbeceffb5ec0df0949ab0a6febc7ed56",
+      "code/axi_vfifo_enc.v": "ec401dd8d0f29e6bf816c4709bb2b9e9afc89ec4eb046cbcb23b2db6abdc46fa",
+      "code/axi_vfifo_raw.v": "3ee0d011b2d769f58254be0e53ad0406222f2813f063e346c62a2b6b4fc74806",
+      "code/axi_vfifo_raw_rd.v": "3173828129ebb045f8127d5658469f7aef1bae58c065f8b3b3fffb86684901a5",
+      "code/axi_vfifo_raw_wr.v": "3d9161cd40ae9697bedf1af27de74d18b97b0321efd9da0a3e4ef7f2ce851ca3",
+      "issue.md": "1dc55be883bb2de9f050dd9b5ec32674b83ebd85196612a60ce570a9c88bf7d2"
+    },
+    "gold_hashes": {
+      "code/COPYING": "ba81481b2d63a33e0dce336d9e736130709549feeaf6cd424b34beba712baa50",
+      "code/axi_vfifo.v": "1eef4b595ab622952de825b07752881cacc869db863b8fe57293961a85ce103c",
+      "code/axi_vfifo_dec.v": "3a024f0cbd098062017d74e0eb50f1376fa6838d06406cec62cb9c0eb45f054d",
+      "code/axi_vfifo_enc.v": "569699431c0e9dee8b237b53bc47348909998e66050a8866e6b93272d7ff43b4",
+      "code/axi_vfifo_raw.v": "15eb95b0ffae75ef39fa91f6587f5bd6d166202071f1f47c9d24676c8ed62c07",
+      "code/axi_vfifo_raw_rd.v": "7b946853bbe5da43611ef6c74b6ee84258f7a86caeb582b5d8eef2a8d3bff5b7",
+      "code/axi_vfifo_raw_wr.v": "2ddf58e2619f551e677507c323178e18352fcd8b9877e7df3b65a42d50c88e0f"
+    },
+    "grader_hashes": {
+      "run.py": "9db4bc4390a7836cc3e117421682eb7073ddb33a91245172b5355cc63f84437d"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 2,
+      "wrong_fix_fail_runs": 4,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 10,
+      "mutant_total": 10
+    },
+    "test_hashes": {
+      "tb.sv": "010692ef8e944bab2297d354b2712a5902aa413eeb0ea2f240fcf4c47cc84fcc",
+      "tb_gl.sv": "92f3ed98d9e0b6224806a926e825da5819c8ccab691f5615c0a28ac65c6b4bf8"
+    },
+    "grader_revalidated_utc": "2026-11-16T10:17:42.058352+00:00"
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT4_GateLevel_Security_CDC",
+  "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+  "primary_domain": "HighSpeed_AXI_NIC_Cache_DMA",
+  "multi_domains": [
+    "HighSpeed_AXI_NIC_Cache_DMA"
+  ],
+  "pdk_profile": {
+    "pdk_id": "rtl_dual_sim_standard",
+    "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+    "location": "Unified base image (/opt/siliconbench/tools)",
+    "customized": false,
+    "notes": "Pure RTL/protocol/synthesis check without external PDK Liberty files."
+  },
+  "public_hashes": {
+    "BUILD.md": "eb2d6daf1228a4817c5fb30d770f82e846123cc6f89a66f7faa20eef661f73ff",
+    "code/COPYING": "ba81481b2d63a33e0dce336d9e736130709549feeaf6cd424b34beba712baa50",
+    "code/axi_vfifo.v": "1fed2250a36b21275d22bd05eeb3ce6185c38bdfbb367c5fa862e374698bbee6",
+    "code/axi_vfifo_dec.v": "c8f86151e2721bd9c4e96e9845c8efccbbeceffb5ec0df0949ab0a6febc7ed56",
+    "code/axi_vfifo_enc.v": "ec401dd8d0f29e6bf816c4709bb2b9e9afc89ec4eb046cbcb23b2db6abdc46fa",
+    "code/axi_vfifo_raw.v": "3ee0d011b2d769f58254be0e53ad0406222f2813f063e346c62a2b6b4fc74806",
+    "code/axi_vfifo_raw_rd.v": "3173828129ebb045f8127d5658469f7aef1bae58c065f8b3b3fffb86684901a5",
+    "code/axi_vfifo_raw_wr.v": "3d9161cd40ae9697bedf1af27de74d18b97b0321efd9da0a3e4ef7f2ce851ca3",
+    "issue.md": "1dc55be883bb2de9f050dd9b5ec32674b83ebd85196612a60ce570a9c88bf7d2"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 2,
+    "wrong_fix_fail_runs": 4,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 10,
+    "mutant_total": 10
+  }
+}

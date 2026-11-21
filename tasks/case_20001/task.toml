@@ -1,0 +1,57 @@
+version = "1.0"
+
+[metadata]
+task_id = "case_20001"
+title = "Harden biRISC-V Dual-Issue Scoreboard Qualification, Post-LSU Slot-1 Serialization, and Fault/Interrupt Isolation"
+repository = "ultraembedded/biriscv"
+repo_id = "repo_44"
+split = "test"
+eda_stage = "stage1_rtl_sim"
+eda_stage_name = "Stage 1: Frontend RTL Design & Functional Simulation"
+problem_type = "PT1_Arch_Protocol_Bug_Repair"
+problem_type_label = "Architectural & Protocol Bug Repair"
+primary_domain = "Core_RISCV_Processors"
+domains = ["Core_RISCV_Processors"]
+public_rtl_files = 9
+public_rtl_loc = 3876
+editable_files_count = 1
+editable_loc = 1065
+
+[agent]
+timeout_sec = 5400
+
+[environment]
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+workdir = "/workspace"
+allow_internet = false
+cpus = 4
+memory_mb = 16384
+
+[environment.variables]
+OMP_NUM_THREADS = "1"
+OPENBLAS_NUM_THREADS = "1"
+MKL_NUM_THREADS = "1"
+MAKEFLAGS = "-j1"
+SILICONBENCH_TOOLS = "/opt/siliconbench/tools"
+SILICONBENCH_NANGATE45 = "/opt/siliconbench/pdk/Nangate45"
+
+[verifier]
+environment_mode = "separate"
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+timeout_sec = 600
+entrypoint = "/tests/test.sh"
+reward_file = "/logs/verifier/reward.txt"
+reward_json = "/logs/verifier/reward.json"
+
+[verifier.environment]
+allow_internet = false
+
+[siliconbench]
+allowed_edits = ["code/biriscv_issue.v"]
+pdk_id = "rtl_dual_sim_standard"
+pdk_name = "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang"
+pdk_customized = false
+accepts_seed = true
+grading_seeds = [101, 202]

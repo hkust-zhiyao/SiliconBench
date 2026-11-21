@@ -1,0 +1,57 @@
+version = "1.0"
+
+[metadata]
+task_id = "case_5013"
+title = "CVA6 RV32 Load-Store Unit Speculative Non-Idempotent Load Resolution, Word-Granular Store-Buffer Hazard Checking, CBO Commit-Queue Handshaking, and Timing Closure"
+repository = "openhwfoundation/cva6"
+repo_id = "repo_05"
+split = "test"
+eda_stage = "stage3_sta_cdc"
+eda_stage_name = "Stage 3: Static Timing (STA) & CDC/RDC Closure"
+problem_type = "PT1_Arch_Protocol_Bug_Repair"
+problem_type_label = "Architectural & Protocol Bug Repair"
+primary_domain = "rtl_semantics"
+domains = ["rtl_integration", "rtl_semantics"]
+public_rtl_files = 19
+public_rtl_loc = 6548
+editable_files_count = 4
+editable_loc = 2085
+
+[agent]
+timeout_sec = 5400
+
+[environment]
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+workdir = "/workspace"
+allow_internet = false
+cpus = 4
+memory_mb = 16384
+
+[environment.variables]
+OMP_NUM_THREADS = "1"
+OPENBLAS_NUM_THREADS = "1"
+MKL_NUM_THREADS = "1"
+MAKEFLAGS = "-j1"
+SILICONBENCH_TOOLS = "/opt/siliconbench/tools"
+SILICONBENCH_NANGATE45 = "/opt/siliconbench/pdk/Nangate45"
+
+[verifier]
+environment_mode = "separate"
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+timeout_sec = 600
+entrypoint = "/tests/test.sh"
+reward_file = "/logs/verifier/reward.txt"
+reward_json = "/logs/verifier/reward.json"
+
+[verifier.environment]
+allow_internet = false
+
+[siliconbench]
+allowed_edits = ["code/lsu_bypass.sv", "code/load_unit.sv", "code/store_buffer.sv", "code/load_store_unit.sv"]
+pdk_id = "custom_multicorner_liberty"
+pdk_name = "Task-Specific Multi-Corner Liberty & SDC Timing Views"
+pdk_customized = true
+accepts_seed = true
+grading_seeds = [101, 202]

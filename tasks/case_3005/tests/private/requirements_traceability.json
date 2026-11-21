@@ -1,0 +1,47 @@
+{
+  "case_id": "case_3005",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "public_section": "issue.md#1",
+      "description": "Gate hwlp_we_i[2:0] with valid_i, store halfword-aligned [31:1] start/end addresses, saturate zero counters on decrement, and resolve simultaneous nested end-of-loop decrement (hwlp_dec_cnt_i == 2'b11).",
+      "verified_by": "private/tests/tb.sv Phase 1 & Phase 2",
+      "wrong_fix_or_mutant_caught": [
+        "baseline",
+        "wrong_fix_1_hwlp_word_aligned_only",
+        "wrong_fix_2_nested_both_decrement_always",
+        "mutant_01_hwlp_start_we_ungated_by_valid",
+        "mutant_02_hwlp_end_masks_bit1",
+        "mutant_03_hwlp_zero_counter_underflows",
+        "mutant_04_hwlp_nested_outer_always_decrements",
+        "mutant_05_hwlp_nested_outer_never_decrements"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "public_section": "issue.md#2",
+      "description": "Preserve apu_lat against ungranted requests while active, retire only waiting when both slots are active, and drain flushed in-flight APU slots without asserting apu_rvalid_wb_o or register dependencies.",
+      "verified_by": "private/tests/tb.sv Phase 3 & Phase 4",
+      "wrong_fix_or_mutant_caught": [
+        "wrong_fix_3_apu_flush_clears_inflight_immediately",
+        "mutant_06_apu_req_ungated_by_flush",
+        "mutant_07_apu_killed_slot_asserts_wb",
+        "mutant_08_apu_killed_slot_reports_read_dep",
+        "mutant_09_apu_post_flush_new_req_marked_killed"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "public_section": "issue.md#3",
+      "description": "Constrain fpu_rm_in->fpu_rm_out (1.10 ns internal budget) and hart_ctrl_in->hart_ctrl_out (1.85 ns internal budget) under 3.25 ns input and 2.75 ns output delays across 8 ns and 10 ns clocks without excepting registered ports.",
+      "verified_by": "private/grader/run.py OpenSTA timing check",
+      "wrong_fix_or_mutant_caught": [
+        "wrong_fix_4_raw_internal_delay_without_io_delays",
+        "wrong_fix_5_registered_port_in_max_delays",
+        "mutant_10_swapped_channel_budgets",
+        "mutant_11_missing_hart_ctrl_constraint",
+        "mutant_12_missing_output_delay_in_budget"
+      ]
+    }
+  ]
+}

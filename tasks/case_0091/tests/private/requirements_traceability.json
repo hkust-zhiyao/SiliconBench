@@ -1,0 +1,55 @@
+{
+  "case_id": "case_0091",
+  "requirements": [
+    {
+      "id": "REQ-FUNC-ROUND-SAT-MODES",
+      "source": "public/issue.md",
+      "description": "Exact per-mode signed/unsigned scaling, 48-bit pair/quad product summation, half-ULP rounding before right shift, and 8/16/32-bit signed and ReLU saturation with zero-extension.",
+      "verified_by": "private/tests/tb.sv (u_nq_p1_r1, u_nq_p1_r0, u_sh_r1 across 600 directed and random vectors)",
+      "negative_controls": [
+        "baseline",
+        "wrong_fix_4_wrong_norm_sign_bit",
+        "wrong_fix_5_relu_mask_bug",
+        "mutant_01_drop_round_inc",
+        "mutant_02_drop_c8_ovf",
+        "mutant_03_drop_c16_ovf",
+        "mutant_04_drop_c32_ovf",
+        "mutant_08_wrong_pair0_shift",
+        "mutant_09_truncate_pair0_sign",
+        "mutant_10_invert_relu_neg"
+      ]
+    },
+    {
+      "id": "REQ-FUNC-STALL-CLEAR-FLAGS",
+      "source": "public/issue.md",
+      "description": "Hold multiplier and shifter pipeline state when ctrl_i.start is low, clear on clear_i or ~rst_ni, and drive flags_o[0..3].ready = 1'b1.",
+      "verified_by": "private/tests/tb.sv (stall hold, clear_i, reset, and flags_o checks)",
+      "negative_controls": [
+        "wrong_fix_3_missing_stall_hold",
+        "mutant_05_flags_ready_zero",
+        "mutant_06_drop_clear_shifter",
+        "mutant_07_drop_start_shifter"
+      ]
+    },
+    {
+      "id": "REQ-QOR-AREA",
+      "source": "public/issue.md & public/BUILD.md",
+      "description": "Mapped area <= 915.0 um^2 for neureka_normquant_shifter (INT=48, OUTPUT_REGISTER=1) and <= 4,685.0 um^2 for neureka_normquant (OUTPUT_REGISTER=1, multiplier blackboxed) on NangateOpenCellLibrary_typical.lib.",
+      "verified_by": "private/grader/run.py",
+      "negative_controls": [
+        "wrong_fix_1_preshift_rounding_adder (1302.070 um^2 / 6034.742 um^2)",
+        "wrong_fix_2_48bit_postshift_adder (1131.564 um^2 / 5347.664 um^2)"
+      ]
+    },
+    {
+      "id": "REQ-QOR-TIMING",
+      "source": "public/issue.md & public/BUILD.md",
+      "description": "OpenSTA worst setup slack >= 0.0 ns and worst hold slack >= 0.0 ns at 1.75 ns clock period, 0.25 ns I/O delays, and 5.0 fF output load, with clean check_setup audit.",
+      "verified_by": "private/grader/run.py",
+      "negative_controls": [
+        "wrong_fix_1_preshift_rounding_adder (-1.18 ns setup slack)",
+        "wrong_fix_2_48bit_postshift_adder (-0.79 ns setup slack)"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "case_id": "case_22007",
+  "obligations": [
+    {
+      "id": "REQ-PARAM-ELAB",
+      "behavior": "Elaborate and operate cleanly across parameterized (DataW, Height, Width, UseLatches) including degenerate Height==1, Width==1, and D==1 as well as deep multi-block D>=3 configurations.",
+      "public_source": "public/issue.md Observed Failures item 1 & Requirements",
+      "verified_by": [
+        "private/tests/tb.sv (u4..u9)",
+        "private/grader/run.py (Yosys H=1,W=1,DataW=16 check)"
+      ]
+    },
+    {
+      "id": "REQ-MULTITILE-ELASTIC-FLOW",
+      "behavior": "Prevent 2*Height ping-pong buffer overrun when D>=3 and ensure seamless multi-tile transitions and flags_o.empty pulses across D==1, D>=2, preloaded tiles (flags_o.full==1), and random stalls.",
+      "public_source": "public/issue.md Observed Failures item 2 & Requirements",
+      "verified_by": [
+        "private/tests/tb.sv (u0..u9 multi-tile jobs)",
+        "wf1_clog2_only",
+        "m02_off_by_one_empty",
+        "m03_ungated_empty_pulse",
+        "m05_drop_buf_write_toggle",
+        "m06_drop_buf_read_toggle",
+        "m07_wrong_pad_raddr_inc",
+        "m08_no_fresh_pad_claim_on_empty"
+      ]
+    },
+    {
+      "id": "REQ-PARTIAL-ZERO-PAD",
+      "behavior": "Deterministically drive zero ('0) for columns >= ctrl_i.height and rows >= loaded_width even after ctrl_i.rst_w_index resets the row-load counter mid-drain.",
+      "public_source": "public/issue.md Observed Failures item 3 & Requirements",
+      "verified_by": [
+        "private/tests/tb.sv (Job 1 & Job 3)",
+        "private/tests/tb_gl.sv",
+        "wf2_no_row_pad_across_rstw",
+        "m01_drop_col_height_pad",
+        "m04_broken_rst_w_index",
+        "m10_pad_scm_wrong_col_mux"
+      ]
+    },
+    {
+      "id": "REQ-CLEAR-AND-4STATE-PARITY",
+      "behavior": "Prioritize synchronous clear_i over simultaneous load/h_shift, preserve latch-free UseLatches=0 and latch-based UseLatches=1 synthesis, and prevent 4-state X/Z leakage onto flags_o or x_buffer_o.",
+      "public_source": "public/issue.md Observed Failures item 4 & Requirements",
+      "verified_by": [
+        "private/tests/tb.sv (Job 2)",
+        "private/tests/tb_gl.sv (UseLatches=0 & UseLatches=1)",
+        "wf3_missing_clear_else",
+        "wf4_unmasked_latch_x",
+        "ah2_force_ff_ignore_latches",
+        "m09_scm_no_clear_entry_valid"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "case_id": "case_9014",
+  "task_id": "case_9014",
+  "version": 1,
+  "title": "Co-Design BlackParrot Four-Cluster 128-bit I-Cache SRAM Subword Byte-Reverse/XOR Relay and 8-Macro CTS Floorplan",
+  "repo_id": "repo_09",
+  "repository": "black-parrot/black-parrot",
+  "source_commit": "22548483723c98fcadcabe0dd232645876fa7dc1",
+  "license": "BSD-3-Clause",
+  "family": "rtl_physical_codesign",
+  "topic": "bp_fe_icache_sram_byte_reverse_relay_and_macro_floorplan",
+  "editable_files": [
+    "code/banked.sv",
+    "plan/placement.json"
+  ],
+  "editable": [
+    "code/banked.sv",
+    "plan/placement.json"
+  ],
+  "grading": {
+    "eda_class": "pnr",
+    "grader_timeout_seconds": 600,
+    "verifier_timeout_seconds": 1200,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_9014",
+    "version": 1,
+    "frozen_utc": "2026-11-04T17:56:22.376599+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/banked.sv",
+      "plan/placement.json"
+    ],
+    "public_hashes": {
+      "BUILD.md": "3c442cd74de8bd13658179fa23bd54bc62751c37229760db6f25366306b25ffb",
+      "LICENSE": "b0ace3b667b34d741066fbf836b7ddaaccf0240fe469a986e580163ea014e69b",
+      "code/banked.sv": "11e3a664064d5ab5d24dda5c921dc77212fc1de769d33cccb04fa34d1a61530f",
+      "code/bp_sram_256x128.sv": "b313e48a01d65fe3b9a1492f3a969f7e823f7f4c9c5925eeecfd6414145eed57",
+      "code/rtl/bp_fe_icache.sv": "4c2cf18728bbaf86be2e4f34de04ff4d0867cb2ff4362c68e1e0c56d2048d6de",
+      "issue.md": "94e0324586b7ef9707d9428bf7a2bd0206cc4853fe00a26f3ad3b07380b36572",
+      "pdk/256.lef": "246405148ef9df63af32d955f20491c4d087678d03cbfec3eb3ad6653fc8d4c3",
+      "pdk/256.lib": "c3eb5ef42af1af7d0f8eb6bc59952f2f6e0f045aff0b5066c028a7a4ff95ae81",
+      "pdk/256.v": "7f4d1d17a64e29b35bdf765d620dcedc5e367c38e95d08f3a80a6793fa2c7126",
+      "pdk/256_stub.v": "4fe2a528def8d0114f778643abec317c323e7d6744089b101a4f75e19b3fe70e",
+      "pdk/LICENSE.IHP": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "pdk/core.v": "e2e43ec0159cbc34662fe91114e8cb03a697a2a829ad63b0d4f06631908ea787",
+      "pdk/sg13g2_stdcell.lef": "9942e96fb5df56b40f1cac30e1b118e88a34c842b3263a9c285077c2801fae2b",
+      "pdk/sg13g2_stdcell_typ_1p20V_25C.lib": "f3b97e2af56e61f340c5b316d9a352fd54afda130841ec528e8bc2c22411a077",
+      "pdk/sg13g2_tech.lef": "3b05b1b0c9752e14d5153a5aa1594e34a883df6b1acaa84af377cef521f76bb9",
+      "physical/flow.tcl.in": "641578a0931a1f4a0dc8435779f589a714674c43c085644b9433885a47916f2a",
+      "physical/synth.ys": "f139dbb6c733146be11e4638b916da1f3aeb00c62f3bc8797ed9a1492ecf4746",
+      "plan/placement.json": "954797e84d5104f082d6482c8408488281911df5473d9f4ae375f9b28f73c98c"
+    },
+    "gold_hashes": {
+      "code/banked.sv": "d012c1d97faaff3aae766a8494bda62a4acbaaec4d0ec6b1d52a4ff11a566bfa",
+      "plan/placement.json": "d301c88a89574b81ad137b97a6d6ff51bba1a893855cbba6d8abb547a6495693"
+    },
+    "grader_hashes": {
+      "run.py": "914be7048a7f209bb7de52d863f0d9720845f4b0e39ace4d92e7cacf6c1f6114"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 10,
+      "mutant_total": 10
+    }
+  },
+  "eda_stage": "stage4_macro_pnr",
+  "eda_stage_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+  "eda_track": "stage4_macro_pnr",
+  "eda_track_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+  "problem_type": "PT5_RTL_HardSRAM_Macro_PnR",
+  "problem_type_label": "RTL + Hard-SRAM Macro Physical Co-Design",
+  "primary_domain": "pins_routing_congestion",
+  "multi_domains": [
+    "clocking",
+    "floorplan_macros",
+    "gatelevel_physical_effects",
+    "pins_routing_congestion",
+    "rtl_integration"
+  ],
+  "pdk_profile": {
+    "pdk_id": "ihp_sg13g2_130nm_8sram",
+    "pdk_name": "IHP SG13G2 130nm Open PDK + RM_IHPSG13_1P Hard-SRAM Macros",
+    "location": "Task-bundled in environment/public/pdk/ and tests/private/pdk/",
+    "customized": true,
+    "notes": "Includes task-bundled IHP SG13G2 standard-cell LEF/Liberty and single-port hard-SRAM macro LEF/Liberty/Verilog models."
+  },
+  "public_hashes": {
+    "BUILD.md": "3c442cd74de8bd13658179fa23bd54bc62751c37229760db6f25366306b25ffb",
+    "LICENSE": "b0ace3b667b34d741066fbf836b7ddaaccf0240fe469a986e580163ea014e69b",
+    "code/banked.sv": "11e3a664064d5ab5d24dda5c921dc77212fc1de769d33cccb04fa34d1a61530f",
+    "code/bp_sram_256x128.sv": "b313e48a01d65fe3b9a1492f3a969f7e823f7f4c9c5925eeecfd6414145eed57",
+    "code/rtl/bp_fe_icache.sv": "4c2cf18728bbaf86be2e4f34de04ff4d0867cb2ff4362c68e1e0c56d2048d6de",
+    "issue.md": "94e0324586b7ef9707d9428bf7a2bd0206cc4853fe00a26f3ad3b07380b36572",
+    "pdk/256.lef": "246405148ef9df63af32d955f20491c4d087678d03cbfec3eb3ad6653fc8d4c3",
+    "pdk/256.lib": "c3eb5ef42af1af7d0f8eb6bc59952f2f6e0f045aff0b5066c028a7a4ff95ae81",
+    "pdk/256.v": "7f4d1d17a64e29b35bdf765d620dcedc5e367c38e95d08f3a80a6793fa2c7126",
+    "pdk/256_stub.v": "4fe2a528def8d0114f778643abec317c323e7d6744089b101a4f75e19b3fe70e",
+    "pdk/LICENSE.IHP": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "pdk/core.v": "e2e43ec0159cbc34662fe91114e8cb03a697a2a829ad63b0d4f06631908ea787",
+    "pdk/sg13g2_stdcell.lef": "9942e96fb5df56b40f1cac30e1b118e88a34c842b3263a9c285077c2801fae2b",
+    "pdk/sg13g2_stdcell_typ_1p20V_25C.lib": "f3b97e2af56e61f340c5b316d9a352fd54afda130841ec528e8bc2c22411a077",
+    "pdk/sg13g2_tech.lef": "3b05b1b0c9752e14d5153a5aa1594e34a883df6b1acaa84af377cef521f76bb9",
+    "physical/flow.tcl.in": "641578a0931a1f4a0dc8435779f589a714674c43c085644b9433885a47916f2a",
+    "physical/synth.ys": "f139dbb6c733146be11e4638b916da1f3aeb00c62f3bc8797ed9a1492ecf4746",
+    "plan/placement.json": "954797e84d5104f082d6482c8408488281911df5473d9f4ae375f9b28f73c98c"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 10,
+    "mutant_total": 10
+  }
+}

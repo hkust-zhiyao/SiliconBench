@@ -1,0 +1,116 @@
+{
+  "case_id": "case_20001",
+  "task_id": "case_20001",
+  "version": 1,
+  "title": "Harden biRISC-V Dual-Issue Scoreboard Qualification, Post-LSU Slot-1 Serialization, and Fault/Interrupt Isolation",
+  "repo_id": "repo_44",
+  "repository": "ultraembedded/biriscv",
+  "topic": "superscalar_pipeline_dispatch",
+  "family": "functional",
+  "editable_files": [
+    "code/biriscv_issue.v"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_20001",
+    "version": 1,
+    "frozen_utc": "2026-11-11T15:12:00.924744+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/biriscv_issue.v"
+    ],
+    "public_hashes": {
+      "BUILD.md": "4563f1e204429b81d509463fd28d37e0438c729fb364ec5426efce4caee2e416",
+      "code/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "code/biriscv_alu.v": "e8628af2c5c5bc70f21e02652fbf056ae59aa7fb125f2a3fe9b21ef9814694e3",
+      "code/biriscv_decoder.v": "47805ee880fdba67b735eb77da1259a48cdfc10d21757ada1cdbf6b18e07e481",
+      "code/biriscv_defs.v": "dcfb61c19a3d12cd7e1fb419dcce2bac0a815c21f293593c033efd8b3d225292",
+      "code/biriscv_exec.v": "93b11cc356986baa3861ace143f71fe2b5da44109afa2328a252778fc58055b6",
+      "code/biriscv_issue.v": "3ba90dc520a538e654b5a2b8793a2e9377eed7ed163d36cf898e8d8c60ba0875",
+      "code/biriscv_pipe_ctrl.v": "6524fa1ff08abe2fa064a4b8e8c2846ddfee32395992475d10f09a44a1d9dd58",
+      "code/biriscv_regfile.v": "61cd309835ace8ed5a3d3be2d65293b4bbefd263d60b041e09ad96b43ef543b4",
+      "code/biriscv_trace_sim.v": "95e61e552fbe41b8d6c15a4e9eead02e9f2614e631ef5a09d2acaa35f0af0f9e",
+      "code/biriscv_xilinx_2r1w.v": "0dc41745138d3b17eb84fe653afc895b073f3f8be1ff057bfdcfa6b03ce67a71",
+      "issue.md": "d96ba51cfd91fd1fc93a20736a065ca6b454533ccb560b913ed84609b234dac6"
+    },
+    "gold_hashes": {
+      "code/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "code/biriscv_alu.v": "e8628af2c5c5bc70f21e02652fbf056ae59aa7fb125f2a3fe9b21ef9814694e3",
+      "code/biriscv_decoder.v": "47805ee880fdba67b735eb77da1259a48cdfc10d21757ada1cdbf6b18e07e481",
+      "code/biriscv_defs.v": "dcfb61c19a3d12cd7e1fb419dcce2bac0a815c21f293593c033efd8b3d225292",
+      "code/biriscv_exec.v": "93b11cc356986baa3861ace143f71fe2b5da44109afa2328a252778fc58055b6",
+      "code/biriscv_issue.v": "6a63a6740aa167f01e8763bb651487cd60d253ca19227e99f3518fb18cf25cf9",
+      "code/biriscv_pipe_ctrl.v": "6524fa1ff08abe2fa064a4b8e8c2846ddfee32395992475d10f09a44a1d9dd58",
+      "code/biriscv_regfile.v": "61cd309835ace8ed5a3d3be2d65293b4bbefd263d60b041e09ad96b43ef543b4",
+      "code/biriscv_trace_sim.v": "95e61e552fbe41b8d6c15a4e9eead02e9f2614e631ef5a09d2acaa35f0af0f9e",
+      "code/biriscv_xilinx_2r1w.v": "0dc41745138d3b17eb84fe653afc895b073f3f8be1ff057bfdcfa6b03ce67a71"
+    },
+    "grader_hashes": {
+      "run.py": "7068700e2e1a7b80d45c520596a06c9e717813512114e663e4a349cb999832a1"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 2,
+      "wrong_fix_fail_runs": 4,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 10,
+      "mutant_total": 10
+    }
+  },
+  "eda_stage": "stage1_rtl_sim",
+  "eda_stage_name": "Stage 1: Frontend RTL Design & Functional Simulation",
+  "eda_track": "stage1_rtl_sim",
+  "eda_track_name": "Stage 1: Frontend RTL Design & Functional Simulation",
+  "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+  "problem_type_label": "Architectural & Protocol Bug Repair",
+  "primary_domain": "Core_RISCV_Processors",
+  "multi_domains": [
+    "Core_RISCV_Processors"
+  ],
+  "pdk_profile": {
+    "pdk_id": "rtl_dual_sim_standard",
+    "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+    "location": "Unified base image (/opt/siliconbench/tools)",
+    "customized": false,
+    "notes": "Pure RTL/protocol/synthesis check without external PDK Liberty files."
+  },
+  "public_hashes": {
+    "BUILD.md": "4563f1e204429b81d509463fd28d37e0438c729fb364ec5426efce4caee2e416",
+    "code/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "code/biriscv_alu.v": "e8628af2c5c5bc70f21e02652fbf056ae59aa7fb125f2a3fe9b21ef9814694e3",
+    "code/biriscv_decoder.v": "47805ee880fdba67b735eb77da1259a48cdfc10d21757ada1cdbf6b18e07e481",
+    "code/biriscv_defs.v": "dcfb61c19a3d12cd7e1fb419dcce2bac0a815c21f293593c033efd8b3d225292",
+    "code/biriscv_exec.v": "93b11cc356986baa3861ace143f71fe2b5da44109afa2328a252778fc58055b6",
+    "code/biriscv_issue.v": "3ba90dc520a538e654b5a2b8793a2e9377eed7ed163d36cf898e8d8c60ba0875",
+    "code/biriscv_pipe_ctrl.v": "6524fa1ff08abe2fa064a4b8e8c2846ddfee32395992475d10f09a44a1d9dd58",
+    "code/biriscv_regfile.v": "61cd309835ace8ed5a3d3be2d65293b4bbefd263d60b041e09ad96b43ef543b4",
+    "code/biriscv_trace_sim.v": "95e61e552fbe41b8d6c15a4e9eead02e9f2614e631ef5a09d2acaa35f0af0f9e",
+    "code/biriscv_xilinx_2r1w.v": "0dc41745138d3b17eb84fe653afc895b073f3f8be1ff057bfdcfa6b03ce67a71",
+    "issue.md": "d96ba51cfd91fd1fc93a20736a065ca6b454533ccb560b913ed84609b234dac6"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 2,
+    "wrong_fix_fail_runs": 4,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 10,
+    "mutant_total": 10
+  }
+}

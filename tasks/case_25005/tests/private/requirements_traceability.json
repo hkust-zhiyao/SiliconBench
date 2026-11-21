@@ -1,0 +1,46 @@
+{
+  "case_id": "case_25005",
+  "obligations": [
+    {
+      "id": "REQ-DRBG-PRIME-REJECTION",
+      "behavior": "Enforce strict 1 <= T < HMAC_DRBG_PRIME scalar range in hmac_drbg.sv (rejecting both T == 0 and T >= HMAC_DRBG_PRIME), unconditionally update V_reg <= HMAC_tag in CHCK_ST prior to K3_ST -> V3_ST -> T_ST rejection rounds, keep valid=0 and drbg=0 throughout intermediate/rejection states, latch seed inputs on init_cmd, reject uninstantiated next_cmd and invalid 2'b11 glitches, and sanitize/uninstantiate immediately on zeroize.",
+      "public_source": "public/issue.md Section 1, public/code/hmac_drbg.sv",
+      "verified_by": [
+        "private/tests/tb.sv (run_drbg_tests D1-D6: P-384 KATs, PRIME==T0 rejection, PRIME==T0+1 acceptance, 2-step rejection chain, busy input mutation, mid-loop zeroize)",
+        "private/tests/tb_drbg_zero.sv (exact HMAC_tag == 0 candidate rejection and K3_ST V_reg == 0 check)",
+        "wf1_drbg_no_v_update_on_reject",
+        "m01_drbg_strict_gt_prime",
+        "m02_drbg_allow_zero_scalar",
+        "m03_drbg_skip_v_update_on_fail",
+        "m04_drbg_allow_unseeded_next"
+      ]
+    },
+    {
+      "id": "REQ-HMAC-KV-ISOLATION-LOCKOUT",
+      "behavior": "Pre-clear and write-lock HMAC512_KEY[0..15] and HMAC512_BLOCK[0..31] across KV read, kv_*_data_present, and busy_o lifetimes (preventing trailing 384-bit key residue, CSR_MODE key override, and cycle-15 mid-hash TOCTOU block overwrites), gate core commands on key errors, close 1-cycle KV read/write busy_o and READY gaps, and suppress CSR HMAC512_TAG[0..15] to zero whenever dest_keyvault or KV writeback is active.",
+      "public_source": "public/issue.md Section 2, public/code/hmac.sv",
+      "verified_by": [
+        "private/tests/tb.sv (run_hmac_subsystem_tests T1-T5)",
+        "wf2_unlock_block_on_init_toctou",
+        "wf3_leak_csr_tag_on_kv_dest",
+        "m05_no_kv_key_preclear",
+        "m06_allow_csr_mode_with_kv_key",
+        "m07_unlock_block_swwel_when_busy",
+        "m08_expose_csr_tag_when_dest_kv",
+        "m09_drop_kv_wr_from_busy"
+      ]
+    },
+    {
+      "id": "REQ-AHB-GUARD-AND-DEBUG-SANITIZE",
+      "behavior": "Reject sub-word/wider (hsize_i != 3'b010) and unaligned (haddr_i[1:0] != 2'b00) active AHB-Lite transfers with a 2-cycle H_ERROR response while blocking cs/we and zeroing hrdata_o in hmac_ctrl.sv; on ZEROIZE or debugUnlock_or_scan_mode_switch, isolate AHB/CSR key bus in hmac_ctrl.sv and wipe all key/block/tag/kv/lfsr_seed/CSR_MODE/KV_WR_CTRL state while cleanly aborting in-flight operations without hanging ready.",
+      "public_source": "public/issue.md Section 3, public/code/hmac_ctrl.sv, public/code/hmac.sv",
+      "verified_by": [
+        "private/tests/tb.sv (run_hmac_subsystem_tests T2, T6, T7)",
+        "wf4_ignore_debug_unlock_and_subword_ahb",
+        "m10_ignore_debug_unlock_zeroize",
+        "m11_no_ahb_size_align_error",
+        "m12_retain_kv_wr_en_on_zeroize"
+      ]
+    }
+  ]
+}

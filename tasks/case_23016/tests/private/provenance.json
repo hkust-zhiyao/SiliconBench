@@ -1,0 +1,29 @@
+{
+  "case_id": "case_23016",
+  "repo_id": "repo_37",
+  "origin": "https://github.com/vortexgpgpu/vortex",
+  "commit": "90a626217597099e2667b1bf3395c70b1965c1e",
+  "archive_sha256": "afb7869c698c7291de07249f4609a51107b3d0278fd11a19838735b0e4318af5",
+  "license": "Apache-2.0; see upstream repository LICENSE",
+  "native_sources": [
+    "upstream/hw/rtl/tcu/VX_tcu_uops.sv",
+    "upstream/hw/rtl/tcu/VX_tcu_abuf.sv",
+    "upstream/hw/rtl/tcu/VX_tcu_bbuf.sv",
+    "upstream/hw/rtl/tcu/VX_tcu_core.sv",
+    "upstream/hw/rtl/tcu/VX_tcu_wgmma.sv",
+    "upstream/hw/rtl/tcu/VX_tcu_tbuf.sv",
+    "upstream/hw/rtl/tcu/VX_tcu_lockstep.sv",
+    "upstream/hw/rtl/tcu/VX_tcu_meta.sv",
+    "upstream/hw/rtl/tcu/VX_tcu_sp_mux.sv",
+    "upstream/hw/rtl/tcu/VX_tcu_fedp_tfr.sv",
+    "upstream/hw/rtl/core/VX_uop_sequencer.sv"
+  ],
+  "editable_files": [
+    "code/VX_tcu_uops.sv",
+    "code/VX_tcu_abuf.sv",
+    "code/VX_tcu_bbuf.sv",
+    "code/VX_tcu_core.sv"
+  ],
+  "qualification": "upstream/repo_37",
+  "build_scope": "Vortex Hopper-style WGMMA & 2:4 Sparse Tensor Core subsystem (VX_tcu_uops + VX_tcu_abuf + VX_tcu_bbuf + VX_tcu_core inside VX_tcu_subsys) verified across dual RTL parameterizations (1-block FEDP2K and 2-block non-FEDP2K), 4-state iverilog gate-level simulation, Yosys+slang Nangate45 synthesis, and OpenROAD STA signoff."
+}

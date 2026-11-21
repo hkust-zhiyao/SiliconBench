@@ -1,0 +1,52 @@
+{
+  "case_id": "case_21008",
+  "obligations": [
+    {
+      "id": "REQ-MULTI-PARAM-ELAB-AND-GL-PARITY",
+      "behavior": "Elaborate and synthesize cleanly across equal-width, upsize, and downsize ratios with FORWARD_ID in {0,1} and multi-bit USER buses, driving full-width zeros when disabled and maintaining cycle-accurate RTL-to-gate-level parity with zero latches.",
+      "public_source": "public/issue.md item 1 & item 4",
+      "verified_by": [
+        "private/tests/tb.sv (h_eq, h_up32, h_up64, h_dn128, h_dn256)",
+        "private/tests/tb_gl.sv (chk_up, chk_dn)",
+        "m01_forward_id_disabled_leak",
+        "m02_user_disable_leak"
+      ]
+    },
+    {
+      "id": "REQ-SLAVE-FIXED-INCR-WRAP-STEPPING",
+      "behavior": "Step slave addresses per AXI4 FIXED, INCR, and WRAP rules across full-width, narrow, and unaligned transfers and steer WDATA/WSTRB and RDATA byte lanes accurately.",
+      "public_source": "public/issue.md item 2",
+      "verified_by": [
+        "private/tests/tb.sv (Phase 2, Phase 3, Phase 4)",
+        "m04_upsize_fixed_step_incr"
+      ]
+    },
+    {
+      "id": "REQ-UPSIZE-REPACK-AND-FRAMING",
+      "behavior": "Repack qualifying upsize bursts (CONVERT_BURST, cache[1], CONVERT_NARROW_BURST or full-size, INCR or qualifying WRAP) to aligned full-width master INCR bursts with exact m_axi_a*len and WLAST/RLAST framing, passing all other bursts through unmodified.",
+      "public_source": "public/issue.md item 3",
+      "verified_by": [
+        "private/tests/tb.sv (Phase 2a..2e, Phase 3)",
+        "wf1_repack_ignores_cache_modifiable",
+        "wf4_upsize_premature_wlast",
+        "m03_upsize_narrow_repack_bypass",
+        "m05_upsize_unaligned_wrap_repack",
+        "m06_upsize_unaligned_start_len_bug"
+      ]
+    },
+    {
+      "id": "REQ-DOWNSIZE-SPLIT-AND-STICKY-RESP",
+      "behavior": "Pass narrow downsize bursts through unmodified, split wide bursts into master INCR child bursts respecting unaligned start offsets, FIXED per-beat splits, WRAP boundaries, and 256-beat caps, and propagate highest-severity RRESP and BRESP/BUSER.",
+      "public_source": "public/issue.md item 4",
+      "verified_by": [
+        "private/tests/tb.sv (Phase 4a..4f, Phase 5)",
+        "wf2_downsize_crosses_wrap_boundary",
+        "wf3_non_sticky_last_beat_resp",
+        "m07_downsize_unaligned_head_extra_zero",
+        "m08_downsize_fixed_merged_burst",
+        "m09_downsize_256_cap_overflow",
+        "m10_downsize_drop_sticky_rresp"
+      ]
+    }
+  ]
+}

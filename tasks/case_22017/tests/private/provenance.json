@@ -1,0 +1,30 @@
+{
+  "case_id": "case_22017",
+  "slot_id": "builder_03_vector_tensor_fpu__E02",
+  "blueprint_id": "bp_s03_004",
+  "repo_id": "repo_19",
+  "origin": "https://github.com/pulp-platform/ara",
+  "commit": "34bd3bc152421b4601a7bf3d6e8e91ffb545c99e",
+  "license": "Solderpad Hardware License v0.51; see public/code/LICENSE and Nangate45 license in public/lib/LICENSE.Nangate45",
+  "native_sources": [
+    "upstream/hardware/src/sldu/sldu.sv",
+    "upstream/hardware/src/sldu/p2_stride_gen.sv",
+    "upstream/hardware/src/sldu/sldu_op_dp.sv",
+    "upstream/hardware/include/ara_pkg.sv",
+    "upstream/hardware/include/rvv_pkg.sv"
+  ],
+  "dependency_closure": [
+    "repo_05/snapshot/core/include/{config_pkg.sv,cv64a6_imafdcv_sv39_config_pkg.sv,riscv_pkg.sv,ariane_pkg.sv}",
+    "repo_19/common_cells/src/{cf_math_pkg.sv,lzc.sv,popcount.sv,spill_register.sv,spill_register_flushable.sv}",
+    "repo_19/common_cells/include/common_cells/{registers.svh,assertions.svh}",
+    "repo_19/axi/src/axi_pkg.sv",
+    "repo_35/cvfpu/src/fpnew_pkg.sv"
+  ],
+  "editable_files": [
+    "code/sldu.sv",
+    "code/p2_stride_gen.sv"
+  ],
+  "qualification": "upstream/repo_19",
+  "build_scope": "Ara parameterized Slide and Inter-Lane Reduction subsystem (sldu_subsys_top: NrLanes={2,4,8}, VLEN=1024) verified with Verilator 5.038 simulation, Yosys+slang zero-latch multi-parameter elaboration, Icarus 4-state gate-level simulation, and Nangate45 OpenROAD STA.",
+  "tool": "Verilator 5.038 + Yosys (slang frontend + ABC Nangate45 mapping) + Icarus Verilog 13 + OpenROAD STA"
+}

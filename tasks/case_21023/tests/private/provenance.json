@@ -1,0 +1,35 @@
+{
+  "case_id": "case_21023",
+  "repo_id": "repo_39",
+  "upstream_repo": "corundum/corundum",
+  "upstream_commit": "1ca0151b97af85aa5dd306d74b6bcec65904d2ce",
+  "license": "MIT / BSD-2-Clause",
+  "editable_files": [
+    {
+      "task_path": "code/arp.v",
+      "upstream_path": "fpga/lib/eth/rtl/arp.v"
+    },
+    {
+      "task_path": "code/arp_cache.v",
+      "upstream_path": "fpga/lib/eth/rtl/arp_cache.v"
+    },
+    {
+      "task_path": "code/arp_eth_rx.v",
+      "upstream_path": "fpga/lib/eth/rtl/arp_eth_rx.v"
+    },
+    {
+      "task_path": "code/arp_eth_tx.v",
+      "upstream_path": "fpga/lib/eth/rtl/arp_eth_tx.v"
+    }
+  ],
+  "readonly_files": [
+    {
+      "task_path": "code/lfsr.v",
+      "upstream_path": "fpga/lib/eth/rtl/lfsr.v"
+    },
+    {
+      "task_path": "code/LICENSE",
+      "upstream_path": "LICENSE"
+    }
+  ]
+}

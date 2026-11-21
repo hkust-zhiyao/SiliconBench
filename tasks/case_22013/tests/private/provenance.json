@@ -1,0 +1,29 @@
+{
+  "case_id": "case_22013",
+  "repo_id": "repo_19",
+  "origin": "https://github.com/pulp-platform/ara",
+  "commit": "34bd3bc152421b4601a7bf3d6e8e91ffb545c99e",
+  "dependency_commits": {
+    "common_cells": "c27bce39ebb2e6bae52f60960814a2afca7bd4cb",
+    "axi": "853ede23b2a9837951b74dbdc6d18c3eef5bac7d",
+    "cvfpu": "77811635cb7e8649f1d9484733ee6a0bdb44a0e6"
+  },
+  "license": "SHL-0.51; see public/code/LICENSE and source headers",
+  "native_sources": [
+    "upstream/hardware/src/vlsu/vlsu.sv",
+    "upstream/hardware/src/vlsu/addrgen.sv",
+    "upstream/hardware/src/vlsu/vldu.sv",
+    "upstream/hardware/src/vlsu/vstu.sv",
+    "upstream/hardware/include/ara_pkg.sv",
+    "upstream/hardware/include/rvv_pkg.sv"
+  ],
+  "editable_files": [
+    "code/vlsu.sv",
+    "code/addrgen.sv",
+    "code/vldu.sv",
+    "code/vstu.sv"
+  ],
+  "qualification": "upstream/repo_19",
+  "build_scope": "Native Ara 4-lane VLSU subsystem (`vlsu.sv`, `addrgen.sv`, `vldu.sv`, `vstu.sv`, `axi_cut.sv`) tested in dual AxiDataWidth=128 and AxiDataWidth=64 configurations with randomized AXI4 AR/R/AW/W/B channel latency/backpressure plus yosys+slang latch-free synthesis check.",
+  "tool": "Verilator 5.038 (--binary --timing -Wno-fatal -DSYNTHESIS) + Yosys 0.70 (-m slang)"
+}

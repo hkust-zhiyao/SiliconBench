@@ -1,0 +1,18 @@
+{
+  "case_id": "case_0009",
+  "repo_id": "repo_33",
+  "origin": "https://github.com/pulp-platform/hwpe-ctrl",
+  "commit": "558fe3db3413909878c03aed543257d94a57bae5",
+  "archive_sha256": "df3cdee2306bb45cea5af9e48e8a496de83835fa5d016ec1ac8132031f0d304e",
+  "license": "SHL-0.51; see public/code/LICENSE and source headers",
+  "native_sources": [
+    "rtl/hwpe_ctrl_package.sv",
+    "rtl/hwpe_ctrl_uloop.sv"
+  ],
+  "editable_files": [
+    "code/hwpe_ctrl_uloop.sv"
+  ],
+  "qualification": "upstream/repo_33",
+  "build_scope": "Native hwpe_ctrl_package.sv and hwpe_ctrl_uloop.sv verified in both SHADOWED=1 and SHADOWED=0 configurations across 3 nested loops, multi-operation add/mv microcode bodies, ready/enable stalls, and synchronous clear_i / ctrl_i.clear resets.",
+  "tool": "Verilator 5.038 (--binary --timing -Wno-fatal -DSYNTHESIS)"
+}

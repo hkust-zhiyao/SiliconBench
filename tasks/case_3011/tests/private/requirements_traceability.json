@@ -1,0 +1,47 @@
+{
+  "case_id": "case_3011",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "public_section": "issue.md#1",
+      "description": "Mask irq_wu_ctrl_o with IRQ_MASK, qualify U-mode PULP_SECURE interrupts with registered irq_sec_q, and drive irq_id_ctrl_o=5'd0 when idle.",
+      "verified_by": "private/tests/tb.sv Phase 1",
+      "wrong_fix_or_mutant_caught": [
+        "baseline",
+        "wrong_fix_1_irq_wu_unmasked",
+        "mutant_01_irq_wu_missing_mask",
+        "mutant_02_u_mode_unregistered_irq_sec",
+        "mutant_03_idle_irq_id_mtix",
+        "mutant_04_priority_mei_msi_swapped"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "public_section": "issue.md#2",
+      "description": "Runtime cluster_mode_i selection, p.elw finish/debug priority, lsu_busy_i inclusion during p.elw, and wake/debug gating on clk_gated_o and core_sleep_o.",
+      "verified_by": "private/tests/tb.sv Phase 2 & Phase 3",
+      "wrong_fix_or_mutant_caught": [
+        "wrong_fix_2_sleep_static_cluster_only",
+        "wrong_fix_3_sleep_missing_lsu_busy_and_wake",
+        "mutant_05_cluster_missing_lsu_busy",
+        "mutant_06_cluster_start_beats_finish",
+        "mutant_07_cluster_sleep_ignores_wake",
+        "mutant_08_wfi_ignores_debug_no_sleep",
+        "mutant_09_cluster_clk_en_ignores_wake"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "public_section": "issue.md#3",
+      "description": "Constrain clint_timer_in->clint_timer_out (1.25 ns internal budget) and eu_event_in->eu_event_out (2.00 ns internal budget) under 3.50 ns input and 2.75 ns output delays across 10 ns and 12 ns clocks without excepting registered ports.",
+      "verified_by": "private/grader/run.py OpenSTA timing check",
+      "wrong_fix_or_mutant_caught": [
+        "wrong_fix_4_raw_internal_delay_without_io_delays",
+        "wrong_fix_5_registered_port_in_max_delays",
+        "mutant_10_swapped_channel_budgets",
+        "mutant_11_missing_eu_event_constraint",
+        "mutant_12_missing_output_delay_in_budget"
+      ]
+    }
+  ]
+}

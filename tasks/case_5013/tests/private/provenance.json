@@ -1,0 +1,13 @@
+{
+  "case_id": "case_5013",
+  "repo_id": "repo_05",
+  "upstream_repo": "openhwfoundation/cva6",
+  "source_files": [
+    "core/lsu_bypass.sv",
+    "core/load_unit.sv",
+    "core/store_buffer.sv",
+    "core/load_store_unit.sv",
+    "core/store_unit.sv"
+  ],
+  "authoring_mode": "real_upstream_defects_plus_synthesis_ppa_closure"
+}

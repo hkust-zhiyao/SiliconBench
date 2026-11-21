@@ -1,0 +1,16 @@
+{
+  "case_id": "case_21021",
+  "repo_id": "repo_40",
+  "upstream_repo": "alexforencich/verilog-axi",
+  "upstream_commit": "516bd5dadc3365b7f9e225d2af8fe0b8d804fe53",
+  "license": "MIT",
+  "license_file": "code/COPYING",
+  "source_files": [
+    "rtl/axi_vfifo.v",
+    "rtl/axi_vfifo_enc.v",
+    "rtl/axi_vfifo_dec.v",
+    "rtl/axi_vfifo_raw.v",
+    "rtl/axi_vfifo_raw_wr.v",
+    "rtl/axi_vfifo_raw_rd.v"
+  ]
+}

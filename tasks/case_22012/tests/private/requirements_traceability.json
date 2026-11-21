@@ -1,0 +1,46 @@
+{
+  "case_id": "case_22012",
+  "requirements": [
+    {
+      "req_id": "R1_RVV_FIXPT_ROUNDING",
+      "issue_section": "1. RVV 1.0 Fixed-Point Operations & Rounding Modes",
+      "verified_by": [
+        "tb.sv::suite1_rounding_shifts",
+        "tb.sv::suite3_narrowing_clips",
+        "tb_gl.sv::gate_level_parity"
+      ]
+    },
+    {
+      "req_id": "R2_AVG_ADD_SUB_SIGNEDNESS",
+      "issue_section": "1. RVV 1.0 Fixed-Point Operations & Rounding Modes",
+      "verified_by": [
+        "tb.sv::suite2_sat_and_avg_arith",
+        "tb_gl.sv::gate_level_parity"
+      ]
+    },
+    {
+      "req_id": "R3_NARROWING_CLIP_AND_SHUFFLED_VXSAT",
+      "issue_section": "1 & 2. VNCLIP/VNCLIPU & Byte-Exact vxsat_flag_o",
+      "verified_by": [
+        "tb.sv::suite3_narrowing_clips",
+        "tb.sv::suite4_pipelined_stalled_vxsat"
+      ]
+    },
+    {
+      "req_id": "R4_PIPELINED_RESULT_QUEUE_VXSAT_AND_NON_FIXPT_REGRESSION",
+      "issue_section": "2. Byte-Exact vxsat_flag_o Tracking Under Pipelining, Narrowing, and Backpressure",
+      "verified_by": [
+        "tb.sv::suite4_pipelined_stalled_vxsat",
+        "tb.sv::suite5_integer_reduction_regression"
+      ]
+    },
+    {
+      "req_id": "R5_FIXPTSUPPORT_SYNTH_AND_4STATE_GL_PARITY",
+      "issue_section": "3. FixPtSupport Parameterization & 4-State Gate-Level Synthesis Parity",
+      "verified_by": [
+        "run.py::synthesis_enable_and_disable",
+        "run.py::equivalence_4state_gl"
+      ]
+    }
+  ]
+}

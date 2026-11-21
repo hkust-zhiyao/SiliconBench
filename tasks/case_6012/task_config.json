@@ -1,0 +1,138 @@
+{
+  "case_id": "case_6012",
+  "task_id": "case_6012",
+  "version": 1,
+  "title": "VeeR-EH1 IFU 8x16-bit Instruction Aligner, RVC Decompressor, Branch Predictor, Fetch Pipe, and Sideband Timing Closure",
+  "repo_id": "repo_06",
+  "repository": "chipsalliance/cores-veer-eh1",
+  "topic": "ifu_aln_compress_bp_ifc_and_timing",
+  "family": "rtl_multi_module_ppa_sta",
+  "editable_files": [
+    "code/ifu_aln_ctl.sv",
+    "code/ifu_compress_ctl.sv",
+    "code/ifu_bp_ctl.sv",
+    "code/ifu_ifc_ctl.sv",
+    "constraints.json"
+  ],
+  "editable": [
+    "code/ifu_aln_ctl.sv",
+    "code/ifu_compress_ctl.sv",
+    "code/ifu_bp_ctl.sv",
+    "code/ifu_ifc_ctl.sv",
+    "constraints.json"
+  ],
+  "grading": {
+    "eda_class": "heavy",
+    "grader_timeout_seconds": 480,
+    "verifier_timeout_seconds": 960,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_6012",
+    "version": 1,
+    "frozen_utc": "2026-11-04T12:48:57.501792+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/ifu_aln_ctl.sv",
+      "code/ifu_compress_ctl.sv",
+      "code/ifu_bp_ctl.sv",
+      "code/ifu_ifc_ctl.sv",
+      "constraints.json"
+    ],
+    "public_hashes": {
+      "BUILD.md": "4500c8f44eb8adb88b7903c8f2b902d4f7996e5088035e50418aa08c0e89f877",
+      "code/LICENSE": "eb3203ed1cc2086e377b0d6cc7603be45d19739d47101ee2f8813f724be9c353",
+      "code/beh_lib.sv": "06eed3047efe87f84896499a85e693fb1f6778d9e67ed1824549af27be22a0b4",
+      "code/common_defines.vh": "5a7d277d3fb294953a430557f359ad2d04cd5f21c40d8822cff8e30f238c98c4",
+      "code/global.h": "cedc17c27520e795d89d1f8ecea8184b70f3657c4a2de683d339e64a6cca8b2d",
+      "code/ifu_aln_ctl.sv": "3e96401681726d4c116eec7bcc01f09ce5739b3698ca32b2c1509c1f4107a25a",
+      "code/ifu_bp_ctl.sv": "6eeebfd819a727bb56ec0bcd448cf8e96dbdcc40fa93d33d940eeb1f80fdf040",
+      "code/ifu_compress_ctl.sv": "0db849ed065ebf16ba4c4909fe9b56f6255df0654d6a3dd7db809ec5dba3e57d",
+      "code/ifu_ifc_ctl.sv": "f007434f1d222d4bc91c81aad427da9f022b58dd8b42d75946490661b7c9b35b",
+      "code/veer_ifu_aln_bp_top.sv": "4384b04dd051d7b29d0de68b2f28feaaebcf2ef1660952c577deba948a86ea4e",
+      "code/veer_types.sv": "e2390fd23055b590147b21cb635132409113b84d36cef5fbc340259aa1810279",
+      "constraints.json": "6962ccd08e77a3b33d590106b39f92c2bb484e6c472893598984dd456bfddfcf",
+      "issue.md": "3ac281132608fa7cf1f76c71a471c580867589086e0ba5af68c90e01f8794f17",
+      "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+      "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+      "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+      "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+    },
+    "gold_hashes": {
+      "code/ifu_aln_ctl.sv": "7edfa473599718c0af7b1e02cb397ece1b17eaf95d1bfcc40124c248b582a14b",
+      "code/ifu_bp_ctl.sv": "c1ec52117b9dd13bf425f71a225f6a78db18bbf7f25667dec9130842c4678143",
+      "code/ifu_compress_ctl.sv": "79c8bcabc5e135525bc45104d61c59c424f9f787db89a798db93b1491f0b3496",
+      "code/ifu_ifc_ctl.sv": "d576f2dc2545a6d4e2d2d1a8fc42462c4fa844e4b22b529d118805b10fb39ff8",
+      "constraints.json": "cd9dad0e12ec580194eea6288a7d32d7f92ba7d03984a76f0813d760ccb663c0"
+    },
+    "grader_hashes": {
+      "run.py": "c46385cacadd6f42e4772a922da2980ac73fb458b13777e527d4e11d76891915"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 2,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 5,
+      "mutant_killed": 12,
+      "mutant_total": 12
+    }
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT3_Timing_Area_PPA_Closure",
+  "problem_type_label": "High-Frequency Timing & Area Optimization",
+  "primary_domain": "rtl_integration",
+  "multi_domains": [
+    "parameters_widths",
+    "rtl_integration",
+    "sdc_sta"
+  ],
+  "pdk_profile": {
+    "pdk_id": "custom_multicorner_liberty",
+    "pdk_name": "Task-Specific Multi-Corner Liberty & SDC Timing Views",
+    "location": "Task-bundled in environment/public/ and tests/private/",
+    "customized": true,
+    "notes": "Custom characterized fast/slow/scan corner Liberty libraries for multi-mode OpenSTA closure."
+  },
+  "public_hashes": {
+    "BUILD.md": "4500c8f44eb8adb88b7903c8f2b902d4f7996e5088035e50418aa08c0e89f877",
+    "code/LICENSE": "eb3203ed1cc2086e377b0d6cc7603be45d19739d47101ee2f8813f724be9c353",
+    "code/beh_lib.sv": "06eed3047efe87f84896499a85e693fb1f6778d9e67ed1824549af27be22a0b4",
+    "code/common_defines.vh": "5a7d277d3fb294953a430557f359ad2d04cd5f21c40d8822cff8e30f238c98c4",
+    "code/global.h": "cedc17c27520e795d89d1f8ecea8184b70f3657c4a2de683d339e64a6cca8b2d",
+    "code/ifu_aln_ctl.sv": "3e96401681726d4c116eec7bcc01f09ce5739b3698ca32b2c1509c1f4107a25a",
+    "code/ifu_bp_ctl.sv": "6eeebfd819a727bb56ec0bcd448cf8e96dbdcc40fa93d33d940eeb1f80fdf040",
+    "code/ifu_compress_ctl.sv": "0db849ed065ebf16ba4c4909fe9b56f6255df0654d6a3dd7db809ec5dba3e57d",
+    "code/ifu_ifc_ctl.sv": "f007434f1d222d4bc91c81aad427da9f022b58dd8b42d75946490661b7c9b35b",
+    "code/veer_ifu_aln_bp_top.sv": "4384b04dd051d7b29d0de68b2f28feaaebcf2ef1660952c577deba948a86ea4e",
+    "code/veer_types.sv": "e2390fd23055b590147b21cb635132409113b84d36cef5fbc340259aa1810279",
+    "constraints.json": "6962ccd08e77a3b33d590106b39f92c2bb484e6c472893598984dd456bfddfcf",
+    "issue.md": "3ac281132608fa7cf1f76c71a471c580867589086e0ba5af68c90e01f8794f17",
+    "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+    "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+    "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+    "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 2,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 5,
+    "mutant_killed": 12,
+    "mutant_total": 12
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "case_id": "case_5010",
+  "task_id": "case_5010",
+  "version": 1,
+  "repo_id": "repo_05",
+  "repository": "openhwfoundation/cva6",
+  "title": "CVA6 I-Cache Speculative Non-Idempotent Kill Recovery, S1 Kill Gating, AXI Wrapper Unacknowledged AR Stability, Burst Write Handshake, and Area/Timing Closure",
+  "topic": "cva6_icache_axi_wrapper_axi_shim_ppa",
+  "editable_files": [
+    "code/cva6_icache.sv",
+    "code/cva6_icache_axi_wrapper.sv",
+    "code/axi_shim.sv"
+  ],
+  "editable": [
+    "code/cva6_icache.sv",
+    "code/cva6_icache_axi_wrapper.sv",
+    "code/axi_shim.sv"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_5010",
+    "version": 1,
+    "frozen_utc": "2026-11-04T18:57:01.241454+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/cva6_icache.sv",
+      "code/cva6_icache_axi_wrapper.sv",
+      "code/axi_shim.sv"
+    ],
+    "public_hashes": {
+      "BUILD.md": "9f39b320420caf0e05c1fe889411f3d2dcbb2a7e38a6a14440d2023ab1235d14",
+      "code/LICENSE": "b41106a9d0de1cf6ab4ea56bedf677503085c0570248f37fe2cdf657a5e72601",
+      "code/ariane_pkg.sv": "f492b1dda7044c4d202df1a1e4609a53fbecc94ad3f08b5d6d9a150b4569d2d7",
+      "code/axi_pkg.sv": "76b3797792ee5b95ab5937f3d457b48852e5c427de48298dafbdde43d0916ac2",
+      "code/axi_shim.sv": "337d3dd8921aac6beec87f323f3459efdc6917245f5977a2a78b172b0f1d2fbc",
+      "code/cf_math_pkg.sv": "bbf0614771ceb9526356bb8e5234787324ef215884bc11b4aa27e91fc3cc8910",
+      "code/config_pkg.sv": "f6f193daa7dfe1161689f651d6aa6e2b1fdec6560fc83c1313385e944ce4c97c",
+      "code/cv64a60ax_config_pkg.sv": "6b2bd15f21283ff8eac2c8daa62030b7be5d2b342437f4b863baa0c74b88688c",
+      "code/cva6_icache.sv": "272c06abf1f37a3f3a7d18d6c29a08df0a493631e330aefb4c677357a4d901c3",
+      "code/cva6_icache_axi_wrapper.sv": "ba84da3c3fd16241671fc37fdea23e9177d04ac291758d2fab29b71446c221da",
+      "code/lfsr.sv": "91f6c37be706ca7648cb66635e3f46a210e517f7addb8569ec28e4738599f7d7",
+      "code/lzc.sv": "f31989be4369ea7c4809c0c3d61df28581e9ac7666005fde6e476a975d1acd07",
+      "code/riscv_pkg.sv": "225881e0df4c08d0d9768999408c7c93186a59270955a391bccd63f34b95777a",
+      "code/sram_cache.sv": "c9d0a24d8f815800701d46478065eebf4c87f0ce385727cc9dc64af959b5e5b0",
+      "code/wt_cache_pkg.sv": "8ffd0b9fd1ba2c0adfc49263f6970f47ede65901da84c46322459208a765e3f4",
+      "flow/icache_axi_top.sv": "09d99adea301ce2b8b6d256c0c97e377e1c6d756306b4255eb08c12c4a1f9563",
+      "include/common_cells/LICENSE.Apache-2.0": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "include/common_cells/assertions.svh": "d39c7afa893656e235b0019233c1bcf12491cd421639791c827cc53236bd4841",
+      "issue.md": "f02daf13f00acb952b79fd50bf5378a5d5fb44718a7e4599f030f61372055d93",
+      "lef/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+      "lef/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+      "lib/LICENSE_NANGATE": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+      "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+    },
+    "gold_hashes": {
+      "code/axi_shim.sv": "7f363a12f1ec1eebda74ab486736e9b15e1eeeaf43c88fbcc7f086a384121251",
+      "code/cva6_icache.sv": "2582c64a4eef5e64bdb1f82cb55986169fe3171f9ae1d91ac39ebbd07e3c1dbd",
+      "code/cva6_icache_axi_wrapper.sv": "131922702b3443112611593224380d1f65eaa6e95a81b3adeeab33954d458025"
+    },
+    "grader_hashes": {
+      "run.py": "f2bf29671b53cc1f05c99ba603d86edb6f3e3f2e3e0cdb85fc2d64ce55b4f358"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 4,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 10,
+      "mutant_total": 10
+    }
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+  "problem_type_label": "Architectural & Protocol Bug Repair",
+  "primary_domain": "rtl_semantics",
+  "multi_domains": [
+    "protocol_control",
+    "rtl_integration",
+    "rtl_semantics",
+    "synthesis_qor"
+  ],
+  "pdk_profile": {
+    "pdk_id": "nangate45_plus_multicorner_lib",
+    "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+    "location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+    "customized": true,
+    "notes": "Uses shared Nangate45 library for synthesis plus task-bundled fast/slow/scan corner timing views."
+  },
+  "public_hashes": {
+    "BUILD.md": "9f39b320420caf0e05c1fe889411f3d2dcbb2a7e38a6a14440d2023ab1235d14",
+    "code/LICENSE": "b41106a9d0de1cf6ab4ea56bedf677503085c0570248f37fe2cdf657a5e72601",
+    "code/ariane_pkg.sv": "f492b1dda7044c4d202df1a1e4609a53fbecc94ad3f08b5d6d9a150b4569d2d7",
+    "code/axi_pkg.sv": "76b3797792ee5b95ab5937f3d457b48852e5c427de48298dafbdde43d0916ac2",
+    "code/axi_shim.sv": "337d3dd8921aac6beec87f323f3459efdc6917245f5977a2a78b172b0f1d2fbc",
+    "code/cf_math_pkg.sv": "bbf0614771ceb9526356bb8e5234787324ef215884bc11b4aa27e91fc3cc8910",
+    "code/config_pkg.sv": "f6f193daa7dfe1161689f651d6aa6e2b1fdec6560fc83c1313385e944ce4c97c",
+    "code/cv64a60ax_config_pkg.sv": "6b2bd15f21283ff8eac2c8daa62030b7be5d2b342437f4b863baa0c74b88688c",
+    "code/cva6_icache.sv": "272c06abf1f37a3f3a7d18d6c29a08df0a493631e330aefb4c677357a4d901c3",
+    "code/cva6_icache_axi_wrapper.sv": "ba84da3c3fd16241671fc37fdea23e9177d04ac291758d2fab29b71446c221da",
+    "code/lfsr.sv": "91f6c37be706ca7648cb66635e3f46a210e517f7addb8569ec28e4738599f7d7",
+    "code/lzc.sv": "f31989be4369ea7c4809c0c3d61df28581e9ac7666005fde6e476a975d1acd07",
+    "code/riscv_pkg.sv": "225881e0df4c08d0d9768999408c7c93186a59270955a391bccd63f34b95777a",
+    "code/sram_cache.sv": "c9d0a24d8f815800701d46478065eebf4c87f0ce385727cc9dc64af959b5e5b0",
+    "code/wt_cache_pkg.sv": "8ffd0b9fd1ba2c0adfc49263f6970f47ede65901da84c46322459208a765e3f4",
+    "flow/icache_axi_top.sv": "09d99adea301ce2b8b6d256c0c97e377e1c6d756306b4255eb08c12c4a1f9563",
+    "include/common_cells/LICENSE.Apache-2.0": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "include/common_cells/assertions.svh": "d39c7afa893656e235b0019233c1bcf12491cd421639791c827cc53236bd4841",
+    "issue.md": "f02daf13f00acb952b79fd50bf5378a5d5fb44718a7e4599f030f61372055d93",
+    "lef/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+    "lef/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+    "lib/LICENSE_NANGATE": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+    "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 4,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 10,
+    "mutant_total": 10
+  }
+}

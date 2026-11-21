@@ -1,0 +1,12 @@
+{
+  "case_id": "case_20017",
+  "slot_id": "builder_01_superscalar_cache__E17",
+  "blueprint_id": "bp_s01_014",
+  "repo_id": "repo_44",
+  "upstream": "https://github.com/ultraembedded/biriscv",
+  "commit": "6af9c4be5a0807d368eaad5e49af52322e31d073",
+  "archive_sha256": "c6d25ea1c885076efdd7064c457f5875b9c37b0db309692e3ea49980b0195e3b",
+  "license": "Apache-2.0",
+  "flow_scenario": "S5_native_sdc_multi_corner_sta",
+  "coupling_mode": "natural_cross_stage"
+}

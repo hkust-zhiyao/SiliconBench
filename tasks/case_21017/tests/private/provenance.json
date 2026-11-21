@@ -1,0 +1,17 @@
+{
+  "case_id": "case_21017",
+  "repo_id": "repo_40",
+  "upstream_repo": "alexforencich/verilog-axi",
+  "upstream_commit": "516bd5dadc3365b7f9e225d2af8fe0b8d804fe53",
+  "license": "MIT",
+  "source_files": [
+    "rtl/axil_crossbar.v",
+    "rtl/axil_crossbar_addr.v",
+    "rtl/axil_crossbar_wr.v",
+    "rtl/axil_crossbar_rd.v",
+    "rtl/axil_register_wr.v",
+    "rtl/axil_register_rd.v",
+    "rtl/arbiter.v",
+    "rtl/priority_encoder.v"
+  ]
+}

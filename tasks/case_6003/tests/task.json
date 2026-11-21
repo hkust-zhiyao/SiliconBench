@@ -1,0 +1,133 @@
+{
+  "case_id": "case_6003",
+  "task_id": "case_6003",
+  "version": 1,
+  "title": "VeeR-EH1 LSU AXI4-to-AHB Bridge, DMA AHB-to-AXI4 Slave Gasket, 4-Entry DMA/Debug Controller, and Transparent Sideband Timing Closure",
+  "repo_id": "repo_06",
+  "repository": "chipsalliance/cores-veer-eh1",
+  "topic": "axi4_ahb_bridge_dma_ctrl_transparent_sdc_sta",
+  "family": "rtl_multi_module_sdc_sta",
+  "editable_files": [
+    "code/axi4_to_ahb.sv",
+    "code/ahb_to_axi4.sv",
+    "code/dma_ctrl.sv",
+    "constraints.json"
+  ],
+  "editable": [
+    "code/axi4_to_ahb.sv",
+    "code/ahb_to_axi4.sv",
+    "code/dma_ctrl.sv",
+    "constraints.json"
+  ],
+  "grading": {
+    "eda_class": "heavy",
+    "grader_timeout_seconds": 480,
+    "verifier_timeout_seconds": 960,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_6003",
+    "version": 1,
+    "frozen_utc": "2026-11-04T06:25:57.535630+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/axi4_to_ahb.sv",
+      "code/ahb_to_axi4.sv",
+      "code/dma_ctrl.sv",
+      "constraints.json"
+    ],
+    "public_hashes": {
+      "BUILD.md": "cf132c0c8e7e8008d70eeb1d89eac2971e057cf7cb87634803690fe70f8295cd",
+      "code/LICENSE": "eb3203ed1cc2086e377b0d6cc7603be45d19739d47101ee2f8813f724be9c353",
+      "code/ahb_to_axi4.sv": "54920b1b4c589e6691c572af9f3de22add3da089609593efb4d80d8618e39567",
+      "code/axi4_to_ahb.sv": "28406cb1305f16e7e98b415219f9c93a429aa888a0923da438c059f17c28c5d9",
+      "code/beh_lib.sv": "06eed3047efe87f84896499a85e693fb1f6778d9e67ed1824549af27be22a0b4",
+      "code/common_defines.vh": "5a7d277d3fb294953a430557f359ad2d04cd5f21c40d8822cff8e30f238c98c4",
+      "code/dma_ctrl.sv": "efae650fd275f176b42868cf5510371784d512ddada494a7ea78ba4e46a95c13",
+      "code/global.h": "cedc17c27520e795d89d1f8ecea8184b70f3657c4a2de683d339e64a6cca8b2d",
+      "code/veer_bus_dma_top.sv": "cf8cfcc61d930b4246663e6eda4f1d6c15259907324c058ef2d2f9d7ecec2776",
+      "code/veer_types.sv": "e2390fd23055b590147b21cb635132409113b84d36cef5fbc340259aa1810279",
+      "constraints.json": "f4113f6d3e1f5b35e8418d90742838706a5e31e21612dff0e724bdf0df420191",
+      "issue.md": "79e46eb1fbd155d4aa7f12df2a96fc19daf4964a4e3e79d243c8105f6ee6aaeb",
+      "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+      "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+      "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+      "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+    },
+    "gold_hashes": {
+      "code/ahb_to_axi4.sv": "f5ae5f20186528e60d0c73109d99f53d13b2f3a761e302c108a284ba8e2f374a",
+      "code/axi4_to_ahb.sv": "45f8d7a848aa3e45b02dea51335d706bb64ed9bfdbfbc559f544f7474bc0c796",
+      "code/dma_ctrl.sv": "710a54a1fbba05be79938324ac1fdaaa3686e22d83d9731f66d3ec4b2fbf79c6",
+      "constraints.json": "51f73f899fe71827c0a807790e28d47e51634ab4beb4809df1fcb9a559fd4162"
+    },
+    "grader_hashes": {
+      "run.py": "35b93b42fc3de157265b67cff397a20cca2f1ab8189da2e1b4bcec5fb2b12808"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 2,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 5,
+      "mutant_killed": 12,
+      "mutant_total": 12
+    }
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT3_Timing_Area_PPA_Closure",
+  "problem_type_label": "High-Frequency Timing & Area Optimization",
+  "primary_domain": "rtl_integration",
+  "multi_domains": [
+    "protocol_control",
+    "rtl_integration",
+    "sdc_sta",
+    "verification_debug"
+  ],
+  "pdk_profile": {
+    "pdk_id": "nangate45_plus_multicorner_lib",
+    "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+    "location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+    "customized": true,
+    "notes": "Uses shared Nangate45 library for synthesis plus task-bundled fast/slow/scan corner timing views."
+  },
+  "public_hashes": {
+    "BUILD.md": "cf132c0c8e7e8008d70eeb1d89eac2971e057cf7cb87634803690fe70f8295cd",
+    "code/LICENSE": "eb3203ed1cc2086e377b0d6cc7603be45d19739d47101ee2f8813f724be9c353",
+    "code/ahb_to_axi4.sv": "54920b1b4c589e6691c572af9f3de22add3da089609593efb4d80d8618e39567",
+    "code/axi4_to_ahb.sv": "28406cb1305f16e7e98b415219f9c93a429aa888a0923da438c059f17c28c5d9",
+    "code/beh_lib.sv": "06eed3047efe87f84896499a85e693fb1f6778d9e67ed1824549af27be22a0b4",
+    "code/common_defines.vh": "5a7d277d3fb294953a430557f359ad2d04cd5f21c40d8822cff8e30f238c98c4",
+    "code/dma_ctrl.sv": "efae650fd275f176b42868cf5510371784d512ddada494a7ea78ba4e46a95c13",
+    "code/global.h": "cedc17c27520e795d89d1f8ecea8184b70f3657c4a2de683d339e64a6cca8b2d",
+    "code/veer_bus_dma_top.sv": "cf8cfcc61d930b4246663e6eda4f1d6c15259907324c058ef2d2f9d7ecec2776",
+    "code/veer_types.sv": "e2390fd23055b590147b21cb635132409113b84d36cef5fbc340259aa1810279",
+    "constraints.json": "f4113f6d3e1f5b35e8418d90742838706a5e31e21612dff0e724bdf0df420191",
+    "issue.md": "79e46eb1fbd155d4aa7f12df2a96fc19daf4964a4e3e79d243c8105f6ee6aaeb",
+    "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+    "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+    "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+    "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 2,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 5,
+    "mutant_killed": 12,
+    "mutant_total": 12
+  }
+}

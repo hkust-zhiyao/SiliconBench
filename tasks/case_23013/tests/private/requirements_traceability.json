@@ -1,0 +1,47 @@
+{
+  "case_id": "case_23013",
+  "obligations": [
+    {
+      "id": "REQ-LMEM-SWITCH-BIFURCATION",
+      "behavior": "Route mixed local/global SIMD warp lanes per MEM_ATTR_LOCAL_OFFS without duplicating or dropping beats under asymmetric downstream stalls, and merge local/global responses cleanly.",
+      "public_source": "public/issue.md Architectural & Protocol Contract item 1",
+      "verified_by": [
+        "private/tests/tb.sv",
+        "wf1_mixed_bifurcation_dup",
+        "m01_invert_local_attr",
+        "m02_no_local_sent_track",
+        "m03_no_global_sent_track"
+      ]
+    },
+    {
+      "id": "REQ-LMEM-BANKS-AMO-DMA",
+      "behavior": "Serve 2-lane 64-bit LSU accesses, RV64A .W/.D atomics and LR/SC, and 512-bit DMA bursts across 8 RM_IHPSG13_1P_256x64_c2_bm_bist macros without DMA-AMO RMW corruption, stalled-response clobbering, byte-mask mis-expansion, idle A_MEN leakage, or simultaneous A_WEN/A_REN.",
+      "public_source": "public/issue.md Architectural & Protocol Contract item 2",
+      "verified_by": [
+        "private/tests/tb.sv",
+        "wf2_dma_clobbers_amo_wb",
+        "wf3_sram_unexpanded_bm",
+        "m04_disable_dma_amo_guard",
+        "m05_corrupt_amo_wb_addr",
+        "m06_tie_sram_men_high",
+        "m07_allow_wen_ren_simul",
+        "m08_corrupt_bm_byte7",
+        "m09_disable_dma_rsp_hold",
+        "m10_disable_lsu_rsp_hold",
+        "m11_drop_sc_upper_lane",
+        "m12_ignore_sc_fail_on_wb"
+      ]
+    },
+    {
+      "id": "REQ-LMEM-PNR-STA-SIGNOFF",
+      "behavior": "Place all 8 SRAM macros legally inside core bounds, constrain clk <= 20.0 ns with >= 1.5 ns I/O delays, and close OpenROAD PDN, post-GRT WNS/hold >= 0.0 ns, overflow <= 25, and wirelength <= 7,800,000 um.",
+      "public_source": "public/issue.md Physical Floorplan & Signoff Timing Targets",
+      "verified_by": [
+        "private/grader/run.py",
+        "wf4_macro_halo_overlap",
+        "wf5_relaxed_sdc_period",
+        "wf6_unpartitioned_fanout"
+      ]
+    }
+  ]
+}

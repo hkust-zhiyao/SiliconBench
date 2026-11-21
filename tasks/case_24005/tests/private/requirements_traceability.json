@@ -1,0 +1,45 @@
+{
+  "case_id": "case_24005",
+  "obligations": [
+    {
+      "id": "REQ-UNILATERAL-CONCURRENT-RDC",
+      "behavior": "Isolate both interfaces and synchronize pointer/pipeline clearing across unilateral or concurrent w_reset_i / r_reset_i across 1:7..7:1 clock ratios.",
+      "public_source": "public/issue.md item 1",
+      "verified_by": [
+        "tb_rtl.sv Tests 1,4A,4B",
+        "wf3",
+        "m04",
+        "m05",
+        "m08"
+      ]
+    },
+    {
+      "id": "REQ-PARAM-SEGMENTED-ISOLATION",
+      "behavior": "Support lg_size_p>=1 and 0<=control_width_p<=width_p; always gate control MSBs via bsg_and when empty and gate payload LSBs only when and_data_with_valid_p!=0.",
+      "public_source": "public/issue.md item 2",
+      "verified_by": [
+        "tb_rtl.sv Test 2",
+        "tb_edge.sv",
+        "grader/run.py bsg_and check",
+        "m01",
+        "m02",
+        "m03"
+      ]
+    },
+    {
+      "id": "REQ-GLITCH-FREE-AND-STA",
+      "behavior": "Eliminate gate-level combinational flag glitches under flop skew and close Slow/Fast OpenSTA with bounded <=2.50ns CDC and constrained RAM read arcs.",
+      "public_source": "public/issue.md items 2 & 3",
+      "verified_by": [
+        "tb_gls.sv",
+        "grader/run.py OpenSTA Slow/Fast",
+        "wf1",
+        "wf2",
+        "wf4",
+        "m06",
+        "m07",
+        "m09..m12"
+      ]
+    }
+  ]
+}

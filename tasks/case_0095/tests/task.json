@@ -1,0 +1,140 @@
+{
+  "case_id": "case_0095",
+  "repo_id": "repo_35",
+  "editable_files": [
+    "code/rtl/fpnew_cast_multi.sv",
+    "code/rtl/fpnew_noncomp.sv"
+  ],
+  "frozen_record": {
+    "case_id": "case_0095",
+    "version": 1,
+    "frozen_utc": "2026-11-03T20:29:21.768011+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/rtl/fpnew_cast_multi.sv",
+      "code/rtl/fpnew_noncomp.sv"
+    ],
+    "public_hashes": {
+      "BUILD.md": "9bcda2789c5b6cfc7d13dd49944e5a6e08733cca631f081c00f31b7fe465458c",
+      "code/LICENSE.apache": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "code/LICENSE.solderpad": "93b73d82e2a9049adbee0a6c4c3327fdcaa5acdb2217e669e196bb3c60c2b0e1",
+      "code/README.md": "a629f4d3e3881a98b65a020287727dd5192ac38ee8010afe89c9cc72ff911d2b",
+      "code/include/common_cells/assertions.svh": "d44ed5ffbbfb69c65f5b398428c6b5b5a1103883b925040cbc7bece257d13b1a",
+      "code/include/common_cells/registers.svh": "532dfd1723d2936421b921235abdafcc8ca407990224992ca13575fdb620053a",
+      "code/rtl/cf_math_pkg.sv": "d986ff4e1079a600dd760416b36f539b36a29c67c3bdbdf10b9be0663447676a",
+      "code/rtl/fpnew_cast_multi.sv": "abb8e0420facb0d1b1da4b70c060f71101e3140a6f9d9ad30264abe3b6388286",
+      "code/rtl/fpnew_cast_noncomp_top.sv": "b39fa4c423727e4ea8c401ed7399aeafb35aa0ff027b0bef2bb324ee0cf9a240",
+      "code/rtl/fpnew_classifier.sv": "cfff43772aea7d918cb0ab3c2e0e996ea34b8740d8edb43f359582ce9978546f",
+      "code/rtl/fpnew_noncomp.sv": "56e0656f0960bebfed806bbb268a014904e2e9e17690d6905fc32b1935657021",
+      "code/rtl/fpnew_pkg.sv": "2abe80eb1ef173f4d2dacd68b29a11d3038b86dbd682f2fdff0203df11a2b9af",
+      "code/rtl/fpnew_rounding.sv": "67d0a15d9e418159eea18a4b521e5d30a563f251e058049041cb2a0cbb0327bd",
+      "code/rtl/lzc.sv": "f0a1d2d56db0990c0e86b6528c780b6424c4c84bcb5a9e88646038a73072a043",
+      "issue.md": "6670f6314f2129a0af056ac215a6ffac5205206ec4babc944474b32498627375",
+      "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+      "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+      "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+      "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+    },
+    "gold_hashes": {
+      "code/LICENSE.apache": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "code/LICENSE.solderpad": "93b73d82e2a9049adbee0a6c4c3327fdcaa5acdb2217e669e196bb3c60c2b0e1",
+      "code/README.md": "a629f4d3e3881a98b65a020287727dd5192ac38ee8010afe89c9cc72ff911d2b",
+      "code/include/common_cells/assertions.svh": "d44ed5ffbbfb69c65f5b398428c6b5b5a1103883b925040cbc7bece257d13b1a",
+      "code/include/common_cells/registers.svh": "532dfd1723d2936421b921235abdafcc8ca407990224992ca13575fdb620053a",
+      "code/rtl/cf_math_pkg.sv": "d986ff4e1079a600dd760416b36f539b36a29c67c3bdbdf10b9be0663447676a",
+      "code/rtl/fpnew_cast_multi.sv": "b485b21cae312fbf5ecda04f267521225c2c3f0cf951bb04a307ac6d36be513f",
+      "code/rtl/fpnew_cast_noncomp_top.sv": "b39fa4c423727e4ea8c401ed7399aeafb35aa0ff027b0bef2bb324ee0cf9a240",
+      "code/rtl/fpnew_classifier.sv": "cfff43772aea7d918cb0ab3c2e0e996ea34b8740d8edb43f359582ce9978546f",
+      "code/rtl/fpnew_noncomp.sv": "f2284c65afb36e3a559407faafde12ded1dfd261646683c517567537b6b9e6ed",
+      "code/rtl/fpnew_pkg.sv": "2abe80eb1ef173f4d2dacd68b29a11d3038b86dbd682f2fdff0203df11a2b9af",
+      "code/rtl/fpnew_rounding.sv": "67d0a15d9e418159eea18a4b521e5d30a563f251e058049041cb2a0cbb0327bd",
+      "code/rtl/lzc.sv": "f0a1d2d56db0990c0e86b6528c780b6424c4c84bcb5a9e88646038a73072a043"
+    },
+    "grader_hashes": {
+      "run.py": "cc0c1d5c394c4ecbf520dc7ebbc1f66875f086d920657285a89a05ed640a7438"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 10,
+      "mutant_total": 10
+    },
+    "test_hashes": {
+      "tb.sv": "7b08e614d30ba760d63bc9a4e961d051802f77a0ed4c60ff4a0e3116357ef02f"
+    },
+    "grader_revalidated_utc": "2026-11-16T10:17:42.058352+00:00"
+  },
+  "task_id": "case_0095",
+  "version": 1,
+  "title": "CVFPU Multi-Format Cast and Non-Computational Unit Area and Critical-Path Delay Closure",
+  "repository": "openhwgroup/cvfpu",
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT3_Timing_Area_PPA_Closure",
+  "problem_type_label": "High-Frequency Timing & Area Optimization",
+  "primary_domain": "rtl_integration",
+  "multi_domains": [
+    "arithmetic_datapath",
+    "parameters_widths",
+    "rtl_integration",
+    "synthesis_qor"
+  ],
+  "pdk_profile": {
+    "pdk_id": "nangate45_plus_multicorner_lib",
+    "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+    "location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+    "customized": true,
+    "notes": "Uses shared Nangate45 library for synthesis plus task-bundled fast/slow/scan corner timing views."
+  },
+  "grading": {
+    "eda_class": "standard",
+    "grader_timeout_seconds": 600,
+    "verifier_timeout_seconds": 1200,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 1,
+        "extra_args": []
+      },
+      {
+        "seed": 2,
+        "extra_args": []
+      }
+    ]
+  },
+  "public_hashes": {
+    "BUILD.md": "9bcda2789c5b6cfc7d13dd49944e5a6e08733cca631f081c00f31b7fe465458c",
+    "code/LICENSE.apache": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "code/LICENSE.solderpad": "93b73d82e2a9049adbee0a6c4c3327fdcaa5acdb2217e669e196bb3c60c2b0e1",
+    "code/README.md": "a629f4d3e3881a98b65a020287727dd5192ac38ee8010afe89c9cc72ff911d2b",
+    "code/include/common_cells/assertions.svh": "d44ed5ffbbfb69c65f5b398428c6b5b5a1103883b925040cbc7bece257d13b1a",
+    "code/include/common_cells/registers.svh": "532dfd1723d2936421b921235abdafcc8ca407990224992ca13575fdb620053a",
+    "code/rtl/cf_math_pkg.sv": "d986ff4e1079a600dd760416b36f539b36a29c67c3bdbdf10b9be0663447676a",
+    "code/rtl/fpnew_cast_multi.sv": "abb8e0420facb0d1b1da4b70c060f71101e3140a6f9d9ad30264abe3b6388286",
+    "code/rtl/fpnew_cast_noncomp_top.sv": "b39fa4c423727e4ea8c401ed7399aeafb35aa0ff027b0bef2bb324ee0cf9a240",
+    "code/rtl/fpnew_classifier.sv": "cfff43772aea7d918cb0ab3c2e0e996ea34b8740d8edb43f359582ce9978546f",
+    "code/rtl/fpnew_noncomp.sv": "56e0656f0960bebfed806bbb268a014904e2e9e17690d6905fc32b1935657021",
+    "code/rtl/fpnew_pkg.sv": "2abe80eb1ef173f4d2dacd68b29a11d3038b86dbd682f2fdff0203df11a2b9af",
+    "code/rtl/fpnew_rounding.sv": "67d0a15d9e418159eea18a4b521e5d30a563f251e058049041cb2a0cbb0327bd",
+    "code/rtl/lzc.sv": "f0a1d2d56db0990c0e86b6528c780b6424c4c84bcb5a9e88646038a73072a043",
+    "issue.md": "6670f6314f2129a0af056ac215a6ffac5205206ec4babc944474b32498627375",
+    "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+    "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+    "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+    "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 10,
+    "mutant_total": 10
+  }
+}

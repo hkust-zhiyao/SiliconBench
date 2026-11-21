@@ -1,0 +1,46 @@
+{
+  "case_id": "case_23002",
+  "obligations": [
+    {
+      "id": "REQ-SIMT-MASK-SCALAR",
+      "behavior": "Select scalar rs1/rs2 from highest active lane, assemble multi-PID per-warp then/else masks on handshake with cond_neg support, and implement TMC/PRED/WSPAWN.",
+      "public_source": "public/issue.md item 1",
+      "verified_by": [
+        "private/tests/tb.sv",
+        "wf1_wctl_lane0_scalar_operands",
+        "m02_wctl_ignore_cond_neg",
+        "m03_wctl_pid_update_on_valid_stall",
+        "m04_wctl_pred_ignore_fallback_rs2",
+        "m05_wctl_wspawn_include_caller_wid"
+      ]
+    },
+    {
+      "id": "REQ-SIMT-IPDOM-UNWIND",
+      "behavior": "Serialize smaller popcount branch first, forward in-flight same-warp split pointers, complement first branch on else transition, and unwind skipped inner frames on early JOIN.",
+      "public_source": "public/issue.md item 2",
+      "verified_by": [
+        "private/tests/tb.sv",
+        "wf2_wctl_no_smaller_branch_first",
+        "wf3_wctl_no_inflight_split_ptr_fwd",
+        "wf4_ipdom_no_early_unwind_rd_ptr",
+        "wf5_split_join_wrong_stack_wid",
+        "m01_wctl_strict_lt_tiebreak",
+        "m08_sj_no_else_complement",
+        "m09_sj_invert_join_is_else",
+        "m10_sj_pop_without_dvg_check",
+        "m11_ipdom_raddr_uses_wr_ptr",
+        "m12_ipdom_pop_never_flips_phase"
+      ]
+    },
+    {
+      "id": "REQ-SIMT-STALL-BARRIER",
+      "behavior": "Stall WSYNC/BAR on pending pipeline/LSU drain, support BAR arrive writeback, expect_tx event registration, and async txbar arbitration.",
+      "public_source": "public/issue.md item 3",
+      "verified_by": [
+        "private/tests/tb.sv",
+        "m06_wctl_ignore_wsync_drain",
+        "m07_wctl_tx_expect_wrong_arrive"
+      ]
+    }
+  ]
+}

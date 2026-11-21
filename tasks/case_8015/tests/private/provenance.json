@@ -1,0 +1,13 @@
+{
+  "case_id": "case_8015",
+  "repo_id": "repo_08",
+  "upstream": "https://github.com/chipsalliance/cores-veer-el2",
+  "commit": "45c9b425f4c666c095a17e21fce4d3b0721cbfa0",
+  "license": "Apache-2.0",
+  "native_source": "design/dec/el2_dec_pmp_ctl.sv, design/el2_pmp.sv",
+  "tooling": {
+    "simulator": "Verilator 5.038",
+    "synthesis": "Yosys 0.70+286 with Slang frontend",
+    "sta": "OpenROAD / OpenSTA (Nangate45)"
+  }
+}

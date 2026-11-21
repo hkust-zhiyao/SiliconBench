@@ -1,0 +1,50 @@
+{
+  "case_id": "case_0011",
+  "repo_id": "repo_33",
+  "origin": "https://github.com/pulp-platform/hwpe-ctrl",
+  "commit": "558fe3db3413909878c03aed543257d94a57bae5",
+  "archive_sha256": "df3cdee2306bb45cea5af9e48e8a496de83835fa5d016ec1ac8132031f0d304e",
+  "license": "SHL-0.51 (Solderpad Hardware License 0.51 in public/code/LICENSE; Nangate45 license in public/lib/LICENSE.Nangate45)",
+  "qualification": "upstream/repo_33",
+  "upstream_files": [
+    "code/rtl/hwpe_ctrl_package.sv",
+    "code/rtl/hwpe_ctrl_uloop.sv",
+    "code/rtl/hwpe_ctrl_partial_mult.sv",
+    "code/README.md",
+    "code/LICENSE"
+  ],
+  "scope": "Native upstream hwpe_ctrl_partial_mult.sv, hwpe_ctrl_package.sv, and hwpe_ctrl_uloop.sv. Public baseline is unmodified upstream RTL.",
+  "measured_qor": {
+    "baseline_upstream": {
+      "area_um2": 2305.954,
+      "worst_setup_slack_ns_at_3p1ns": -1.64,
+      "worst_hold_slack_ns": 0.06
+    },
+    "wrong_fix_1_barrel_shifter_kept": {
+      "area_um2": 2067.352,
+      "worst_setup_slack_ns_at_3p1ns": -1.06,
+      "worst_hold_slack_ns": 0.06
+    },
+    "wrong_fix_6_horner_64bit_adder": {
+      "area_um2": 1721.552,
+      "worst_setup_slack_ns_at_3p1ns": -0.18,
+      "worst_hold_slack_ns": 0.06
+    },
+    "gold_lsb_shift_signed_upper_accumulator": {
+      "area_um2": 1518.062,
+      "worst_setup_slack_ns_at_3p1ns": 0.47,
+      "worst_hold_slack_ns": 0.06
+    },
+    "alternate_gold_lsb_shift_borrow_upper_accumulator": {
+      "area_um2": 1560.622,
+      "worst_setup_slack_ns_at_3p1ns": 0.37,
+      "worst_hold_slack_ns": 0.06
+    }
+  },
+  "tools": {
+    "simulation": "Verilator 5.053 (--binary --timing)",
+    "synthesis": "Yosys 0.70+286 with Slang frontend and ABC technology mapping to NangateOpenCellLibrary_typical.lib",
+    "sta": "OpenROAD 26Q2 global placement (density 0.4, metal2/metal3 pins and RC) and placement-estimated parasitics at 3.1 ns clock period, 0.25 ns I/O delays, 5.0 fF output load"
+  },
+  "limitations": "Cycle-accurate simulation across (32,32,4), (17,11,4), and (24,16,4) plus uloop stride integration, not unbounded formal equivalence. Nangate45 mapped standard-cell area and OpenROAD placement-estimated STA, not detailed routing or foundry signoff."
+}

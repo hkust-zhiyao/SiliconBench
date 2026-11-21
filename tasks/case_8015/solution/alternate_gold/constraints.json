@@ -1,0 +1,14 @@
+{
+  "max_delays": [
+    {
+      "from": ["fault_in[0]", "fault_in[1]", "fault_in[2]", "fault_in[3]", "fault_in[4]", "fault_in[5]", "fault_in[6]", "fault_in[7]"],
+      "to": ["fault_out[0]", "fault_out[1]", "fault_out[2]", "fault_out[3]", "fault_out[4]", "fault_out[5]", "fault_out[6]", "fault_out[7]"],
+      "ns": 9.25
+    },
+    {
+      "from": ["trace_in[0]", "trace_in[1]", "trace_in[2]", "trace_in[3]", "trace_in[4]", "trace_in[5]", "trace_in[6]", "trace_in[7]"],
+      "to": ["trace_out[0]", "trace_out[1]", "trace_out[2]", "trace_out[3]", "trace_out[4]", "trace_out[5]", "trace_out[6]", "trace_out[7]"],
+      "ns": 10.25
+    }
+  ]
+}

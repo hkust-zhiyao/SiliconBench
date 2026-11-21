@@ -1,0 +1,51 @@
+{
+  "case_id": "case_21014",
+  "obligations": [
+    {
+      "id": "REQ-COBS-ENC-254B-TAIL-AND-ERROR",
+      "behavior": "Emit a single 0xFF block code when s_axis_tlast coincides with the 254th non-zero byte across APPEND_ZERO in {0,1}, and encode s_axis_tuser tail errors with m_axis_tuser asserted solely on the final beat.",
+      "public_source": "public/issue.md item 1",
+      "verified_by": [
+        "private/tests/tb.sv (Test 1b, Test 1c, Test 1d, wire monitor)",
+        "wf1_enc_duplicate_254_code",
+        "m01_enc_254_dup_push",
+        "m02_enc_nonfinal_tuser_leak"
+      ]
+    },
+    {
+      "id": "REQ-COBS-DEC-MALFORMED-RECOVERY",
+      "behavior": "Preserve draining valid bytes while emitting tlast+tuser error frames on 1-byte truncated frames, [0x01,0x00] zero-offset escapes, mid-segment zeros/premature tlast, and post-0xFF truncated 0x01 tails.",
+      "public_source": "public/issue.md item 2",
+      "verified_by": [
+        "private/tests/tb.sv (Test 2a..2d)",
+        "wf2_dec_swallow_01_00_and_1b_trunc",
+        "m03_dec_clobber_draining_byte_on_1b",
+        "m04_dec_ignore_01_00_escape",
+        "m05_dec_fuse_post_ff_01_tlast",
+        "m06_dec_drop_delim_tuser"
+      ]
+    },
+    {
+      "id": "REQ-FLA-MASK-BOUNDS-AND-STATUS-SKID",
+      "behavior": "Mask unkept/truncated byte lanes, latch length_min/length_max at frame start, preserve tid/tdest and OR truncated tuser, and enforce lossless AXI handshake stability on status_* under status_ready backpressure.",
+      "public_source": "public/issue.md item 3",
+      "verified_by": [
+        "private/tests/tb.sv (Test 3a..3e)",
+        "wf3_fla_overwrite_stalled_status",
+        "wf4_fla_unlatched_midframe_bounds",
+        "m07_fla_unmasked_trunc_lanes",
+        "m08_fla_exact_max_false_trunc_flag",
+        "m09_fla_drop_trunc_boundary_tuser"
+      ]
+    },
+    {
+      "id": "REQ-SYNTH-ZERO-LATCH-AND-GL-PARITY",
+      "behavior": "Synthesize all three modules with zero inferred latches and zero combinational loops, and match post-synthesis gate-level simulation cycle-for-cycle after synchronous rst.",
+      "public_source": "public/issue.md item 4",
+      "verified_by": [
+        "private/grader/run.py (Yosys checks + tb_gl.sv)",
+        "m10_unreset_gl_parity_mismatch"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "case_id": "case_24005",
+  "repo_id": "repo_12",
+  "origin": "https://github.com/bespoke-silicon-group/basejump_stl",
+  "commit": "f4bb9256a562ebf1ee551247d74d8abd251e2810",
+  "archive_sha256": "9f3a47fda6acd324a6742fa04612129dadd018895e4d5d06b303dd47234dd8b4",
+  "license": "Solderpad Hardware License 0.51 (code/LICENSE); Nangate45 Open Cell Library license in public/lib/LICENSE.Nangate45",
+  "native_sources": [
+    "bsg_async/bsg_async_fifo.sv",
+    "bsg_async/bsg_async_ptr_gray.sv",
+    "bsg_async/bsg_launch_sync_sync.sv",
+    "bsg_mem/bsg_mem_1r1w.sv",
+    "bsg_mem/bsg_mem_1r1w_synth.sv",
+    "bsg_misc/bsg_and.sv",
+    "bsg_misc/bsg_defines.sv"
+  ],
+  "editable_files": [
+    "code/bsg_async_fifo.sv",
+    "code/bsg_async_ptr_gray.sv",
+    "code/bsg_mem_1r1w.sv",
+    "constraints/bsg_async_fifo.sdc"
+  ],
+  "qualification": "upstream/repo_12",
+  "build_scope": "Icarus 4-state RTL unilateral/concurrent RDC & parameter matrix + Yosys+Slang gate-level skewed-delay glitch simulation + Nangate45 Slow/Fast OpenROAD OpenSTA.",
+  "tool": "Icarus Verilog v13 + Yosys+Slang + OpenROAD 26Q2 (OpenSTA)"
+}

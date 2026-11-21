@@ -1,0 +1,22 @@
+{
+  "max_delays": [
+    {
+      "from": [
+        "scr_mon_in"
+      ],
+      "to": [
+        "scr_mon_out"
+      ],
+      "ns": 7.75
+    },
+    {
+      "from": [
+        "pmp_mon_in"
+      ],
+      "to": [
+        "pmp_mon_out"
+      ],
+      "ns": 8.75
+    }
+  ]
+}

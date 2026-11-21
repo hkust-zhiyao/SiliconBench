@@ -1,0 +1,14 @@
+{
+  "case_id": "case_7001",
+  "repo_id": "repo_07",
+  "upstream": "https://github.com/chipsalliance/cores-veer-eh2",
+  "commit": "32bdfe24c0194a5b625a70624144e4c6dec5f682",
+  "license": "Apache-2.0; Nangate45 Apache-2.0 / Si2 Open Cell Library License",
+  "native_source": "design/ifu/eh2_ifu_ifc_ctl.sv, design/ifu/eh2_ifu_aln_ctl.sv, design/dec/eh2_dec_ib_ctl.sv, design/ifu/eh2_ifu_compress_ctl.sv, design/include/eh2_def.sv, design/lib/beh_lib.sv, design/lib/eh2_lib.sv",
+  "tooling": {
+    "simulator": "Verilator 5.038",
+    "synthesis": "Yosys 0.70+286 with Slang frontend",
+    "timing": "OpenROAD 26Q2 / OpenSTA"
+  },
+  "oracle": "Verilator behavioral simulation of eh2_ifu_ib_top across directed and randomized dual-issue instruction streams, followed by Yosys/Slang latch-free and Nangate45 synthesis (<= 20,250.0 um^2) and OpenROAD/OpenSTA timing verification at 9.25 ns."
+}

@@ -1,0 +1,28 @@
+{
+  "case_id": "case_22005",
+  "repo_id": "repo_19",
+  "origin": "https://github.com/pulp-platform/ara",
+  "commit": "34bd3bc152421b4601a7bf3d6e8e91ffb545c99e",
+  "license": "SHL-0.51; see public/code/LICENSE and source headers",
+  "native_sources": [
+    "upstream/hardware/src/masku/masku.sv",
+    "upstream/hardware/src/masku/masku_operands.sv",
+    "upstream/hardware/include/ara_pkg.sv",
+    "upstream/hardware/include/rvv_pkg.sv",
+    "upstream/hardware/include/ara/ara_typedef.svh",
+    "common_cells/src/cf_math_pkg.sv",
+    "common_cells/src/spill_register.sv",
+    "common_cells/src/spill_register_flushable.sv",
+    "common_cells/src/delta_counter.sv",
+    "common_cells/src/lzc.sv",
+    "common_cells/src/popcount.sv",
+    "common_cells/src/fifo_v3.sv"
+  ],
+  "editable_files": [
+    "code/masku.sv",
+    "code/masku_operands.sv"
+  ],
+  "qualification": "upstream/repo_19",
+  "build_scope": "Native Ara Mask Unit (masku.sv and masku_operands.sv) elaborated and verified at NrLanes=4, VLEN=1024 across RVV 1.0 VCPOP, VFIRST, VMSBF, VMSOF, VMSIF, VIOTA, VID, and baseline VMAND/VMXOR operations under skewed per-lane operand delivery, randomized VRF grant/final_gnt latency, and scalar result backpressure, plus latch-free Yosys+slang synthesis check.",
+  "tool": "Verilator 5.038 + Yosys with slang frontend"
+}

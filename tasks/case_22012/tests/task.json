@@ -1,0 +1,150 @@
+{
+  "case_id": "case_22012",
+  "task_id": "case_22012",
+  "version": 1,
+  "title": "Fix RVV 1.0 Fixed-Point Rounding, Averaging/Clipping Arithmetic, Saturation Queuing, and Gate-Level X-Parity in Ara Vector ALU",
+  "repo_id": "repo_19",
+  "repository": "pulp-platform/ara",
+  "topic": "elab_synth_sim_parity",
+  "family": "functional",
+  "flow_scenario": "S2_elab_synth_sim_parity",
+  "coupling_mode": "deep_stage_authentic",
+  "editable_files": [
+    "code/fixed_p_rounding.sv",
+    "code/simd_alu.sv",
+    "code/valu.sv"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 360,
+    "verifier_timeout_seconds": 720,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_22012",
+    "version": 1,
+    "frozen_utc": "2026-11-12T09:55:56.333184+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/fixed_p_rounding.sv",
+      "code/simd_alu.sv",
+      "code/valu.sv"
+    ],
+    "public_hashes": {
+      "BUILD.md": "338a0a404ca568bdc6e0292f80fdc3dc9c66d07e5296785b258c6e9fd232a17e",
+      "code/LICENSE": "9533aff89b5771a747f8f9137cbfeec2c3cb1905ebdc8fb3bd59ec5e8be67cf4",
+      "code/ara_pkg.sv": "1ef06c7e7a2102a69ab0a392244717960ddb134847991490fee1a700fe4809b9",
+      "code/ariane_pkg.sv": "f492b1dda7044c4d202df1a1e4609a53fbecc94ad3f08b5d6d9a150b4569d2d7",
+      "code/axi_pkg.sv": "717be97f3225405ec5aa865d37c6ebf6957ad5334effdb842737b6c1d6c7a644",
+      "code/cf_math_pkg.sv": "d986ff4e1079a600dd760416b36f539b36a29c67c3bdbdf10b9be0663447676a",
+      "code/config_pkg.sv": "f6f193daa7dfe1161689f651d6aa6e2b1fdec6560fc83c1313385e944ce4c97c",
+      "code/cv64a6_imafdcv_sv39_config_pkg.sv": "66b3c5aea32111083acc580933672550a2276c945a6e716b568a031a03283a4f",
+      "code/fixed_p_rounding.sv": "d7499699c213f5b4fbfd6bb07af9d0376ff87fdbebc580fb115f3d33f2092717",
+      "code/fpnew_pkg.sv": "2abe80eb1ef173f4d2dacd68b29a11d3038b86dbd682f2fdff0203df11a2b9af",
+      "code/include/common_cells/assertions.svh": "d44ed5ffbbfb69c65f5b398428c6b5b5a1103883b925040cbc7bece257d13b1a",
+      "code/include/common_cells/registers.svh": "532dfd1723d2936421b921235abdafcc8ca407990224992ca13575fdb620053a",
+      "code/riscv_pkg.sv": "225881e0df4c08d0d9768999408c7c93186a59270955a391bccd63f34b95777a",
+      "code/rvv_pkg.sv": "7c0095c0cc994f9e54b19245efa6a1340623b65ebe59f5c89c5af39473fd74fa",
+      "code/simd_alu.sv": "523149388d5c61e206d538fa659b32d49cef4de8576638829f104c211c8f018e",
+      "code/spill_register.sv": "97bf85128f538c54c749896b8eee5fcfe4b27c16845d2a17990979a63b09f2ec",
+      "code/spill_register_flushable.sv": "7d41d8ca6e37c332fceda09a71ed4a4ba87fb016a9216ce89786de2656b4e9fe",
+      "code/valu.sv": "61ba5b102a4eb46827d597874a72780ff1c9c12f16334e9a2d8e1c9352ab7b3a",
+      "issue.md": "a288b908abded8a94865afa685310974922ae905e811c2b32dd44f70b777bbb1"
+    },
+    "gold_hashes": {
+      "BUILD.md": "d43fbb4fe8614d9c3c78341b16ec0b83e7f1268234f2b91ee174a2636ada516a",
+      "code/LICENSE": "9533aff89b5771a747f8f9137cbfeec2c3cb1905ebdc8fb3bd59ec5e8be67cf4",
+      "code/ara_pkg.sv": "1ef06c7e7a2102a69ab0a392244717960ddb134847991490fee1a700fe4809b9",
+      "code/ariane_pkg.sv": "f492b1dda7044c4d202df1a1e4609a53fbecc94ad3f08b5d6d9a150b4569d2d7",
+      "code/axi_pkg.sv": "717be97f3225405ec5aa865d37c6ebf6957ad5334effdb842737b6c1d6c7a644",
+      "code/cf_math_pkg.sv": "d986ff4e1079a600dd760416b36f539b36a29c67c3bdbdf10b9be0663447676a",
+      "code/config_pkg.sv": "f6f193daa7dfe1161689f651d6aa6e2b1fdec6560fc83c1313385e944ce4c97c",
+      "code/cv64a6_imafdcv_sv39_config_pkg.sv": "66b3c5aea32111083acc580933672550a2276c945a6e716b568a031a03283a4f",
+      "code/fixed_p_rounding.sv": "87b4b7bdcb7df57373be4d5a1f6dde11b1df9d77ae5366836394d85d1220aec7",
+      "code/fpnew_pkg.sv": "2abe80eb1ef173f4d2dacd68b29a11d3038b86dbd682f2fdff0203df11a2b9af",
+      "code/include/common_cells/assertions.svh": "d44ed5ffbbfb69c65f5b398428c6b5b5a1103883b925040cbc7bece257d13b1a",
+      "code/include/common_cells/registers.svh": "532dfd1723d2936421b921235abdafcc8ca407990224992ca13575fdb620053a",
+      "code/riscv_pkg.sv": "225881e0df4c08d0d9768999408c7c93186a59270955a391bccd63f34b95777a",
+      "code/rvv_pkg.sv": "7c0095c0cc994f9e54b19245efa6a1340623b65ebe59f5c89c5af39473fd74fa",
+      "code/simd_alu.sv": "29c787037530562876a4ebfb33bf3776f9eac8ad32d17c8bde2b7fc4744aa110",
+      "code/spill_register.sv": "97bf85128f538c54c749896b8eee5fcfe4b27c16845d2a17990979a63b09f2ec",
+      "code/spill_register_flushable.sv": "7d41d8ca6e37c332fceda09a71ed4a4ba87fb016a9216ce89786de2656b4e9fe",
+      "code/valu.sv": "dfdf9ebe19867b5f13fa198dceb22e626c89bb03578c2c5e6eeb5a9f1646da33"
+    },
+    "grader_hashes": {
+      "run.py": "a2e59e9d207a8875a14704d86024b5085ded22636f17bb8d7d84775482f8b0ff"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 2,
+      "wrong_fix_fail_runs": 4,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 9,
+      "mutant_total": 10
+    },
+    "test_hashes": {
+      "syn_wrap.sv": "ab61cffe94a0c8845c02f7e2c34f381ff24fc0c675e3e78f9cef45731da8080a",
+      "tb.sv": "1f759ed8a8dc39015a05bcb23381bce95ee733a2bb0a91c4ca86849504c10ece",
+      "tb_gl.sv": "5cc101be7cfd1dd08b379d77c808c30c874b417dfe70fd4528e6e888c3172f89"
+    },
+    "grader_revalidated_utc": "2026-11-16T10:17:42.058352+00:00"
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT2_New_Feature_ISA_Impl",
+  "problem_type_label": "New ISA & Subsystem Feature Implementation",
+  "primary_domain": "Vector_GPU_NPU_Accelerators",
+  "multi_domains": [
+    "Vector_GPU_NPU_Accelerators"
+  ],
+  "pdk_profile": {
+    "pdk_id": "rtl_dual_sim_standard",
+    "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+    "location": "Unified base image (/opt/siliconbench/tools)",
+    "customized": false,
+    "notes": "Pure RTL/protocol/synthesis check without external PDK Liberty files."
+  },
+  "public_hashes": {
+    "BUILD.md": "338a0a404ca568bdc6e0292f80fdc3dc9c66d07e5296785b258c6e9fd232a17e",
+    "code/LICENSE": "9533aff89b5771a747f8f9137cbfeec2c3cb1905ebdc8fb3bd59ec5e8be67cf4",
+    "code/ara_pkg.sv": "1ef06c7e7a2102a69ab0a392244717960ddb134847991490fee1a700fe4809b9",
+    "code/ariane_pkg.sv": "f492b1dda7044c4d202df1a1e4609a53fbecc94ad3f08b5d6d9a150b4569d2d7",
+    "code/axi_pkg.sv": "717be97f3225405ec5aa865d37c6ebf6957ad5334effdb842737b6c1d6c7a644",
+    "code/cf_math_pkg.sv": "d986ff4e1079a600dd760416b36f539b36a29c67c3bdbdf10b9be0663447676a",
+    "code/config_pkg.sv": "f6f193daa7dfe1161689f651d6aa6e2b1fdec6560fc83c1313385e944ce4c97c",
+    "code/cv64a6_imafdcv_sv39_config_pkg.sv": "66b3c5aea32111083acc580933672550a2276c945a6e716b568a031a03283a4f",
+    "code/fixed_p_rounding.sv": "d7499699c213f5b4fbfd6bb07af9d0376ff87fdbebc580fb115f3d33f2092717",
+    "code/fpnew_pkg.sv": "2abe80eb1ef173f4d2dacd68b29a11d3038b86dbd682f2fdff0203df11a2b9af",
+    "code/include/common_cells/assertions.svh": "d44ed5ffbbfb69c65f5b398428c6b5b5a1103883b925040cbc7bece257d13b1a",
+    "code/include/common_cells/registers.svh": "532dfd1723d2936421b921235abdafcc8ca407990224992ca13575fdb620053a",
+    "code/riscv_pkg.sv": "225881e0df4c08d0d9768999408c7c93186a59270955a391bccd63f34b95777a",
+    "code/rvv_pkg.sv": "7c0095c0cc994f9e54b19245efa6a1340623b65ebe59f5c89c5af39473fd74fa",
+    "code/simd_alu.sv": "523149388d5c61e206d538fa659b32d49cef4de8576638829f104c211c8f018e",
+    "code/spill_register.sv": "97bf85128f538c54c749896b8eee5fcfe4b27c16845d2a17990979a63b09f2ec",
+    "code/spill_register_flushable.sv": "7d41d8ca6e37c332fceda09a71ed4a4ba87fb016a9216ce89786de2656b4e9fe",
+    "code/valu.sv": "61ba5b102a4eb46827d597874a72780ff1c9c12f16334e9a2d8e1c9352ab7b3a",
+    "issue.md": "a288b908abded8a94865afa685310974922ae905e811c2b32dd44f70b777bbb1"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 2,
+    "wrong_fix_fail_runs": 4,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 9,
+    "mutant_total": 10
+  }
+}

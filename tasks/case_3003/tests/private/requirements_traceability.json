@@ -1,0 +1,47 @@
+{
+  "case_id": "case_3003",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "public_section": "issue.md#1",
+      "description": "In stream_to_mem.sv, deassert req_ready_o, mem_req_valid_o, and resp_valid_o on flush_i, flush i_resp_buf, discard stale in-flight responses returning on or after flush_i, and reclaim cnt_q credits.",
+      "verified_by": "private/tests/tb.sv Phase 2 and Phase 3",
+      "wrong_fix_or_mutant_caught": [
+        "baseline",
+        "wrong_fix_1_flush_without_inflight_discard",
+        "wrong_fix_2_full_fifo_flush_usage_wrap",
+        "mutant_01_req_ready_ungated_by_flush",
+        "mutant_02_resp_valid_ungated_by_flush",
+        "mutant_03_same_cycle_flush_resp_not_subtracted",
+        "mutant_04_stale_ret_not_decrementing_cnt_q",
+        "mutant_05_fifo_not_flushed_on_flush_i"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "public_section": "issue.md#1",
+      "description": "In cv32e40p_obi_interface.sv (TRANS_STABLE=0), hold obi_addr_o, obi_we_o, obi_be_o, obi_wdata_o, and obi_atop_o stable in REGISTERED state and forward obi_err_i on resp_err_o.",
+      "verified_by": "private/tests/tb.sv Phase 1",
+      "wrong_fix_or_mutant_caught": [
+        "wrong_fix_3_obi_missing_be_atop_err",
+        "mutant_06_obi_we_not_registered",
+        "mutant_07_obi_be_not_registered",
+        "mutant_08_obi_atop_not_registered",
+        "mutant_09_obi_err_tied_low"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "public_section": "issue.md#2",
+      "description": "In constraints.json, constrain pmp_in->pmp_out to 1.25 ns internal max delay (8.75 ns with 4.0 ns in + 3.5 ns out) and dbg_in->dbg_out to 2.25 ns internal max delay (9.75 ns with 4.0 ns in + 3.5 ns out) without modifying registered stream/OBI ports.",
+      "verified_by": "private/grader/run.py timing stage across 10 ns and 12 ns clocks",
+      "wrong_fix_or_mutant_caught": [
+        "wrong_fix_4_raw_internal_delay_without_io_delays",
+        "wrong_fix_5_wildcard_registered_port_exception",
+        "mutant_10_swapped_pmp_dbg_budgets",
+        "mutant_11_missing_dbg_channel_constraint",
+        "mutant_12_missing_output_delay_in_budget"
+      ]
+    }
+  ]
+}

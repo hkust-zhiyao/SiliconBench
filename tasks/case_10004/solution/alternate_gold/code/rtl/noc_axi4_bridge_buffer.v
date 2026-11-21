@@ -1,0 +1,213 @@
+// ========== Copyright Header Begin ============================================
+// Copyright (c) 2019 Princeton University
+// All rights reserved.
+// BSD-3-Clause
+// ========== Copyright Header End ============================================
+
+`include "mc_define.h"
+`include "define.tmp.h"
+`include "noc_axi4_bridge_define.vh"
+
+module noc_axi4_bridge_buffer (
+  input  wire                                          clk,
+  input  wire                                          rst_n,
+
+  // from deserializer
+  input  wire [`MSG_HEADER_WIDTH-1:0]                  deser_header,
+  input  wire [`AXI4_DATA_WIDTH-1:0]                   deser_data,
+  input  wire                                          deser_val,
+  output wire                                          deser_rdy,
+
+  // read request out
+  output wire [`MSG_HEADER_WIDTH-1:0]                  read_req_header,
+  output wire [`NOC_AXI4_BRIDGE_BUFFER_ADDR_SIZE-1:0]  read_req_id,
+  output wire                                          read_req_val,
+  input  wire                                          read_req_rdy,
+
+  // read response in
+  input  wire [`AXI4_DATA_WIDTH-1:0]                   read_resp_data,
+  input  wire [`NOC_AXI4_BRIDGE_BUFFER_ADDR_SIZE-1:0]  read_resp_id,
+  input  wire                                          read_resp_val,
+  output wire                                          read_resp_rdy,
+
+  // write request out
+  output wire [`MSG_HEADER_WIDTH-1:0]                  write_req_header,
+  output wire [`NOC_AXI4_BRIDGE_BUFFER_ADDR_SIZE-1:0]  write_req_id,
+  output wire [`AXI4_DATA_WIDTH-1:0]                   write_req_data,
+  output wire                                          write_req_val,
+  input  wire                                          write_req_rdy,
+
+  // write response in
+  input  wire [`NOC_AXI4_BRIDGE_BUFFER_ADDR_SIZE-1:0]  write_resp_id,
+  input  wire                                          write_resp_val,
+  output wire                                          write_resp_rdy,
+
+  // to serializer
+  output wire [`MSG_HEADER_WIDTH-1:0]                  ser_header,
+  output wire [`AXI4_DATA_WIDTH-1:0]                   ser_data,
+  output wire                                          ser_val,
+  input  wire                                          ser_rdy
+);
+
+  localparam INVALID = 1'd0;
+  localparam WAITING = 1'd1;
+
+  localparam READ  = 1'd0;
+  localparam WRITE = 1'd1;
+
+  reg [`NOC_AXI4_BRIDGE_IN_FLIGHT_LIMIT-1:0]         pkt_state_buf;
+  reg [`MSG_HEADER_WIDTH-1:0]                        pkt_header [`NOC_AXI4_BRIDGE_IN_FLIGHT_LIMIT-1:0];
+  reg [`NOC_AXI4_BRIDGE_IN_FLIGHT_LIMIT-1:0]         pkt_command;
+
+  reg [`NOC_AXI4_BRIDGE_BUFFER_ADDR_SIZE-1:0]        fifo_in;
+  reg [`NOC_AXI4_BRIDGE_BUFFER_ADDR_SIZE-1:0]        fifo_out;
+  reg                                                rr_prefer_wr;
+  reg [`NOC_AXI4_BRIDGE_IN_FLIGHT_LIMIT-1:0]         bram_rdy;
+
+  reg [`AXI4_DATA_WIDTH-1:0]                         ser_data_f;
+  wire [`MSG_HEADER_WIDTH-1:0]                       ser_header_f;
+  reg                                                ser_val_f;
+
+  wire deser_go      = deser_rdy & deser_val;
+  wire read_req_go   = read_req_val & read_req_rdy;
+  wire read_resp_go  = read_resp_val & read_resp_rdy;
+  wire write_req_go  = write_req_val & write_req_rdy;
+  wire write_resp_go = write_resp_val & write_resp_rdy;
+  wire req_go        = read_req_go || write_req_go;
+  wire preser_rdy    = ~ser_val_f || ser_rdy;
+
+  reg choose_wr;
+  always @(*) begin
+    if (write_resp_val && !read_resp_val)
+      choose_wr = 1'b1;
+    else if (read_resp_val && !write_resp_val)
+      choose_wr = 1'b0;
+    else if (read_resp_val && write_resp_val)
+      choose_wr = rr_prefer_wr;
+    else
+      choose_wr = 1'b0;
+  end
+
+  always @(posedge clk) begin
+    if (~rst_n) begin
+      fifo_in  <= {`NOC_AXI4_BRIDGE_BUFFER_ADDR_SIZE{1'b0}};
+      fifo_out <= {`NOC_AXI4_BRIDGE_BUFFER_ADDR_SIZE{1'b0}};
+    end else begin
+      if (deser_go)
+        fifo_in  <= fifo_in + 1'b1;
+      if (req_go)
+        fifo_out <= fifo_out + 1'b1;
+    end
+  end
+
+  genvar i;
+  generate
+    for (i = 0; i < `NOC_AXI4_BRIDGE_IN_FLIGHT_LIMIT; i = i + 1) begin : g_slot
+      always @(posedge clk) begin
+        if (~rst_n) begin
+          pkt_state_buf[i] <= INVALID;
+          pkt_header[i]    <= {`MSG_HEADER_WIDTH{1'b0}};
+          pkt_command[i]   <= 1'b0;
+        end else begin
+          if ((i == fifo_in) && deser_go) begin
+            pkt_state_buf[i] <= WAITING;
+            pkt_header[i]    <= deser_header;
+            pkt_command[i]   <= (deser_header[`MSG_TYPE] == `MSG_TYPE_STORE_MEM)
+                             || (deser_header[`MSG_TYPE] == `MSG_TYPE_NC_STORE_REQ);
+          end else if ((i == fifo_out) && req_go) begin
+            pkt_state_buf[i] <= INVALID;
+            pkt_header[i]    <= {`MSG_HEADER_WIDTH{1'b0}};
+            pkt_command[i]   <= 1'b0;
+          end
+        end
+      end
+    end
+  endgenerate
+
+  noc_axi4_bridge_sram_data noc_axi4_bridge_sram_data (
+    .MEMCLK (clk),
+    .RESET_N(rst_n),
+    .CEA    (1'b1),
+    .AA     (write_req_id),
+    .RDWENA (1'b1),
+    .BWA    ({`AXI4_DATA_WIDTH{1'b0}}),
+    .DINA   ({`AXI4_DATA_WIDTH{1'b0}}),
+    .DOUTA  (write_req_data),
+    .CEB    (deser_go),
+    .AB     (fifo_in),
+    .RDWENB (1'b0),
+    .BWB    ({`AXI4_DATA_WIDTH{1'b1}}),
+    .DINB   (deser_data),
+    .DOUTB  ()
+  );
+
+  assign read_req_val     = (pkt_state_buf[fifo_out] == WAITING) && (pkt_command[fifo_out] == READ)  && bram_rdy[fifo_out];
+  assign read_req_header  = pkt_header[fifo_out];
+  assign read_req_id      = fifo_out;
+
+  assign write_req_val    = (pkt_state_buf[fifo_out] == WAITING) && (pkt_command[fifo_out] == WRITE) && bram_rdy[fifo_out];
+  assign write_req_header = pkt_header[fifo_out];
+  assign write_req_id     = fifo_out;
+
+  assign deser_rdy        = (pkt_state_buf[fifo_in] == INVALID) && bram_rdy[fifo_in];
+
+  always @(posedge clk) begin
+    if (~rst_n) begin
+      rr_prefer_wr <= 1'b1;
+    end else if (read_resp_go) begin
+      rr_prefer_wr <= 1'b1;
+    end else if (write_resp_go) begin
+      rr_prefer_wr <= 1'b0;
+    end
+  end
+
+  noc_axi4_bridge_sram_req noc_axi4_bridge_sram_req (
+    .MEMCLK (clk),
+    .RESET_N(rst_n),
+    .CEA    (preser_rdy & (read_resp_val | write_resp_val)),
+    .AA     (choose_wr ? write_resp_id : read_resp_id),
+    .RDWENA (1'b1),
+    .BWA    ({`MSG_HEADER_WIDTH{1'b0}}),
+    .DINA   ({`MSG_HEADER_WIDTH{1'b0}}),
+    .DOUTA  (ser_header_f),
+    .CEB    (req_go),
+    .AB     (fifo_out),
+    .RDWENB (1'b0),
+    .BWB    ({`MSG_HEADER_WIDTH{1'b1}}),
+    .DINB   (pkt_header[fifo_out]),
+    .DOUTB  ()
+  );
+
+  generate
+    for (i = 0; i < `NOC_AXI4_BRIDGE_IN_FLIGHT_LIMIT; i = i + 1) begin : g_bram
+      always @(posedge clk) begin
+        if (~rst_n) begin
+          bram_rdy[i] <= 1'b1;
+        end else begin
+          if (req_go && (i == fifo_out))
+            bram_rdy[i] <= 1'b0;
+          else if ((write_resp_go && (i == write_resp_id)) || (read_resp_go && (i == read_resp_id)))
+            bram_rdy[i] <= 1'b1;
+        end
+      end
+    end
+  endgenerate
+
+  assign read_resp_rdy  = ~choose_wr & preser_rdy;
+  assign write_resp_rdy =  choose_wr & preser_rdy;
+
+  always @(posedge clk) begin
+    if (~rst_n) begin
+      ser_data_f <= {`AXI4_DATA_WIDTH{1'b0}};
+      ser_val_f  <= 1'b0;
+    end else if (preser_rdy) begin
+      ser_val_f  <= choose_wr ? write_resp_val : read_resp_val;
+      ser_data_f <= choose_wr ? {`AXI4_DATA_WIDTH{1'b0}} : read_resp_data;
+    end
+  end
+
+  assign ser_data   = ser_data_f;
+  assign ser_val    = ser_val_f;
+  assign ser_header = ser_header_f;
+
+endmodule

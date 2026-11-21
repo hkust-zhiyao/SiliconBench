@@ -1,0 +1,9 @@
+{
+  "case_id": "case_5007",
+  "requirements": [
+    {"id": "R1", "description": "tag_cmp one-hot priority grant exclusivity and idle deassertion", "verified_by": ["tb.sv:TEST_1", "m01_tc_no_req_guard", "m02_tc_reverse_priority"]},
+    {"id": "R2", "description": "cache_ctrl pipelined store double-grant suppression, flush-gated speculative read, and WAIT_REFILL_GNT kill cancellation", "verified_by": ["tb.sv:TEST_3", "m03_cc_wait_tag_store_gnt", "m04_cc_crit_word_store_gnt", "m05_cc_crit_word_no_flush_gate", "m06_cc_refill_gnt_no_kill_cancel"]},
+    {"id": "R3", "description": "miss_handler 2-way LFSR sizing, multi-way SRAM req_o, flush/AMO priority, and same-cycle 32-bit AMO/bypass completion", "verified_by": ["tb.sv:TEST_2", "m07_mh_init_req_way0_only", "m08_mh_wb_req_way0_only", "m09_mh_flush_amo_keep_serve_amo", "m10_arb_idle_drop_same_cycle_valid"]},
+    {"id": "R4", "description": "Nangate45 area <= 2825.0 um^2 and setup/hold slack >= 0.00 ns at 2.44 ns clock on dcache_ctrl_top", "verified_by": ["grader/run.py:synthesis_and_sta", "wf4_unoptimized_tag_mux_ppa"]}
+  ]
+}

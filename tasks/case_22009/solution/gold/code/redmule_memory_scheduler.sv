@@ -1,0 +1,313 @@
+// Copyright 2025 ETH Zurich and University of Bologna.
+// Solderpad Hardware License, Version 0.51, see LICENSE for details.
+// SPDX-License-Identifier: SHL-0.51
+//
+// Andrea Belano <andrea.belano2@unibo.it>
+// Arpan Suravi Prasad <prasadar@iis.ee.ethz.ch>
+
+module redmule_memory_scheduler
+  import redmule_pkg::*;
+  import hwpe_ctrl_package::*;
+#(
+  parameter int unsigned   DW   = MaxDataW,
+  parameter int unsigned   W    = MaxDim,
+  parameter int unsigned   H    = MaxDim,
+  parameter int unsigned   ELW  = 16,
+  localparam int unsigned  D    = DW/ELW
+) (
+  input  logic                   clk_i            ,
+  input  logic                   rst_ni           ,
+  input  logic                   clear_i          ,
+  input  logic                   z_priority_i     ,
+  input  redmule_config_t        config_i         ,
+  input  logic                   config_valid_i   ,
+  input  flgs_streamer_t         flgs_streamer_i  ,
+  input  cntrl_scheduler_t       cntrl_scheduler_i,
+  input  cntrl_flags_t           cntrl_flags_i    ,
+  output logic                   z_fifo_empty_o   ,
+  output logic                   z_fifo_full_o    ,
+  output logic                   x_done_o         ,
+  output cntrl_streamer_t        cntrl_streamer_o
+);
+  localparam int unsigned JMP = DW/8;
+
+  logic [31:0]        x_cols_offs_d, x_cols_offs_q;
+  logic [31:0]        x_rows_offs_d, x_rows_offs_q;
+  logic [31:0]        y_rows_offs_d, y_rows_offs_q;
+  logic [31:0]        z_rows_offs_d, z_rows_offs_q;
+
+  logic [15:0]        x_cols_iters_d, x_cols_iters_q,
+                      x_rows_iters_d, x_rows_iters_q;
+  logic [15:0]        y_rows_iters_d, y_rows_iters_q;
+  logic [15:0]        z_rows_iters_d, z_rows_iters_q;
+
+  logic [15:0]        w_iters_d, w_iters_q;
+  logic [31:0]        tot_x_read_d, tot_x_read_q;
+
+  logic [$clog2(W):0] num_x_reads, num_y_rows, num_z_rows;
+
+  redmule_config_t x_config, w_config, y_config, z_config;
+  logic            x_config_empty, w_config_empty, y_config_empty, z_config_empty;
+  logic            x_config_full, w_config_full, y_config_full, z_config_full;
+
+  logic            start_x_streamer;
+  logic            y_done, z_done;
+  logic            y_fifo_pop;
+
+  assign x_done_o = ~x_config_empty && (tot_x_read_q == x_config.tot_x_read - 1) && flgs_streamer_i.x_stream_source_flags.done;
+  assign y_done   = ~y_config_empty && (y_rows_iters_q == y_config.x_rows_iter - 1) && flgs_streamer_i.y_stream_source_flags.done;
+  assign z_done   = ~z_config_empty && (z_rows_iters_q == z_config.x_rows_iter - 1) && flgs_streamer_i.z_stream_sink_flags.done;
+
+  assign y_fifo_pop = ~y_config_empty && (y_config.gemm_selection ? y_done : z_done);
+
+  redmule_config_fifo #(
+    .FALL_THROUGH (0),
+    .DEPTH (2),
+    .dtype (redmule_config_t)
+  ) i_x_config_fifo (
+    .clk_i      ( clk_i                           ),
+    .rst_ni     ( rst_ni                          ),
+    .flush_i    ( clear_i | cntrl_scheduler_i.rst ),
+    .testmode_i ( '0                              ),
+    .full_o     ( x_config_full                   ),
+    .empty_o    ( x_config_empty                  ),
+    .usage_o    (                                 ),
+    .data_i     ( config_i                        ),
+    .push_i     ( config_valid_i                  ),
+    .data_o     ( x_config                        ),
+    .pop_i      ( x_done_o                        )
+  );
+
+  redmule_config_fifo #(
+    .FALL_THROUGH (0),
+    .DEPTH (2),
+    .dtype (redmule_config_t)
+  ) i_w_config_fifo (
+    .clk_i      ( clk_i                                      ),
+    .rst_ni     ( rst_ni                                     ),
+    .flush_i    ( clear_i | cntrl_scheduler_i.rst            ),
+    .testmode_i ( '0                                         ),
+    .full_o     ( w_config_full                              ),
+    .empty_o    ( w_config_empty                             ),
+    .usage_o    (                                            ),
+    .data_i     ( config_i                                   ),
+    .push_i     ( config_valid_i                             ),
+    .data_o     ( w_config                                   ),
+    .pop_i      ( ~w_config_empty && flgs_streamer_i.w_stream_source_flags.done )
+  );
+
+  redmule_config_fifo #(
+    .FALL_THROUGH (0),
+    .DEPTH (2),
+    .dtype (redmule_config_t)
+  ) i_y_config_fifo (
+    .clk_i      ( clk_i                           ),
+    .rst_ni     ( rst_ni                          ),
+    .flush_i    ( clear_i | cntrl_scheduler_i.rst ),
+    .testmode_i ( '0                              ),
+    .full_o     ( y_config_full                   ),
+    .empty_o    ( y_config_empty                  ),
+    .usage_o    (                                 ),
+    .data_i     ( config_i                        ),
+    .push_i     ( config_valid_i                  ),
+    .data_o     ( y_config                        ),
+    .pop_i      ( y_fifo_pop                      )
+  );
+
+  redmule_config_fifo #(
+    .FALL_THROUGH (0),
+    .DEPTH (2),
+    .dtype (redmule_config_t)
+  ) i_z_config_fifo (
+    .clk_i      ( clk_i                           ),
+    .rst_ni     ( rst_ni                          ),
+    .flush_i    ( clear_i | cntrl_scheduler_i.rst ),
+    .testmode_i ( '0                              ),
+    .full_o     ( z_config_full                   ),
+    .empty_o    ( z_config_empty                  ),
+    .usage_o    (                                 ),
+    .data_i     ( config_i                        ),
+    .push_i     ( config_valid_i                  ),
+    .data_o     ( z_config                        ),
+    .pop_i      ( z_done                          )
+  );
+
+  assign z_fifo_empty_o = z_config_empty;
+  assign z_fifo_full_o  = z_config_full || ~z_config_empty || ~cntrl_flags_i.idle;
+
+  always_ff @(posedge clk_i or negedge rst_ni) begin : x_cols_iters_register
+    if (~rst_ni) begin
+      x_cols_iters_q <= '0;
+    end else if (clear_i || cntrl_scheduler_i.rst) begin
+      x_cols_iters_q <= '0;
+    end else if (flgs_streamer_i.x_stream_source_flags.done) begin
+      x_cols_iters_q <= x_cols_iters_d;
+    end
+  end
+
+  assign x_cols_iters_d = x_cols_iters_q == x_config.x_cols_iter-1 ? '0 : x_cols_iters_q + 1;
+
+  always_ff @(posedge clk_i or negedge rst_ni) begin : w_iters_register
+    if (~rst_ni) begin
+      w_iters_q <= '0;
+    end else if (clear_i || cntrl_scheduler_i.rst) begin
+      w_iters_q <= '0;
+    end else if (flgs_streamer_i.x_stream_source_flags.done && x_cols_iters_q == x_config.x_cols_iter-1) begin
+      w_iters_q <= w_iters_d;
+    end
+  end
+
+  assign w_iters_d = w_iters_q == x_config.w_cols_iter-1 ? '0 : w_iters_q + 1;
+
+  always_ff @(posedge clk_i or negedge rst_ni) begin : x_rows_iters_register
+    if (~rst_ni) begin
+      x_rows_iters_q <= '0;
+    end else if (clear_i || cntrl_scheduler_i.rst) begin
+      x_rows_iters_q <= '0;
+    end else if (flgs_streamer_i.x_stream_source_flags.done && x_cols_iters_q == x_config.x_cols_iter-1 && w_iters_q == x_config.w_cols_iter-1) begin
+      x_rows_iters_q <= x_rows_iters_d;
+    end
+  end
+
+  assign x_rows_iters_d = x_rows_iters_q == x_config.x_rows_iter-1 ? '0 : x_rows_iters_q + 1;
+
+  always_ff @(posedge clk_i or negedge rst_ni) begin : tot_x_read_register
+    if (~rst_ni) begin
+      tot_x_read_q <= '0;
+    end else if (clear_i || cntrl_scheduler_i.rst) begin
+      tot_x_read_q <= '0;
+    end else if (flgs_streamer_i.x_stream_source_flags.done) begin
+      tot_x_read_q <= tot_x_read_d;
+    end
+  end
+
+  assign tot_x_read_d = tot_x_read_q == x_config.tot_x_read-1 ? '0 : tot_x_read_q + 1;
+
+  always_ff @(posedge clk_i or negedge rst_ni) begin : x_cols_offs_register
+    if (~rst_ni) begin
+      x_cols_offs_q <= '0;
+    end else if (clear_i || cntrl_scheduler_i.rst) begin
+      x_cols_offs_q <= '0;
+    end else if (flgs_streamer_i.x_stream_source_flags.done) begin
+      x_cols_offs_q <= x_cols_offs_d;
+    end
+  end
+
+  assign x_cols_offs_d = x_cols_iters_q == x_config.x_cols_iter-1 ? '0 : x_cols_offs_q + JMP;
+
+  always_ff @(posedge clk_i or negedge rst_ni) begin : x_rows_offs_register
+    if (~rst_ni) begin
+      x_rows_offs_q <= '0;
+    end else if (clear_i || cntrl_scheduler_i.rst) begin
+      x_rows_offs_q <= '0;
+    end else if (flgs_streamer_i.x_stream_source_flags.done && x_cols_iters_q == x_config.x_cols_iter-1 && w_iters_q == x_config.w_cols_iter-1) begin
+      x_rows_offs_q <= x_rows_offs_d;
+    end
+  end
+
+  assign x_rows_offs_d = x_rows_iters_q == x_config.x_rows_iter-1 ? '0 : x_rows_offs_q + x_config.x_rows_offs;
+
+  // Row-block stepping for Y (bias) and Z (output) so leftover M rows transfer exact row counts
+  always_ff @(posedge clk_i or negedge rst_ni) begin : y_rows_stepping
+    if (~rst_ni) begin
+      y_rows_iters_q <= '0;
+      y_rows_offs_q  <= '0;
+    end else if (clear_i || cntrl_scheduler_i.rst || y_fifo_pop) begin
+      y_rows_iters_q <= '0;
+      y_rows_offs_q  <= '0;
+    end else if (flgs_streamer_i.y_stream_source_flags.done) begin
+      y_rows_iters_q <= y_rows_iters_d;
+      y_rows_offs_q  <= y_rows_offs_d;
+    end
+  end
+
+  assign y_rows_iters_d = (y_rows_iters_q == y_config.x_rows_iter - 1) ? '0 : y_rows_iters_q + 1;
+  assign y_rows_offs_d  = (y_rows_iters_q == y_config.x_rows_iter - 1) ? '0 : y_rows_offs_q + y_config.yz_d2_stride;
+
+  always_ff @(posedge clk_i or negedge rst_ni) begin : z_rows_stepping
+    if (~rst_ni) begin
+      z_rows_iters_q <= '0;
+      z_rows_offs_q  <= '0;
+    end else if (clear_i || cntrl_scheduler_i.rst || z_done) begin
+      z_rows_iters_q <= '0;
+      z_rows_offs_q  <= '0;
+    end else if (flgs_streamer_i.z_stream_sink_flags.done) begin
+      z_rows_iters_q <= z_rows_iters_d;
+      z_rows_offs_q  <= z_rows_offs_d;
+    end
+  end
+
+  assign z_rows_iters_d = (z_rows_iters_q == z_config.x_rows_iter - 1) ? '0 : z_rows_iters_q + 1;
+  assign z_rows_offs_d  = (z_rows_iters_q == z_config.x_rows_iter - 1) ? '0 : z_rows_offs_q + z_config.yz_d2_stride;
+
+  assign num_x_reads = (x_rows_iters_q == x_config.x_rows_iter-1 && x_config.x_rows_lftovr != '0) ? x_config.x_rows_lftovr[$clog2(W):0] : W[$clog2(W):0];
+  assign num_y_rows  = (y_rows_iters_q == y_config.x_rows_iter-1 && y_config.x_rows_lftovr != '0) ? y_config.x_rows_lftovr[$clog2(W):0] : W[$clog2(W):0];
+  assign num_z_rows  = (z_rows_iters_q == z_config.x_rows_iter-1 && z_config.x_rows_lftovr != '0) ? z_config.x_rows_lftovr[$clog2(W):0] : W[$clog2(W):0];
+
+  always_comb begin : address_gen_signals
+    cntrl_streamer_o = '0;
+
+    cntrl_streamer_o.x_stream_source_ctrl.addressgen_ctrl.base_addr     = x_config.x_addr + x_rows_offs_q + x_cols_offs_q;
+    cntrl_streamer_o.x_stream_source_ctrl.addressgen_ctrl.tot_len       = num_x_reads;
+    cntrl_streamer_o.x_stream_source_ctrl.addressgen_ctrl.d0_len        = 'd1;
+    cntrl_streamer_o.x_stream_source_ctrl.addressgen_ctrl.d0_stride     = 'd0;
+    cntrl_streamer_o.x_stream_source_ctrl.addressgen_ctrl.d1_len        = W;
+    cntrl_streamer_o.x_stream_source_ctrl.addressgen_ctrl.d1_stride     = x_config.x_d1_stride;
+    cntrl_streamer_o.x_stream_source_ctrl.addressgen_ctrl.d2_stride     = '0;
+    cntrl_streamer_o.x_stream_source_ctrl.addressgen_ctrl.d2_len        = '0;
+    cntrl_streamer_o.x_stream_source_ctrl.addressgen_ctrl.d3_stride     = '0;
+    cntrl_streamer_o.x_stream_source_ctrl.addressgen_ctrl.dim_enable_1h = 3'b011;
+
+    cntrl_streamer_o.w_stream_source_ctrl.addressgen_ctrl.base_addr     = w_config.w_addr;
+    cntrl_streamer_o.w_stream_source_ctrl.addressgen_ctrl.tot_len       = w_config.w_tot_len;
+    cntrl_streamer_o.w_stream_source_ctrl.addressgen_ctrl.d0_len        = w_config.w_rows_iter;
+    cntrl_streamer_o.w_stream_source_ctrl.addressgen_ctrl.d0_stride     = w_config.w_d0_stride;
+    cntrl_streamer_o.w_stream_source_ctrl.addressgen_ctrl.d1_len        = w_config.w_cols_iter;
+    cntrl_streamer_o.w_stream_source_ctrl.addressgen_ctrl.d1_stride     = JMP;
+    cntrl_streamer_o.w_stream_source_ctrl.addressgen_ctrl.d2_stride     = 'd0;
+    cntrl_streamer_o.w_stream_source_ctrl.addressgen_ctrl.d2_len        = '0;
+    cntrl_streamer_o.w_stream_source_ctrl.addressgen_ctrl.d3_stride     = '0;
+    cntrl_streamer_o.w_stream_source_ctrl.addressgen_ctrl.dim_enable_1h = 3'b011;
+
+    cntrl_streamer_o.y_stream_source_ctrl.addressgen_ctrl.base_addr     = y_config.y_addr + y_rows_offs_q;
+    cntrl_streamer_o.y_stream_source_ctrl.addressgen_ctrl.tot_len       = 32'(num_y_rows) * 32'(y_config.w_cols_iter);
+    cntrl_streamer_o.y_stream_source_ctrl.addressgen_ctrl.d0_len        = num_y_rows;
+    cntrl_streamer_o.y_stream_source_ctrl.addressgen_ctrl.d0_stride     = y_config.yz_d0_stride;
+    cntrl_streamer_o.y_stream_source_ctrl.addressgen_ctrl.d1_len        = y_config.w_cols_iter;
+    cntrl_streamer_o.y_stream_source_ctrl.addressgen_ctrl.d1_stride     = JMP;
+    cntrl_streamer_o.y_stream_source_ctrl.addressgen_ctrl.d2_stride     = y_config.yz_d2_stride;
+    cntrl_streamer_o.y_stream_source_ctrl.addressgen_ctrl.d2_len        = '0;
+    cntrl_streamer_o.y_stream_source_ctrl.addressgen_ctrl.d3_stride     = '0;
+    cntrl_streamer_o.y_stream_source_ctrl.addressgen_ctrl.dim_enable_1h = 3'b011;
+
+    cntrl_streamer_o.z_stream_sink_ctrl.addressgen_ctrl.base_addr       = z_config.z_addr + z_rows_offs_q;
+    cntrl_streamer_o.z_stream_sink_ctrl.addressgen_ctrl.tot_len         = 32'(num_z_rows) * 32'(z_config.w_cols_iter);
+    cntrl_streamer_o.z_stream_sink_ctrl.addressgen_ctrl.d0_len          = num_z_rows;
+    cntrl_streamer_o.z_stream_sink_ctrl.addressgen_ctrl.d0_stride       = z_config.yz_d0_stride;
+    cntrl_streamer_o.z_stream_sink_ctrl.addressgen_ctrl.d1_len          = z_config.w_cols_iter;
+    cntrl_streamer_o.z_stream_sink_ctrl.addressgen_ctrl.d1_stride       = JMP;
+    cntrl_streamer_o.z_stream_sink_ctrl.addressgen_ctrl.d2_stride       = z_config.yz_d2_stride;
+    cntrl_streamer_o.z_stream_sink_ctrl.addressgen_ctrl.d2_len          = '0;
+    cntrl_streamer_o.z_stream_sink_ctrl.addressgen_ctrl.d3_stride       = '0;
+    cntrl_streamer_o.z_stream_sink_ctrl.addressgen_ctrl.dim_enable_1h   = 3'b011;
+
+    cntrl_streamer_o.x_stream_source_ctrl.req_start = (start_x_streamer || (tot_x_read_q != '0 && tot_x_read_q != x_config.tot_x_read)) && flgs_streamer_i.x_stream_source_flags.ready_start;
+    cntrl_streamer_o.w_stream_source_ctrl.req_start = ~w_config_empty && flgs_streamer_i.w_stream_source_flags.ready_start;
+    cntrl_streamer_o.y_stream_source_ctrl.req_start = ~y_config_empty && y_config.gemm_selection && flgs_streamer_i.y_stream_source_flags.ready_start;
+    cntrl_streamer_o.z_stream_sink_ctrl.req_start   = ~z_config_empty && flgs_streamer_i.z_stream_sink_flags.ready_start && ~flgs_streamer_i.z_stream_sink_flags.done;
+
+    cntrl_streamer_o.input_cast_src_fmt  = fpnew_pkg::fp_format_e'(config_i.input_format);
+    cntrl_streamer_o.input_cast_dst_fmt  = fpnew_pkg::fp_format_e'(config_i.computing_format);
+    cntrl_streamer_o.output_cast_src_fmt = fpnew_pkg::fp_format_e'(config_i.computing_format);
+    cntrl_streamer_o.output_cast_dst_fmt = fpnew_pkg::fp_format_e'(config_i.input_format);
+
+    cntrl_streamer_o.z_priority       = z_priority_i;
+    cntrl_streamer_o.receive_w_stream = w_config.receive_w;
+    cntrl_streamer_o.receive_x_stream = x_config.receive_x;
+  end
+
+  assign start_x_streamer = (~x_config_empty && ~x_config_full && ~x_done_o) || x_config_full;
+
+  wire unused_mem_sched = |{w_config_full, y_config_full, H, D};
+
+endmodule : redmule_memory_scheduler

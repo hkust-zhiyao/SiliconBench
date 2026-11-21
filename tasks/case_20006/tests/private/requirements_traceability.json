@@ -1,0 +1,40 @@
+{
+  "case_id": "case_20006",
+  "obligations": [
+    {
+      "id": "REQ-MISS-CNT-PARAM-AND-SATURATION",
+      "behavior": "Clean elaboration for AxiIdLookupBits in {0, 1..IdWidth-1, IdWidth}, saturation clamping without wrap-to-zero on to_miss_o/stall_o, and combinational-loop-free hit-bypass vs miss-pipeline ordering.",
+      "public_source": "public/issue.md items 1 & 4",
+      "verified_by": [
+        "wf1_tomiss_wraps_to_zero_at_saturation",
+        "wf2_combinational_loop_via_cnt_up_valid",
+        "m01_write_saturation_omitted_from_to_miss",
+        "m02_reads_falsely_blocked_by_global_writes",
+        "m03_counter_increments_past_saturation",
+        "m04_counter_underflows_below_zero",
+        "m05_ignores_id_bits_when_lookup_bits_nonzero"
+      ]
+    },
+    {
+      "id": "REQ-TAG-BIST-DRAIN-AND-X-SAFETY",
+      "behavior": "Full March-X tag BIST response drain when TagMacroLatency exceeds NumLines, RONEDOWN drain fault capture, valid-gated sampling, and clean re-invocation.",
+      "public_source": "public/issue.md items 2 & 4",
+      "verified_by": [
+        "wf3_bist_premature_exit_when_latency_exceeds_lines",
+        "m06_ronedown_drops_drain_fault_check",
+        "m07_bist_samples_invalid_idle_bus",
+        "m08_bist_sticky_eoc_not_cleared_on_restart"
+      ]
+    },
+    {
+      "id": "REQ-SPM-FLUSHED-WAY-ISOLATION-AND-PARITY",
+      "behavior": "Exclusion of spm_lock_i and flushed_i ways from normal cache lookup and eviction, SLVERR fallback when zero cache ways remain, and RTL-vs-gate-level co-simulation parity.",
+      "public_source": "public/issue.md items 3 & 4",
+      "verified_by": [
+        "wf4_deadlocks_when_all_ways_spm_or_flushed",
+        "m09_lookup_probes_spm_locked_ways",
+        "m10_victimizer_allocates_flushed_way"
+      ]
+    }
+  ]
+}

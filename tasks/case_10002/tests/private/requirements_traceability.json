@@ -1,0 +1,23 @@
+{
+  "case_id": "case_10002",
+  "obligations": [
+    {
+      "id": "REQ-XY-ROUTING-AND-8BIT-FRAMING",
+      "behavior": "dynamic_input_route_request_calc routes X-first then Y toward (abs_x, abs_y) or (OFF_CHIP_NODE_X, OFF_CHIP_NODE_Y) when off-chip, defaulting to proc onFINAL_NONE or unallocated final_bits; dynamic_input_control tracks all 8 bits of length across reset, bubbles, and stalls.",
+      "public_source": "public/issue.md bullets 1-2",
+      "enforced_by": "private/tests/tb.sv, killed by wrong_fix_5, mutant_01..mutant_07"
+    },
+    {
+      "id": "REQ-OUTPUT-ARB-FAIRNESS-AND-RESET",
+      "behavior": "dynamic_output_control resets all state including ec_wants_to_send_but_cannot, avoids 1'bx on default branches, locks active routes until tail transfer, includes self-fallback on all routes, and preserves round-robin history across idle cycles.",
+      "public_source": "public/issue.md bullet 3",
+      "enforced_by": "private/tests/tb.sv, killed by wrong_fix_3, wrong_fix_4, mutant_08..mutant_12"
+    },
+    {
+      "id": "REQ-PPA-AND-0P85NS-STA",
+      "behavior": "Under the Nangate45 Yosys/Slang and OpenROAD flows in BUILD.md, dynamic_input_control maps to <= 232.0 um^2 and dynamic_output_top maps to <= 472.0 um^2, both achieving setup and hold slack >= 0.0 ns at a 0.85 ns clock.",
+      "public_source": "public/issue.md final section, public/BUILD.md sections 3-4",
+      "enforced_by": "private/grader/run.py, killed by wrong_fix_1, wrong_fix_2"
+    }
+  ]
+}

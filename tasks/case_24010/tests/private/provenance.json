@@ -1,0 +1,17 @@
+{
+  "case_id": "case_24010",
+  "slot_id": "builder_05_soc_cdc_sdc_lowpower__P10",
+  "blueprint_id": "bp_s02_035",
+  "flow_scenario": "S4_interconnect_nic_dma_protocol",
+  "coupling_mode": "natural_cross_stage",
+  "repo_id": "repo_38",
+  "upstream_repo": "analogdevicesinc/hdl",
+  "upstream_commit": "c9a501d87a420d2e28aa9d931557bdb4122f3c4f",
+  "archive_sha256": "4e8cc71ffaf89e18107427fd3d1cb402f225325954bbaefc8b4f811645bbf183",
+  "license": "Dual GPL-2.0 / ADI BSD",
+  "source_conference_ids": [
+    "doc-d38ed06691a3d5b0",
+    "doc-9e92fd928a60601b",
+    "doc-c10b06a193a4f072"
+  ]
+}

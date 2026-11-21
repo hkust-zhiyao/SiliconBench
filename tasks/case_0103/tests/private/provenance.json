@@ -1,0 +1,29 @@
+{
+  "case_id": "case_0103",
+  "repo_id": "repo_43",
+  "upstream": "https://github.com/ZipCPU/wb2axip",
+  "commit": "2e8d3bc2d26ddc33d1881022a2a2b9d3f0c16b9b",
+  "archive_sha256": "caf1887f6de8cf2de76c9df64d7ea1f1f41127bdd70aff832ad4074e7f553090",
+  "license": "Apache-2.0 (see public/code/LICENSE) and Nangate45 Open Cell Library license (see public/lib/LICENSE.Nangate45)",
+  "native_sources": [
+    "rtl/wbm2axisp.v",
+    "rtl/aximwr2wbsp.v",
+    "rtl/aximrd2wbsp.v",
+    "rtl/axim2wbsp.v",
+    "rtl/wbarbiter.v",
+    "rtl/skidbuffer.v",
+    "rtl/sfifo.v",
+    "rtl/axi_addr.v"
+  ],
+  "constructed_sources": [
+    "public/code/wb2axip_bridge_top.v",
+    "public/flow/synth.ys",
+    "public/flow/timing.tcl"
+  ],
+  "tooling": {
+    "simulator": "Verilator 5.038 (--binary --timing)",
+    "synthesis": "Yosys 0.70+286 + ABC (Nangate45 typical Liberty)",
+    "sta": "OpenSTA 3.1.0"
+  },
+  "limits": "Selected WB2AXIP 32-to-64 wbm2axisp and 32-bit axim2wbsp (C_AXI_ID_WIDTH=6, LGFIFO=3) bridge subsystem; ideal-wire OpenSTA timing closure at typical corner."
+}

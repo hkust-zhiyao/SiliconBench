@@ -1,0 +1,57 @@
+version = "1.0"
+
+[metadata]
+task_id = "case_2008"
+title = "Ibex Scrambling Two-Way ICache, IF Stage, Compressed Decoder, and Transparent Channel Timing Budgets"
+repository = "lowRISC/ibex"
+repo_id = "repo_02"
+split = "test"
+eda_stage = "stage3_sta_cdc"
+eda_stage_name = "Stage 3: Static Timing (STA) & CDC/RDC Closure"
+problem_type = "PT3_Timing_Area_PPA_Closure"
+problem_type_label = "High-Frequency Timing & Area Optimization"
+primary_domain = "gatelevel_physical_effects"
+domains = ["gatelevel_physical_effects", "parameters_widths", "rtl_integration", "rtl_semantics", "sdc_sta"]
+public_rtl_files = 28
+public_rtl_loc = 10110
+editable_files_count = 4
+editable_loc = 3266
+
+[agent]
+timeout_sec = 5400
+
+[environment]
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+workdir = "/workspace"
+allow_internet = false
+cpus = 4
+memory_mb = 16384
+
+[environment.variables]
+OMP_NUM_THREADS = "1"
+OPENBLAS_NUM_THREADS = "1"
+MKL_NUM_THREADS = "1"
+MAKEFLAGS = "-j1"
+SILICONBENCH_TOOLS = "/opt/siliconbench/tools"
+SILICONBENCH_NANGATE45 = "/opt/siliconbench/pdk/Nangate45"
+
+[verifier]
+environment_mode = "separate"
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+timeout_sec = 600
+entrypoint = "/tests/test.sh"
+reward_file = "/logs/verifier/reward.txt"
+reward_json = "/logs/verifier/reward.json"
+
+[verifier.environment]
+allow_internet = false
+
+[siliconbench]
+allowed_edits = ["code/ibex_icache.sv", "code/ibex_if_stage.sv", "code/ibex_compressed_decoder.sv", "constraints.json"]
+pdk_id = "custom_multicorner_liberty"
+pdk_name = "Task-Specific Multi-Corner Liberty & SDC Timing Views"
+pdk_customized = true
+accepts_seed = true
+grading_seeds = [101, 202]

@@ -1,0 +1,128 @@
+{
+  "case_id": "case_24009",
+  "task_id": "case_24009",
+  "version": 1,
+  "title": "Odd/Non-Power-of-Two Channel Generalization, Dynamic Mask Reconfiguration, and 4-State Gate-Level Parity in ADI util_pack",
+  "repo_id": "repo_38",
+  "repository": "analogdevicesinc/hdl",
+  "topic": "parameterized_channel_pack_unpack_sim_synth_parity",
+  "family": "elab_synth_parity",
+  "editable_files": [
+    "code/util_cpack2_impl.v",
+    "code/util_upack2_impl.v",
+    "code/pack_shell.v",
+    "code/pack_ctrl.v",
+    "code/pack_network.v"
+  ],
+  "grading": {
+    "eda_class": "heavy",
+    "grader_timeout_seconds": 360,
+    "verifier_timeout_seconds": 720,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_24009",
+    "version": 1,
+    "frozen_utc": "2026-11-11T21:00:54.799120+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/util_cpack2_impl.v",
+      "code/util_upack2_impl.v",
+      "code/pack_shell.v",
+      "code/pack_ctrl.v",
+      "code/pack_network.v"
+    ],
+    "public_hashes": {
+      "BUILD.md": "584e6c7898b684c1121d3be46071487e0c03f45e84b6132eea6a00e74b4f1c8f",
+      "code/LICENSE_ADIBSD": "c090bb95dddea392c9aec4422df46f2b2d8511067058272700b169ecf3b0d40b",
+      "code/LICENSE_GPL2": "d982acba4653bb8267df569bb9f403a2f4ccf6a11d60f74aa4235229238e82cf",
+      "code/ad_perfect_shuffle.v": "408b78bdcbefde5c9941474e317f8d37eb83f8a20dddf677cffc9d05dec3145e",
+      "code/pack_ctrl.v": "493af92ef444957b3acdc237214e3552bdd1a7241ad8003887a0a665abe44f45",
+      "code/pack_interconnect.v": "dd2bef5b94d2aaf19ff9cec541f8ec23b43c1015bcf13285c7eb42b5d9443284",
+      "code/pack_network.v": "f0c48c1a474ec0896e1745edf206663802cf7713b56a2ac079787316252f495a",
+      "code/pack_shell.v": "687015da245eaa9867f81226d491a91d2a15e8c498061a43bd1fb9212c9037e2",
+      "code/util_cpack2_impl.v": "711e1403f420be5cd58dac7bbfd9d1af2bf6e36e12eeeca20fc22a5c3e0eeec4",
+      "code/util_pipeline_stage.v": "c2c3b9303533319052e6432ff94222ce3ed4f31f5c086fb045a47a2c8bac8998",
+      "code/util_upack2_impl.v": "a1692cacdcd314763f016f5e257611f87ead75e0b96a635e4a71b828bce6b36f",
+      "issue.md": "186b2a2fbadcbdbf9171f9b814b23ad4d28d3243b80412e9dd9ccb61f834c3e5",
+      "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+      "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+    },
+    "gold_hashes": {
+      "code/LICENSE_ADIBSD": "c090bb95dddea392c9aec4422df46f2b2d8511067058272700b169ecf3b0d40b",
+      "code/LICENSE_GPL2": "d982acba4653bb8267df569bb9f403a2f4ccf6a11d60f74aa4235229238e82cf",
+      "code/ad_perfect_shuffle.v": "408b78bdcbefde5c9941474e317f8d37eb83f8a20dddf677cffc9d05dec3145e",
+      "code/pack_ctrl.v": "7746dc31fbba052b0d815e990ecc14162bb6ef70b5c871881e85a0d2ba35d3ef",
+      "code/pack_interconnect.v": "dd2bef5b94d2aaf19ff9cec541f8ec23b43c1015bcf13285c7eb42b5d9443284",
+      "code/pack_network.v": "f0c48c1a474ec0896e1745edf206663802cf7713b56a2ac079787316252f495a",
+      "code/pack_shell.v": "02ae70c6cf48a60ffa5ce661d77e4daaddee47e2db120c9ff30e3298924a64b6",
+      "code/util_cpack2_impl.v": "ef09ecbed7ae97160e8a76a6ad318970a00cc8bdebd31d055aa8dd8d26490108",
+      "code/util_pipeline_stage.v": "c2c3b9303533319052e6432ff94222ce3ed4f31f5c086fb045a47a2c8bac8998",
+      "code/util_upack2_impl.v": "84573e515355980a630d28cf1781e79d5cb84a7fb715455ac208bd3acf54b408"
+    },
+    "grader_hashes": {
+      "run.py": "9ffa1f85895e986c55739ca74fbee6dcebe78bb4f572ffcff22c08722fe88ef2"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 2,
+      "wrong_fix_fail_runs": 4,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 12,
+      "mutant_total": 12
+    }
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT4_GateLevel_Security_CDC",
+  "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+  "primary_domain": "HighSpeed_AXI_NIC_Cache_DMA",
+  "multi_domains": [
+    "HighSpeed_AXI_NIC_Cache_DMA"
+  ],
+  "pdk_profile": {
+    "pdk_id": "custom_multicorner_liberty",
+    "pdk_name": "Task-Specific Multi-Corner Liberty & SDC Timing Views",
+    "location": "Task-bundled in environment/public/ and tests/private/",
+    "customized": true,
+    "notes": "Custom characterized fast/slow/scan corner Liberty libraries for multi-mode OpenSTA closure."
+  },
+  "public_hashes": {
+    "BUILD.md": "584e6c7898b684c1121d3be46071487e0c03f45e84b6132eea6a00e74b4f1c8f",
+    "code/LICENSE_ADIBSD": "c090bb95dddea392c9aec4422df46f2b2d8511067058272700b169ecf3b0d40b",
+    "code/LICENSE_GPL2": "d982acba4653bb8267df569bb9f403a2f4ccf6a11d60f74aa4235229238e82cf",
+    "code/ad_perfect_shuffle.v": "408b78bdcbefde5c9941474e317f8d37eb83f8a20dddf677cffc9d05dec3145e",
+    "code/pack_ctrl.v": "493af92ef444957b3acdc237214e3552bdd1a7241ad8003887a0a665abe44f45",
+    "code/pack_interconnect.v": "dd2bef5b94d2aaf19ff9cec541f8ec23b43c1015bcf13285c7eb42b5d9443284",
+    "code/pack_network.v": "f0c48c1a474ec0896e1745edf206663802cf7713b56a2ac079787316252f495a",
+    "code/pack_shell.v": "687015da245eaa9867f81226d491a91d2a15e8c498061a43bd1fb9212c9037e2",
+    "code/util_cpack2_impl.v": "711e1403f420be5cd58dac7bbfd9d1af2bf6e36e12eeeca20fc22a5c3e0eeec4",
+    "code/util_pipeline_stage.v": "c2c3b9303533319052e6432ff94222ce3ed4f31f5c086fb045a47a2c8bac8998",
+    "code/util_upack2_impl.v": "a1692cacdcd314763f016f5e257611f87ead75e0b96a635e4a71b828bce6b36f",
+    "issue.md": "186b2a2fbadcbdbf9171f9b814b23ad4d28d3243b80412e9dd9ccb61f834c3e5",
+    "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+    "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 2,
+    "wrong_fix_fail_runs": 4,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 12,
+    "mutant_total": 12
+  }
+}

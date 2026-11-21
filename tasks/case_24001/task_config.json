@@ -1,0 +1,114 @@
+{
+  "case_id": "case_24001",
+  "task_id": "case_24001",
+  "version": 1,
+  "title": "Enforce Lockstep Bidirectional Isolation and One-Sided Reset Re-Entry in Croc CDC Reset Controller",
+  "repo_id": "repo_15",
+  "repository": "pulp-platform/croc",
+  "topic": "cdc_rdc_synchronization",
+  "family": "functional",
+  "editable_files": [
+    "code/cdc_reset_ctrlr.sv"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_24001",
+    "version": 1,
+    "frozen_utc": "2026-11-11T14:51:17.696454+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/cdc_reset_ctrlr.sv"
+    ],
+    "public_hashes": {
+      "BUILD.md": "8791a0f1ccb723627ac25b38bb0a125ef7dfb7505523f11991186e849235d4cc",
+      "code/LICENSE": "b8c7c1f303fd357d83b6572a0b03157e4e4ab20dade3628146baaeffaed7519e",
+      "code/cdc_4phase.sv": "6ba8ed945b14d4107b2dd55aa17c3f9644dc4e4ce51c4920c0829e8b3c32d5ee",
+      "code/cdc_reset_ctrlr.sv": "a56cdd3399481ddd7fb115fb5a9d6e83b33e8591a808f54b307a24e2fc3b2e2a",
+      "code/cdc_reset_ctrlr_pkg.sv": "6aa61392209fd23d5b25684b693a7c0a6369c0b4fb403b3276970f2cac2c660a",
+      "code/common_cells/assertions.svh": "d39c7afa893656e235b0019233c1bcf12491cd421639791c827cc53236bd4841",
+      "code/spill_register.sv": "97bf85128f538c54c749896b8eee5fcfe4b27c16845d2a17990979a63b09f2ec",
+      "code/spill_register_flushable.sv": "3285eb2e557f6377de88df91751b0bccdad07b16be9d926314a52a23e964f02c",
+      "code/sync.sv": "cc7605468d124b0af0d4b2d17323ade1f4093bc96999fab037b9dacac5fe5956",
+      "issue.md": "b9b873e3d1c9c59b7b6bfad8cab041c67696227ce4633f2ad3a5d7dc3b193a57"
+    },
+    "gold_hashes": {
+      "code/LICENSE": "b8c7c1f303fd357d83b6572a0b03157e4e4ab20dade3628146baaeffaed7519e",
+      "code/cdc_4phase.sv": "6ba8ed945b14d4107b2dd55aa17c3f9644dc4e4ce51c4920c0829e8b3c32d5ee",
+      "code/cdc_reset_ctrlr.sv": "5e8d4dfd5cdee3efa2f1571347ae9564a0e79f979aa6bb3ab2f229a26971fb7a",
+      "code/cdc_reset_ctrlr_pkg.sv": "6aa61392209fd23d5b25684b693a7c0a6369c0b4fb403b3276970f2cac2c660a",
+      "code/common_cells/assertions.svh": "d39c7afa893656e235b0019233c1bcf12491cd421639791c827cc53236bd4841",
+      "code/spill_register.sv": "97bf85128f538c54c749896b8eee5fcfe4b27c16845d2a17990979a63b09f2ec",
+      "code/spill_register_flushable.sv": "3285eb2e557f6377de88df91751b0bccdad07b16be9d926314a52a23e964f02c",
+      "code/sync.sv": "cc7605468d124b0af0d4b2d17323ade1f4093bc96999fab037b9dacac5fe5956"
+    },
+    "grader_hashes": {
+      "run.py": "42f2d2b561a2195afa7093feb2c576491bfbb78d960f5b339895ded185bc8297"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 2,
+      "wrong_fix_fail_runs": 4,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 12,
+      "mutant_total": 12
+    },
+    "test_hashes": {
+      "tb.sv": "83e83e3e069be6cef71429da54d0b3a050ab3c85a017000cb1ae964decfdc8c3"
+    },
+    "grader_revalidated_utc": "2026-11-13T20:03:55.623117+00:00"
+  },
+  "eda_stage": "stage2_synth_gate",
+  "eda_stage_name": "Stage 2: Logic Synthesis & Gate-Level Verification",
+  "eda_track": "stage2_synth_gate",
+  "eda_track_name": "Stage 2: Logic Synthesis & Gate-Level Verification",
+  "problem_type": "PT4_GateLevel_Security_CDC",
+  "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+  "primary_domain": "MultiCore_SoCs_and_NoC",
+  "multi_domains": [
+    "MultiCore_SoCs_and_NoC"
+  ],
+  "pdk_profile": {
+    "pdk_id": "rtl_dual_sim_standard",
+    "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+    "location": "Unified base image (/opt/siliconbench/tools)",
+    "customized": false,
+    "notes": "Pure RTL/protocol/synthesis check without external PDK Liberty files."
+  },
+  "public_hashes": {
+    "BUILD.md": "8791a0f1ccb723627ac25b38bb0a125ef7dfb7505523f11991186e849235d4cc",
+    "code/LICENSE": "b8c7c1f303fd357d83b6572a0b03157e4e4ab20dade3628146baaeffaed7519e",
+    "code/cdc_4phase.sv": "6ba8ed945b14d4107b2dd55aa17c3f9644dc4e4ce51c4920c0829e8b3c32d5ee",
+    "code/cdc_reset_ctrlr.sv": "a56cdd3399481ddd7fb115fb5a9d6e83b33e8591a808f54b307a24e2fc3b2e2a",
+    "code/cdc_reset_ctrlr_pkg.sv": "6aa61392209fd23d5b25684b693a7c0a6369c0b4fb403b3276970f2cac2c660a",
+    "code/common_cells/assertions.svh": "d39c7afa893656e235b0019233c1bcf12491cd421639791c827cc53236bd4841",
+    "code/spill_register.sv": "97bf85128f538c54c749896b8eee5fcfe4b27c16845d2a17990979a63b09f2ec",
+    "code/spill_register_flushable.sv": "3285eb2e557f6377de88df91751b0bccdad07b16be9d926314a52a23e964f02c",
+    "code/sync.sv": "cc7605468d124b0af0d4b2d17323ade1f4093bc96999fab037b9dacac5fe5956",
+    "issue.md": "b9b873e3d1c9c59b7b6bfad8cab041c67696227ce4633f2ad3a5d7dc3b193a57"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 2,
+    "wrong_fix_fail_runs": 4,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 12,
+    "mutant_total": 12
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "case_id": "case_20011",
+  "obligations": [
+    {
+      "id": "REQ-SV32-BARE-PTE-SUPERPAGE-PERM",
+      "behavior": "Bare bypass when satp.MODE==0, superpage PPN[0]!=0 fault, reserved R=0/W=1 fault, L2 non-leaf fault, A/D bits, and U/S SUM+MXR checks.",
+      "public_source": "public/issue.md item 1",
+      "verified_by": [
+        "Test0",
+        "Test1",
+        "Test3",
+        "Test4",
+        "wf2_missing_superpage_alignment_fault",
+        "m01_ifetch_ignores_satp_mode_bare",
+        "m02_rsvd_write_without_read_allowed",
+        "m03_accessed_bit_zero_ignored_on_load",
+        "m04_dirty_bit_zero_ignored_on_store",
+        "m05_umode_mxr_disallowed_on_exec_only_load",
+        "m06_smode_sum_ignored_on_load",
+        "m07_smode_exec_allowed_on_user_page",
+        "m08_ptw_bus_error_all_ones_treated_as_valid"
+      ]
+    },
+    {
+      "id": "REQ-PTW-VA-STABILITY-AND-SFENCE",
+      "behavior": "Latched VA throughout PTW, single-walk ITLB install, and SFENCE.VMA suppression of in-flight PTW stale installation.",
+      "public_source": "public/issue.md item 2",
+      "verified_by": [
+        "Test2",
+        "Test5",
+        "wf1_inflight_ptw_va_drift",
+        "wf3_sfence_inflight_walk_stale_install"
+      ]
+    },
+    {
+      "id": "REQ-INORDER-FAULT-AND-DSIDE-HOLD",
+      "behavior": "Stalled D-side request retention and serialization of younger I/D page faults behind older in-flight downstream cache accesses.",
+      "public_source": "public/issue.md item 3",
+      "verified_by": [
+        "Test3a",
+        "Test6",
+        "wf4_out_of_order_dside_fault_collision",
+        "m09_iside_fault_collides_with_inflight_icache",
+        "m10_dside_pulse_request_lost_on_ptw_stall"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+version = "1.0"
+
+[metadata]
+task_id = "case_22003"
+title = "Ara Lane Integer VMFPU and SIMD Divider Masked-Element Fast-Skip, Multi-Phase Descriptor Decoupling, and Nangate45 PPA/STA Closure"
+repository = "pulp-platform/ara"
+repo_id = "repo_19"
+split = "test"
+eda_stage = "stage3_sta_cdc"
+eda_stage_name = "Stage 3: Static Timing (STA) & CDC/RDC Closure"
+problem_type = "PT3_Timing_Area_PPA_Closure"
+problem_type_label = "High-Frequency Timing & Area Optimization"
+primary_domain = "Vector_GPU_NPU_Accelerators"
+domains = ["Vector_GPU_NPU_Accelerators"]
+public_rtl_files = 21
+public_rtl_loc = 10260
+editable_files_count = 2
+editable_loc = 2800
+
+[agent]
+timeout_sec = 5400
+
+[environment]
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+workdir = "/workspace"
+allow_internet = false
+cpus = 4
+memory_mb = 16384
+
+[environment.variables]
+OMP_NUM_THREADS = "1"
+OPENBLAS_NUM_THREADS = "1"
+MKL_NUM_THREADS = "1"
+MAKEFLAGS = "-j1"
+SILICONBENCH_TOOLS = "/opt/siliconbench/tools"
+SILICONBENCH_NANGATE45 = "/opt/siliconbench/pdk/Nangate45"
+
+[verifier]
+environment_mode = "separate"
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+timeout_sec = 960
+entrypoint = "/tests/test.sh"
+reward_file = "/logs/verifier/reward.txt"
+reward_json = "/logs/verifier/reward.json"
+
+[verifier.environment]
+allow_internet = false
+
+[siliconbench]
+allowed_edits = ["code/vmfpu.sv", "code/simd_div.sv"]
+pdk_id = "ihp_sg13g2_130nm_8sram"
+pdk_name = "IHP SG13G2 130nm Open PDK + RM_IHPSG13_1P Hard-SRAM Macros"
+pdk_customized = true
+accepts_seed = true
+grading_seeds = [101, 202]

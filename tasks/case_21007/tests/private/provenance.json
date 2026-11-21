@@ -1,0 +1,30 @@
+{
+  "case_id": "case_21007",
+  "slot_id": "builder_02_smartnic_axi_fabric__P07",
+  "blueprint_id": "bp_s02_020",
+  "repo_id": "repo_40",
+  "origin": "https://github.com/alexforencich/verilog-axi",
+  "commit": "516bd5dadc3365b7f9e225d2af8fe0b8d804fe53",
+  "archive_sha256": "1ab8b3f0320c3757d968f86cc79ad42968e378bab22d045a6cd8ca6c6a3b6676",
+  "license": "MIT; see public/code/COPYING",
+  "native_sources": [
+    "snapshot/rtl/axi_crossbar.v",
+    "snapshot/rtl/axi_crossbar_addr.v",
+    "snapshot/rtl/axi_crossbar_rd.v",
+    "snapshot/rtl/axi_crossbar_wr.v",
+    "snapshot/rtl/arbiter.v",
+    "snapshot/rtl/axi_register_rd.v",
+    "snapshot/rtl/axi_register_wr.v",
+    "snapshot/rtl/priority_encoder.v"
+  ],
+  "editable_files": [
+    "code/axi_crossbar.v",
+    "code/axi_crossbar_addr.v",
+    "code/axi_crossbar_rd.v",
+    "code/axi_crossbar_wr.v",
+    "code/arbiter.v"
+  ],
+  "qualification": "upstream/repo_40",
+  "build_scope": "4x2 full AXI4 crossbar verified across Icarus Verilog 13.0, Verilator 5.038 (--binary --timing), and Yosys 0.70+286 synthesis & latch-free verification.",
+  "tool": "Icarus Verilog 13.0 + Verilator 5.038 + Yosys 0.70+286"
+}

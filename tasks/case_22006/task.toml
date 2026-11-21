@@ -1,0 +1,57 @@
+version = "1.0"
+
+[metadata]
+task_id = "case_22006"
+title = "RedMulE CORE-V-XIF Speculative Matrix ISA Offload, Split Operand Assembly, and Queued Controller Synchronization"
+repository = "pulp-platform/redmule"
+repo_id = "repo_30"
+split = "test"
+eda_stage = "stage1_rtl_sim"
+eda_stage_name = "Stage 1: Frontend RTL Design & Functional Simulation"
+problem_type = "PT2_New_Feature_ISA_Impl"
+problem_type_label = "New ISA & Subsystem Feature Implementation"
+primary_domain = "Vector_GPU_NPU_Accelerators"
+domains = ["Vector_GPU_NPU_Accelerators"]
+public_rtl_files = 15
+public_rtl_loc = 3274
+editable_files_count = 2
+editable_loc = 694
+
+[agent]
+timeout_sec = 5400
+
+[environment]
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+workdir = "/workspace"
+allow_internet = false
+cpus = 4
+memory_mb = 16384
+
+[environment.variables]
+OMP_NUM_THREADS = "1"
+OPENBLAS_NUM_THREADS = "1"
+MKL_NUM_THREADS = "1"
+MAKEFLAGS = "-j1"
+SILICONBENCH_TOOLS = "/opt/siliconbench/tools"
+SILICONBENCH_NANGATE45 = "/opt/siliconbench/pdk/Nangate45"
+
+[verifier]
+environment_mode = "separate"
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+timeout_sec = 720
+entrypoint = "/tests/test.sh"
+reward_file = "/logs/verifier/reward.txt"
+reward_json = "/logs/verifier/reward.json"
+
+[verifier.environment]
+allow_internet = false
+
+[siliconbench]
+allowed_edits = ["code/redmule_inst_decoder.sv", "code/redmule_ctrl.sv"]
+pdk_id = "rtl_dual_sim_standard"
+pdk_name = "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang"
+pdk_customized = false
+accepts_seed = true
+grading_seeds = [101, 202]

@@ -1,0 +1,16 @@
+{
+  "obligations": [
+    {
+      "obligation": "Expand ND transfers with shared stride adders, gate nd_rsp_valid_o on burst_rsp_i.last, and reject zero-repetition transfers with ND_MIDEND error while suppressing burst_req_valid_o",
+      "source": "public/issue.md"
+    },
+    {
+      "obligation": "Compute remaining bytes to the clamped virtual page boundary and split coupled/decoupled R/W bursts with flush_i and kill_i support",
+      "source": "public/issue.md"
+    },
+    {
+      "obligation": "Achieve Nangate45 mapped area <= 3680.0 um^2 and OpenROAD setup/hold slack >= 0.0 ns at 2.70 ns clock period",
+      "source": "public/issue.md"
+    }
+  ]
+}

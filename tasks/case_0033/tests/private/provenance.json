@@ -1,0 +1,13 @@
+{
+  "case_id": "case_0033",
+  "repo_id": "repo_11",
+  "upstream_url": "https://github.com/bespoke-silicon-group/bsg_manycore",
+  "commit": "0052ce8594864befae2b85d55193706c88b14584",
+  "basejump_stl_commit": "c9710312482ddd725e14b26eafdcbf3c629dc14c",
+  "license": "Solderpad Hardware License 0.51; Nangate45 Open Cell Library License",
+  "editable_files": [
+    "code/lsu.sv",
+    "code/network_tx.sv",
+    "code/bsg_manycore_endpoint_standard.sv"
+  ]
+}

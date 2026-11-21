@@ -1,0 +1,14 @@
+{
+  "case_id": "case_10012",
+  "repo_id": "repo_10",
+  "upstream": "https://github.com/princetonuniversity/openpiton",
+  "commit": "1c6bfd2d2ea53ddd7b6f933fa2d439d1a540e207",
+  "license": "BSD-3-Clause; Nangate45 Apache-2.0 / Si2 Open Cell Library License",
+  "native_source": "piton/design/chipset/io_xbar/dynamic/rtl/io_xbar_input_route_request_calc.v.pyv, piton/design/chipset/io_xbar/dynamic/rtl/io_xbar_input_control.v.pyv, piton/design/chipset/io_xbar/dynamic/rtl/io_xbar_output_control.v.pyv",
+  "tooling": {
+    "simulator": "Icarus Verilog 13",
+    "synthesis": "Yosys 0.70+286 with Slang frontend and ABC",
+    "timing": "OpenROAD 26Q2 OpenSTA"
+  },
+  "oracle": "Icarus Verilog simulation of io_xbar_input_control, io_xbar_output_control, and io_xbar_output_top, followed by Yosys/Slang synthesis to Nangate45 and OpenROAD STA at 0.85 ns."
+}

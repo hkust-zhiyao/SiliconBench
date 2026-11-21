@@ -1,0 +1,16 @@
+{
+  "case_id": "case_5010",
+  "repo_id": "repo_05",
+  "upstream_url": "https://github.com/openhwfoundation/cva6",
+  "commit": "81245a47fad8fe1a5d562d953ef2662e099def76",
+  "license": "SHL-0.51",
+  "source_paths": [
+    "core/cache_subsystem/cva6_icache.sv",
+    "core/cache_subsystem/cva6_icache_axi_wrapper.sv",
+    "core/axi_shim.sv"
+  ],
+  "benchmark_construction": {
+    "relationship_to_upstream": "multi_module_protocol_and_ppa_closure",
+    "source_distinction": "While inspired by stage-1 corpus observations on ungranted request payload toggling (doc-51fcf1f7d11b99fb, where toggling only wasted dynamic power), read-return stall handshakes (doc-1e32ca3765d0cb27), and AXI domain ordering/timing (doc-f7cb249afaf70ebf), the four concrete obligations in this task\u2014S1/S2 kill recovery in cva6_icache.sv, AXI4 AR payload stability under backpressure in cva6_icache_axi_wrapper.sv, burst write AW/W handshake in axi_shim.sv, and technology-independent RTL area/timing closure (<= 8,200.0 um^2 at 2.10 ns in Nangate45)\u2014are defined by the CVA6 subsystem and AXI4 contract."
+  }
+}

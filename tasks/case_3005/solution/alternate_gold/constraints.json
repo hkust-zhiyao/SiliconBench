@@ -1,0 +1,50 @@
+{
+  "max_delays": [
+    {
+      "from": [
+        "fpu_rm_in[0]",
+        "fpu_rm_in[1]",
+        "fpu_rm_in[2]",
+        "fpu_rm_in[3]",
+        "fpu_rm_in[4]",
+        "fpu_rm_in[5]",
+        "fpu_rm_in[6]",
+        "fpu_rm_in[7]"
+      ],
+      "to": [
+        "fpu_rm_out[0]",
+        "fpu_rm_out[1]",
+        "fpu_rm_out[2]",
+        "fpu_rm_out[3]",
+        "fpu_rm_out[4]",
+        "fpu_rm_out[5]",
+        "fpu_rm_out[6]",
+        "fpu_rm_out[7]"
+      ],
+      "ns": 7.1
+    },
+    {
+      "from": [
+        "hart_ctrl_in[0]",
+        "hart_ctrl_in[1]",
+        "hart_ctrl_in[2]",
+        "hart_ctrl_in[3]",
+        "hart_ctrl_in[4]",
+        "hart_ctrl_in[5]",
+        "hart_ctrl_in[6]",
+        "hart_ctrl_in[7]"
+      ],
+      "to": [
+        "hart_ctrl_out[0]",
+        "hart_ctrl_out[1]",
+        "hart_ctrl_out[2]",
+        "hart_ctrl_out[3]",
+        "hart_ctrl_out[4]",
+        "hart_ctrl_out[5]",
+        "hart_ctrl_out[6]",
+        "hart_ctrl_out[7]"
+      ],
+      "ns": 7.85
+    }
+  ]
+}

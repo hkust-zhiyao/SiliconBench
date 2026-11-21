@@ -1,0 +1,148 @@
+{
+  "clocks": {
+    "clk": {
+      "period_ns": 10.0,
+      "waveform_ns": [
+        0.0,
+        5.0
+      ]
+    }
+  },
+  "clock_groups": [],
+  "false_paths": [],
+  "input_delays": [
+    {
+      "clock": "clk",
+      "delay_ns": 0.2,
+      "ports": [
+        "rst_l",
+        "scan_mode",
+        "clk_override",
+        "dec_ib3_valid_d",
+        "dec_ib2_valid_d",
+        "dec_ib0_valid_eff_d",
+        "dec_ib1_valid_eff_d",
+        "exu_flush_final",
+        "dec_tlu_flush_err_wb",
+        "dec_tlu_flush_noredir_wb",
+        "dec_tlu_dbg_halted",
+        "dec_tlu_pmu_fw_halted",
+        "exu_flush_path_final",
+        "exu_flush_upper_e2",
+        "dec_tlu_mrac_ff",
+        "dec_tlu_bpred_disable",
+        "dec_tlu_core_ecc_disable",
+        "ic_hit_f2",
+        "ic_crit_wd_rdy",
+        "ic_write_stall",
+        "ic_dma_active",
+        "dma_iccm_stall_any",
+        "ifu_ic_mb_empty",
+        "ifu_fb_consume1_ext_nc",
+        "ic_fetch_val_f2",
+        "ic_data_f2",
+        "ic_access_fault_f2",
+        "ic_rd_parity_final_err",
+        "iccm_rd_ecc_single_err",
+        "iccm_rd_ecc_double_err",
+        "ic_error_f2",
+        "ifu_icache_fetch_f2",
+        "exu_mp_pkt",
+        "exu_mp_eghr",
+        "dec_tlu_br0_wb_pkt",
+        "dec_tlu_br1_wb_pkt",
+        "dec_tlu_flush_lower_wb",
+        "dec_tlu_flush_leak_one_wb",
+        "exu_rets_e1_pkt",
+        "exu_rets_e4_pkt",
+        "exu_i0_br_ret_e4",
+        "exu_i1_br_ret_e4",
+        "exu_i0_br_call_e4",
+        "exu_i1_br_call_e4",
+        "ghr_in",
+        "ras_in"
+      ]
+    }
+  ],
+  "output_delays": [
+    {
+      "clock": "clk",
+      "delay_ns": 0.2,
+      "ports": [
+        "ifc_fetch_addr_f1",
+        "ifc_fetch_addr_f2",
+        "ifc_fetch_req_f1",
+        "ifc_fetch_req_f1_raw",
+        "ifc_fetch_req_f2",
+        "ifc_fetch_uncacheable_f1",
+        "ifc_iccm_access_f1",
+        "ifc_region_acc_fault_f1",
+        "ifc_dma_access_ok",
+        "ifu_pmu_fetch_stall",
+        "ifu_bp_kill_next_f2",
+        "ifu_bp_btb_target_f2",
+        "ifu_bp_inst_mask_f2",
+        "ifu_bp_hist1_f2",
+        "ifu_bp_hist0_f2",
+        "ifu_bp_poffset_f2",
+        "ifu_bp_ret_f2",
+        "ifu_bp_pc4_f2",
+        "ifu_bp_valid_f2",
+        "ifu_bp_fghr_f2",
+        "ifu_i0_valid",
+        "ifu_i1_valid",
+        "ifu_i0_icaf",
+        "ifu_i1_icaf",
+        "ifu_i0_icaf_second",
+        "ifu_i1_icaf_second",
+        "ifu_i0_perr",
+        "ifu_i1_perr",
+        "ifu_i0_sbecc",
+        "ifu_i1_sbecc",
+        "ifu_i0_dbecc",
+        "ifu_i1_dbecc",
+        "ifu_i0_instr",
+        "ifu_i1_instr",
+        "ifu_i0_pc",
+        "ifu_i1_pc",
+        "ifu_i0_pc4",
+        "ifu_i1_pc4",
+        "ifu_i0_cinst",
+        "ifu_i1_cinst",
+        "ifu_fb_consume1",
+        "ifu_fb_consume2",
+        "ifu_illegal_inst",
+        "i0_brp",
+        "i1_brp",
+        "ifu_pmu_instr_aligned",
+        "ifu_pmu_align_stall",
+        "ifu_icache_error_index",
+        "ifu_icache_error_val",
+        "ifu_icache_sb_error_val",
+        "ghr_out",
+        "ras_out"
+      ]
+    }
+  ],
+  "max_delays": [
+    {
+      "from": [
+        "ghr_in"
+      ],
+      "to": [
+        "ghr_out"
+      ],
+      "delay_ns": 2.4
+    },
+    {
+      "from": [
+        "ras_in"
+      ],
+      "to": [
+        "ras_out"
+      ],
+      "delay_ns": 2.4
+    }
+  ],
+  "multicycle_paths": []
+}

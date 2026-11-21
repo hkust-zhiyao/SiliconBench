@@ -1,0 +1,158 @@
+{
+  "case_id": "case_23010",
+  "task_id": "case_23010",
+  "version": 1,
+  "title": "CACC Asymmetric 8-SRAM Accumulator RMW Pipeline & Physical Macro Co-Design",
+  "repo_id": "repo_36",
+  "repository": "nvdla/hw",
+  "topic": "native_sdc_sta_and_macro_pnr",
+  "family": "physical_implementation",
+  "editable_files": [
+    "code/NV_NVDLA_CACC_assembly_ctrl.v",
+    "code/NV_NVDLA_CACC_assembly_buffer.v",
+    "code/NV_NVDLA_CACC_delivery_buffer.v",
+    "plan/macro_placement.json",
+    "constraints/cacc_subsys.sdc"
+  ],
+  "grading": {
+    "eda_class": "heavy",
+    "grader_timeout_seconds": 900,
+    "verifier_timeout_seconds": 1800,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_23010",
+    "version": 1,
+    "frozen_utc": "2026-11-12T09:56:02.642302+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/NV_NVDLA_CACC_assembly_ctrl.v",
+      "code/NV_NVDLA_CACC_assembly_buffer.v",
+      "code/NV_NVDLA_CACC_delivery_buffer.v",
+      "plan/macro_placement.json",
+      "constraints/cacc_subsys.sdc"
+    ],
+    "public_hashes": {
+      "BUILD.md": "679e627a1d84558ccc96201e588ab7826f926606fbf35a24ac25e18dc10cfaac",
+      "code/LICENSE": "0f232029d97359752ac8a67f20e5fd6a703bb3af80f812ebff927a059a84cccb",
+      "code/NV_DW_lsd.v": "e35345ccf2c3e807daa0648ffd030ded37da5733823ec61c5ce5c8bd55d0ab3a",
+      "code/NV_NVDLA_CACC_CALC_fp_48b.v": "89459f1ee3d8c297808bd229bb1e995528add1578ea72961ef83beb904e7958e",
+      "code/NV_NVDLA_CACC_CALC_int16.v": "b321ec2e12ac8c7c3a733ff447401b590e3c292a52b6c39b5b565b77cb4dd5e5",
+      "code/NV_NVDLA_CACC_CALC_int8.v": "f82d0468730f29910518fafd744b1b807dfe6e0d3447d17ff312087c6998b765",
+      "code/NV_NVDLA_CACC_assembly_buffer.v": "6104271c8490b008f13e6063f2ee8ee3a4934f6029e6c2641d67e66ba3f99864",
+      "code/NV_NVDLA_CACC_assembly_ctrl.v": "d03febbc3db71f80fe42268220137096aa4445d2c9c67a734f1d5b75cd404a25",
+      "code/NV_NVDLA_CACC_delivery_buffer.v": "9bf823a87e3f70ebbd888651b99d1237ae41c1c42570d71e8ea5c2d74c2db72f",
+      "code/cacc_sram_subsys.v": "5ddcbe6a8a9b304b731611cf002e91d4f1e51ea84aa46be61dd45dcf4f07e688",
+      "constraints/cacc_subsys.sdc": "3748ce6a7032d1f3cb58a84c9ddd9cc330d6a31ad8549db3df11c5902929490b",
+      "issue.md": "a40796216dbb53cd7c390e7203a2e21bcd9697985e0720e58a94114071b6b1f2",
+      "pdk/256.lef": "246405148ef9df63af32d955f20491c4d087678d03cbfec3eb3ad6653fc8d4c3",
+      "pdk/256.lib": "c3eb5ef42af1af7d0f8eb6bc59952f2f6e0f045aff0b5066c028a7a4ff95ae81",
+      "pdk/256.v": "7f4d1d17a64e29b35bdf765d620dcedc5e367c38e95d08f3a80a6793fa2c7126",
+      "pdk/256_stub.v": "4fe2a528def8d0114f778643abec317c323e7d6744089b101a4f75e19b3fe70e",
+      "pdk/LICENSE.IHP": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "pdk/core.v": "e2e43ec0159cbc34662fe91114e8cb03a697a2a829ad63b0d4f06631908ea787",
+      "pdk/sg13g2_stdcell.lef": "9942e96fb5df56b40f1cac30e1b118e88a34c842b3263a9c285077c2801fae2b",
+      "pdk/sg13g2_stdcell_typ_1p20V_25C.lib": "f3b97e2af56e61f340c5b316d9a352fd54afda130841ec528e8bc2c22411a077",
+      "pdk/sg13g2_tech.lef": "3b05b1b0c9752e14d5153a5aa1594e34a883df6b1acaa84af377cef521f76bb9",
+      "plan/macro_placement.json": "d526d66d8f2a6f33a3f5c92dc272a28c509981af43563ea80ad8ad00f1ac41ec"
+    },
+    "gold_hashes": {
+      "code/LICENSE": "0f232029d97359752ac8a67f20e5fd6a703bb3af80f812ebff927a059a84cccb",
+      "code/NV_DW_lsd.v": "e35345ccf2c3e807daa0648ffd030ded37da5733823ec61c5ce5c8bd55d0ab3a",
+      "code/NV_NVDLA_CACC_CALC_fp_48b.v": "89459f1ee3d8c297808bd229bb1e995528add1578ea72961ef83beb904e7958e",
+      "code/NV_NVDLA_CACC_CALC_int16.v": "b321ec2e12ac8c7c3a733ff447401b590e3c292a52b6c39b5b565b77cb4dd5e5",
+      "code/NV_NVDLA_CACC_CALC_int8.v": "f82d0468730f29910518fafd744b1b807dfe6e0d3447d17ff312087c6998b765",
+      "code/NV_NVDLA_CACC_assembly_buffer.v": "42f8284561486283c2b77849de57150fe159be8f124f5cc4f4475990739436e4",
+      "code/NV_NVDLA_CACC_assembly_ctrl.v": "1c784b0f87f1f02406df8c13488e51526ca6b7d680c155e02fdea5b6a9748517",
+      "code/NV_NVDLA_CACC_delivery_buffer.v": "d4c81e337e2bab6b619c8deb13f9df95cd47b00638e126a3f2bad507000f09a7",
+      "code/cacc_sram_subsys.v": "5ddcbe6a8a9b304b731611cf002e91d4f1e51ea84aa46be61dd45dcf4f07e688",
+      "constraints/cacc_subsys.sdc": "931db0491817479d620ee5bcf3689acc6ac1a1bc2d7fc48216b972ee4710f06d",
+      "pdk/256.lef": "246405148ef9df63af32d955f20491c4d087678d03cbfec3eb3ad6653fc8d4c3",
+      "pdk/256.lib": "c3eb5ef42af1af7d0f8eb6bc59952f2f6e0f045aff0b5066c028a7a4ff95ae81",
+      "pdk/256.v": "7f4d1d17a64e29b35bdf765d620dcedc5e367c38e95d08f3a80a6793fa2c7126",
+      "pdk/256_stub.v": "4fe2a528def8d0114f778643abec317c323e7d6744089b101a4f75e19b3fe70e",
+      "pdk/LICENSE.IHP": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "pdk/core.v": "e2e43ec0159cbc34662fe91114e8cb03a697a2a829ad63b0d4f06631908ea787",
+      "pdk/sg13g2_stdcell.lef": "9942e96fb5df56b40f1cac30e1b118e88a34c842b3263a9c285077c2801fae2b",
+      "pdk/sg13g2_stdcell_typ_1p20V_25C.lib": "f3b97e2af56e61f340c5b316d9a352fd54afda130841ec528e8bc2c22411a077",
+      "pdk/sg13g2_tech.lef": "3b05b1b0c9752e14d5153a5aa1594e34a883df6b1acaa84af377cef521f76bb9",
+      "plan/macro_placement.json": "df98854ff35526802e95f63d7f45ba849d511341cfb24975d905a4c4bb3e503d"
+    },
+    "grader_hashes": {
+      "run.py": "4b6b5c26b7906c31394cca99ee9b86d0b13c6ecaa389281750bc52a92fc1d6e6"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 2,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 5,
+      "mutant_killed": 12,
+      "mutant_total": 12
+    },
+    "test_hashes": {
+      "tb_cacc.v": "023be2c298f1aabff3e7bde9d883540c35b200f7d7efc23735171a87328315cb"
+    },
+    "grader_revalidated_utc": "2026-11-16T10:17:42.058352+00:00"
+  },
+  "eda_stage": "stage4_macro_pnr",
+  "eda_stage_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+  "eda_track": "stage4_macro_pnr",
+  "eda_track_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+  "problem_type": "PT5_RTL_HardSRAM_Macro_PnR",
+  "problem_type_label": "RTL + Hard-SRAM Macro Physical Co-Design",
+  "primary_domain": "Vector_GPU_NPU_Accelerators",
+  "multi_domains": [
+    "Vector_GPU_NPU_Accelerators"
+  ],
+  "pdk_profile": {
+    "pdk_id": "ihp_sg13g2_130nm_8sram",
+    "pdk_name": "IHP SG13G2 130nm Open PDK + RM_IHPSG13_1P Hard-SRAM Macros",
+    "location": "Task-bundled in environment/public/pdk/ and tests/private/pdk/",
+    "customized": true,
+    "notes": "Includes task-bundled IHP SG13G2 standard-cell LEF/Liberty and single-port hard-SRAM macro LEF/Liberty/Verilog models."
+  },
+  "public_hashes": {
+    "BUILD.md": "679e627a1d84558ccc96201e588ab7826f926606fbf35a24ac25e18dc10cfaac",
+    "code/LICENSE": "0f232029d97359752ac8a67f20e5fd6a703bb3af80f812ebff927a059a84cccb",
+    "code/NV_DW_lsd.v": "e35345ccf2c3e807daa0648ffd030ded37da5733823ec61c5ce5c8bd55d0ab3a",
+    "code/NV_NVDLA_CACC_CALC_fp_48b.v": "89459f1ee3d8c297808bd229bb1e995528add1578ea72961ef83beb904e7958e",
+    "code/NV_NVDLA_CACC_CALC_int16.v": "b321ec2e12ac8c7c3a733ff447401b590e3c292a52b6c39b5b565b77cb4dd5e5",
+    "code/NV_NVDLA_CACC_CALC_int8.v": "f82d0468730f29910518fafd744b1b807dfe6e0d3447d17ff312087c6998b765",
+    "code/NV_NVDLA_CACC_assembly_buffer.v": "6104271c8490b008f13e6063f2ee8ee3a4934f6029e6c2641d67e66ba3f99864",
+    "code/NV_NVDLA_CACC_assembly_ctrl.v": "d03febbc3db71f80fe42268220137096aa4445d2c9c67a734f1d5b75cd404a25",
+    "code/NV_NVDLA_CACC_delivery_buffer.v": "9bf823a87e3f70ebbd888651b99d1237ae41c1c42570d71e8ea5c2d74c2db72f",
+    "code/cacc_sram_subsys.v": "5ddcbe6a8a9b304b731611cf002e91d4f1e51ea84aa46be61dd45dcf4f07e688",
+    "constraints/cacc_subsys.sdc": "3748ce6a7032d1f3cb58a84c9ddd9cc330d6a31ad8549db3df11c5902929490b",
+    "issue.md": "a40796216dbb53cd7c390e7203a2e21bcd9697985e0720e58a94114071b6b1f2",
+    "pdk/256.lef": "246405148ef9df63af32d955f20491c4d087678d03cbfec3eb3ad6653fc8d4c3",
+    "pdk/256.lib": "c3eb5ef42af1af7d0f8eb6bc59952f2f6e0f045aff0b5066c028a7a4ff95ae81",
+    "pdk/256.v": "7f4d1d17a64e29b35bdf765d620dcedc5e367c38e95d08f3a80a6793fa2c7126",
+    "pdk/256_stub.v": "4fe2a528def8d0114f778643abec317c323e7d6744089b101a4f75e19b3fe70e",
+    "pdk/LICENSE.IHP": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "pdk/core.v": "e2e43ec0159cbc34662fe91114e8cb03a697a2a829ad63b0d4f06631908ea787",
+    "pdk/sg13g2_stdcell.lef": "9942e96fb5df56b40f1cac30e1b118e88a34c842b3263a9c285077c2801fae2b",
+    "pdk/sg13g2_stdcell_typ_1p20V_25C.lib": "f3b97e2af56e61f340c5b316d9a352fd54afda130841ec528e8bc2c22411a077",
+    "pdk/sg13g2_tech.lef": "3b05b1b0c9752e14d5153a5aa1594e34a883df6b1acaa84af377cef521f76bb9",
+    "plan/macro_placement.json": "d526d66d8f2a6f33a3f5c92dc272a28c509981af43563ea80ad8ad00f1ac41ec"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 2,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 5,
+    "mutant_killed": 12,
+    "mutant_total": 12
+  }
+}

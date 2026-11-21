@@ -1,0 +1,35 @@
+{
+  "case_id": "case_21023",
+  "requirements": [
+    {
+      "req_id": "R1_ARP_RX_TX_WIDE_AND_FRAMING",
+      "description": "arp_eth_rx and arp_eth_tx support DATA_WIDTH=8..512 (including 64 and 256 CYCLE_COUNT==1); arp_eth_rx enforces 28 contiguous kept ARP header bytes without ptr wrap-around, ignores L2 padding, latches tuser across all beats, validates HLEN==6 && PLEN==4, and holds busy until tlast.",
+      "verified_by": [
+        "tb.sv:suite1_rx_tx_64_and_256"
+      ]
+    },
+    {
+      "req_id": "R2_ARP_CACHE_COHERENCE_AND_CLEAR",
+      "description": "arp_cache holds query_response_valid/error/mac stable while !query_response_ready, forwards same-cycle/in-flight bucket writes to concurrent queries, and immediately deasserts request ready signals upon clear_cache.",
+      "verified_by": [
+        "tb.sv:suite2_cache_hazards_and_clear"
+      ]
+    },
+    {
+      "req_id": "R3_ARP_ROUTING_SELECTIVE_LEARN_AND_TX_ARB",
+      "description": "arp resolves broadcast (/32 safe), RFC 1112 multicast, on-subnet, and off-subnet/zero-gateway targets; validates sender SPA/SHA and applies RFC 826 selective learning + RFC 5227 probe reply; arbitrates Reply vs Request TX without frame loss or handshake mutation; prioritizes hit over timer==0 and holds arp_response stable.",
+      "verified_by": [
+        "tb.sv:suite3_routing_rfc826_learning",
+        "tb.sv:suite4_tx_arb_retry_timeout_and_wide256"
+      ]
+    },
+    {
+      "req_id": "R4_SYNTH_LATCH_FREE_AND_GL_ZERO_X",
+      "description": "All four modules synthesize without latches or combinational loops at DATA_WIDTH=64 and 256 and pass 4-state gate-level simulation with zero X/Z outputs after rst when initializers and initial blocks are stripped.",
+      "verified_by": [
+        "run.py:yosys_noinit_synth",
+        "tb_gl.sv"
+      ]
+    }
+  ]
+}

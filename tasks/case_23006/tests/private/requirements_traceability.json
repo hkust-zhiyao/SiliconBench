@@ -1,0 +1,46 @@
+{
+  "case_id": "case_23006",
+  "obligations": [
+    {
+      "id": "REQ-PDP-NAN-INGRESS",
+      "behavior": "Gate offline RDMA stream by op_en and flying_mode, flush FP16 NaNs to zero only in FP16 mode when enabled, and report per-layer NaN/Inf input telemetry via 2-bank ping-pong counters.",
+      "public_source": "public/issue.md item 2, public/code/NV_NVDLA_PDP_nan.v",
+      "verified_by": [
+        "private/tests/tb.sv",
+        "wf1_nan_flush_ignores_dtype",
+        "m01_nan_counter_no_cube_end_reset",
+        "m02_nan_no_post_layer_rearm",
+        "m03_nan_allow_rdma_in_flying_mode"
+      ]
+    },
+    {
+      "id": "REQ-PDP-UNIT1D-MULTIPREC",
+      "behavior": "Perform independent INT8/INT16/FP16 MIN/MAX/AVE reductions across 4 cpos sub-beats with FP16 sign-magnitude ordering, NaN propagation, stage-4 write-through forwarding, and right-pad window flush retention.",
+      "public_source": "public/issue.md item 3, public/code/NV_NVDLA_PDP_CORE_unit1d.v",
+      "verified_by": [
+        "private/tests/tb.sv",
+        "wf2_fp16_minmax_twos_comp",
+        "wf3_unit1d_missing_d4_bypass",
+        "m04_unit1d_no_fp16_nan_propagate",
+        "m05_unit1d_int8_coupled_lane_cmp",
+        "m06_unit1d_pooling_size_no_reset",
+        "m07_unit1d_ignore_last_out_flush"
+      ]
+    },
+    {
+      "id": "REQ-PDP-CAL1D-SPLITW-PAD",
+      "behavior": "Orchestrate single-pass and multi-stripe splitw horizontal tiling (K>=S and S>K overlap), right-border flush bubble insertion, and AVE-only 1x..7x pad-value compensation across INT8/INT16/FP16.",
+      "public_source": "public/issue.md item 4, public/code/NV_NVDLA_PDP_CORE_cal1d.v",
+      "verified_by": [
+        "private/tests/tb.sv",
+        "wf4_splitw_left_pad_all_stripes",
+        "wf5_ave_pad_unsigned_zeroext",
+        "m08_cal1d_bigstride_overlap_sign",
+        "m09_cal1d_disable_need_bubble",
+        "m10_cal1d_ignore_small_width_cube",
+        "m11_cal1d_pad_comp_on_maxmin",
+        "m12_cal1d_fp16_ave_pad_zero_tied"
+      ]
+    }
+  ]
+}

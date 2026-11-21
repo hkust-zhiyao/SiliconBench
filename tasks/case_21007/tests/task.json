@@ -1,0 +1,127 @@
+{
+  "case_id": "case_21007",
+  "task_id": "case_21007",
+  "version": 1,
+  "title": "AXI4 Crossbar QoS-Aware Arbitration, Starvation-Bounded Ageing, and High-QoS Reserve Admission",
+  "repo_id": "repo_40",
+  "repository": "alexforencich/verilog-axi",
+  "topic": "interconnect_fabric_rtl",
+  "family": "functional",
+  "flow_scenario": "S1_spec_to_rtl_feature",
+  "coupling_mode": "deep_stage_authentic",
+  "editable_files": [
+    "code/axi_crossbar.v",
+    "code/axi_crossbar_addr.v",
+    "code/axi_crossbar_rd.v",
+    "code/axi_crossbar_wr.v",
+    "code/arbiter.v"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_21007",
+    "version": 1,
+    "frozen_utc": "2026-11-11T15:12:17.382865+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/axi_crossbar.v",
+      "code/axi_crossbar_addr.v",
+      "code/axi_crossbar_rd.v",
+      "code/axi_crossbar_wr.v",
+      "code/arbiter.v"
+    ],
+    "public_hashes": {
+      "BUILD.md": "aba41492baed98198227b6882312aa4edc0d967654eed472cc48e71bdd3d32ba",
+      "code/COPYING": "ba81481b2d63a33e0dce336d9e736130709549feeaf6cd424b34beba712baa50",
+      "code/arbiter.v": "a001507c82843e36e133dea75491fc044f56660fac0aff0127cf3afec7f927e0",
+      "code/axi_crossbar.v": "7195f62f555ad0a28b934d204b3011645e2dc42b0133b5f4389368d837bf234c",
+      "code/axi_crossbar_addr.v": "6ea034e31b9e809908e9e3a229a870abb69a1e279f9b9c1f3b9befce8da0250c",
+      "code/axi_crossbar_rd.v": "fb926ea931ce5020ac64108ca7fbb74afc7107f36ad2acf96bff9f936c61578b",
+      "code/axi_crossbar_wr.v": "81abee72c30535613c3554716e12ff38f0357cd54d84a45f849593cdec8c3b0a",
+      "code/axi_register_rd.v": "63f1bd6f9d72ae28643fd7af3a5d5bcb05d45cbfb290c59c120c327ba49aa575",
+      "code/axi_register_wr.v": "02dd26f56ee04ad834a28e02ef2726852ab527fb23c3a88b377f3ce55a719c4b",
+      "code/priority_encoder.v": "df28220d95b47df349a72803a9751aad331eb8e1435416e8686d00572a974dd5",
+      "issue.md": "236cad7d4d7b4ab64f24fdc5e8c9f128a5fa8da30db15419908003d65c23ea7e"
+    },
+    "gold_hashes": {
+      "code/COPYING": "ba81481b2d63a33e0dce336d9e736130709549feeaf6cd424b34beba712baa50",
+      "code/arbiter.v": "5bed20d25b52930c1051824d7205177e82178768c84b00a422fe2fe22ee0a538",
+      "code/axi_crossbar.v": "1db5eefbbc611ff96a5cde248720dd2322e5e42a5241d9584c67f840f97631c7",
+      "code/axi_crossbar_addr.v": "3e66be39083f3b1d521c51768e7d860422b8870a7f3af743868bd4f1d88ac11a",
+      "code/axi_crossbar_rd.v": "6c2d4fb5336a83336eaa9f90d285330b3a84f9a50d6c13fee4ab9cdcf0f7287c",
+      "code/axi_crossbar_wr.v": "2e409284380db126550f0d5966b514e0c741a9e1d1c20a5799421ebb6706a2bd",
+      "code/axi_register_rd.v": "63f1bd6f9d72ae28643fd7af3a5d5bcb05d45cbfb290c59c120c327ba49aa575",
+      "code/axi_register_wr.v": "02dd26f56ee04ad834a28e02ef2726852ab527fb23c3a88b377f3ce55a719c4b",
+      "code/priority_encoder.v": "df28220d95b47df349a72803a9751aad331eb8e1435416e8686d00572a974dd5"
+    },
+    "grader_hashes": {
+      "run.py": "760c3ace66197167e5f29ed9d5f9c94ae6e73e6e47382befac17c1d926da0f29"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 2,
+      "wrong_fix_fail_runs": 4,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 10,
+      "mutant_total": 10
+    },
+    "test_hashes": {
+      "tb.sv": "f5fc3d5b3e283c99d1f7a52a463a39b1fc3b8e45e76e5f5a779f6393791a4873"
+    },
+    "grader_revalidated_utc": "2026-11-13T20:03:55.623117+00:00"
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT2_New_Feature_ISA_Impl",
+  "problem_type_label": "New ISA & Subsystem Feature Implementation",
+  "primary_domain": "HighSpeed_AXI_NIC_Cache_DMA",
+  "multi_domains": [
+    "HighSpeed_AXI_NIC_Cache_DMA"
+  ],
+  "pdk_profile": {
+    "pdk_id": "ihp_sg13g2_130nm_8sram",
+    "pdk_name": "IHP SG13G2 130nm Open PDK + RM_IHPSG13_1P Hard-SRAM Macros",
+    "location": "Task-bundled in environment/public/pdk/ and tests/private/pdk/",
+    "customized": true,
+    "notes": "Includes task-bundled IHP SG13G2 standard-cell LEF/Liberty and single-port hard-SRAM macro LEF/Liberty/Verilog models."
+  },
+  "public_hashes": {
+    "BUILD.md": "aba41492baed98198227b6882312aa4edc0d967654eed472cc48e71bdd3d32ba",
+    "code/COPYING": "ba81481b2d63a33e0dce336d9e736130709549feeaf6cd424b34beba712baa50",
+    "code/arbiter.v": "a001507c82843e36e133dea75491fc044f56660fac0aff0127cf3afec7f927e0",
+    "code/axi_crossbar.v": "7195f62f555ad0a28b934d204b3011645e2dc42b0133b5f4389368d837bf234c",
+    "code/axi_crossbar_addr.v": "6ea034e31b9e809908e9e3a229a870abb69a1e279f9b9c1f3b9befce8da0250c",
+    "code/axi_crossbar_rd.v": "fb926ea931ce5020ac64108ca7fbb74afc7107f36ad2acf96bff9f936c61578b",
+    "code/axi_crossbar_wr.v": "81abee72c30535613c3554716e12ff38f0357cd54d84a45f849593cdec8c3b0a",
+    "code/axi_register_rd.v": "63f1bd6f9d72ae28643fd7af3a5d5bcb05d45cbfb290c59c120c327ba49aa575",
+    "code/axi_register_wr.v": "02dd26f56ee04ad834a28e02ef2726852ab527fb23c3a88b377f3ce55a719c4b",
+    "code/priority_encoder.v": "df28220d95b47df349a72803a9751aad331eb8e1435416e8686d00572a974dd5",
+    "issue.md": "236cad7d4d7b4ab64f24fdc5e8c9f128a5fa8da30db15419908003d65c23ea7e"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 2,
+    "wrong_fix_fail_runs": 4,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 10,
+    "mutant_total": 10
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "case_id": "case_0091",
+  "task_id": "case_0091",
+  "version": 1,
+  "repo_id": "repo_31",
+  "topic": "synthesis_qor",
+  "editable_files": [
+    "code/rtl/neureka_normquant.sv",
+    "code/rtl/neureka_normquant_shifter.sv"
+  ],
+  "editable": [
+    "code/rtl/neureka_normquant.sv",
+    "code/rtl/neureka_normquant_shifter.sv"
+  ],
+  "grading": {
+    "eda_class": "heavy",
+    "grader_timeout_seconds": 600,
+    "verifier_timeout_seconds": 1200,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 1,
+        "extra_args": []
+      },
+      {
+        "seed": 2,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_0091",
+    "version": 1,
+    "frozen_utc": "2026-11-03T19:02:17.844076+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/rtl/neureka_normquant.sv",
+      "code/rtl/neureka_normquant_shifter.sv"
+    ],
+    "public_hashes": {
+      "BUILD.md": "841b3b18cb71a9204226994ed791a872758eba1f191ea038fbb3c39fa32b9f1f",
+      "code/LICENSE": "b41106a9d0de1cf6ab4ea56bedf677503085c0570248f37fe2cdf657a5e72601",
+      "code/README.md": "55e72543b27a86e06712422ca50c1f7d7f8950de216853c6cefc81eb2d92c9ed",
+      "code/rtl/hci_package.sv": "844e3b9cfd196d075c218125e1976d46c884410d422fd9aacff9cb06f3798cf4",
+      "code/rtl/hwpe_stream_package.sv": "4866b082690db06b49f8b09b17001946f94ab2ab3f4bc95013dd36b9824ee6a2",
+      "code/rtl/neureka_normquant.sv": "7267cb45ecfd90bdd961bb3b5ea78dc18904a6a23467a1e795b4306c9e947ac1",
+      "code/rtl/neureka_normquant_multiplier.sv": "caee57674b8351d941ae095b52e631fd16293ae52ab349bcf40d062a81b02bf1",
+      "code/rtl/neureka_normquant_shifter.sv": "7fed28658b104cdeb6e9f7f4dfff5c0f833a24b5ffea96e81ed8dafa4d9550ea",
+      "code/rtl/neureka_package.sv": "b2e335318ed6742fe9911d1de67d60de60d8c4aae20546d5d3597fa6200afc14",
+      "issue.md": "9f18db65449b39f051e2aa132f399f5184b3860f8eeae82f589d97c55bfd379e",
+      "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+      "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+      "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+      "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+    },
+    "gold_hashes": {
+      "code/LICENSE": "b41106a9d0de1cf6ab4ea56bedf677503085c0570248f37fe2cdf657a5e72601",
+      "code/README.md": "55e72543b27a86e06712422ca50c1f7d7f8950de216853c6cefc81eb2d92c9ed",
+      "code/rtl/hci_package.sv": "844e3b9cfd196d075c218125e1976d46c884410d422fd9aacff9cb06f3798cf4",
+      "code/rtl/hwpe_stream_package.sv": "4866b082690db06b49f8b09b17001946f94ab2ab3f4bc95013dd36b9824ee6a2",
+      "code/rtl/neureka_normquant.sv": "cbd3e3afcbaa20d1ea9eb012c5244dd9471abc6093ef29779199bf528a4b808c",
+      "code/rtl/neureka_normquant_multiplier.sv": "caee57674b8351d941ae095b52e631fd16293ae52ab349bcf40d062a81b02bf1",
+      "code/rtl/neureka_normquant_shifter.sv": "300f95f49e0d0dbb9ce07497f7c36849e1445c97c48f9aaf0bd1f35b4e304e57",
+      "code/rtl/neureka_package.sv": "b2e335318ed6742fe9911d1de67d60de60d8c4aae20546d5d3597fa6200afc14"
+    },
+    "grader_hashes": {
+      "run.py": "5cd74eca4462265d14dd84d0b65fbfe7140609241cd4578c87de915fa48f6781"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 10,
+      "mutant_total": 10
+    }
+  },
+  "title": "NEureka Normalization-Quantization Rounding-Saturation, Stall Coherence, and Area/Timing Closure",
+  "repository": "pulp-platform/neureka",
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+  "problem_type_label": "Architectural & Protocol Bug Repair",
+  "primary_domain": "synthesis_qor",
+  "multi_domains": [
+    "arithmetic_datapath",
+    "rtl_integration",
+    "synthesis_qor"
+  ],
+  "pdk_profile": {
+    "pdk_id": "nangate45_plus_multicorner_lib",
+    "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+    "location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+    "customized": true,
+    "notes": "Uses shared Nangate45 library for synthesis plus task-bundled fast/slow/scan corner timing views."
+  },
+  "public_hashes": {
+    "BUILD.md": "841b3b18cb71a9204226994ed791a872758eba1f191ea038fbb3c39fa32b9f1f",
+    "code/LICENSE": "b41106a9d0de1cf6ab4ea56bedf677503085c0570248f37fe2cdf657a5e72601",
+    "code/README.md": "55e72543b27a86e06712422ca50c1f7d7f8950de216853c6cefc81eb2d92c9ed",
+    "code/rtl/hci_package.sv": "844e3b9cfd196d075c218125e1976d46c884410d422fd9aacff9cb06f3798cf4",
+    "code/rtl/hwpe_stream_package.sv": "4866b082690db06b49f8b09b17001946f94ab2ab3f4bc95013dd36b9824ee6a2",
+    "code/rtl/neureka_normquant.sv": "7267cb45ecfd90bdd961bb3b5ea78dc18904a6a23467a1e795b4306c9e947ac1",
+    "code/rtl/neureka_normquant_multiplier.sv": "caee57674b8351d941ae095b52e631fd16293ae52ab349bcf40d062a81b02bf1",
+    "code/rtl/neureka_normquant_shifter.sv": "7fed28658b104cdeb6e9f7f4dfff5c0f833a24b5ffea96e81ed8dafa4d9550ea",
+    "code/rtl/neureka_package.sv": "b2e335318ed6742fe9911d1de67d60de60d8c4aae20546d5d3597fa6200afc14",
+    "issue.md": "9f18db65449b39f051e2aa132f399f5184b3860f8eeae82f589d97c55bfd379e",
+    "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+    "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+    "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+    "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 10,
+    "mutant_total": 10
+  }
+}

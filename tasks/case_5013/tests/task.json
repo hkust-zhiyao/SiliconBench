@@ -1,0 +1,153 @@
+{
+  "case_id": "case_5013",
+  "task_id": "case_5013",
+  "version": 1,
+  "repo_id": "repo_05",
+  "repository": "openhwfoundation/cva6",
+  "title": "CVA6 RV32 Load-Store Unit Speculative Non-Idempotent Load Resolution, Word-Granular Store-Buffer Hazard Checking, CBO Commit-Queue Handshaking, and Timing Closure",
+  "topic": "lsu_bypass_load_unit_store_buffer_speculative_ni_cbo_ppa",
+  "family": "qor_and_functional",
+  "editable_files": [
+    "code/lsu_bypass.sv",
+    "code/load_unit.sv",
+    "code/store_buffer.sv",
+    "code/load_store_unit.sv"
+  ],
+  "editable": [
+    "code/lsu_bypass.sv",
+    "code/load_unit.sv",
+    "code/store_buffer.sv",
+    "code/load_store_unit.sv"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_5013",
+    "version": 1,
+    "frozen_utc": "2026-11-04T20:17:53.260749+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/lsu_bypass.sv",
+      "code/load_unit.sv",
+      "code/store_buffer.sv",
+      "code/load_store_unit.sv"
+    ],
+    "public_hashes": {
+      "BUILD.md": "3abd800726d3ca1ee980a2c9a343a77d4079828c0c1df4f6188ad3aecc734714",
+      "code/LICENSE": "b41106a9d0de1cf6ab4ea56bedf677503085c0570248f37fe2cdf657a5e72601",
+      "code/amo_buffer.sv": "af1fd888b4d9151b7edf0632934e140bb0a6b0dd92b3d03d1f607f63ce3351f7",
+      "code/ariane_pkg.sv": "f492b1dda7044c4d202df1a1e4609a53fbecc94ad3f08b5d6d9a150b4569d2d7",
+      "code/cf_math_pkg.sv": "afc32fcae21f6cbb834c5ee602a1aaee1b518fc436a86d4fe1b97942473d35c8",
+      "code/config_pkg.sv": "f6f193daa7dfe1161689f651d6aa6e2b1fdec6560fc83c1313385e944ce4c97c",
+      "code/cv64a60ax_config_pkg.sv": "6b2bd15f21283ff8eac2c8daa62030b7be5d2b342437f4b863baa0c74b88688c",
+      "code/cva6_fifo_v3.sv": "f61e13a52583cc8e1a5a6d46910bed6247cf0dd8b52aa39b4fd683729e3faa68",
+      "code/load_store_unit.sv": "425f56b1305090cbba6711a2c895581559b90256fb026d8de28db5a23f10dd6e",
+      "code/load_unit.sv": "33eac31ac3d488a308b8a688188a559a41f3efe2c5b8b00bed3a72c9d90e82e7",
+      "code/lsu_bypass.sv": "e5405f82d34ff052e6d17846f88600258a2c13a6668196d8f6c6230a18ec8316",
+      "code/lzc.sv": "c47046cab67cd9e9ff46f9b2a4c055f301eabd0f135d76d96639eb41c9fa3609",
+      "code/pmp.sv": "9c2dce5d4bd2390a617882c282080dbf191c54f016b36b5e719672382c15c7b6",
+      "code/pmp_data_if.sv": "e047297208ef695786304c51bd91bed7d6a85724de37352865baa0c74b49bd9a",
+      "code/pmp_entry.sv": "d460cad15eafe78c9c1de689238ec4579279ef28c556d8ac231715afff84c702",
+      "code/riscv_pkg.sv": "225881e0df4c08d0d9768999408c7c93186a59270955a391bccd63f34b95777a",
+      "code/shift_reg.sv": "73fd475108016aa3ff5f940324e6bbf627a13bb8404e285b86876d3e948ff622",
+      "code/store_buffer.sv": "523de0930e91e54e7a69e1301eca34d8aeb6ef368b523054be66d7b80205b946",
+      "code/store_unit.sv": "a846efab0c86729e956a59f84e225f45c873fe33830767ae2cac4f5baea5d93f",
+      "flow/lsu_subsys_top.sv": "cadea2f5458d351a0d8dc45b5f122f98e55a99174cdc15984b9ee6eb521c0bc8",
+      "include/common_cells/LICENSE.Apache-2.0": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "include/common_cells/assertions.svh": "d39c7afa893656e235b0019233c1bcf12491cd421639791c827cc53236bd4841",
+      "issue.md": "0210989fe8e43b4f3a7826abacd6cf9a96e77f6302a49c605dc12cd735e01be6",
+      "lef/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+      "lef/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+      "lib/LICENSE_NANGATE": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+      "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+    },
+    "gold_hashes": {
+      "code/load_store_unit.sv": "37893af4c5ece743ed8acd78703a93dd6ef6915f39dc98a697f66571b4cd7cbe",
+      "code/load_unit.sv": "d0dbf9347d52630218e5ffc4a2f3ce3482b4c1aabeac19e1c16c674b155d9c36",
+      "code/lsu_bypass.sv": "e161ccbf756ed274a7f8a293cd1289159042bfa1ef27aeeb12a792e06eca5e08",
+      "code/store_buffer.sv": "fef65409f73c18d299fdc619e67a2f7374f8cb11beeb53adda9c63c60dd75395"
+    },
+    "grader_hashes": {
+      "run.py": "ed3abf6e702e091d20456cfb0f560cb80a020b3f8d244d911a2c4d324f8e85c7"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 4,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 10,
+      "mutant_total": 10
+    }
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+  "problem_type_label": "Architectural & Protocol Bug Repair",
+  "primary_domain": "rtl_semantics",
+  "multi_domains": [
+    "rtl_integration",
+    "rtl_semantics"
+  ],
+  "pdk_profile": {
+    "pdk_id": "custom_multicorner_liberty",
+    "pdk_name": "Task-Specific Multi-Corner Liberty & SDC Timing Views",
+    "location": "Task-bundled in environment/public/ and tests/private/",
+    "customized": true,
+    "notes": "Custom characterized fast/slow/scan corner Liberty libraries for multi-mode OpenSTA closure."
+  },
+  "public_hashes": {
+    "BUILD.md": "3abd800726d3ca1ee980a2c9a343a77d4079828c0c1df4f6188ad3aecc734714",
+    "code/LICENSE": "b41106a9d0de1cf6ab4ea56bedf677503085c0570248f37fe2cdf657a5e72601",
+    "code/amo_buffer.sv": "af1fd888b4d9151b7edf0632934e140bb0a6b0dd92b3d03d1f607f63ce3351f7",
+    "code/ariane_pkg.sv": "f492b1dda7044c4d202df1a1e4609a53fbecc94ad3f08b5d6d9a150b4569d2d7",
+    "code/cf_math_pkg.sv": "afc32fcae21f6cbb834c5ee602a1aaee1b518fc436a86d4fe1b97942473d35c8",
+    "code/config_pkg.sv": "f6f193daa7dfe1161689f651d6aa6e2b1fdec6560fc83c1313385e944ce4c97c",
+    "code/cv64a60ax_config_pkg.sv": "6b2bd15f21283ff8eac2c8daa62030b7be5d2b342437f4b863baa0c74b88688c",
+    "code/cva6_fifo_v3.sv": "f61e13a52583cc8e1a5a6d46910bed6247cf0dd8b52aa39b4fd683729e3faa68",
+    "code/load_store_unit.sv": "425f56b1305090cbba6711a2c895581559b90256fb026d8de28db5a23f10dd6e",
+    "code/load_unit.sv": "33eac31ac3d488a308b8a688188a559a41f3efe2c5b8b00bed3a72c9d90e82e7",
+    "code/lsu_bypass.sv": "e5405f82d34ff052e6d17846f88600258a2c13a6668196d8f6c6230a18ec8316",
+    "code/lzc.sv": "c47046cab67cd9e9ff46f9b2a4c055f301eabd0f135d76d96639eb41c9fa3609",
+    "code/pmp.sv": "9c2dce5d4bd2390a617882c282080dbf191c54f016b36b5e719672382c15c7b6",
+    "code/pmp_data_if.sv": "e047297208ef695786304c51bd91bed7d6a85724de37352865baa0c74b49bd9a",
+    "code/pmp_entry.sv": "d460cad15eafe78c9c1de689238ec4579279ef28c556d8ac231715afff84c702",
+    "code/riscv_pkg.sv": "225881e0df4c08d0d9768999408c7c93186a59270955a391bccd63f34b95777a",
+    "code/shift_reg.sv": "73fd475108016aa3ff5f940324e6bbf627a13bb8404e285b86876d3e948ff622",
+    "code/store_buffer.sv": "523de0930e91e54e7a69e1301eca34d8aeb6ef368b523054be66d7b80205b946",
+    "code/store_unit.sv": "a846efab0c86729e956a59f84e225f45c873fe33830767ae2cac4f5baea5d93f",
+    "flow/lsu_subsys_top.sv": "cadea2f5458d351a0d8dc45b5f122f98e55a99174cdc15984b9ee6eb521c0bc8",
+    "include/common_cells/LICENSE.Apache-2.0": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "include/common_cells/assertions.svh": "d39c7afa893656e235b0019233c1bcf12491cd421639791c827cc53236bd4841",
+    "issue.md": "0210989fe8e43b4f3a7826abacd6cf9a96e77f6302a49c605dc12cd735e01be6",
+    "lef/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+    "lef/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+    "lib/LICENSE_NANGATE": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+    "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 4,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 10,
+    "mutant_total": 10
+  }
+}

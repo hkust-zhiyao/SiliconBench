@@ -1,0 +1,46 @@
+{
+  "case_id": "case_23011",
+  "obligations": [
+    {
+      "id": "REQ-SPLIT-PHASE-RDW-UNLOCK",
+      "behavior": "Maintain per-slot odd/even barrier epochs across BAR.ARRIVE/SYNC/WAIT with straggler overlap, sustain 1-cycle back-to-back same-slot RDW updates and read_phase forwarding, suppress zero-mask unlock_valid pulses, and merge concurrent local + global core wakeups.",
+      "public_source": "public/issue.md item 1",
+      "verified_by": [
+        "private/tests/tb.sv",
+        "wf1_no_state_rdw_forwarding",
+        "wf2_overwrite_local_unlock_on_gbar",
+        "m01_spurious_zero_unlock_valid",
+        "m02_drop_phase_rdw_forward",
+        "m03_wait_inverted_phase_cmp",
+        "m04_arrive_sync_missing_wid_mask"
+      ]
+    },
+    {
+      "id": "REQ-SIGNED-EVENTS-GLOBAL-BAR",
+      "behavior": "Track signed out-of-order asynchronous expect_tx/txbar balances without 0-warp premature epoch flips or global req_wid contamination, and coordinate multi-ID / core-subset global barriers without broadcast overwrite or non-participating local-traffic deadlock.",
+      "public_source": "public/issue.md item 2",
+      "verified_by": [
+        "private/tests/tb.sv",
+        "wf3_unsigned_event_no_warps_done",
+        "wf4_blocking_gbar_rsp_ready",
+        "m05_event_pos_off_by_one",
+        "m06_global_event_pollutes_wait_mask",
+        "m07_gbar_rsp_forget_phase_toggle",
+        "m08_gbar_rsp_forget_pending_clear",
+        "m09_gbar_unit_wrong_core_target",
+        "m10_gbar_unit_no_mask_clear",
+        "m11_gbar_unit_drop_second_rsp",
+        "m12_gbar_arb_drop_core_lane"
+      ]
+    },
+    {
+      "id": "REQ-SYNTH-STA-AREA",
+      "behavior": "Synthesize VX_cluster_bar_subsys latch-free on Nangate45 and achieve WNS >= 0.0000 ns at 1.15 ns clock period within <= 14,000.00 um^2 cell area.",
+      "public_source": "public/issue.md item 3",
+      "verified_by": [
+        "private/grader/run.py",
+        "wf5_unbuffered_gbar_arb_timing_fail"
+      ]
+    }
+  ]
+}

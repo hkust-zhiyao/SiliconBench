@@ -1,0 +1,111 @@
+{
+  "case_id": "case_3006",
+  "task_id": "case_3006",
+  "version": 1,
+  "repo_id": "repo_03",
+  "title": "CV32E40P Load-Store Unit Split-Misaligned Fault Cancellation, Post-Flush OBI Response Drain, and Transparent Channel Timing Budgets",
+  "topic": "rtl_lsu_obi_protocol_and_sdc_timing_constraints",
+  "editable_files": [
+    "code/cv32e40p_load_store_unit.sv",
+    "code/cv32e40p_obi_interface.sv",
+    "constraints.json"
+  ],
+  "editable": [
+    "code/cv32e40p_load_store_unit.sv",
+    "code/cv32e40p_obi_interface.sv",
+    "constraints.json"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 600,
+    "verifier_timeout_seconds": 1200,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 1,
+        "extra_args": []
+      },
+      {
+        "seed": 2,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_3006",
+    "version": 1,
+    "frozen_utc": "2026-11-04T17:50:36.153629+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/cv32e40p_load_store_unit.sv",
+      "code/cv32e40p_obi_interface.sv",
+      "constraints.json"
+    ],
+    "public_hashes": {
+      "BUILD.md": "8359cf295c07271812ce9e39550587bd0083c883702ec4370aff3372de9da5ac",
+      "code/LICENSE": "6527a46225891b976fa94f634f6ee0cd22e1c7129d6f11c5c98c997627625fc7",
+      "code/cv32e40p_load_store_unit.sv": "c653dbacb359da37ec996dc9b3183e7db50f848a09ebe22f31cdfccbb9f83569",
+      "code/cv32e40p_obi_interface.sv": "8c43687ac6cbcb685a3327724e934d374851eafc7d5c8857f192c1c4ff6e494c",
+      "code/top.sv": "5c88477bf82071fd7669038062ddc558920f945621e962c6dd07df8584d340a0",
+      "constraints.json": "f4113f6d3e1f5b35e8418d90742838706a5e31e21612dff0e724bdf0df420191",
+      "issue.md": "bf9d4f4f00816cd4fed45c213a7f28a9bcfe83f9d0d7cff21becd21a4ff0dff5"
+    },
+    "gold_hashes": {
+      "code/cv32e40p_load_store_unit.sv": "0d83d9ff9ad4287cea0a6f2729d246c6669082a38f3a65c73fdfa8bd48bc1981",
+      "code/cv32e40p_obi_interface.sv": "9fbb349184dbb446f0ed8aa5a244c704aa3facbec023052a8a7a6d5ac4ea3322",
+      "constraints.json": "befdafee30eebb11865e3500e839c3c8d5d128d98de5eb7c7cd1cfe3d1dfaa5d"
+    },
+    "grader_hashes": {
+      "run.py": "c56a93e7cf9daabf58af227eca9e2c51e1f6f5f4ecc1e03496ea100c8eab1d21"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 12,
+      "mutant_total": 12
+    }
+  },
+  "repository": "openhwfoundation/cv32e40p",
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT3_Timing_Area_PPA_Closure",
+  "problem_type_label": "High-Frequency Timing & Area Optimization",
+  "primary_domain": "reset_rdc",
+  "multi_domains": [
+    "protocol_control",
+    "reset_rdc",
+    "rtl_integration",
+    "sdc_sta",
+    "verification_debug"
+  ],
+  "pdk_profile": {
+    "pdk_id": "nangate45_45nm_shared",
+    "pdk_name": "Nangate45 45nm Open Cell Library (Shared Base Image)",
+    "location": "/opt/siliconbench/pdk/Nangate45 (bundled in environments/pdk/Nangate45)",
+    "customized": false,
+    "notes": "Uses unified Nangate45 typical Liberty and LEF from base image."
+  },
+  "public_hashes": {
+    "BUILD.md": "8359cf295c07271812ce9e39550587bd0083c883702ec4370aff3372de9da5ac",
+    "code/LICENSE": "6527a46225891b976fa94f634f6ee0cd22e1c7129d6f11c5c98c997627625fc7",
+    "code/cv32e40p_load_store_unit.sv": "c653dbacb359da37ec996dc9b3183e7db50f848a09ebe22f31cdfccbb9f83569",
+    "code/cv32e40p_obi_interface.sv": "8c43687ac6cbcb685a3327724e934d374851eafc7d5c8857f192c1c4ff6e494c",
+    "code/top.sv": "5c88477bf82071fd7669038062ddc558920f945621e962c6dd07df8584d340a0",
+    "constraints.json": "f4113f6d3e1f5b35e8418d90742838706a5e31e21612dff0e724bdf0df420191",
+    "issue.md": "bf9d4f4f00816cd4fed45c213a7f28a9bcfe83f9d0d7cff21becd21a4ff0dff5"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 12,
+    "mutant_total": 12
+  }
+}

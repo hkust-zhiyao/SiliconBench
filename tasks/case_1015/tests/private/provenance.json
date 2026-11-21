@@ -1,0 +1,14 @@
+{
+  "upstream": "https://github.com/lowRISC/opentitan",
+  "commit": "0e880c84fa5e6ff1d43354eae9ad9f13c96231ee",
+  "archive_sha256": "c71b2041453c7bfa1676830f80f4f46e0d35fa9c3484fd13d87011f07913ece5",
+  "license": "Apache-2.0",
+  "rtl": [
+    "hw/ip/otbn/rtl/otbn_start_stop_control.sv",
+    "hw/ip/otbn/rtl/otbn_loop_controller.sv",
+    "hw/ip/otbn/rtl/otbn_stack.sv"
+  ],
+  "constructed_source": "ot_otbn_ctrl_top.sv integrates otbn_start_stop_control, otbn_loop_controller, and otbn_stack with three constructed functional defects (two-round secure wipe / RMA ack, loop-end commit priority, full-stack push+pop replacement) and Nangate45 PPA/STA closure inspired by generalized Stage-1 datapath/timing corpus mechanisms.",
+  "pdk": "NangateOpenCellLibrary 45nm typical (lib/NangateOpenCellLibrary_typical.lib)",
+  "tools": "Verilator 5.038 + Yosys (slang) + OpenROAD/OpenSTA"
+}

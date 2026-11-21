@@ -1,0 +1,52 @@
+{
+  "macros": [
+    {
+      "instance": "u_assembly_buffer.u_accu_abuf_0",
+      "x": 100.0,
+      "y": 140.0,
+      "orientation": "R180"
+    },
+    {
+      "instance": "u_assembly_buffer.u_accu_abuf_2",
+      "x": 100.0,
+      "y": 640.0,
+      "orientation": "MY"
+    },
+    {
+      "instance": "u_assembly_buffer.u_accu_abuf_1",
+      "x": 100.0,
+      "y": 1100.0,
+      "orientation": "R180"
+    },
+    {
+      "instance": "u_assembly_buffer.u_accu_abuf_3",
+      "x": 100.0,
+      "y": 1600.0,
+      "orientation": "MY"
+    },
+    {
+      "instance": "u_assembly_buffer.u_accu_abuf_4",
+      "x": 1710.0,
+      "y": 200.0,
+      "orientation": "MX"
+    },
+    {
+      "instance": "u_assembly_buffer.u_accu_abuf_6",
+      "x": 1710.0,
+      "y": 620.0,
+      "orientation": "R0"
+    },
+    {
+      "instance": "u_assembly_buffer.u_accu_abuf_5",
+      "x": 1710.0,
+      "y": 1120.0,
+      "orientation": "MX"
+    },
+    {
+      "instance": "u_assembly_buffer.u_accu_abuf_7",
+      "x": 1710.0,
+      "y": 1540.0,
+      "orientation": "R0"
+    }
+  ]
+}

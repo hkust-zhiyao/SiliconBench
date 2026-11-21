@@ -1,0 +1,2525 @@
+{
+  "schema_version": "1.0",
+  "unified_base_image": "siliconbench-eda:1.0",
+  "all_tasks_share_base_image": true,
+  "total_tasks": 94,
+  "total_repositories": 30,
+  "eda_toolchain_versions": {
+    "verilator": "v5.038 (/opt/siliconbench/tools/verilator-v5.038/bin/verilator)",
+    "icarus_verilog": "v13.0 (/opt/siliconbench/tools/iverilog-v13/bin/iverilog & vvp)",
+    "yosys_slang": "OSS CAD Suite 2026-10-30 Yosys + Slang SystemVerilog plugin (/opt/siliconbench/tools/oss-cad-suite/bin/yosys -m slang)",
+    "symbiyosys": "SBY (/opt/siliconbench/tools/oss-cad-suite/bin/sby)",
+    "opensta": "OpenSTA 3.1.0 (/opt/siliconbench/tools/bin/sta)",
+    "openroad": "v26Q2-1164-g08f67ee5ec (/opt/siliconbench/tools/bin/openroad with TritonMacroPlace, TritonCTS, FastRoute)",
+    "python": "Python 3.10+"
+  },
+  "pdks": {
+    "nangate45": "NanGate45 45nm CMOS Open Cell Library (/opt/siliconbench/pdk/Nangate45)",
+    "ihp_sg13g2": "IHP SG13G2 130nm CMOS 3-Corner (SS/TT/FF) Open PDK + 7-Metal Hard-SRAM Macros"
+  },
+  "deterministic_env_vars": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "MAKEFLAGS": "-j1",
+    "CMAKE_BUILD_PARALLEL_LEVEL": "1",
+    "SILICONBENCH_TOOLS": "/opt/siliconbench/tools",
+    "SILICONBENCH_NANGATE45": "/opt/siliconbench/pdk/Nangate45"
+  },
+  "pdk_and_collateral_profiles": {
+    "nangate45_45nm_shared": {
+      "count": 8,
+      "customized_per_task": false,
+      "description": "Uses the shared NanGate45 45nm Open Cell Library pre-installed at /opt/siliconbench/pdk/Nangate45 (and bundled in environments/pdk/Nangate45/)."
+    },
+    "nangate45_plus_multicorner_lib": {
+      "count": 36,
+      "customized_per_task": true,
+      "description": "Uses shared NanGate45 for logic synthesis plus task-specific fast/slow/scan corner Liberty (.lib) and SDC constraints bundled in environment/public/ and tests/private/."
+    },
+    "ihp_sg13g2_130nm_8sram": {
+      "count": 18,
+      "customized_per_task": true,
+      "description": "Uses task-bundled IHP SG13G2 130nm 3-corner Open PDK standard-cell LEF/Liberty and hard-SRAM macro LEF/Liberty/Verilog models in environment/public/pdk/ and tests/private/pdk/."
+    },
+    "custom_multicorner_liberty": {
+      "count": 7,
+      "customized_per_task": true,
+      "description": "Uses task-bundled characterized multi-corner Liberty (.lib) and timing scripts in environment/public/ and tests/private/."
+    },
+    "rtl_dual_sim_standard": {
+      "count": 25,
+      "customized_per_task": false,
+      "description": "Uses standard Verilator + Icarus Verilog dual-simulator scoreboard and Yosys+Slang lint/latch/gate-level checks from the unified base image."
+    }
+  },
+  "per_task_environment_matrix": [
+    {
+      "case_id": "case_0009",
+      "repository": "pulp-platform/hwpe-ctrl",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage1_rtl_sim",
+      "eda_stage_name": "Stage 1: Frontend RTL Design & Functional Simulation",
+      "eda_track": "stage1_rtl_sim",
+      "eda_track_name": "Stage 1: Frontend RTL Design & Functional Simulation",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "rtl_dual_sim_standard",
+      "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+      "task_customized_collateral": false,
+      "collateral_location": "Unified base image (/opt/siliconbench/tools)",
+      "allowed_edits": [
+        "code/hwpe_ctrl_uloop.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_0011",
+      "repository": "pulp-platform/hwpe-ctrl",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage4_macro_pnr",
+      "eda_stage_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+      "eda_track": "stage4_macro_pnr",
+      "eda_track_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+      "problem_type": "PT3_Timing_Area_PPA_Closure",
+      "problem_type_label": "High-Frequency Timing & Area Optimization",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/rtl/hwpe_ctrl_partial_mult.sv"
+      ],
+      "grading_seeds": [
+        1,
+        2
+      ],
+      "per_seed_timeout_sec": 600,
+      "verifier_timeout_sec": 1200
+    },
+    {
+      "case_id": "case_0013",
+      "repository": "analogdevicesinc/hdl",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage1_rtl_sim",
+      "eda_stage_name": "Stage 1: Frontend RTL Design & Functional Simulation",
+      "eda_track": "stage1_rtl_sim",
+      "eda_track_name": "Stage 1: Frontend RTL Design & Functional Simulation",
+      "problem_type": "PT4_GateLevel_Security_CDC",
+      "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+      "pdk_id": "rtl_dual_sim_standard",
+      "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+      "task_customized_collateral": false,
+      "collateral_location": "Unified base image (/opt/siliconbench/tools)",
+      "allowed_edits": [
+        "code/axi_dmac_reset_manager.v"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_0033",
+      "repository": "bespoke-silicon-group/bsg_manycore",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage4_macro_pnr",
+      "eda_stage_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+      "eda_track": "stage4_macro_pnr",
+      "eda_track_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/lsu.sv",
+        "code/network_tx.sv",
+        "code/bsg_manycore_endpoint_standard.sv"
+      ],
+      "grading_seeds": [
+        1,
+        2
+      ],
+      "per_seed_timeout_sec": 600,
+      "verifier_timeout_sec": 1200
+    },
+    {
+      "case_id": "case_0045",
+      "repository": "pulp-platform/cluster_interconnect",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage2_synth_gate",
+      "eda_stage_name": "Stage 2: Logic Synthesis & Gate-Level Verification",
+      "eda_track": "stage2_synth_gate",
+      "eda_track_name": "Stage 2: Logic Synthesis & Gate-Level Verification",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "rtl_dual_sim_standard",
+      "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+      "task_customized_collateral": false,
+      "collateral_location": "Unified base image (/opt/siliconbench/tools)",
+      "allowed_edits": [
+        "code/ArbitrationTree.sv",
+        "code/priority_Flag_Req.sv"
+      ],
+      "grading_seeds": [
+        1,
+        2
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_0071",
+      "repository": "chipsalliance/cores-veer-el2",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/el2_ifu_ifc_ctl.sv",
+        "code/el2_ifu_aln_ctl.sv",
+        "code/el2_dec_ib_ctl.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_0083",
+      "repository": "pulp-platform/idma",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/idma_nd_midend.sv",
+        "code/idma_legalizer_page_splitter.sv",
+        "code/idma_legalizer.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_0088",
+      "repository": "pulp-platform/cluster_interconnect",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage4_macro_pnr",
+      "eda_stage_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+      "eda_track": "stage4_macro_pnr",
+      "eda_track_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/ArbitrationTree.sv",
+        "code/MUX2_REQ.sv",
+        "code/TestAndSet.sv"
+      ],
+      "grading_seeds": [
+        1,
+        2
+      ],
+      "per_seed_timeout_sec": 600,
+      "verifier_timeout_sec": 1200
+    },
+    {
+      "case_id": "case_0091",
+      "repository": "pulp-platform/neureka",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/rtl/neureka_normquant.sv",
+        "code/rtl/neureka_normquant_shifter.sv"
+      ],
+      "grading_seeds": [
+        1,
+        2
+      ],
+      "per_seed_timeout_sec": 600,
+      "verifier_timeout_sec": 1200
+    },
+    {
+      "case_id": "case_0095",
+      "repository": "openhwgroup/cvfpu",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT3_Timing_Area_PPA_Closure",
+      "problem_type_label": "High-Frequency Timing & Area Optimization",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/rtl/fpnew_cast_multi.sv",
+        "code/rtl/fpnew_noncomp.sv"
+      ],
+      "grading_seeds": [
+        1,
+        2
+      ],
+      "per_seed_timeout_sec": 600,
+      "verifier_timeout_sec": 1200
+    },
+    {
+      "case_id": "case_0103",
+      "repository": "zipcpu/wb2axip",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/wbm2axisp.v",
+        "code/aximwr2wbsp.v",
+        "code/aximrd2wbsp.v"
+      ],
+      "grading_seeds": [
+        1,
+        2
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_1003",
+      "repository": "lowRISC/opentitan",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage4_macro_pnr",
+      "eda_stage_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+      "eda_track": "stage4_macro_pnr",
+      "eda_track_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+      "problem_type": "PT4_GateLevel_Security_CDC",
+      "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/prim_packer.sv",
+        "code/kmac_msgfifo.sv",
+        "code/kmac_errchk.sv"
+      ],
+      "grading_seeds": [
+        1,
+        2
+      ],
+      "per_seed_timeout_sec": 600,
+      "verifier_timeout_sec": 1200
+    },
+    {
+      "case_id": "case_1004",
+      "repository": "lowRISC/opentitan",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage4_macro_pnr",
+      "eda_stage_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+      "eda_track": "stage4_macro_pnr",
+      "eda_track_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/prim_arbiter_tree.sv",
+        "code/prim_sram_arbiter.sv"
+      ],
+      "grading_seeds": [
+        1,
+        2
+      ],
+      "per_seed_timeout_sec": 600,
+      "verifier_timeout_sec": 1200
+    },
+    {
+      "case_id": "case_1009",
+      "repository": "lowRISC/opentitan",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT4_GateLevel_Security_CDC",
+      "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/hmac_core.sv",
+        "code/prim_sha2_pad.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_1011",
+      "repository": "lowRISC/opentitan",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/spi_host_fsm.sv",
+        "code/spi_host_shift_register.sv",
+        "code/spi_host_byte_select.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_1012",
+      "repository": "lowRISC/opentitan",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT4_GateLevel_Security_CDC",
+      "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/mbx_imbx.sv",
+        "code/mbx_ombx.sv",
+        "code/mbx_sramrwarb.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_1013",
+      "repository": "lowRISC/opentitan",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT4_GateLevel_Security_CDC",
+      "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/rom_ctrl_fsm.sv",
+        "code/rom_ctrl_compare.sv",
+        "code/rom_ctrl_mux.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_1014",
+      "repository": "lowRISC/opentitan",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT4_GateLevel_Security_CDC",
+      "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/csrng_cmd_stage.sv",
+        "code/edn_main_sm.sv",
+        "code/edn_ack_sm.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_1015",
+      "repository": "lowRISC/opentitan",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT4_GateLevel_Security_CDC",
+      "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/otbn_start_stop_control.sv",
+        "code/otbn_loop_controller.sv",
+        "code/otbn_stack.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_2001",
+      "repository": "lowRISC/ibex",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage4_macro_pnr",
+      "eda_stage_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+      "eda_track": "stage4_macro_pnr",
+      "eda_track_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+      "problem_type": "PT5_RTL_HardSRAM_Macro_PnR",
+      "problem_type_label": "RTL + Hard-SRAM Macro Physical Co-Design",
+      "pdk_id": "ihp_sg13g2_130nm_8sram",
+      "pdk_name": "IHP SG13G2 130nm Open PDK + RM_IHPSG13_1P Hard-SRAM Macros",
+      "task_customized_collateral": true,
+      "collateral_location": "Task-bundled in environment/public/pdk/ and tests/private/pdk/",
+      "allowed_edits": [
+        "code/ibex_prefetch_buffer.sv",
+        "code/ibex_fetch_fifo.sv",
+        "code/ibex_prefetch_sram_cluster.sv",
+        "plan/placement.json"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 600,
+      "verifier_timeout_sec": 1200
+    },
+    {
+      "case_id": "case_2002",
+      "repository": "lowRISC/ibex",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT4_GateLevel_Security_CDC",
+      "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+      "pdk_id": "nangate45_45nm_shared",
+      "pdk_name": "Nangate45 45nm Open Cell Library (Shared Base Image)",
+      "task_customized_collateral": false,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 (bundled in environments/pdk/Nangate45)",
+      "allowed_edits": [
+        "code/ibex_trvk.sv",
+        "code/stream_fork.sv",
+        "constraints.json"
+      ],
+      "grading_seeds": [
+        1,
+        2
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_2003",
+      "repository": "lowRISC/ibex",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/ibex_load_store_unit.sv",
+        "code/ibex_wb_stage.sv",
+        "code/ibex_pmp.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_2008",
+      "repository": "lowRISC/ibex",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT3_Timing_Area_PPA_Closure",
+      "problem_type_label": "High-Frequency Timing & Area Optimization",
+      "pdk_id": "custom_multicorner_liberty",
+      "pdk_name": "Task-Specific Multi-Corner Liberty & SDC Timing Views",
+      "task_customized_collateral": true,
+      "collateral_location": "Task-bundled in environment/public/ and tests/private/",
+      "allowed_edits": [
+        "code/ibex_icache.sv",
+        "code/ibex_if_stage.sv",
+        "code/ibex_compressed_decoder.sv",
+        "constraints.json"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_3003",
+      "repository": "openhwfoundation/cv32e40p",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT3_Timing_Area_PPA_Closure",
+      "problem_type_label": "High-Frequency Timing & Area Optimization",
+      "pdk_id": "nangate45_45nm_shared",
+      "pdk_name": "Nangate45 45nm Open Cell Library (Shared Base Image)",
+      "task_customized_collateral": false,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 (bundled in environments/pdk/Nangate45)",
+      "allowed_edits": [
+        "code/stream_to_mem.sv",
+        "code/cv32e40p_obi_interface.sv",
+        "constraints.json"
+      ],
+      "grading_seeds": [
+        1,
+        2
+      ],
+      "per_seed_timeout_sec": 600,
+      "verifier_timeout_sec": 1200
+    },
+    {
+      "case_id": "case_3004",
+      "repository": "openhwfoundation/cv32e40p",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/rtl/cv32e40p_prefetch_controller.sv",
+        "code/rtl/cv32e40p_prefetch_buffer.sv",
+        "code/rtl/cv32e40p_aligner.sv",
+        "code/rtl/cv32e40p_if_stage.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 600,
+      "verifier_timeout_sec": 1200
+    },
+    {
+      "case_id": "case_3005",
+      "repository": "openhwfoundation/cv32e40p",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT3_Timing_Area_PPA_Closure",
+      "problem_type_label": "High-Frequency Timing & Area Optimization",
+      "pdk_id": "custom_multicorner_liberty",
+      "pdk_name": "Task-Specific Multi-Corner Liberty & SDC Timing Views",
+      "task_customized_collateral": true,
+      "collateral_location": "Task-bundled in environment/public/ and tests/private/",
+      "allowed_edits": [
+        "code/cv32e40p_hwloop_regs.sv",
+        "code/cv32e40p_apu_disp.sv",
+        "constraints.json"
+      ],
+      "grading_seeds": [
+        1,
+        2
+      ],
+      "per_seed_timeout_sec": 600,
+      "verifier_timeout_sec": 1200
+    },
+    {
+      "case_id": "case_3006",
+      "repository": "openhwfoundation/cv32e40p",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT3_Timing_Area_PPA_Closure",
+      "problem_type_label": "High-Frequency Timing & Area Optimization",
+      "pdk_id": "nangate45_45nm_shared",
+      "pdk_name": "Nangate45 45nm Open Cell Library (Shared Base Image)",
+      "task_customized_collateral": false,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 (bundled in environments/pdk/Nangate45)",
+      "allowed_edits": [
+        "code/cv32e40p_load_store_unit.sv",
+        "code/cv32e40p_obi_interface.sv",
+        "constraints.json"
+      ],
+      "grading_seeds": [
+        1,
+        2
+      ],
+      "per_seed_timeout_sec": 600,
+      "verifier_timeout_sec": 1200
+    },
+    {
+      "case_id": "case_3011",
+      "repository": "openhwfoundation/cv32e40p",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT4_GateLevel_Security_CDC",
+      "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+      "pdk_id": "nangate45_45nm_shared",
+      "pdk_name": "Nangate45 45nm Open Cell Library (Shared Base Image)",
+      "task_customized_collateral": false,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 (bundled in environments/pdk/Nangate45)",
+      "allowed_edits": [
+        "code/cv32e40p_int_controller.sv",
+        "code/cv32e40p_sleep_unit.sv",
+        "constraints.json"
+      ],
+      "grading_seeds": [
+        1,
+        2
+      ],
+      "per_seed_timeout_sec": 600,
+      "verifier_timeout_sec": 1200
+    },
+    {
+      "case_id": "case_4010",
+      "repository": "openhwfoundation/cv32e41p",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/cv32e41p_sleep_unit.sv",
+        "code/cv32e41p_int_controller.sv",
+        "code/cv32e41p_hwloop_regs.sv",
+        "code/cv32e41p_controller.sv"
+      ],
+      "grading_seeds": [
+        1,
+        2
+      ],
+      "per_seed_timeout_sec": 360,
+      "verifier_timeout_sec": 720
+    },
+    {
+      "case_id": "case_5003",
+      "repository": "openhwfoundation/cva6",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "nangate45_45nm_shared",
+      "pdk_name": "Nangate45 45nm Open Cell Library (Shared Base Image)",
+      "task_customized_collateral": false,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 (bundled in environments/pdk/Nangate45)",
+      "allowed_edits": [
+        "code/cva6_tlb.sv",
+        "code/cva6_shared_tlb.sv",
+        "code/cva6_ptw.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_5007",
+      "repository": "openhwfoundation/cva6",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/cache_ctrl.sv",
+        "code/miss_handler.sv",
+        "code/tag_cmp.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_5010",
+      "repository": "openhwfoundation/cva6",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/cva6_icache.sv",
+        "code/cva6_icache_axi_wrapper.sv",
+        "code/axi_shim.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_5011",
+      "repository": "openhwfoundation/cva6",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT2_New_Feature_ISA_Impl",
+      "problem_type_label": "New ISA & Subsystem Feature Implementation",
+      "pdk_id": "custom_multicorner_liberty",
+      "pdk_name": "Task-Specific Multi-Corner Liberty & SDC Timing Views",
+      "task_customized_collateral": true,
+      "collateral_location": "Task-bundled in environment/public/ and tests/private/",
+      "allowed_edits": [
+        "code/macro_decoder.sv",
+        "code/zcmt_decoder.sv",
+        "code/id_stage.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_5013",
+      "repository": "openhwfoundation/cva6",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "custom_multicorner_liberty",
+      "pdk_name": "Task-Specific Multi-Corner Liberty & SDC Timing Views",
+      "task_customized_collateral": true,
+      "collateral_location": "Task-bundled in environment/public/ and tests/private/",
+      "allowed_edits": [
+        "code/lsu_bypass.sv",
+        "code/load_unit.sv",
+        "code/store_buffer.sv",
+        "code/load_store_unit.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_5014",
+      "repository": "openhwfoundation/cva6",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "custom_multicorner_liberty",
+      "pdk_name": "Task-Specific Multi-Corner Liberty & SDC Timing Views",
+      "task_customized_collateral": true,
+      "collateral_location": "Task-bundled in environment/public/ and tests/private/",
+      "allowed_edits": [
+        "code/wt_axi_adapter.sv",
+        "code/axi_shim.sv",
+        "code/cva6_fifo_v3.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_6003",
+      "repository": "chipsalliance/cores-veer-eh1",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT3_Timing_Area_PPA_Closure",
+      "problem_type_label": "High-Frequency Timing & Area Optimization",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/axi4_to_ahb.sv",
+        "code/ahb_to_axi4.sv",
+        "code/dma_ctrl.sv",
+        "constraints.json"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 480,
+      "verifier_timeout_sec": 960
+    },
+    {
+      "case_id": "case_6006",
+      "repository": "chipsalliance/cores-veer-eh1",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/ifu_ifc_ctl.sv",
+        "code/ifu_bp_ctl.sv",
+        "code/ifu_mem_ctl.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 480,
+      "verifier_timeout_sec": 960
+    },
+    {
+      "case_id": "case_6012",
+      "repository": "chipsalliance/cores-veer-eh1",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT3_Timing_Area_PPA_Closure",
+      "problem_type_label": "High-Frequency Timing & Area Optimization",
+      "pdk_id": "custom_multicorner_liberty",
+      "pdk_name": "Task-Specific Multi-Corner Liberty & SDC Timing Views",
+      "task_customized_collateral": true,
+      "collateral_location": "Task-bundled in environment/public/ and tests/private/",
+      "allowed_edits": [
+        "code/ifu_aln_ctl.sv",
+        "code/ifu_compress_ctl.sv",
+        "code/ifu_bp_ctl.sv",
+        "code/ifu_ifc_ctl.sv",
+        "constraints.json"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 480,
+      "verifier_timeout_sec": 960
+    },
+    {
+      "case_id": "case_7001",
+      "repository": "chipsalliance/cores-veer-eh2",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/eh2_ifu_ifc_ctl.sv",
+        "code/eh2_ifu_aln_ctl.sv",
+        "code/eh2_dec_ib_ctl.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_7003",
+      "repository": "chipsalliance/cores-veer-eh2",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT3_Timing_Area_PPA_Closure",
+      "problem_type_label": "High-Frequency Timing & Area Optimization",
+      "pdk_id": "nangate45_45nm_shared",
+      "pdk_name": "Nangate45 45nm Open Cell Library (Shared Base Image)",
+      "task_customized_collateral": false,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 (bundled in environments/pdk/Nangate45)",
+      "allowed_edits": [
+        "code/axi4_to_ahb.sv",
+        "code/ahb_to_axi4.sv",
+        "constraints.json"
+      ],
+      "grading_seeds": [
+        1,
+        2
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_7004",
+      "repository": "chipsalliance/cores-veer-eh2",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/eh2_lsu_amo.sv",
+        "code/eh2_lsu_ecc.sv",
+        "code/eh2_lsu_dccm_ctl.sv",
+        "code/eh2_lsu_stbuf.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_8015",
+      "repository": "chipsalliance/cores-veer-el2",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT4_GateLevel_Security_CDC",
+      "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+      "pdk_id": "nangate45_45nm_shared",
+      "pdk_name": "Nangate45 45nm Open Cell Library (Shared Base Image)",
+      "task_customized_collateral": false,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 (bundled in environments/pdk/Nangate45)",
+      "allowed_edits": [
+        "code/el2_dec_pmp_ctl.sv",
+        "code/el2_pmp.sv",
+        "constraints.json"
+      ],
+      "grading_seeds": [
+        1,
+        2
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_8017",
+      "repository": "chipsalliance/cores-veer-el2",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT3_Timing_Area_PPA_Closure",
+      "problem_type_label": "High-Frequency Timing & Area Optimization",
+      "pdk_id": "nangate45_45nm_shared",
+      "pdk_name": "Nangate45 45nm Open Cell Library (Shared Base Image)",
+      "task_customized_collateral": false,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 (bundled in environments/pdk/Nangate45)",
+      "allowed_edits": [
+        "code/el2_lsu_lsc_ctl.sv",
+        "code/el2_lsu_addrcheck.sv",
+        "code/el2_lsu_trigger.sv",
+        "constraints.json"
+      ],
+      "grading_seeds": [
+        1,
+        2
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_9014",
+      "repository": "black-parrot/black-parrot",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage4_macro_pnr",
+      "eda_stage_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+      "eda_track": "stage4_macro_pnr",
+      "eda_track_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+      "problem_type": "PT5_RTL_HardSRAM_Macro_PnR",
+      "problem_type_label": "RTL + Hard-SRAM Macro Physical Co-Design",
+      "pdk_id": "ihp_sg13g2_130nm_8sram",
+      "pdk_name": "IHP SG13G2 130nm Open PDK + RM_IHPSG13_1P Hard-SRAM Macros",
+      "task_customized_collateral": true,
+      "collateral_location": "Task-bundled in environment/public/pdk/ and tests/private/pdk/",
+      "allowed_edits": [
+        "code/banked.sv",
+        "plan/placement.json"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 600,
+      "verifier_timeout_sec": 1200
+    },
+    {
+      "case_id": "case_10002",
+      "repository": "princetonuniversity/openpiton",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage4_macro_pnr",
+      "eda_stage_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+      "eda_track": "stage4_macro_pnr",
+      "eda_track_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/rtl/dynamic_input_route_request_calc.v",
+        "code/rtl/dynamic_input_control.v",
+        "code/rtl/dynamic_output_control.v"
+      ],
+      "grading_seeds": [
+        1,
+        2
+      ],
+      "per_seed_timeout_sec": 600,
+      "verifier_timeout_sec": 1200
+    },
+    {
+      "case_id": "case_10004",
+      "repository": "princetonuniversity/openpiton",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage4_macro_pnr",
+      "eda_stage_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+      "eda_track": "stage4_macro_pnr",
+      "eda_track_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+      "problem_type": "PT3_Timing_Area_PPA_Closure",
+      "problem_type_label": "High-Frequency Timing & Area Optimization",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/rtl/noc_axi4_bridge_deser.v",
+        "code/rtl/noc_axi4_bridge_ser.v",
+        "code/rtl/noc_axi4_bridge_buffer.v"
+      ],
+      "grading_seeds": [
+        1,
+        2
+      ],
+      "per_seed_timeout_sec": 600,
+      "verifier_timeout_sec": 1200
+    },
+    {
+      "case_id": "case_10012",
+      "repository": "princetonuniversity/openpiton",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/rtl/io_xbar_input_route_request_calc.v",
+        "code/rtl/io_xbar_input_control.v",
+        "code/rtl/io_xbar_output_control.v"
+      ],
+      "grading_seeds": [
+        1,
+        2
+      ],
+      "per_seed_timeout_sec": 600,
+      "verifier_timeout_sec": 1200
+    },
+    {
+      "case_id": "case_20001",
+      "repository": "ultraembedded/biriscv",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage1_rtl_sim",
+      "eda_stage_name": "Stage 1: Frontend RTL Design & Functional Simulation",
+      "eda_track": "stage1_rtl_sim",
+      "eda_track_name": "Stage 1: Frontend RTL Design & Functional Simulation",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "rtl_dual_sim_standard",
+      "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+      "task_customized_collateral": false,
+      "collateral_location": "Unified base image (/opt/siliconbench/tools)",
+      "allowed_edits": [
+        "code/biriscv_issue.v"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_20003",
+      "repository": "ultraembedded/biriscv",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "rtl_dual_sim_standard",
+      "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+      "task_customized_collateral": false,
+      "collateral_location": "Unified base image (/opt/siliconbench/tools)",
+      "allowed_edits": [
+        "code/biriscv_npc.v",
+        "code/biriscv_fetch.v"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_20006",
+      "repository": "pulp-platform/axi_llc",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT4_GateLevel_Security_CDC",
+      "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+      "pdk_id": "rtl_dual_sim_standard",
+      "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+      "task_customized_collateral": false,
+      "collateral_location": "Unified base image (/opt/siliconbench/tools)",
+      "allowed_edits": [
+        "code/rtl/axi_llc_miss_counters.sv",
+        "code/rtl/axi_llc_tag_pattern_gen.sv",
+        "code/rtl/axi_llc_hit_miss.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_20009",
+      "repository": "pulp-platform/axi_llc",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT3_Timing_Area_PPA_Closure",
+      "problem_type_label": "High-Frequency Timing & Area Optimization",
+      "pdk_id": "ihp_sg13g2_130nm_8sram",
+      "pdk_name": "IHP SG13G2 130nm Open PDK + RM_IHPSG13_1P Hard-SRAM Macros",
+      "task_customized_collateral": true,
+      "collateral_location": "Task-bundled in environment/public/pdk/ and tests/private/pdk/",
+      "allowed_edits": [
+        "constraints/axi_llc.sdc",
+        "code/rtl/axi_llc_top.sv",
+        "code/rtl/axi_llc_chan_splitter.sv",
+        "code/rtl/axi_llc_tag_store.sv",
+        "code/rtl/axi_llc_data_way.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 360,
+      "verifier_timeout_sec": 720
+    },
+    {
+      "case_id": "case_20011",
+      "repository": "ultraembedded/biriscv",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "rtl_dual_sim_standard",
+      "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+      "task_customized_collateral": false,
+      "collateral_location": "Unified base image (/opt/siliconbench/tools)",
+      "allowed_edits": [
+        "code/biriscv_mmu.v"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_20017",
+      "repository": "ultraembedded/biriscv",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT3_Timing_Area_PPA_Closure",
+      "problem_type_label": "High-Frequency Timing & Area Optimization",
+      "pdk_id": "ihp_sg13g2_130nm_8sram",
+      "pdk_name": "IHP SG13G2 130nm Open PDK + RM_IHPSG13_1P Hard-SRAM Macros",
+      "task_customized_collateral": true,
+      "collateral_location": "Task-bundled in environment/public/pdk/ and tests/private/pdk/",
+      "allowed_edits": [
+        "constraints/dcache.sdc",
+        "code/dcache_core.v",
+        "code/dcache_core_tag_ram.v",
+        "code/dcache_core_data_ram.v",
+        "code/dcache_axi_axi.v"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 360,
+      "verifier_timeout_sec": 720
+    },
+    {
+      "case_id": "case_20020",
+      "repository": "pulp-platform/axi_llc",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "ihp_sg13g2_130nm_8sram",
+      "pdk_name": "IHP SG13G2 130nm Open PDK + RM_IHPSG13_1P Hard-SRAM Macros",
+      "task_customized_collateral": true,
+      "collateral_location": "Task-bundled in environment/public/pdk/ and tests/private/pdk/",
+      "allowed_edits": [
+        "constraints/axi_llc_ways.sdc",
+        "code/rtl/axi_llc_burst_cutter.sv",
+        "code/rtl/axi_llc_merge_unit.sv",
+        "code/rtl/axi_llc_read_unit.sv",
+        "code/rtl/axi_llc_write_unit.sv",
+        "code/rtl/axi_llc_ways.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 360,
+      "verifier_timeout_sec": 720
+    },
+    {
+      "case_id": "case_21005",
+      "repository": "corundum/corundum",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT3_Timing_Area_PPA_Closure",
+      "problem_type_label": "High-Frequency Timing & Area Optimization",
+      "pdk_id": "ihp_sg13g2_130nm_8sram",
+      "pdk_name": "IHP SG13G2 130nm Open PDK + RM_IHPSG13_1P Hard-SRAM Macros",
+      "task_customized_collateral": true,
+      "collateral_location": "Task-bundled in environment/public/pdk/ and tests/private/pdk/",
+      "allowed_edits": [
+        "code/tdma_scheduler.v",
+        "code/tx_scheduler_ctrl_tdma.v",
+        "code/tx_scheduler_rr.v"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_21007",
+      "repository": "alexforencich/verilog-axi",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT2_New_Feature_ISA_Impl",
+      "problem_type_label": "New ISA & Subsystem Feature Implementation",
+      "pdk_id": "ihp_sg13g2_130nm_8sram",
+      "pdk_name": "IHP SG13G2 130nm Open PDK + RM_IHPSG13_1P Hard-SRAM Macros",
+      "task_customized_collateral": true,
+      "collateral_location": "Task-bundled in environment/public/pdk/ and tests/private/pdk/",
+      "allowed_edits": [
+        "code/axi_crossbar.v",
+        "code/axi_crossbar_addr.v",
+        "code/axi_crossbar_rd.v",
+        "code/axi_crossbar_wr.v",
+        "code/arbiter.v"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_21008",
+      "repository": "alexforencich/verilog-axi",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT2_New_Feature_ISA_Impl",
+      "problem_type_label": "New ISA & Subsystem Feature Implementation",
+      "pdk_id": "rtl_dual_sim_standard",
+      "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+      "task_customized_collateral": false,
+      "collateral_location": "Unified base image (/opt/siliconbench/tools)",
+      "allowed_edits": [
+        "code/axi_adapter.v",
+        "code/axi_adapter_rd.v",
+        "code/axi_adapter_wr.v"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_21009",
+      "repository": "corundum/corundum",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT3_Timing_Area_PPA_Closure",
+      "problem_type_label": "High-Frequency Timing & Area Optimization",
+      "pdk_id": "ihp_sg13g2_130nm_8sram",
+      "pdk_name": "IHP SG13G2 130nm Open PDK + RM_IHPSG13_1P Hard-SRAM Macros",
+      "task_customized_collateral": true,
+      "collateral_location": "Task-bundled in environment/public/pdk/ and tests/private/pdk/",
+      "allowed_edits": [
+        "code/tx_checksum.v",
+        "code/rx_checksum.v"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_21014",
+      "repository": "corundum/corundum",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT4_GateLevel_Security_CDC",
+      "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+      "pdk_id": "rtl_dual_sim_standard",
+      "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+      "task_customized_collateral": false,
+      "collateral_location": "Unified base image (/opt/siliconbench/tools)",
+      "allowed_edits": [
+        "code/axis_cobs_encode.v",
+        "code/axis_cobs_decode.v",
+        "code/axis_frame_length_adjust.v"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_21015",
+      "repository": "alexforencich/verilog-axi",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "ihp_sg13g2_130nm_8sram",
+      "pdk_name": "IHP SG13G2 130nm Open PDK + RM_IHPSG13_1P Hard-SRAM Macros",
+      "task_customized_collateral": true,
+      "collateral_location": "Task-bundled in environment/public/pdk/ and tests/private/pdk/",
+      "allowed_edits": [
+        "code/axi_dma_wr.v",
+        "code/axi_dma_rd.v",
+        "code/axi_dma_desc_mux.v"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_21017",
+      "repository": "alexforencich/verilog-axi",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT4_GateLevel_Security_CDC",
+      "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+      "pdk_id": "rtl_dual_sim_standard",
+      "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+      "task_customized_collateral": false,
+      "collateral_location": "Unified base image (/opt/siliconbench/tools)",
+      "allowed_edits": [
+        "code/axil_crossbar.v",
+        "code/axil_crossbar_addr.v",
+        "code/axil_crossbar_wr.v",
+        "code/axil_crossbar_rd.v"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_21021",
+      "repository": "alexforencich/verilog-axi",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT4_GateLevel_Security_CDC",
+      "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+      "pdk_id": "rtl_dual_sim_standard",
+      "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+      "task_customized_collateral": false,
+      "collateral_location": "Unified base image (/opt/siliconbench/tools)",
+      "allowed_edits": [
+        "code/axi_vfifo.v",
+        "code/axi_vfifo_enc.v",
+        "code/axi_vfifo_dec.v",
+        "code/axi_vfifo_raw.v",
+        "code/axi_vfifo_raw_wr.v",
+        "code/axi_vfifo_raw_rd.v"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_21023",
+      "repository": "corundum/corundum",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT2_New_Feature_ISA_Impl",
+      "problem_type_label": "New ISA & Subsystem Feature Implementation",
+      "pdk_id": "rtl_dual_sim_standard",
+      "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+      "task_customized_collateral": false,
+      "collateral_location": "Unified base image (/opt/siliconbench/tools)",
+      "allowed_edits": [
+        "code/arp.v",
+        "code/arp_cache.v",
+        "code/arp_eth_rx.v",
+        "code/arp_eth_tx.v"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_22003",
+      "repository": "pulp-platform/ara",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT3_Timing_Area_PPA_Closure",
+      "problem_type_label": "High-Frequency Timing & Area Optimization",
+      "pdk_id": "ihp_sg13g2_130nm_8sram",
+      "pdk_name": "IHP SG13G2 130nm Open PDK + RM_IHPSG13_1P Hard-SRAM Macros",
+      "task_customized_collateral": true,
+      "collateral_location": "Task-bundled in environment/public/pdk/ and tests/private/pdk/",
+      "allowed_edits": [
+        "code/vmfpu.sv",
+        "code/simd_div.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 480,
+      "verifier_timeout_sec": 960
+    },
+    {
+      "case_id": "case_22005",
+      "repository": "pulp-platform/ara",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage1_rtl_sim",
+      "eda_stage_name": "Stage 1: Frontend RTL Design & Functional Simulation",
+      "eda_track": "stage1_rtl_sim",
+      "eda_track_name": "Stage 1: Frontend RTL Design & Functional Simulation",
+      "problem_type": "PT2_New_Feature_ISA_Impl",
+      "problem_type_label": "New ISA & Subsystem Feature Implementation",
+      "pdk_id": "rtl_dual_sim_standard",
+      "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+      "task_customized_collateral": false,
+      "collateral_location": "Unified base image (/opt/siliconbench/tools)",
+      "allowed_edits": [
+        "code/masku.sv",
+        "code/masku_operands.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 360,
+      "verifier_timeout_sec": 720
+    },
+    {
+      "case_id": "case_22006",
+      "repository": "pulp-platform/redmule",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage1_rtl_sim",
+      "eda_stage_name": "Stage 1: Frontend RTL Design & Functional Simulation",
+      "eda_track": "stage1_rtl_sim",
+      "eda_track_name": "Stage 1: Frontend RTL Design & Functional Simulation",
+      "problem_type": "PT2_New_Feature_ISA_Impl",
+      "problem_type_label": "New ISA & Subsystem Feature Implementation",
+      "pdk_id": "rtl_dual_sim_standard",
+      "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+      "task_customized_collateral": false,
+      "collateral_location": "Unified base image (/opt/siliconbench/tools)",
+      "allowed_edits": [
+        "code/redmule_inst_decoder.sv",
+        "code/redmule_ctrl.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 360,
+      "verifier_timeout_sec": 720
+    },
+    {
+      "case_id": "case_22007",
+      "repository": "pulp-platform/redmule",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT4_GateLevel_Security_CDC",
+      "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+      "pdk_id": "rtl_dual_sim_standard",
+      "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+      "task_customized_collateral": false,
+      "collateral_location": "Unified base image (/opt/siliconbench/tools)",
+      "allowed_edits": [
+        "code/x_buffer/redmule_x_buffer.sv",
+        "code/x_buffer/redmule_x_buffer_scm.sv",
+        "code/x_buffer/redmule_x_pad_scm.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_22009",
+      "repository": "pulp-platform/redmule",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage1_rtl_sim",
+      "eda_stage_name": "Stage 1: Frontend RTL Design & Functional Simulation",
+      "eda_track": "stage1_rtl_sim",
+      "eda_track_name": "Stage 1: Frontend RTL Design & Functional Simulation",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "rtl_dual_sim_standard",
+      "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+      "task_customized_collateral": false,
+      "collateral_location": "Unified base image (/opt/siliconbench/tools)",
+      "allowed_edits": [
+        "code/redmule_tiler.sv",
+        "code/redmule_scheduler.sv",
+        "code/redmule_memory_scheduler.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_22011",
+      "repository": "pulp-platform/ara",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT2_New_Feature_ISA_Impl",
+      "problem_type_label": "New ISA & Subsystem Feature Implementation",
+      "pdk_id": "ihp_sg13g2_130nm_8sram",
+      "pdk_name": "IHP SG13G2 130nm Open PDK + RM_IHPSG13_1P Hard-SRAM Macros",
+      "task_customized_collateral": true,
+      "collateral_location": "Task-bundled in environment/public/pdk/ and tests/private/pdk/",
+      "allowed_edits": [
+        "code/ara_dispatcher.sv",
+        "code/segment_sequencer.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 360,
+      "verifier_timeout_sec": 720
+    },
+    {
+      "case_id": "case_22012",
+      "repository": "pulp-platform/ara",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT2_New_Feature_ISA_Impl",
+      "problem_type_label": "New ISA & Subsystem Feature Implementation",
+      "pdk_id": "rtl_dual_sim_standard",
+      "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+      "task_customized_collateral": false,
+      "collateral_location": "Unified base image (/opt/siliconbench/tools)",
+      "allowed_edits": [
+        "code/fixed_p_rounding.sv",
+        "code/simd_alu.sv",
+        "code/valu.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 360,
+      "verifier_timeout_sec": 720
+    },
+    {
+      "case_id": "case_22013",
+      "repository": "pulp-platform/ara",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage1_rtl_sim",
+      "eda_stage_name": "Stage 1: Frontend RTL Design & Functional Simulation",
+      "eda_track": "stage1_rtl_sim",
+      "eda_track_name": "Stage 1: Frontend RTL Design & Functional Simulation",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "rtl_dual_sim_standard",
+      "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+      "task_customized_collateral": false,
+      "collateral_location": "Unified base image (/opt/siliconbench/tools)",
+      "allowed_edits": [
+        "code/vlsu.sv",
+        "code/addrgen.sv",
+        "code/vldu.sv",
+        "code/vstu.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 450,
+      "verifier_timeout_sec": 900
+    },
+    {
+      "case_id": "case_22016",
+      "repository": "pulp-platform/ara",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage1_rtl_sim",
+      "eda_stage_name": "Stage 1: Frontend RTL Design & Functional Simulation",
+      "eda_track": "stage1_rtl_sim",
+      "eda_track_name": "Stage 1: Frontend RTL Design & Functional Simulation",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "rtl_dual_sim_standard",
+      "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+      "task_customized_collateral": false,
+      "collateral_location": "Unified base image (/opt/siliconbench/tools)",
+      "allowed_edits": [
+        "code/ara_sequencer.sv",
+        "code/ara_dispatcher.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 360,
+      "verifier_timeout_sec": 720
+    },
+    {
+      "case_id": "case_22017",
+      "repository": "pulp-platform/ara",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT2_New_Feature_ISA_Impl",
+      "problem_type_label": "New ISA & Subsystem Feature Implementation",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/sldu.sv",
+        "code/p2_stride_gen.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 360,
+      "verifier_timeout_sec": 720
+    },
+    {
+      "case_id": "case_23002",
+      "repository": "vortexgpgpu/vortex",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage1_rtl_sim",
+      "eda_stage_name": "Stage 1: Frontend RTL Design & Functional Simulation",
+      "eda_track": "stage1_rtl_sim",
+      "eda_track_name": "Stage 1: Frontend RTL Design & Functional Simulation",
+      "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+      "problem_type_label": "Architectural & Protocol Bug Repair",
+      "pdk_id": "rtl_dual_sim_standard",
+      "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+      "task_customized_collateral": false,
+      "collateral_location": "Unified base image (/opt/siliconbench/tools)",
+      "allowed_edits": [
+        "code/VX_wctl_unit.sv",
+        "code/VX_split_join.sv",
+        "code/VX_ipdom_stack.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 420,
+      "verifier_timeout_sec": 840
+    },
+    {
+      "case_id": "case_23006",
+      "repository": "nvdla/hw",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT2_New_Feature_ISA_Impl",
+      "problem_type_label": "New ISA & Subsystem Feature Implementation",
+      "pdk_id": "rtl_dual_sim_standard",
+      "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+      "task_customized_collateral": false,
+      "collateral_location": "Unified base image (/opt/siliconbench/tools)",
+      "allowed_edits": [
+        "code/NV_NVDLA_PDP_nan.v",
+        "code/NV_NVDLA_PDP_CORE_unit1d.v",
+        "code/NV_NVDLA_PDP_CORE_cal1d.v"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 420,
+      "verifier_timeout_sec": 840
+    },
+    {
+      "case_id": "case_23010",
+      "repository": "nvdla/hw",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage4_macro_pnr",
+      "eda_stage_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+      "eda_track": "stage4_macro_pnr",
+      "eda_track_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+      "problem_type": "PT5_RTL_HardSRAM_Macro_PnR",
+      "problem_type_label": "RTL + Hard-SRAM Macro Physical Co-Design",
+      "pdk_id": "ihp_sg13g2_130nm_8sram",
+      "pdk_name": "IHP SG13G2 130nm Open PDK + RM_IHPSG13_1P Hard-SRAM Macros",
+      "task_customized_collateral": true,
+      "collateral_location": "Task-bundled in environment/public/pdk/ and tests/private/pdk/",
+      "allowed_edits": [
+        "code/NV_NVDLA_CACC_assembly_ctrl.v",
+        "code/NV_NVDLA_CACC_assembly_buffer.v",
+        "code/NV_NVDLA_CACC_delivery_buffer.v",
+        "plan/macro_placement.json",
+        "constraints/cacc_subsys.sdc"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 900,
+      "verifier_timeout_sec": 1800
+    },
+    {
+      "case_id": "case_23011",
+      "repository": "vortexgpgpu/vortex",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT2_New_Feature_ISA_Impl",
+      "problem_type_label": "New ISA & Subsystem Feature Implementation",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/VX_bar_unit.sv",
+        "code/VX_gbar_unit.sv",
+        "code/VX_gbar_arb.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 420,
+      "verifier_timeout_sec": 840
+    },
+    {
+      "case_id": "case_23013",
+      "repository": "vortexgpgpu/vortex",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage4_macro_pnr",
+      "eda_stage_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+      "eda_track": "stage4_macro_pnr",
+      "eda_track_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+      "problem_type": "PT5_RTL_HardSRAM_Macro_PnR",
+      "problem_type_label": "RTL + Hard-SRAM Macro Physical Co-Design",
+      "pdk_id": "ihp_sg13g2_130nm_8sram",
+      "pdk_name": "IHP SG13G2 130nm Open PDK + RM_IHPSG13_1P Hard-SRAM Macros",
+      "task_customized_collateral": true,
+      "collateral_location": "Task-bundled in environment/public/pdk/ and tests/private/pdk/",
+      "allowed_edits": [
+        "code/VX_lmem_switch.sv",
+        "code/VX_local_mem.sv",
+        "plan/macro_placement.json",
+        "constraints/lmem_subsys.sdc"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 900,
+      "verifier_timeout_sec": 1800
+    },
+    {
+      "case_id": "case_23014",
+      "repository": "vortexgpgpu/vortex",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage4_macro_pnr",
+      "eda_stage_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+      "eda_track": "stage4_macro_pnr",
+      "eda_track_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+      "problem_type": "PT5_RTL_HardSRAM_Macro_PnR",
+      "problem_type_label": "RTL + Hard-SRAM Macro Physical Co-Design",
+      "pdk_id": "ihp_sg13g2_130nm_8sram",
+      "pdk_name": "IHP SG13G2 130nm Open PDK + RM_IHPSG13_1P Hard-SRAM Macros",
+      "task_customized_collateral": true,
+      "collateral_location": "Task-bundled in environment/public/pdk/ and tests/private/pdk/",
+      "allowed_edits": [
+        "code/VX_cache_repl.sv",
+        "code/VX_cache_tags.sv",
+        "code/VX_cache_data.sv",
+        "plan/macro_placement.json",
+        "constraints/cache_subsys.sdc"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 900,
+      "verifier_timeout_sec": 1800
+    },
+    {
+      "case_id": "case_23015",
+      "repository": "nvdla/hw",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT3_Timing_Area_PPA_Closure",
+      "problem_type_label": "High-Frequency Timing & Area Optimization",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/int_sum_block.v",
+        "code/NV_NVDLA_CDP_DP_LUT_CTRL_unit.v",
+        "code/NV_NVDLA_CDP_DP_INTP_unit.v"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 600,
+      "verifier_timeout_sec": 1200
+    },
+    {
+      "case_id": "case_23016",
+      "repository": "vortexgpgpu/vortex",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT2_New_Feature_ISA_Impl",
+      "problem_type_label": "New ISA & Subsystem Feature Implementation",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/VX_tcu_uops.sv",
+        "code/VX_tcu_abuf.sv",
+        "code/VX_tcu_bbuf.sv",
+        "code/VX_tcu_core.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 600,
+      "verifier_timeout_sec": 1200
+    },
+    {
+      "case_id": "case_24001",
+      "repository": "pulp-platform/croc",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage2_synth_gate",
+      "eda_stage_name": "Stage 2: Logic Synthesis & Gate-Level Verification",
+      "eda_track": "stage2_synth_gate",
+      "eda_track_name": "Stage 2: Logic Synthesis & Gate-Level Verification",
+      "problem_type": "PT4_GateLevel_Security_CDC",
+      "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+      "pdk_id": "rtl_dual_sim_standard",
+      "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+      "task_customized_collateral": false,
+      "collateral_location": "Unified base image (/opt/siliconbench/tools)",
+      "allowed_edits": [
+        "code/cdc_reset_ctrlr.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_24005",
+      "repository": "bespoke-silicon-group/basejump_stl",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT4_GateLevel_Security_CDC",
+      "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/bsg_async_fifo.sv",
+        "code/bsg_async_ptr_gray.sv",
+        "code/bsg_mem_1r1w.sv",
+        "constraints/bsg_async_fifo.sdc"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 360,
+      "verifier_timeout_sec": 720
+    },
+    {
+      "case_id": "case_24009",
+      "repository": "analogdevicesinc/hdl",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT4_GateLevel_Security_CDC",
+      "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+      "pdk_id": "custom_multicorner_liberty",
+      "pdk_name": "Task-Specific Multi-Corner Liberty & SDC Timing Views",
+      "task_customized_collateral": true,
+      "collateral_location": "Task-bundled in environment/public/ and tests/private/",
+      "allowed_edits": [
+        "code/util_cpack2_impl.v",
+        "code/util_upack2_impl.v",
+        "code/pack_shell.v",
+        "code/pack_ctrl.v",
+        "code/pack_network.v"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 360,
+      "verifier_timeout_sec": 720
+    },
+    {
+      "case_id": "case_24010",
+      "repository": "analogdevicesinc/hdl",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT4_GateLevel_Security_CDC",
+      "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/dmac_sg.v",
+        "code/data_mover.v",
+        "code/request_arb.v",
+        "code/axi_dmac_burst_memory.v"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 360,
+      "verifier_timeout_sec": 720
+    },
+    {
+      "case_id": "case_24016",
+      "repository": "analogdevicesinc/hdl",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT4_GateLevel_Security_CDC",
+      "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/data_offload.v",
+        "code/data_offload_fsm.v",
+        "code/data_offload_regmap.v",
+        "code/util_axis_fifo_asym.v"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 360,
+      "verifier_timeout_sec": 720
+    },
+    {
+      "case_id": "case_25002",
+      "repository": "chipsalliance/caliptra-rtl",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT4_GateLevel_Security_CDC",
+      "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+      "pdk_id": "ihp_sg13g2_130nm_8sram",
+      "pdk_name": "IHP SG13G2 130nm Open PDK + RM_IHPSG13_1P Hard-SRAM Macros",
+      "task_customized_collateral": true,
+      "collateral_location": "Task-bundled in environment/public/pdk/ and tests/private/pdk/",
+      "allowed_edits": [
+        "code/doe_fsm.sv",
+        "code/doe_ctrl.sv",
+        "code/doe_key_mem.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 600,
+      "verifier_timeout_sec": 1200
+    },
+    {
+      "case_id": "case_25004",
+      "repository": "chipsalliance/caliptra-rtl",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage2_synth_gate",
+      "eda_stage_name": "Stage 2: Logic Synthesis & Gate-Level Verification",
+      "eda_track": "stage2_synth_gate",
+      "eda_track_name": "Stage 2: Logic Synthesis & Gate-Level Verification",
+      "problem_type": "PT4_GateLevel_Security_CDC",
+      "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+      "pdk_id": "rtl_dual_sim_standard",
+      "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+      "task_customized_collateral": false,
+      "collateral_location": "Unified base image (/opt/siliconbench/tools)",
+      "allowed_edits": [
+        "code/ecc_dsa_ctrl.sv",
+        "code/ecc_scalar_blinding.sv",
+        "code/ecc_hmac_drbg_interface.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 360,
+      "verifier_timeout_sec": 720
+    },
+    {
+      "case_id": "case_25005",
+      "repository": "chipsalliance/caliptra-rtl",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage2_synth_gate",
+      "eda_stage_name": "Stage 2: Logic Synthesis & Gate-Level Verification",
+      "eda_track": "stage2_synth_gate",
+      "eda_track_name": "Stage 2: Logic Synthesis & Gate-Level Verification",
+      "problem_type": "PT4_GateLevel_Security_CDC",
+      "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+      "pdk_id": "rtl_dual_sim_standard",
+      "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+      "task_customized_collateral": false,
+      "collateral_location": "Unified base image (/opt/siliconbench/tools)",
+      "allowed_edits": [
+        "code/hmac.sv",
+        "code/hmac_ctrl.sv",
+        "code/hmac_drbg.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_25010",
+      "repository": "pulp-platform/snitch",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage4_macro_pnr",
+      "eda_stage_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+      "eda_track": "stage4_macro_pnr",
+      "eda_track_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+      "problem_type": "PT5_RTL_HardSRAM_Macro_PnR",
+      "problem_type_label": "RTL + Hard-SRAM Macro Physical Co-Design",
+      "pdk_id": "ihp_sg13g2_130nm_8sram",
+      "pdk_name": "IHP SG13G2 130nm Open PDK + RM_IHPSG13_1P Hard-SRAM Macros",
+      "task_customized_collateral": true,
+      "collateral_location": "Task-bundled in environment/public/pdk/ and tests/private/pdk/",
+      "allowed_edits": [
+        "code/snitch_icache.sv",
+        "code/snitch_icache_l0.sv",
+        "code/snitch_icache_lookup.sv",
+        "code/snitch_icache_handler.sv",
+        "code/snitch_icache_refill.sv",
+        "plan/macro_placement.json",
+        "constraints/snitch_icache.sdc"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 900,
+      "verifier_timeout_sec": 1800
+    },
+    {
+      "case_id": "case_25011",
+      "repository": "chipsalliance/caliptra-rtl",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT4_GateLevel_Security_CDC",
+      "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+      "pdk_id": "rtl_dual_sim_standard",
+      "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+      "task_customized_collateral": false,
+      "collateral_location": "Unified base image (/opt/siliconbench/tools)",
+      "allowed_edits": [
+        "code/sha512_masked_defines_pkg.sv",
+        "code/sha512_masked_w_mem.sv",
+        "code/sha512_masked_core.sv"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 300,
+      "verifier_timeout_sec": 600
+    },
+    {
+      "case_id": "case_25015",
+      "repository": "pulp-platform/snitch",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage3_sta_cdc",
+      "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "eda_track": "stage3_sta_cdc",
+      "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+      "problem_type": "PT4_GateLevel_Security_CDC",
+      "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+      "pdk_id": "nangate45_plus_multicorner_lib",
+      "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+      "task_customized_collateral": true,
+      "collateral_location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+      "allowed_edits": [
+        "code/snitch_clkdiv2.sv",
+        "code/snitch_l0_tlb.sv",
+        "code/snitch_ptw.sv",
+        "code/snitch_shared_muldiv.sv",
+        "code/snitch_iso_hive.sv",
+        "constraints/snitch_iso_hive.sdc"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 600,
+      "verifier_timeout_sec": 1200
+    },
+    {
+      "case_id": "case_25017",
+      "repository": "pulp-platform/snitch",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage4_macro_pnr",
+      "eda_stage_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+      "eda_track": "stage4_macro_pnr",
+      "eda_track_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+      "problem_type": "PT5_RTL_HardSRAM_Macro_PnR",
+      "problem_type_label": "RTL + Hard-SRAM Macro Physical Co-Design",
+      "pdk_id": "ihp_sg13g2_130nm_8sram",
+      "pdk_name": "IHP SG13G2 130nm Open PDK + RM_IHPSG13_1P Hard-SRAM Macros",
+      "task_customized_collateral": true,
+      "collateral_location": "Task-bundled in environment/public/pdk/ and tests/private/pdk/",
+      "allowed_edits": [
+        "code/snitch_read_only_cache.sv",
+        "code/snitch_axi_to_cache.sv",
+        "code/snitch_ro_cache_lookup.sv",
+        "code/snitch_ro_cache_refill.sv",
+        "plan/macro_placement.json",
+        "constraints/snitch_ro_cache.sdc"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 900,
+      "verifier_timeout_sec": 1800
+    },
+    {
+      "case_id": "case_25018",
+      "repository": "chipsalliance/caliptra-rtl",
+      "base_image": "siliconbench-eda:1.0",
+      "eda_stage": "stage4_macro_pnr",
+      "eda_stage_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+      "eda_track": "stage4_macro_pnr",
+      "eda_track_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+      "problem_type": "PT5_RTL_HardSRAM_Macro_PnR",
+      "problem_type_label": "RTL + Hard-SRAM Macro Physical Co-Design",
+      "pdk_id": "ihp_sg13g2_130nm_8sram",
+      "pdk_name": "IHP SG13G2 130nm Open PDK + RM_IHPSG13_1P Hard-SRAM Macros",
+      "task_customized_collateral": true,
+      "collateral_location": "Task-bundled in environment/public/pdk/ and tests/private/pdk/",
+      "allowed_edits": [
+        "code/sha512_acc_top.sv",
+        "code/axi_sub_rd.sv",
+        "code/axi_sub_wr.sv",
+        "code/rot_sram_ecc_ctrl.sv",
+        "plan/macro_placement.json",
+        "constraints/rot_staging_subsys.sdc"
+      ],
+      "grading_seeds": [
+        101,
+        202
+      ],
+      "per_seed_timeout_sec": 900,
+      "verifier_timeout_sec": 1800
+    }
+  ]
+}

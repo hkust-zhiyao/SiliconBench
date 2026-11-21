@@ -1,0 +1,142 @@
+{
+  "case_id": "case_20017",
+  "task_id": "case_20017",
+  "version": 1,
+  "title": "16 KiB Two-Way Write-Back AXI4 D-Cache Hard-SRAM Mapping, Coherency & Multi-Corner Signoff",
+  "repo_id": "repo_44",
+  "repository": "ultraembedded/biriscv",
+  "topic": "biriscv_dcache_hard_sram_lru_axi_evict_and_multi_corner_sdc_sta",
+  "family": "native_sdc_multi_corner_sta",
+  "editable_files": [
+    "constraints/dcache.sdc",
+    "code/dcache_core.v",
+    "code/dcache_core_tag_ram.v",
+    "code/dcache_core_data_ram.v",
+    "code/dcache_axi_axi.v"
+  ],
+  "grading": {
+    "eda_class": "heavy",
+    "grader_timeout_seconds": 360,
+    "verifier_timeout_seconds": 720,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_20017",
+    "version": 1,
+    "frozen_utc": "2026-11-12T04:21:27.049537+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "constraints/dcache.sdc",
+      "code/dcache_core.v",
+      "code/dcache_core_tag_ram.v",
+      "code/dcache_core_data_ram.v",
+      "code/dcache_axi_axi.v"
+    ],
+    "public_hashes": {
+      "BUILD.md": "fb09de90272a9f1cfa5c01ff61a3fc435063466d37fe8b5235e2f2807bc20bf1",
+      "code/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "code/dcache.v": "0ff5d794f8fefc3dae7a437d36405aec6bc7ae8d0aa8cb10b82184c9c226338e",
+      "code/dcache_axi.v": "09d0296705c196c1b6696db85c98dad3f0bd01b036b7e909cdc6abcb857fb1ae",
+      "code/dcache_axi_axi.v": "390b7f81b320205cf729cbf9ce45f897c49ad88584bd81f2e99587d53a0a7e61",
+      "code/dcache_core.v": "794472a57ef3b6fa7acb7eff5253d15d774361ba3bb1975392d1bd7ac1fcfe9e",
+      "code/dcache_core_data_ram.v": "6f23ad31f338d5f38d63c2b3fa9a54cc552c11c0e8cfc6af7d492e80168452de",
+      "code/dcache_core_tag_ram.v": "87da2141cf7206e27a2822b8fd922c9d5e263a35211a17a3442145a1d1396843",
+      "code/dcache_if_pmem.v": "694505e5739506c04e33e8c709e03637231cc84c18cf59febad01bf0cae77643",
+      "code/dcache_mux.v": "f90ee15a9bedf9320fbd20c8c54d54653d73b38bea8b80bc1535e4006b6498a7",
+      "code/dcache_pmem_mux.v": "c083f59c57b51f50f4ff94164c65f9980eacdc20c199556527d922473b2e6065",
+      "constraints/dcache.sdc": "0fcfe5846d77b28605428706c920f04c744bd121aac698ee6d8d249b3c3e12d8",
+      "issue.md": "f478c03fe11cc2b60ec2e65cb602e969a94d407e02c7a833cad1068ae275932e",
+      "lib/RM_IHPSG13_1P_256x64_c2_bm_bist.lef": "246405148ef9df63af32d955f20491c4d087678d03cbfec3eb3ad6653fc8d4c3",
+      "lib/RM_IHPSG13_1P_256x64_c2_bm_bist.lib": "860989fc4e8fb03e8dde027d7b44934c4691908c69a0d4ea77aafe94314a8343",
+      "lib/RM_IHPSG13_1P_256x64_c2_bm_bist.v": "7f4d1d17a64e29b35bdf765d620dcedc5e367c38e95d08f3a80a6793fa2c7126",
+      "lib/RM_IHPSG13_1P_256x64_c2_bm_bist_stub.v": "4fe2a528def8d0114f778643abec317c323e7d6744089b101a4f75e19b3fe70e",
+      "lib/SRAM_1P_behavioral_bm_bist.v": "e2e43ec0159cbc34662fe91114e8cb03a697a2a829ad63b0d4f06631908ea787",
+      "lib/sg13g2_stdcell.lef": "9942e96fb5df56b40f1cac30e1b118e88a34c842b3263a9c285077c2801fae2b",
+      "lib/sg13g2_stdcell_fast_1p32V_m40C.lib": "8a30b519ae74d9251aa876d343e64a2c8aa2d4a148cc05ad4ec44e2ab6308f84",
+      "lib/sg13g2_stdcell_slow_1p08V_125C.lib": "ea64c922da671dea1acedf5ee7f301a068b1e3dad3c0f0a690f38290e79fc379",
+      "lib/sg13g2_stdcell_typ_1p20V_25C.lib": "f3b97e2af56e61f340c5b316d9a352fd54afda130841ec528e8bc2c22411a077",
+      "lib/sg13g2_tech.lef": "3b05b1b0c9752e14d5153a5aa1594e34a883df6b1acaa84af377cef521f76bb9"
+    },
+    "gold_hashes": {
+      "code/dcache_axi_axi.v": "98746ae0cc2dc6c8bd5df4262c5fc038b7732b6912f1ba2f69caa197daf1ba4b",
+      "code/dcache_core.v": "dc32c41b81262029d855434f6367755e226432e15b60b70cc40d991e6268c7c9",
+      "code/dcache_core_data_ram.v": "b91b52ee62fded7c61f5617212b0035b3ed522ba1c0788397b2819e3cbda7659",
+      "code/dcache_core_tag_ram.v": "189e0b07c79de8ed13c0e69d450bb444da6eb066bbabb7c0920b92136b2deb90",
+      "constraints/dcache.sdc": "b1d88dee4ba00b9691848bcafc902cb387a0c1dea14fa7f0ef610e35d132ef46"
+    },
+    "grader_hashes": {
+      "run.py": "981d672d0aa189ad307c42dbba5dd593f53f0bf8c554bf36e14faeb8f7c99170",
+      "sta_audit.tcl": "bf1c779a3c45cf2d77a30d41ef25b2e7bfae1f2888568671bbb99fe32cba46c8"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 2,
+      "wrong_fix_fail_runs": 4,
+      "anti_hack_fail_runs": 5,
+      "mutant_killed": 10,
+      "mutant_total": 10
+    }
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT3_Timing_Area_PPA_Closure",
+  "problem_type_label": "High-Frequency Timing & Area Optimization",
+  "primary_domain": "Core_RISCV_Processors",
+  "multi_domains": [
+    "Core_RISCV_Processors"
+  ],
+  "pdk_profile": {
+    "pdk_id": "ihp_sg13g2_130nm_8sram",
+    "pdk_name": "IHP SG13G2 130nm Open PDK + RM_IHPSG13_1P Hard-SRAM Macros",
+    "location": "Task-bundled in environment/public/pdk/ and tests/private/pdk/",
+    "customized": true,
+    "notes": "Includes task-bundled IHP SG13G2 standard-cell LEF/Liberty and single-port hard-SRAM macro LEF/Liberty/Verilog models."
+  },
+  "public_hashes": {
+    "BUILD.md": "fb09de90272a9f1cfa5c01ff61a3fc435063466d37fe8b5235e2f2807bc20bf1",
+    "code/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "code/dcache.v": "0ff5d794f8fefc3dae7a437d36405aec6bc7ae8d0aa8cb10b82184c9c226338e",
+    "code/dcache_axi.v": "09d0296705c196c1b6696db85c98dad3f0bd01b036b7e909cdc6abcb857fb1ae",
+    "code/dcache_axi_axi.v": "390b7f81b320205cf729cbf9ce45f897c49ad88584bd81f2e99587d53a0a7e61",
+    "code/dcache_core.v": "794472a57ef3b6fa7acb7eff5253d15d774361ba3bb1975392d1bd7ac1fcfe9e",
+    "code/dcache_core_data_ram.v": "6f23ad31f338d5f38d63c2b3fa9a54cc552c11c0e8cfc6af7d492e80168452de",
+    "code/dcache_core_tag_ram.v": "87da2141cf7206e27a2822b8fd922c9d5e263a35211a17a3442145a1d1396843",
+    "code/dcache_if_pmem.v": "694505e5739506c04e33e8c709e03637231cc84c18cf59febad01bf0cae77643",
+    "code/dcache_mux.v": "f90ee15a9bedf9320fbd20c8c54d54653d73b38bea8b80bc1535e4006b6498a7",
+    "code/dcache_pmem_mux.v": "c083f59c57b51f50f4ff94164c65f9980eacdc20c199556527d922473b2e6065",
+    "constraints/dcache.sdc": "0fcfe5846d77b28605428706c920f04c744bd121aac698ee6d8d249b3c3e12d8",
+    "issue.md": "f478c03fe11cc2b60ec2e65cb602e969a94d407e02c7a833cad1068ae275932e",
+    "lib/RM_IHPSG13_1P_256x64_c2_bm_bist.lef": "246405148ef9df63af32d955f20491c4d087678d03cbfec3eb3ad6653fc8d4c3",
+    "lib/RM_IHPSG13_1P_256x64_c2_bm_bist.lib": "860989fc4e8fb03e8dde027d7b44934c4691908c69a0d4ea77aafe94314a8343",
+    "lib/RM_IHPSG13_1P_256x64_c2_bm_bist.v": "7f4d1d17a64e29b35bdf765d620dcedc5e367c38e95d08f3a80a6793fa2c7126",
+    "lib/RM_IHPSG13_1P_256x64_c2_bm_bist_stub.v": "4fe2a528def8d0114f778643abec317c323e7d6744089b101a4f75e19b3fe70e",
+    "lib/SRAM_1P_behavioral_bm_bist.v": "e2e43ec0159cbc34662fe91114e8cb03a697a2a829ad63b0d4f06631908ea787",
+    "lib/sg13g2_stdcell.lef": "9942e96fb5df56b40f1cac30e1b118e88a34c842b3263a9c285077c2801fae2b",
+    "lib/sg13g2_stdcell_fast_1p32V_m40C.lib": "8a30b519ae74d9251aa876d343e64a2c8aa2d4a148cc05ad4ec44e2ab6308f84",
+    "lib/sg13g2_stdcell_slow_1p08V_125C.lib": "ea64c922da671dea1acedf5ee7f301a068b1e3dad3c0f0a690f38290e79fc379",
+    "lib/sg13g2_stdcell_typ_1p20V_25C.lib": "f3b97e2af56e61f340c5b316d9a352fd54afda130841ec528e8bc2c22411a077",
+    "lib/sg13g2_tech.lef": "3b05b1b0c9752e14d5153a5aa1594e34a883df6b1acaa84af377cef521f76bb9"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 2,
+    "wrong_fix_fail_runs": 4,
+    "anti_hack_fail_runs": 5,
+    "mutant_killed": 10,
+    "mutant_total": 10
+  }
+}

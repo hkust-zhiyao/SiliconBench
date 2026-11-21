@@ -1,0 +1,126 @@
+{
+  "case_id": "case_23006",
+  "task_id": "case_23006",
+  "version": 1,
+  "title": "Implement Multi-Precision 1D Pooling, Split-Stripe Tiling, Pad Compensation, and FP16 NaN Preprocessor in NVDLA PDP",
+  "repo_id": "repo_36",
+  "repository": "nvdla/hw",
+  "topic": "spec_to_rtl_feature",
+  "family": "functional",
+  "editable_files": [
+    "code/NV_NVDLA_PDP_nan.v",
+    "code/NV_NVDLA_PDP_CORE_unit1d.v",
+    "code/NV_NVDLA_PDP_CORE_cal1d.v"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 420,
+    "verifier_timeout_seconds": 840,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_23006",
+    "version": 1,
+    "frozen_utc": "2026-11-11T18:52:11.924078+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/NV_NVDLA_PDP_nan.v",
+      "code/NV_NVDLA_PDP_CORE_unit1d.v",
+      "code/NV_NVDLA_PDP_CORE_cal1d.v"
+    ],
+    "public_hashes": {
+      "BUILD.md": "c134ee31b0a5bb8fc8224214f0f23d9171ef83ad0c2947215e6feaf2311b4867",
+      "code/CKLNQD12.v": "80bf2ace4582b6d834281c18cb9b18ce7e591c423268a968dcd42aaadda0ddb3",
+      "code/HLS_fp16_to_fp17.v": "8754276ed4e4afeff4fba22291c0bfd1d81c58bf01979d5b8a39bc80024637d7",
+      "code/HLS_fp17_add.v": "d661354665f61bbfc5d06ad76eaef1af4159db9babc7ef276afc891929e77714",
+      "code/LICENSE": "0f232029d97359752ac8a67f20e5fd6a703bb3af80f812ebff927a059a84cccb",
+      "code/NV_BLKBOX_SINK.v": "07565c93d8c602ce4edfba60e4d66a577f106f100c2bb5ddc7c78c76ac013a09",
+      "code/NV_CLK_gate_power.v": "a70ff151f1b40c75816b3aff24447140988453a48fc8f751c1c06a72a915c66c",
+      "code/NV_HWACC_NVDLA_tick_defines.vh": "044739952479bb50d96224798a6ac38a3ba1751511894cc34cb882ee0a1b887a",
+      "code/NV_NVDLA_PDP_CORE_cal1d.v": "3225449e60023d4ffec4b991f67f9d68e9d3e951ea366a8debfac5da959fc795",
+      "code/NV_NVDLA_PDP_CORE_unit1d.v": "8662c2a5f5104345f54ed97d1b64af689aac4ece281c6288becb21f5e383a4fd",
+      "code/NV_NVDLA_PDP_nan.v": "1b48b8678742b25f3ef3cfdb274028aa26450f01b3a152e242e16359cd136124",
+      "code/cal1d_fp16_pool_sum.v": "7c5b25ac061590d62d0fcec93367cc2f9d336714c63f702f5dc0486b08cf7647",
+      "code/simulate_x_tick.vh": "aa8d6644fdc7a87231ceab60898237d3ebf940a9fe20f579768b7f47a29c171e",
+      "issue.md": "9f906dc02ac04cd28ee7a3cc0534ba58ac7278e3ba956fde79f129ab923669e7"
+    },
+    "gold_hashes": {
+      "code/CKLNQD12.v": "80bf2ace4582b6d834281c18cb9b18ce7e591c423268a968dcd42aaadda0ddb3",
+      "code/HLS_fp16_to_fp17.v": "8754276ed4e4afeff4fba22291c0bfd1d81c58bf01979d5b8a39bc80024637d7",
+      "code/HLS_fp17_add.v": "d661354665f61bbfc5d06ad76eaef1af4159db9babc7ef276afc891929e77714",
+      "code/LICENSE": "0f232029d97359752ac8a67f20e5fd6a703bb3af80f812ebff927a059a84cccb",
+      "code/NV_BLKBOX_SINK.v": "07565c93d8c602ce4edfba60e4d66a577f106f100c2bb5ddc7c78c76ac013a09",
+      "code/NV_CLK_gate_power.v": "a70ff151f1b40c75816b3aff24447140988453a48fc8f751c1c06a72a915c66c",
+      "code/NV_HWACC_NVDLA_tick_defines.vh": "044739952479bb50d96224798a6ac38a3ba1751511894cc34cb882ee0a1b887a",
+      "code/NV_NVDLA_PDP_CORE_cal1d.v": "ab160e01a187573ab681bcdc9a28930b4374d71a12d0e4730ce76461c041f5d4",
+      "code/NV_NVDLA_PDP_CORE_unit1d.v": "3893de6fd79547cc16b227b3599ab56bda2fdfc0b6fcb94b77dc7b59a4fa049c",
+      "code/NV_NVDLA_PDP_nan.v": "81408809fd74b9be0f8bc891087ed324b01916db2071f678c38fc316912adcfc",
+      "code/cal1d_fp16_pool_sum.v": "7c5b25ac061590d62d0fcec93367cc2f9d336714c63f702f5dc0486b08cf7647",
+      "code/simulate_x_tick.vh": "aa8d6644fdc7a87231ceab60898237d3ebf940a9fe20f579768b7f47a29c171e"
+    },
+    "grader_hashes": {
+      "run.py": "c044a7a05877e0b52c52f21eee69e77bb2497b4ffa4c07eb1107da9b354f1abc"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 2,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 5,
+      "mutant_killed": 12,
+      "mutant_total": 12
+    }
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT2_New_Feature_ISA_Impl",
+  "problem_type_label": "New ISA & Subsystem Feature Implementation",
+  "primary_domain": "Vector_GPU_NPU_Accelerators",
+  "multi_domains": [
+    "Vector_GPU_NPU_Accelerators"
+  ],
+  "pdk_profile": {
+    "pdk_id": "rtl_dual_sim_standard",
+    "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+    "location": "Unified base image (/opt/siliconbench/tools)",
+    "customized": false,
+    "notes": "Pure RTL/protocol/synthesis check without external PDK Liberty files."
+  },
+  "public_hashes": {
+    "BUILD.md": "c134ee31b0a5bb8fc8224214f0f23d9171ef83ad0c2947215e6feaf2311b4867",
+    "code/CKLNQD12.v": "80bf2ace4582b6d834281c18cb9b18ce7e591c423268a968dcd42aaadda0ddb3",
+    "code/HLS_fp16_to_fp17.v": "8754276ed4e4afeff4fba22291c0bfd1d81c58bf01979d5b8a39bc80024637d7",
+    "code/HLS_fp17_add.v": "d661354665f61bbfc5d06ad76eaef1af4159db9babc7ef276afc891929e77714",
+    "code/LICENSE": "0f232029d97359752ac8a67f20e5fd6a703bb3af80f812ebff927a059a84cccb",
+    "code/NV_BLKBOX_SINK.v": "07565c93d8c602ce4edfba60e4d66a577f106f100c2bb5ddc7c78c76ac013a09",
+    "code/NV_CLK_gate_power.v": "a70ff151f1b40c75816b3aff24447140988453a48fc8f751c1c06a72a915c66c",
+    "code/NV_HWACC_NVDLA_tick_defines.vh": "044739952479bb50d96224798a6ac38a3ba1751511894cc34cb882ee0a1b887a",
+    "code/NV_NVDLA_PDP_CORE_cal1d.v": "3225449e60023d4ffec4b991f67f9d68e9d3e951ea366a8debfac5da959fc795",
+    "code/NV_NVDLA_PDP_CORE_unit1d.v": "8662c2a5f5104345f54ed97d1b64af689aac4ece281c6288becb21f5e383a4fd",
+    "code/NV_NVDLA_PDP_nan.v": "1b48b8678742b25f3ef3cfdb274028aa26450f01b3a152e242e16359cd136124",
+    "code/cal1d_fp16_pool_sum.v": "7c5b25ac061590d62d0fcec93367cc2f9d336714c63f702f5dc0486b08cf7647",
+    "code/simulate_x_tick.vh": "aa8d6644fdc7a87231ceab60898237d3ebf940a9fe20f579768b7f47a29c171e",
+    "issue.md": "9f906dc02ac04cd28ee7a3cc0534ba58ac7278e3ba956fde79f129ab923669e7"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 2,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 5,
+    "mutant_killed": 12,
+    "mutant_total": 12
+  }
+}

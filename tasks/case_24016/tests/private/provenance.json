@@ -1,0 +1,32 @@
+{
+  "case_id": "case_24016",
+  "repo_id": "repo_38",
+  "origin": "https://github.com/analogdevicesinc/hdl",
+  "commit": "c9a501d87a420d2e28aa9d931557bdb4122f3c4f",
+  "archive_sha256": "4e8cc71ffaf89e18107427fd3d1cb402f225325954bbaefc8b4f811645bbf183",
+  "license": "ADI BSD / GPL-2.0 dual license (code/LICENSE_ADIBSD); Nangate45 Open Cell Library license in public/lib/LICENSE_NANGATE45",
+  "native_sources": [
+    "library/data_offload/data_offload.v",
+    "library/data_offload/data_offload_fsm.v",
+    "library/data_offload/data_offload_regmap.v",
+    "library/util_axis_fifo_asym/util_axis_fifo_asym.v",
+    "library/util_axis_fifo/util_axis_fifo.v",
+    "library/util_axis_fifo/util_axis_fifo_address_generator.v",
+    "library/common/up_axi.v",
+    "library/common/ad_mem_asym.v",
+    "library/util_cdc/sync_bits.v",
+    "library/util_cdc/sync_data.v",
+    "library/util_cdc/sync_event.v",
+    "library/util_cdc/sync_gray.v",
+    "library/axi_register_slice/axi_register_slice.v"
+  ],
+  "editable_files": [
+    "code/data_offload.v",
+    "code/data_offload_fsm.v",
+    "code/data_offload_regmap.v",
+    "code/util_axis_fifo_asym.v"
+  ],
+  "qualification": "upstream/repo_38",
+  "build_scope": "Verilator 5.038 three-clock RX/TX data_offload_subsys verification + Yosys Nangate45 synthesis + OpenROAD 26Q2 (OpenSTA) timing closure.",
+  "tool": "Verilator 5.038 + Yosys 0.63 + OpenROAD 26Q2 (OpenSTA)"
+}

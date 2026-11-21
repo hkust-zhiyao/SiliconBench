@@ -1,0 +1,54 @@
+{
+  "case_id": "case_25015",
+  "obligations": [
+    {
+      "id": "REQ-ISO-CLKDIV2-GLS-RESET",
+      "behavior": "Deterministic 4-state gate-level reset initialization across snitch_clkdiv2 and isochronous L0 TLB/PTW crossings in both divided (clk_d2_bypass_i=0) and 1:1 bypass (clk_d2_bypass_i=1) modes.",
+      "public_source": "public/issue.md Architectural, 4-State Gate-Level & Protocol Contract item 1",
+      "verified_by": [
+        "private/tests/tb_gls.sv",
+        "wf1_unreset_clkdiv2_gls_x",
+        "m01_clkdiv2_no_reset"
+      ]
+    },
+    {
+      "id": "REQ-SV32-DUALPORT-VM-AND-PERMS",
+      "behavior": "Independent ITLB/DTLB Sv32 4KiB/4MiB walks, 2-entry round-robin L0 retention, flush invalidation, R/W/X/U/A/D permission checks (including execute-only X=1,R=0), level-1 pointer fault, superpage alignment, and non-poisoning PTW bus errors.",
+      "public_source": "public/issue.md Architectural, 4-State Gate-Level & Protocol Contract item 2",
+      "verified_by": [
+        "private/tests/tb_subsys.sv",
+        "wf2_inverted_read_perm_tlb",
+        "m02_hive_drop_dtlb_port_index",
+        "m03_hive_unbroadcast_ptw_pte",
+        "m04_tlb_early_evict_wrap",
+        "m05_ptw_lvl2_pointer_no_fault",
+        "m06_ptw_misaligned_4m_sticky",
+        "m07_tlb_ignore_flush"
+      ]
+    },
+    {
+      "id": "REQ-SHARED-RV32M-AND-ILLEGAL-OP",
+      "behavior": "Multi-core RV32M MUL/DIV/REM execution preserving IDs under backpressure and clean retirement of unsupported opcodes with acc_perror_o=1.",
+      "public_source": "public/issue.md Architectural, 4-State Gate-Level & Protocol Contract item 3",
+      "verified_by": [
+        "private/tests/tb_subsys.sv",
+        "wf3_illegal_op_deadlock",
+        "m08_muldiv_drop_perror",
+        "m09_muldiv_wrong_div_zero"
+      ]
+    },
+    {
+      "id": "REQ-NG45-MULTICORNER-ISO-STA",
+      "behavior": "Zero-latch Nangate45 synthesis preserving snitch_clkdiv2, legal divided-clock SDC <= 3.15 ns without async/multicycle overrides, and setup/hold >= 0.0 ns across div2/bypass x slow/fast corners.",
+      "public_source": "public/issue.md Synthesis & Multi-Corner Nangate45 STA Signoff",
+      "verified_by": [
+        "private/grader/run.py",
+        "wf4_unpipelined_mul_setup_fail",
+        "wf5_async_clock_groups_sdc",
+        "m10_sdc_relax_period",
+        "m11_sdc_missing_gen_clock",
+        "m12_inferred_latch_ptw"
+      ]
+    }
+  ]
+}

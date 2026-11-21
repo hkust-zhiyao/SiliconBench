@@ -1,0 +1,23 @@
+{
+  "case_id": "case_10012",
+  "obligations": [
+    {
+      "id": "REQ-IO-XBAR-8PORT-ROUTE-CALC",
+      "behavior": "io_xbar_route_request_calc routes on-chip abs_x 1..7 to ports 1..7 and routes off-chip, abs_x==0, and abs_x>=8 to port 0.",
+      "public_source": "public/issue.md bullet 1",
+      "enforced_by": "private/tests/tb.sv, killed by wrong_fix_1, mutant_01..mutant_03"
+    },
+    {
+      "id": "REQ-IO-XBAR-INPUT-8BIT-LEN-AND-BUBBLE",
+      "behavior": "io_xbar_input_control resets all 8 bits of count/rem_f and holds tail_out stable across valid_in==0 bubbles and thanks==0 stalls.",
+      "public_source": "public/issue.md bullet 2",
+      "enforced_by": "private/tests/tb.sv, killed by wrong_fix_2, mutant_04..mutant_06"
+    },
+    {
+      "id": "REQ-IO-XBAR-OUTPUT-8PORT-RR-AND-STA",
+      "behavior": "io_xbar_output_control includes self-fallback on all 8 ports, preserves last_route_f across idle gaps, and meets 0.85 ns STA and area limits.",
+      "public_source": "public/issue.md bullet 3, public/BUILD.md section 3",
+      "enforced_by": "private/tests/tb.sv, private/grader/run.py, killed by wrong_fix_3..wrong_fix_5, mutant_07..mutant_10"
+    }
+  ]
+}

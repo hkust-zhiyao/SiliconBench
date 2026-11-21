@@ -1,0 +1,66 @@
+{
+  "case_id": "case_23016",
+  "obligations": [
+    {
+      "id": "REQ-WMMA-WGMMA-UOP-EXPANSION",
+      "behavior": "Preserve bit-exact warp-level WMMA/WMMA_SP and Hopper WGMMA/WGMMA_SP micro-op expansion across cd_nregs in {0, 1, 2}, RS/SS A-operand modes, FP16/BF16/INT8/UINT8/INT4/UINT4 formats, and dual subsystem configurations (CFG_F2K_1B and CFG_NOF2K_2B).",
+      "public_source": "public/issue.md Architectural, Protocol & Multi-Configuration Contract item 1",
+      "verified_by": [
+        "private/tests/tb.sv",
+        "private/tests/tb_gls.v",
+        "m01_uops_wg_nr16_cnt",
+        "m02_uops_wg_rs1_dense_k",
+        "m03_uops_wmma_sp_rc_off"
+      ]
+    },
+    {
+      "id": "REQ-SMEM-SUBROW-OFFSET-AND-STRADDLE",
+      "behavior": "Decode 32-bit x10/x11 shared-memory descriptors with arbitrary word-aligned sub-bank-row base offsets and non-zero byte strides, accurately fetching and assembling dense and 2:4 sparse A/B slices that straddle two consecutive 8-word LMEM bank rows under variable LMEM latency and backpressure.",
+      "public_source": "public/issue.md Architectural, Protocol & Multi-Configuration Contract item 2",
+      "verified_by": [
+        "private/tests/tb.sv",
+        "wf1_decl_fix_only",
+        "wf2_no_straddle_second_beat",
+        "m04_abuf_drop_sub_off",
+        "m05_abuf_hi_beat_lane_idx",
+        "m06_bbuf_drop_sub_off",
+        "m07_bbuf_km_hi_addr_inc"
+      ]
+    },
+    {
+      "id": "REQ-TBUF-COHERENCY-AND-LOCKSTEP",
+      "behavior": "Reuse resident A-stripes and B-tiles within a WGMMA burst while forcing fresh LMEM refills across K-major/block-major layout switches, in-place shared-memory updates between consecutive WGMMA macro-instructions, and CTA/warp transitions across 1-block and 2-block lockstep execution.",
+      "public_source": "public/issue.md Architectural, Protocol & Multi-Configuration Contract item 3",
+      "verified_by": [
+        "private/tests/tb.sv",
+        "wf3_stale_bbuf_coherence",
+        "m08_abuf_skip_first_refetch",
+        "m09_bbuf_skip_bm_first_refetch",
+        "m10_bbuf_kmajor_ignore_step_n"
+      ]
+    },
+    {
+      "id": "REQ-FIFO-RETIREMENT-UNDER-STALL",
+      "behavior": "Retire all accepted micro-ops (including wb == 0 WGMMA descriptor-setup micro-ops) in strict per-block FIFO order on res_valid && res_ready without bypassing older in-flight or landing-queue-parked compute results under commit backpressure.",
+      "public_source": "public/issue.md Architectural, Protocol & Multi-Configuration Contract item 4",
+      "verified_by": [
+        "private/tests/tb.sv",
+        "wf4_setup_bypass_fifo",
+        "m11_core_landq_bypass_not_empty",
+        "m12_core_wg_b_subblock_off"
+      ]
+    },
+    {
+      "id": "REQ-SLANG-GLS-NANGATE45-AREA-STA",
+      "behavior": "Elaborate cleanly in yosys+slang with zero latches and zero combinational loops, pass 4-state gate-level reset/X-hygiene simulation, meet Nangate45 cell area <= 87,200.0 um^2, and close OpenROAD 6.50 ns setup STA with WNS >= 0.0000 ns.",
+      "public_source": "public/issue.md Synthesis, 4-State Gate-Level Hygiene & Nangate45 PPA/STA Targets",
+      "verified_by": [
+        "private/grader/run.py",
+        "private/tests/tb_gls.v",
+        "wf1_decl_fix_only",
+        "wf5_unfactored_area_bloat",
+        "wf6_unbuffered_timing_violation"
+      ]
+    }
+  ]
+}

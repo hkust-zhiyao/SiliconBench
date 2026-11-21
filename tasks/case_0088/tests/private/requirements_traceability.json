@@ -1,0 +1,20 @@
+{
+  "obligations": [
+    {
+      "obligation": "Hold the selected channel, requester ID, and request payload strictly stable on RequestBlock2CH outputs while data_req_o == 1 and data_gnt_i == 0 across intra-channel and inter-channel contention",
+      "source": "public/issue.md"
+    },
+    {
+      "obligation": "Bound Policy 1 starvation to at most P_c - 1 other grants per channel and ensure MUX2_REQ alternates channel priority (~SEL) so an active channel waits at most 1 transfer by the other channel",
+      "source": "public/issue.md"
+    },
+    {
+      "obligation": "Forward the write data sampled on the accepted atomic load cycle during the second-cycle TestAndSet store (data_ts_set_o == 1, data_wen_o == 0)",
+      "source": "public/issue.md"
+    },
+    {
+      "obligation": "Maintain latch-free RTL and achieve Nangate45 mapped area <= 2705.0 um^2 and OpenROAD placement STA WNS >= 0.60 ns, WHS >= 0.00 ns at 2.85 ns clock",
+      "source": "public/issue.md"
+    }
+  ]
+}

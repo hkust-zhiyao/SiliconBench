@@ -1,0 +1,22 @@
+{
+  "max_delays": [
+    {
+      "from": [
+        "alert_in"
+      ],
+      "to": [
+        "alert_out"
+      ],
+      "ns": 9.0
+    },
+    {
+      "from": [
+        "trace_in"
+      ],
+      "to": [
+        "trace_out"
+      ],
+      "ns": 10.0
+    }
+  ]
+}

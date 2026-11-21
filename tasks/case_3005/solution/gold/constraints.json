@@ -1,0 +1,22 @@
+{
+  "max_delays": [
+    {
+      "from": [
+        "fpu_rm_in"
+      ],
+      "to": [
+        "fpu_rm_out"
+      ],
+      "ns": 7.1
+    },
+    {
+      "from": [
+        "hart_ctrl_in"
+      ],
+      "to": [
+        "hart_ctrl_out"
+      ],
+      "ns": 7.85
+    }
+  ]
+}

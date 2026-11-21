@@ -1,0 +1,40 @@
+{
+  "case_id": "case_5014",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "description": "32-bit AMO operand replication across 64-bit AXI write lanes and preservation of colliding external and atomic self-invalidation requests.",
+      "verified_by": [
+        "tb.sv:T3a",
+        "tb.sv:T3b",
+        "tb.sv:T3c",
+        "tb.sv:T3d",
+        "tb.sv:T4a",
+        "tb.sv:T4b"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "description": "AXI shim unacknowledged AR (READ_HOLD) and W (WRITE_WAIT) stability and gated burst beat counter.",
+      "verified_by": [
+        "tb.sv:T1a",
+        "tb.sv:T1b",
+        "tb.sv:T1c",
+        "tb.sv:T1d",
+        "tb.sv:T1e",
+        "tb.sv:T2a",
+        "tb.sv:T2b",
+        "tb.sv:T2c"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "description": "Direct round-robin arbitration and FIFO reset optimization achieving setup/hold slack >= 0.0 ns at 2.35 ns clock and area <= 6450.0 um^2.",
+      "verified_by": [
+        "grader/run.py:synthesis",
+        "grader/run.py:area",
+        "grader/run.py:timing"
+      ]
+    }
+  ]
+}

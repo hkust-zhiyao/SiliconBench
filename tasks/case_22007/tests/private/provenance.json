@@ -1,0 +1,23 @@
+{
+  "case_id": "case_22007",
+  "repo_id": "repo_30",
+  "origin": "https://github.com/pulp-platform/redmule",
+  "commit": "5a07d64df152c7f432fbd24e2971c2aa5f12b685",
+  "archive_sha256": "48f69c08b1b02b5f6db7d78ece010f6a1ffa635abb9db33d038ff04dc7395a54",
+  "license": "SHL-0.51; see public/code/LICENSE and source headers",
+  "native_sources": [
+    "snapshot/rtl/x_buffer/redmule_x_buffer.sv",
+    "snapshot/rtl/x_buffer/redmule_x_buffer_scm.sv",
+    "snapshot/rtl/x_buffer/redmule_x_pad_scm.sv",
+    "snapshot/rtl/redmule_pkg.sv",
+    "dependencies/tc_clk.sv"
+  ],
+  "editable_files": [
+    "code/x_buffer/redmule_x_buffer.sv",
+    "code/x_buffer/redmule_x_buffer_scm.sv",
+    "code/x_buffer/redmule_x_pad_scm.sv"
+  ],
+  "qualification": "upstream/repo_30",
+  "build_scope": "Native redmule_x_buffer, redmule_x_buffer_scm, and redmule_x_pad_scm verified across 10 parameterized (Height, Width, DataW, UseLatches) configurations in Verilator 5.038, synthesized via Yosys+slang, and checked for 4-state gate-level parity via Icarus Verilog 13 + Yosys simcells.v.",
+  "tool": "Verilator 5.038 + Yosys (slang frontend) + Icarus Verilog 13 (4-state gate-level simulation)"
+}

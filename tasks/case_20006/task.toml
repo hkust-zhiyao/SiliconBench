@@ -1,0 +1,57 @@
+version = "1.0"
+
+[metadata]
+task_id = "case_20006"
+title = "Fix Parameterized Synthesis/Simulation Parity, Miss-Counter Saturation, BIST Drain, and SPM Way Isolation in axi_llc_hit_miss"
+repository = "pulp-platform/axi_llc"
+repo_id = "repo_26"
+split = "test"
+eda_stage = "stage3_sta_cdc"
+eda_stage_name = "Stage 3: Static Timing (STA) & CDC/RDC Closure"
+problem_type = "PT4_GateLevel_Security_CDC"
+problem_type_label = "Gate-Level Equivalence, Security & CDC/RDC"
+primary_domain = "HighSpeed_AXI_NIC_Cache_DMA"
+domains = ["HighSpeed_AXI_NIC_Cache_DMA"]
+public_rtl_files = 27
+public_rtl_loc = 5384
+editable_files_count = 3
+editable_loc = 779
+
+[agent]
+timeout_sec = 5400
+
+[environment]
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+workdir = "/workspace"
+allow_internet = false
+cpus = 4
+memory_mb = 16384
+
+[environment.variables]
+OMP_NUM_THREADS = "1"
+OPENBLAS_NUM_THREADS = "1"
+MKL_NUM_THREADS = "1"
+MAKEFLAGS = "-j1"
+SILICONBENCH_TOOLS = "/opt/siliconbench/tools"
+SILICONBENCH_NANGATE45 = "/opt/siliconbench/pdk/Nangate45"
+
+[verifier]
+environment_mode = "separate"
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+timeout_sec = 600
+entrypoint = "/tests/test.sh"
+reward_file = "/logs/verifier/reward.txt"
+reward_json = "/logs/verifier/reward.json"
+
+[verifier.environment]
+allow_internet = false
+
+[siliconbench]
+allowed_edits = ["code/rtl/axi_llc_miss_counters.sv", "code/rtl/axi_llc_tag_pattern_gen.sv", "code/rtl/axi_llc_hit_miss.sv"]
+pdk_id = "rtl_dual_sim_standard"
+pdk_name = "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang"
+pdk_customized = false
+accepts_seed = true
+grading_seeds = [101, 202]

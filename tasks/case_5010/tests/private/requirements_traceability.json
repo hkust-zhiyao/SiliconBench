@@ -1,0 +1,46 @@
+{
+  "case_id": "case_5010",
+  "requirements": [
+    {
+      "id": "R1",
+      "description": "cva6_icache kill_s1 suppression of cache_rden, vaddr_q, and cl_offset_q updates, and speculative NI kill_s2/flush recovery to IDLE",
+      "verified_by": [
+        "tb.sv:TEST_1",
+        "m01_ic_idle_kill_s1_rden",
+        "m02_ic_kill_s1_updates_vaddr",
+        "m03_ic_kill_s1_updates_offset",
+        "m04_ic_spec_ni_kill_to_atrans"
+      ]
+    },
+    {
+      "id": "R2",
+      "description": "cva6_icache_axi_wrapper unacknowledged AR payload stability when req_valid_q == 1",
+      "verified_by": [
+        "tb.sv:TEST_2",
+        "m05_iw_overwrite_pending_ar",
+        "m06_iw_drop_req_valid_q",
+        "m07_iw_no_first_word_place"
+      ]
+    },
+    {
+      "id": "R3",
+      "description": "axi_shim burst write state transition and counter control",
+      "verified_by": [
+        "tb.sv:TEST_3",
+        "m08_ax_no_inc_wr_cnt_in_idle",
+        "m09_ax_no_clr_wr_cnt_in_last",
+        "m10_ax_wrong_w_last"
+      ]
+    },
+    {
+      "id": "R4",
+      "description": "Nangate45 area <= 8200.0 um^2 and setup/hold slack >= 0.00 ns at 2.10 ns clock on icache_axi_top using pure technology-independent behavioral/structural SystemVerilog without direct standard-cell primitive instantiations, blackbox declarations, or simulator/synthesis macro divergence",
+      "verified_by": [
+        "grader/run.py:screen_source",
+        "grader/run.py:synthesis_and_sta",
+        "wf4_unoptimized_cl_index_mux",
+        "ah4_ifdef"
+      ]
+    }
+  ]
+}

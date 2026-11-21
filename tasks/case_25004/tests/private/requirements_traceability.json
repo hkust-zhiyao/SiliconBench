@@ -1,0 +1,55 @@
+{
+  "case_id": "case_25004",
+  "obligations": [
+    {
+      "id": "REQ-ECC-DEGENERATE-FAULT-ZEROCOMMIT",
+      "behavior": "Reject degenerate scalar/blinding inputs (data_i == 0, data_i >= GROUP_ORDER, or rnd_i == 0) in ecc_scalar_blinding with data_o == 0 and clean idle return; re-sample all-zero lower-192-bit blinding slices in ecc_hmac_drbg_interface; detect all zero/out-of-bounds P-384 sign/keygen/verify/ECDH/blinding faults (including sharedkey == 0 and ECDH privkey out-of-range) in ecc_dsa_ctrl; and suppress PeakRDL CSR .we + assert .hwclr + suppress KeyVault secretkey_we/write_en on any fault so partial or degenerate outputs are never committed.",
+      "public_source": "public/issue.md Invariant 1, public/code/ecc_dsa_ctrl.sv, public/code/ecc_scalar_blinding.sv, public/code/ecc_hmac_drbg_interface.sv, public/code/ecc_reg.sv",
+      "verified_by": [
+        "private/tests/tb.sv (Unit blinding KAT & fault checks, full ecc_top KeyGen/Sign/Verify/ECDH fault-injection tests for r=0, s=0, r>=n, s>=n, sharedkey=0, sharedkey>=p, privkey=0, pk_chk!=0, zero mask, partial R/PUBKEY_X scrub, and KeyVault write suppression)",
+        "wf1_commit_on_fault_we_priority",
+        "m01_allow_zero_rnd_blinding",
+        "m02_allow_ge_order_blinding",
+        "m03_missing_sharedkey_zero_fault",
+        "m04_missing_ecdh_privkey_range_fault",
+        "m05_leak_kv_write_on_fault",
+        "m06_keep_partial_sign_r_on_s_fault"
+      ]
+    },
+    {
+      "id": "REQ-ECC-PCR-SIGN-ISOLATION",
+      "behavior": "Accept ECC_CTRL.PCR_SIGN exclusively when idle in ECC_NOP with CTRL == SIGN, DH_SHAREDKEY == 0, and zero active/armed KeyVault state; reject all other PCR_SIGN assertions (including CTRL == NONE, DH_SHAREDKEY, KEYGEN, VERIFY, or KV-active collisions) with error_flag without loading ECC_PRIVKEY_IN or ECC_MSG; block ECC_PRIVKEY_IN.swwe during PCR_SIGN; and scrub ECC_PRIVKEY_IN and ECC_MSG via .hwclr immediately upon PCR_SIGN completion or abort.",
+      "public_source": "public/issue.md Invariant 2, public/code/ecc_dsa_ctrl.sv, public/code/ecc_reg.sv",
+      "verified_by": [
+        "private/tests/tb.sv (Valid PCR_SIGN quote flow + post-PCR_SIGN ECDH/SIGN key-extraction attempts + PCR_SIGN with CTRL=NONE, DH_SHAREDKEY, KEYGEN, and KeyVault collision attacks)",
+        "wf2_pcr_privkey_persists_after_sign",
+        "m07_allow_pcr_sign_ctrl_none_latch",
+        "m08_no_pcr_privkey_scrub_on_done",
+        "m09_allow_pcr_sign_with_kv_active"
+      ]
+    },
+    {
+      "id": "REQ-ECC-DRBG-HANDSHAKE-FRESHNESS",
+      "behavior": "Qualify ecc_hmac_drbg_interface ready with (state_reg == IDLE_ST) & hmac_drbg_ready & ~zeroize, capture counter_nonce/sca_entropy only on en & ready, hold/gate init_cmd and next_cmd until accepted by hmac_drbg_ready == 1, and clear lambda_reg, scalar_rnd_reg, masking_rnd_reg, and drbg_reg at every accepted en launch.",
+      "public_source": "public/issue.md Invariant 3, public/code/ecc_hmac_drbg_interface.sv",
+      "verified_by": [
+        "private/tests/tb.sv (Real RFC 6979 HMAC-DRBG P-384 KAT + controllable backpressure/stall responder + 192-bit zero-mask retry + SIGN->DH_SHARED cross-command drbg/masking_rnd freshness)",
+        "wf3_drop_drbg_pulse_on_backpressure",
+        "m10_ready_ignores_hmac_drbg_ready",
+        "m11_no_scalar_slice_zero_resample",
+        "m12_stale_drbg_across_dh_cmd"
+      ]
+    },
+    {
+      "id": "REQ-ECC-ZEROIZE-SYNTH-CLEAN",
+      "behavior": "Immediately sanitize lfsr_seed_reg, counter_nonce_reg, and sca_entropy_reg in ecc_hmac_drbg_interface, blinding operand/accumulator/output arrays in ecc_scalar_blinding, and secret/scalar/CSR/KeyVault client enables and status flags in ecc_dsa_ctrl on zeroize or debugUnlock_or_scan_mode_switch, recovering quiescent READY without combinational loops or inferred latches.",
+      "public_source": "public/issue.md Invariant 4, public/BUILD.md",
+      "verified_by": [
+        "private/tests/tb.sv (Mid-DRBG, mid-blinding, mid-PM, and mid-KV zeroize & debugUnlock_or_scan_mode_switch residue and recovery tests) and check_yosys_synth (scc -expect 0, 0 latches)",
+        "wf4_comb_loop_fault_to_submod_zeroize",
+        "wf5_missing_drbg_entropy_seed_zeroize",
+        "m13_missing_lfsr_seed_zeroize"
+      ]
+    }
+  ]
+}

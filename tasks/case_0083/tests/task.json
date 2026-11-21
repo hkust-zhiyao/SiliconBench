@@ -1,0 +1,146 @@
+{
+  "case_id": "case_0083",
+  "task_id": "case_0083",
+  "version": 1,
+  "title": "iDMA ND-Midend Zero-Transfer Rejection, Legalizer Page-Boundary Splitting, and Timing Closure",
+  "repo_id": "repo_23",
+  "repository": "pulp-platform/idma",
+  "topic": "dma_legalizer_ppa",
+  "family": "rtl_to_sta",
+  "editable_files": [
+    "code/idma_nd_midend.sv",
+    "code/idma_legalizer_page_splitter.sv",
+    "code/idma_legalizer.sv"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_0083",
+    "version": 1,
+    "frozen_utc": "2026-11-03T17:43:15.487346+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/idma_nd_midend.sv",
+      "code/idma_legalizer_page_splitter.sv",
+      "code/idma_legalizer.sv"
+    ],
+    "public_hashes": {
+      "BUILD.md": "645222aa9787804ec4236fa547d7928d7b24feaff700b4d652614a4f1795d679",
+      "code/LICENSE": "6527a46225891b976fa94f634f6ee0cd22e1c7129d6f11c5c98c997627625fc7",
+      "code/axi_pkg.sv": "244bd5cb3c5bc58d786f2ed2f5eeefd910c4fe03a175f4a2888c6a2ea1c430dc",
+      "code/cc_pkg.sv": "8fe1d23d619f4e11643d9a2c44a1a6f18b088f45888fca0ba7ef75e3f6872f92",
+      "code/cc_popcount.sv": "144a713362cfdbc56600b4144612ada00df921dec832e20a68061543f7954f54",
+      "code/idma_legalizer.sv": "e4ea369b4611dc909ec9e8a5998b7177e9d10bbbdd1db9c4998458777508b593",
+      "code/idma_legalizer_page_splitter.sv": "7c374908a2e640a42032dd6a317f5dee347063f0f22d0677cbefbc176f21bdad",
+      "code/idma_nd_legalizer_top.sv": "28ff98245aa0a3e2b79fcb77a2a077d914912a7185db94249b07c881f4b2615e",
+      "code/idma_nd_midend.sv": "aea579059642f5554de5e3701373d977f5beb1ec9d9d5806b5701fefce2433bd",
+      "code/idma_pkg.sv": "6699f228a8fd5903bb40e3a570c247fef2a0e192a3bc99018c6849cf98ef3b95",
+      "code/include/axi/typedef.svh": "63f095042c9183f977e95307df14ce0baa06b71121491a380af289f8b309482c",
+      "code/include/common_cells/assertions.svh": "e9606c554d2562f2d282455a676503dd14655da51774c7069ee59773061b4a31",
+      "code/include/common_cells/deprecated/registers.svh": "be67e5fa153d49da2c35cba286fedc94bbdde8d873bd2c6d3a58f3b78b4d1754",
+      "code/include/common_cells/registers.svh": "cd2133df2638447e7d55e4b3b16e4e856cb21d53bea03b35985f31abfecaa868",
+      "code/include/idma/compute.svh": "7acc3cb95be3f27d3f84b6697c72bc881c04b5a2349109999a43a05039cf6171",
+      "code/include/idma/guard.svh": "e7ad770c4e116e91c3c17889822a7b28fb9da3aad6959245b2e487c1b32ca2d4",
+      "code/include/idma/typedef.svh": "173c0752ddb57d1981542950586366cb898c14b1059e02d2872427a19d997ef1",
+      "issue.md": "bd715fc491183c3aa6b502a65ccf4f68b6bd471230fdd4f6f26744b9e61a0219",
+      "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+      "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+      "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+      "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+    },
+    "gold_hashes": {
+      "code/LICENSE": "6527a46225891b976fa94f634f6ee0cd22e1c7129d6f11c5c98c997627625fc7",
+      "code/axi_pkg.sv": "244bd5cb3c5bc58d786f2ed2f5eeefd910c4fe03a175f4a2888c6a2ea1c430dc",
+      "code/cc_pkg.sv": "8fe1d23d619f4e11643d9a2c44a1a6f18b088f45888fca0ba7ef75e3f6872f92",
+      "code/cc_popcount.sv": "144a713362cfdbc56600b4144612ada00df921dec832e20a68061543f7954f54",
+      "code/idma_legalizer.sv": "18e7c2eb9252d00cd1bc382fcabf654402cac4e160455a39cb125f70c56fc0a6",
+      "code/idma_legalizer_page_splitter.sv": "d68f39261286410b7d88ab9ff90e25a25941facf49ff700ff981abe1ba480007",
+      "code/idma_nd_legalizer_top.sv": "28ff98245aa0a3e2b79fcb77a2a077d914912a7185db94249b07c881f4b2615e",
+      "code/idma_nd_midend.sv": "25a37d9cb96fde12d0430106c8866413a4c48a44463022b8f06977919247abf2",
+      "code/idma_pkg.sv": "6699f228a8fd5903bb40e3a570c247fef2a0e192a3bc99018c6849cf98ef3b95",
+      "code/include/axi/typedef.svh": "63f095042c9183f977e95307df14ce0baa06b71121491a380af289f8b309482c",
+      "code/include/common_cells/assertions.svh": "e9606c554d2562f2d282455a676503dd14655da51774c7069ee59773061b4a31",
+      "code/include/common_cells/deprecated/registers.svh": "be67e5fa153d49da2c35cba286fedc94bbdde8d873bd2c6d3a58f3b78b4d1754",
+      "code/include/common_cells/registers.svh": "cd2133df2638447e7d55e4b3b16e4e856cb21d53bea03b35985f31abfecaa868",
+      "code/include/idma/compute.svh": "7acc3cb95be3f27d3f84b6697c72bc881c04b5a2349109999a43a05039cf6171",
+      "code/include/idma/guard.svh": "e7ad770c4e116e91c3c17889822a7b28fb9da3aad6959245b2e487c1b32ca2d4",
+      "code/include/idma/typedef.svh": "173c0752ddb57d1981542950586366cb898c14b1059e02d2872427a19d997ef1"
+    },
+    "grader_hashes": {
+      "run.py": "2b91f7d939ea7d1fa7b5e17eb2d8a7850da5e1748f5502bf2b973786349e9a4d"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 2,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 12,
+      "mutant_total": 12
+    }
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+  "problem_type_label": "Architectural & Protocol Bug Repair",
+  "primary_domain": "rtl_integration",
+  "multi_domains": [
+    "rtl_integration"
+  ],
+  "pdk_profile": {
+    "pdk_id": "nangate45_plus_multicorner_lib",
+    "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+    "location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+    "customized": true,
+    "notes": "Uses shared Nangate45 library for synthesis plus task-bundled fast/slow/scan corner timing views."
+  },
+  "public_hashes": {
+    "BUILD.md": "645222aa9787804ec4236fa547d7928d7b24feaff700b4d652614a4f1795d679",
+    "code/LICENSE": "6527a46225891b976fa94f634f6ee0cd22e1c7129d6f11c5c98c997627625fc7",
+    "code/axi_pkg.sv": "244bd5cb3c5bc58d786f2ed2f5eeefd910c4fe03a175f4a2888c6a2ea1c430dc",
+    "code/cc_pkg.sv": "8fe1d23d619f4e11643d9a2c44a1a6f18b088f45888fca0ba7ef75e3f6872f92",
+    "code/cc_popcount.sv": "144a713362cfdbc56600b4144612ada00df921dec832e20a68061543f7954f54",
+    "code/idma_legalizer.sv": "e4ea369b4611dc909ec9e8a5998b7177e9d10bbbdd1db9c4998458777508b593",
+    "code/idma_legalizer_page_splitter.sv": "7c374908a2e640a42032dd6a317f5dee347063f0f22d0677cbefbc176f21bdad",
+    "code/idma_nd_legalizer_top.sv": "28ff98245aa0a3e2b79fcb77a2a077d914912a7185db94249b07c881f4b2615e",
+    "code/idma_nd_midend.sv": "aea579059642f5554de5e3701373d977f5beb1ec9d9d5806b5701fefce2433bd",
+    "code/idma_pkg.sv": "6699f228a8fd5903bb40e3a570c247fef2a0e192a3bc99018c6849cf98ef3b95",
+    "code/include/axi/typedef.svh": "63f095042c9183f977e95307df14ce0baa06b71121491a380af289f8b309482c",
+    "code/include/common_cells/assertions.svh": "e9606c554d2562f2d282455a676503dd14655da51774c7069ee59773061b4a31",
+    "code/include/common_cells/deprecated/registers.svh": "be67e5fa153d49da2c35cba286fedc94bbdde8d873bd2c6d3a58f3b78b4d1754",
+    "code/include/common_cells/registers.svh": "cd2133df2638447e7d55e4b3b16e4e856cb21d53bea03b35985f31abfecaa868",
+    "code/include/idma/compute.svh": "7acc3cb95be3f27d3f84b6697c72bc881c04b5a2349109999a43a05039cf6171",
+    "code/include/idma/guard.svh": "e7ad770c4e116e91c3c17889822a7b28fb9da3aad6959245b2e487c1b32ca2d4",
+    "code/include/idma/typedef.svh": "173c0752ddb57d1981542950586366cb898c14b1059e02d2872427a19d997ef1",
+    "issue.md": "bd715fc491183c3aa6b502a65ccf4f68b6bd471230fdd4f6f26744b9e61a0219",
+    "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+    "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+    "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+    "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 2,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 12,
+    "mutant_total": 12
+  }
+}

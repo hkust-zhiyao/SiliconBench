@@ -1,0 +1,57 @@
+version = "1.0"
+
+[metadata]
+task_id = "case_21015"
+title = "Fix Streaming AXI4 DMA Unaligned 4KB/Max-Burst Splitting, Framing Drain/Flush, Zero-Length Ordering, Sticky Error Priority, and Descriptor Mux Tag Routing"
+repository = "alexforencich/verilog-axi"
+repo_id = "repo_40"
+split = "test"
+eda_stage = "stage3_sta_cdc"
+eda_stage_name = "Stage 3: Static Timing (STA) & CDC/RDC Closure"
+problem_type = "PT1_Arch_Protocol_Bug_Repair"
+problem_type_label = "Architectural & Protocol Bug Repair"
+primary_domain = "HighSpeed_AXI_NIC_Cache_DMA"
+domains = ["HighSpeed_AXI_NIC_Cache_DMA"]
+public_rtl_files = 6
+public_rtl_loc = 2553
+editable_files_count = 3
+editable_loc = 1941
+
+[agent]
+timeout_sec = 5400
+
+[environment]
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+workdir = "/workspace"
+allow_internet = false
+cpus = 4
+memory_mb = 16384
+
+[environment.variables]
+OMP_NUM_THREADS = "1"
+OPENBLAS_NUM_THREADS = "1"
+MKL_NUM_THREADS = "1"
+MAKEFLAGS = "-j1"
+SILICONBENCH_TOOLS = "/opt/siliconbench/tools"
+SILICONBENCH_NANGATE45 = "/opt/siliconbench/pdk/Nangate45"
+
+[verifier]
+environment_mode = "separate"
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+timeout_sec = 600
+entrypoint = "/tests/test.sh"
+reward_file = "/logs/verifier/reward.txt"
+reward_json = "/logs/verifier/reward.json"
+
+[verifier.environment]
+allow_internet = false
+
+[siliconbench]
+allowed_edits = ["code/axi_dma_wr.v", "code/axi_dma_rd.v", "code/axi_dma_desc_mux.v"]
+pdk_id = "ihp_sg13g2_130nm_8sram"
+pdk_name = "IHP SG13G2 130nm Open PDK + RM_IHPSG13_1P Hard-SRAM Macros"
+pdk_customized = true
+accepts_seed = true
+grading_seeds = [101, 202]

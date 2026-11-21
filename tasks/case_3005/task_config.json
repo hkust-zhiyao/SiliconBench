@@ -1,0 +1,117 @@
+{
+  "case_id": "case_3005",
+  "task_id": "case_3005",
+  "version": 1,
+  "repo_id": "repo_03",
+  "title": "CV32E40P Hardware-Loop Register File Nested-Loop End-PC Resolution, APU Dispatcher Flush Drain, and Transparent Channel Timing Budgets",
+  "topic": "rtl_pipeline_protocol_and_sdc_timing_constraints",
+  "editable_files": [
+    "code/cv32e40p_hwloop_regs.sv",
+    "code/cv32e40p_apu_disp.sv",
+    "constraints.json"
+  ],
+  "editable": [
+    "code/cv32e40p_hwloop_regs.sv",
+    "code/cv32e40p_apu_disp.sv",
+    "constraints.json"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 600,
+    "verifier_timeout_seconds": 1200,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 1,
+        "extra_args": []
+      },
+      {
+        "seed": 2,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_3005",
+    "version": 1,
+    "frozen_utc": "2026-11-04T17:45:33.619944+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/cv32e40p_hwloop_regs.sv",
+      "code/cv32e40p_apu_disp.sv",
+      "constraints.json"
+    ],
+    "public_hashes": {
+      "BUILD.md": "474183955351a58e48b7bf3c33dff5c7ccb54ee9efdce78018f79d0ca1d48403",
+      "code/LICENSE": "6527a46225891b976fa94f634f6ee0cd22e1c7129d6f11c5c98c997627625fc7",
+      "code/cv32e40p_apu_disp.sv": "7d78f6798aecc65ecb98cc8685714b3c0f1e60315e6909b482ac572f198ac0aa",
+      "code/cv32e40p_hwloop_regs.sv": "c2a0787c07bcd6c198b6338c4c6ee372b4bce96ec4a4def467ff0ae03da4e43a",
+      "code/top.sv": "2ab6fcd7d183b2ca8cd4ddc17bd854ee571136ffd5ef83881b1e2490665738e9",
+      "constraints.json": "f4113f6d3e1f5b35e8418d90742838706a5e31e21612dff0e724bdf0df420191",
+      "issue.md": "4fb6e4954bd52836cfa1d96755085595bbde2e24875eac4768e4ecec2ad455ba",
+      "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+      "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+      "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+      "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+    },
+    "gold_hashes": {
+      "code/cv32e40p_apu_disp.sv": "98e8cf5c956417ccd1c03679883c6f60bddc0cead44dcff991b9f2e27efceb69",
+      "code/cv32e40p_hwloop_regs.sv": "cb79767f4f91c798bd5983b0f143f52da4e05bf0addb20b96282851151b0f8f8",
+      "constraints.json": "ccf6766bf558c74a037340784a68c847ca11ee4e35420b77c1a5751c9fc0b6e8"
+    },
+    "grader_hashes": {
+      "run.py": "a099c637ad0295fb5ccc116af69219b0f9ab84eb5bb7cc11d1f7564f7a65b617"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 12,
+      "mutant_total": 12
+    }
+  },
+  "repository": "openhwfoundation/cv32e40p",
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT3_Timing_Area_PPA_Closure",
+  "problem_type_label": "High-Frequency Timing & Area Optimization",
+  "primary_domain": "sdc_sta",
+  "multi_domains": [
+    "reset_rdc",
+    "rtl_integration",
+    "sdc_sta"
+  ],
+  "pdk_profile": {
+    "pdk_id": "custom_multicorner_liberty",
+    "pdk_name": "Task-Specific Multi-Corner Liberty & SDC Timing Views",
+    "location": "Task-bundled in environment/public/ and tests/private/",
+    "customized": true,
+    "notes": "Custom characterized fast/slow/scan corner Liberty libraries for multi-mode OpenSTA closure."
+  },
+  "public_hashes": {
+    "BUILD.md": "474183955351a58e48b7bf3c33dff5c7ccb54ee9efdce78018f79d0ca1d48403",
+    "code/LICENSE": "6527a46225891b976fa94f634f6ee0cd22e1c7129d6f11c5c98c997627625fc7",
+    "code/cv32e40p_apu_disp.sv": "7d78f6798aecc65ecb98cc8685714b3c0f1e60315e6909b482ac572f198ac0aa",
+    "code/cv32e40p_hwloop_regs.sv": "c2a0787c07bcd6c198b6338c4c6ee372b4bce96ec4a4def467ff0ae03da4e43a",
+    "code/top.sv": "2ab6fcd7d183b2ca8cd4ddc17bd854ee571136ffd5ef83881b1e2490665738e9",
+    "constraints.json": "f4113f6d3e1f5b35e8418d90742838706a5e31e21612dff0e724bdf0df420191",
+    "issue.md": "4fb6e4954bd52836cfa1d96755085595bbde2e24875eac4768e4ecec2ad455ba",
+    "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+    "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+    "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+    "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 12,
+    "mutant_total": 12
+  }
+}

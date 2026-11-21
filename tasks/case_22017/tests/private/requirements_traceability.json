@@ -1,0 +1,54 @@
+{
+  "case_id": "case_22017",
+  "obligations": [
+    {
+      "id": "REQ-P2-RESET-AND-DECOMP",
+      "behavior": "Drive X-free zero valid_o, stride_p2_o, and popc_o immediately out of reset (!rst_ni) and when stride_i == 0, prioritize valid_i over simultaneous update_i, and emit LSB-to-MSB power-of-two components across NrLanes = {2, 4, 8}.",
+      "public_source": "public/issue.md Requirement 1, public/code/p2_stride_gen.sv",
+      "verified_by": [
+        "private/tests/tb.sv (test_unit_p2_stride_gen across NrLanes = 2, 4, 8)",
+        "private/tests/tb_gl.sv (4-state post-reset & NP2 VSLIDEUP)",
+        "baseline",
+        "wf1_p2_reset_unfixed",
+        "m01_p2_popc_off_by_one",
+        "m02_p2_valid_prio_dropped"
+      ]
+    },
+    {
+      "id": "REQ-RVV-SLIDE-SEMANTICS-AND-STREAMS",
+      "behavior": "Implement overflow-safe 64-bit VSLIDEUP stride >= vl zero-beat completion, multi-row tail preservation, VSLIDE1UP/VSLIDE1DOWN vl=1 and row-boundary handling, collision-free multi-row P2/NP2 strides, dynamic eew_vs2 != vtype.vsew reshuffling across all slide directions/amounts, and RVV 1.0 VSLIDEDOWN vlmax zero-fill with exact sldu_operand_i and mask_i beat consumption across NrLanes = {2, 4, 8}.",
+      "public_source": "public/issue.md Requirement 2, public/code/sldu.sv",
+      "verified_by": [
+        "private/tests/tb.sv (directed_stalls + random_pipelined across NrLanes = 2, 4, 8)",
+        "private/tests/tb_gl.sv (null_vslideup, np2_vslideup, vslidedown_zfill)",
+        "wf2_no_vslidedown_zfill",
+        "wf3_no_eew_reshuf_on_slide",
+        "m03_stride_32bit_trunc",
+        "m04_vslide1up_vl1_pop",
+        "m05_vslide1down_scalar_off",
+        "m06_mask_ungated_valid",
+        "m07_lmul_frac_vlmax_bug",
+        "m08_sld_dir_inverted"
+      ]
+    },
+    {
+      "id": "REQ-REDUCTIONS-AND-FINAL-GNT-COMMIT",
+      "behavior": "Execute $clog2(NrLanes)+1 EW64 tree-reduction steps and backpressure-safe ordered reductions (VFREDOSUM/VFWREDOSUM), and retire pe_vinsn_done_o[id] strictly in acceptance order after all VRF row writes and skewed per-lane sldu_result_final_gnt_i pulses across NrLanes = {2, 4, 8}.",
+      "public_source": "public/issue.md Requirement 3, public/code/sldu.sv",
+      "verified_by": [
+        "private/tests/tb.sv (test_unord_reduction, test_ord_reduction, skewed final_gnt checks)",
+        "m09_osum_final_target_lane",
+        "m10_premature_final_gnt_done"
+      ]
+    },
+    {
+      "id": "REQ-MULTI-LANE-ELAB-GL-SYNTH",
+      "behavior": "Elaborate cleanly via yosys -m slang across NrLanes = {2, 4, 8} (VLEN = 1024) with zero inferred latches, pass 4-state gate-level simulation (NrLanes = 2), and map to Nangate45 within <= 60000.0 um^2 at NrLanes = 4.",
+      "public_source": "public/issue.md Deliverable & Signoff Constraints, public/BUILD.md Sections 3 & 4",
+      "verified_by": [
+        "private/grader/run.py (Yosys NrLanes={2,4,8} zero-latch check, iverilog NrLanes=2 4-state GL sim, Nangate45 <= 60000.0 um^2)",
+        "wf4_inferred_latch_sldu"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "case_id": "case_22005",
+  "obligations": [
+    {
+      "id": "REQ-EEW-DESHUFFLE-SHUFFLE",
+      "behavior": "Unpack lane-shuffled 256-bit beats (NrLanes=4 x 64-bit) from vs2, vd, and v0.m into natural sequential bit/byte order using each operand's recorded EEW (eew_vs2, eew_vd_op, eew_vmask), and shuffle destination mask/element results and byte enables according to vtype.vsew.",
+      "public_source": "public/issue.md Section 'Ara Multi-Lane Shuffled Storage Contract', public/code/ara_pkg.sv (shuffle_index, deshuffle_index)",
+      "verified_by": [
+        "private/tests/tb.sv (mixed eew_vs2, eew_vmask, eew_vd_op, and vsew directed & random tests)",
+        "wf1_no_eew_deshuffle",
+        "m07_wrong_m_deshuffle_eew",
+        "m12_unshuffled_viota_be"
+      ]
+    },
+    {
+      "id": "REQ-SCALAR-VCPOP-VFIRST-HANDSHAKE",
+      "behavior": "Implement RVV 1.0 vcpop.m and vfirst.m over active unmasked body indices i in [vstart, vl), returning 0 (vcpop.m) or 64'hFFFF_FFFF_FFFF_FFFF (vfirst.m) on zero-trip (vl==0 or vstart>=vl) or when no active bit is set, draining all scheduled input beats even on early Beat-0 VFIRST hit, holding result_scalar_o stable while result_scalar_valid_o && !result_scalar_ready_i, and asserting pe_resp_o.vinsn_done[id] only upon scalar handshake completion.",
+      "public_source": "public/issue.md Sections '1. vcpop.m', '2. vfirst.m', 'Zero-Trip Instructions', and 'Scalar Result Handshake'",
+      "verified_by": [
+        "private/tests/tb.sv (zero_vl_*, vstart_gt_vl_*, vfirst_all_zero_900, vfirst_beat0_hit_drain4, vfirst_beat2_hit_573, scalar stability monitor)",
+        "wf2_vfirst_nodrain_and_zero",
+        "wf4_drop_scalar_on_backpressure",
+        "m01_vcpop_overwrite_slice",
+        "m02_vfirst_zero_when_empty",
+        "m10_scalar_ignore_vstart"
+      ]
+    },
+    {
+      "id": "REQ-MASK-SCAN-VMSBF-VMSOF-VMSIF",
+      "behavior": "Implement RVV 1.0 vmsbf.m, vmsof.m, and vmsif.m across single- and multi-beat vectors, carrying first-active-one state across beats while strictly preserving prestart bits (< vstart) from old vd, applying vma undisturbed/agnostic policy on masked-off body bits, and applying vta undisturbed/agnostic policy on tail bits (>= vl).",
+      "public_source": "public/issue.md Sections '3. Mask-Scan Prefix Instructions' and 'Prestart, Inactive-Element, and Tail Policies'",
+      "verified_by": [
+        "private/tests/tb.sv (vmsbf_beat2_hit_undist, vmsof_beat2_hit_agnostic, vmsif_beat2_hit_mixed, 75 random instructions)",
+        "wf3_ignore_vta_vma_vstart",
+        "m03_swap_vmsbf_vmsif",
+        "m04_vmsof_drop_seen_carry",
+        "m08_invert_vma_policy",
+        "m09_invert_vta_policy"
+      ]
+    },
+    {
+      "id": "REQ-VIOTA-VID-MULTIBEAT-COMMIT",
+      "behavior": "Implement RVV 1.0 viota.m (exclusive prefix sum carried across up to 32 output VRF beats) and vid.v across EW8/EW16/EW32/EW64 with byte-granular prestart/inactive/tail strobes and wdata, retiring pe_resp_o.vinsn_done[id] only after all lane VRF writes receive both masku_result_gnt_i and masku_result_final_gnt_i, with clean latch-free synthesis.",
+      "public_source": "public/issue.md Sections '4. Prefix-Sum & Element-Index Instructions', 'Lane VRF Write & Completion Protocol', and 'Sign-Off Criteria'",
+      "verified_by": [
+        "private/tests/tb.sv (viota_ew8..ew64, vid_ew64, inflight_vrf_writes retirement check, Yosys slang zero-latch check)",
+        "wf5_viota_reset_acc_each_beat",
+        "m05_viota_inclusive_sum",
+        "m06_vid_off_by_one",
+        "m11_premature_vinsn_done_before_final_gnt"
+      ]
+    }
+  ]
+}

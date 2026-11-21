@@ -1,0 +1,16 @@
+{
+  "obligations": [
+    {
+      "obligation": "Transition rom_ctrl_fsm to Invalid and assert alert_o when kmac_done_i and kmac_err_i assert in ReadingHigh",
+      "source": "public/issue.md"
+    },
+    {
+      "obligation": "Assert start_alert in rom_ctrl_compare when start_i asserts outside Waiting, and latch sel_reverted alert in rom_ctrl_mux when sel_bus_i reverts from true to false",
+      "source": "public/issue.md"
+    },
+    {
+      "obligation": "Achieve Nangate45 mapped area <= 1020.0 um^2 and OpenROAD setup/hold slack >= 0.0 ns at 1.05 ns clock period",
+      "source": "public/issue.md"
+    }
+  ]
+}

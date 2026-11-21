@@ -1,0 +1,123 @@
+set_thread_count 1
+set pdk @PDK@
+set sr @PDK@
+read_lef $pdk/sg13g2_tech.lef
+read_lef $pdk/sg13g2_stdcell.lef
+read_lef $sr/256.lef
+read_liberty $pdk/sg13g2_stdcell_typ_1p20V_25C.lib
+read_liberty $sr/256.lib
+read_verilog @MAPPED@
+link_design banked
+initialize_floorplan -die_area {0 0 2400 1800} -core_area {50 50 2350 1750} -site CoreSite
+foreach layer {Metal1 Metal2 Metal3 Metal4 Metal5} {make_tracks $layer -x_offset 0 -x_pitch 0.48 -y_offset 0 -y_pitch 0.42}
+make_tracks TopMetal1 -x_offset 1.64 -x_pitch 3.28 -y_offset 1.64 -y_pitch 3.28
+make_tracks TopMetal2 -x_offset 2 -x_pitch 4 -y_offset 2 -y_pitch 4
+@PLACEMENTS@
+add_global_connection -net VDD -inst_pattern {.*} -pin_pattern {VDD} -power
+add_global_connection -net VSS -inst_pattern {.*} -pin_pattern {VSS} -ground
+add_global_connection -net VDD -inst_pattern {.*} -pin_pattern {VDD!} -power
+add_global_connection -net VDD -inst_pattern {.*} -pin_pattern {VDDARRAY!} -power
+add_global_connection -net VSS -inst_pattern {.*} -pin_pattern {VSS!} -ground
+global_connect
+set_voltage_domain -name CORE -power VDD -ground VSS
+define_pdn_grid -name core -voltage_domains CORE -pins {TopMetal2}
+add_pdn_ring -grid core -layer {TopMetal1 TopMetal2} -widths {10 10} -spacings {5 5} -core_offsets {2 2} -add_connect
+add_pdn_stripe -grid core -layer Metal1 -width 0.44 -followpins -extend_to_core_ring
+add_pdn_stripe -grid core -layer TopMetal2 -width 6 -pitch 138 -spacing 48 -offset 40 -extend_to_core_ring
+add_pdn_connect -grid core -layers {Metal1 TopMetal2}
+define_pdn_grid -macro -cells {RM_IHPSG13_1P_256x64_c2_bm_bist} -name sram -orient {R0 R180 MY MX} -grid_over_boundary -voltage_domains {CORE} -halo {1 1}
+add_pdn_ring -grid sram -layer {Metal3 Metal4} -widths {2 2} -spacings {0.6 0.6} -core_offsets {2 0.6} -add_connect
+add_pdn_stripe -grid sram -layer TopMetal1 -width 8 -spacing 5 -pitch 60 -offset 20 -extend_to_core_ring -starts_with POWER
+add_pdn_connect -grid sram -layers {Metal3 Metal1}
+add_pdn_connect -grid sram -layers {TopMetal1 Metal3}
+add_pdn_connect -grid sram -layers {TopMetal1 Metal4}
+add_pdn_connect -grid sram -layers {TopMetal2 TopMetal1}
+pdngen
+place_pins -hor_layers Metal2 -ver_layers Metal3
+create_clock -period 10 [get_ports clk_i]
+set_input_delay 1 -clock clk_i [get_ports {rst_ni req_i* we_i* relay_i* swap_mode_i* addr_i* wdata_i* be_i*}]
+set_output_delay 1 -clock clk_i [all_outputs]
+set_wire_rc -signal -layer Metal3
+set_wire_rc -clock -layer Metal3
+insert_tiecells sg13g2_tielo/L_LO
+insert_tiecells sg13g2_tiehi/L_HI
+repair_tie_fanout sg13g2_tielo/L_LO
+repair_tie_fanout sg13g2_tiehi/L_HI
+foreach inst [[ord::get_db_block] getInsts] { if {[[$inst getMaster] getName] eq "sg13g2_inv_1"} { replace_cell [$inst getName] sg13g2_inv_16 } }
+global_placement -density 0.35
+detailed_placement
+check_placement -verbose
+clock_tree_synthesis -root_buf sg13g2_buf_8 -buf_list {sg13g2_buf_2 sg13g2_buf_4 sg13g2_buf_8} -sink_clustering_enable -sink_clustering_size 4 -sink_clustering_max_diameter 500
+detailed_placement
+check_placement -verbose
+set_propagated_clock [all_clocks]
+estimate_parasitics -placement
+repair_timing -hold -hold_margin 0.05 -max_buffer_percent 20
+detailed_placement
+check_placement -verbose
+puts "__PLACEMENT_OK__"
+global_connect
+check_power_grid -net VDD
+check_power_grid -net VSS
+estimate_parasitics -placement
+report_checks -path_delay max -format full_clock_expanded
+set_routing_layers -signal Metal2-Metal5 -clock Metal2-Metal5
+global_route -congestion_iterations 30 -verbose -guide_file @GUIDE@
+estimate_parasitics -global_routing
+
+set block [ord::get_db_block]
+set clockpins 0
+foreach bank {0 1 2 3} {
+ foreach half {low high} {
+  set instname [format {cluster\[%d\].mem.gen_256x128xBx1.i_cut_%s} $bank $half]
+  set inst [$block findInst $instname]
+  if {$inst eq "NULL"} {error "missing macro $instname"}
+  set term [$inst findITerm A_CLK]
+  if {$term eq "NULL" || [$term getNet] eq "NULL"} {error "missing clock connection $instname"}
+  foreach {pin expected} {VDD! VDD VDDARRAY! VDD VSS! VSS} {
+   set term [$inst findITerm $pin]
+   if {$term eq "NULL" || [$term getNet] eq "NULL"} {error "MACRO_POWER missing $instname/$pin"}
+   if {[[$term getNet] getName] ne $expected} {error "MACRO_POWER wrong net $instname/$pin"}
+  }
+  incr clockpins
+ }
+}
+puts "__CLOCK_PINS__ $clockpins"
+set paths 0
+foreach bank {0 1 2 3} {
+ for {set bit 0} {$bit < 64} {incr bit} {
+  set fp [format {^cluster\[%d\]\.mem\.gen_256x128xBx1\.i_cut_low/A_DOUT\[%d\]$} $bank $bit]
+  set tp [format {^cluster\[%d\]\.mem\.gen_256x128xBx1\.i_cut_high/A_DIN\[%d\]$} $bank $bit]
+  set f [get_pins -quiet -regexp $fp]
+  set t [get_pins -quiet -regexp $tp]
+  if {[llength $f] != 1 || [llength $t] != 1} {error "RELAY_COVERAGE missing pins $bank $bit"}
+  set p [find_timing_paths -from $f -to $t -path_delay max -group_path_count 1]
+  if {[llength $p] == 0} {error "RELAY_COVERAGE missing path $bank $bit"}
+  incr paths
+ }
+}
+puts "__RELAY_PATHS__ $paths"
+
+puts "__CLOCK_LATENCY_BEGIN__"
+report_clock_latency -digits 5
+puts "__CLOCK_LATENCY_END__"
+puts "__SKEW_BEGIN__"
+report_clock_skew -setup -digits 5
+puts "__SKEW_END__"
+puts "__HOLD_BEGIN__"
+report_checks -path_delay min -format full_clock_expanded
+puts "__HOLD_END__"
+puts "__SETUP_BEGIN__"
+report_checks -path_delay max -format full_clock_expanded
+puts "__SETUP_END__"
+puts "__COVERAGE_BEGIN__"
+check_setup -verbose
+puts "__COVERAGE_END__"
+puts "__WIRE_BEGIN__"
+report_wire_length -global_route -summary
+puts "__WIRE_END__"
+set macrocount 0
+foreach inst [[ord::get_db_block] getInsts] {if {[[$inst getMaster] getName] == "RM_IHPSG13_1P_256x64_c2_bm_bist"} {incr macrocount}}
+puts "__MACRO_COUNT__ $macrocount"
+write_def @DEF@
+exit

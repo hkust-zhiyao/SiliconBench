@@ -1,0 +1,170 @@
+{
+  "case_id": "case_2008",
+  "task_id": "case_2008",
+  "version": 1,
+  "title": "Ibex Scrambling Two-Way ICache, IF Stage, Compressed Decoder, and Transparent Channel Timing Budgets",
+  "repo_id": "repo_02",
+  "repository": "lowRISC/ibex",
+  "topic": "icache_tweak_ecc_if_and_sdc_budgets",
+  "family": "rtl_to_sta_constraints",
+  "editable_files": [
+    "code/ibex_icache.sv",
+    "code/ibex_if_stage.sv",
+    "code/ibex_compressed_decoder.sv",
+    "constraints.json"
+  ],
+  "editable": [
+    "code/ibex_icache.sv",
+    "code/ibex_if_stage.sv",
+    "code/ibex_compressed_decoder.sv",
+    "constraints.json"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_2008",
+    "version": 1,
+    "frozen_utc": "2026-11-04T12:07:57.771309+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/ibex_icache.sv",
+      "code/ibex_if_stage.sv",
+      "code/ibex_compressed_decoder.sv",
+      "constraints.json"
+    ],
+    "public_hashes": {
+      "BUILD.md": "48aea959d43b64dfb6b7ee71bdf07ef0cb2038e7a1146d695395b8aa7a16550f",
+      "code/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "code/dv_fcov_macros.svh": "d8d02ae47a12d78f611e15e4ab6e14775b55a0bdbb0815f36fbe8ddb242984ae",
+      "code/ibex_branch_predict.sv": "78d4120eac2606e34b9338581eac55e3ba3b48c718799a46a887ac9efab2240e",
+      "code/ibex_cheriot_pkg.sv": "2bb73146800d94b54e350b0c84216ef0ea0bb82049032ec83b64b6afd0717823",
+      "code/ibex_compressed_decoder.sv": "32315edba85294fffc5f7df0f3461dad978e7a544e5e4f5cf53496fa44f924ab",
+      "code/ibex_dummy_instr.sv": "25808602342cc1b2b0560280d0dde76bf545a9e6565cfba3fd953369139ace0f",
+      "code/ibex_fetch_fifo.sv": "3e0b48b771055ea50356cdff418decae16e7d9586a7f953e6799112b238bb63c",
+      "code/ibex_icache.sv": "fd751fcc92c2fd615aefa8a71bbc0c1cff460094ba3dede454ea42e4e820e727",
+      "code/ibex_icache_if_subsys_top.sv": "55c900fa4b82a6d86704b7e17be39b5c11fdb11df1fca5a0ec5ef0b3832e225b",
+      "code/ibex_if_stage.sv": "34fe59a13f6ec32b16d3bf865e73abbe2f374246bb43d0d0cf2a6d43d317dcad",
+      "code/ibex_pkg.sv": "18c986c83664daee64660dab3a57796d9b6ae2cb95fd4fc76543753cfe57110e",
+      "code/ibex_prefetch_buffer.sv": "988ca05039f033c0eef9feffba996771c3449f255c64d7d78de04e1984249ccc",
+      "code/prim_assert.sv": "d717d5dbcba3b5aa8a731ef9f8af18b036b49edef282f0a43a51f5ad2dd9bb40",
+      "code/prim_assert_dummy_macros.svh": "cac4a930105da662547de873f0b80246074fb22df9a398663e1c8ac3e7998218",
+      "code/prim_assert_sec_cm.svh": "25db89fe5f250c1bcbd808d0b4808206b9e85ac337b26e4ebb23f2ad569e1a13",
+      "code/prim_assert_standard_macros.svh": "4835706249e017eae999256ea807c526a39a49729196fc0aa18bb8818de86ab6",
+      "code/prim_assert_yosys_macros.svh": "d1fd8c350785a7c6d8cccc0b0c385392b71575397e7dc58c70f07716c8f9f3a3",
+      "code/prim_buf.sv": "9b00bd8ac203169268262ac9337076781fa962b19beed36f28dde54e360aaaf5",
+      "code/prim_cipher_pkg.sv": "9cd66bdbc64020e3fe1f14a5baee30a93609b7887a9d21df7991929087b0973f",
+      "code/prim_flop_macros.sv": "2e8e6c2ee484899ae5d0020eaf0c9732c31537c60c30cb2a0a0acd2e92baee03",
+      "code/prim_lfsr.sv": "c61632878728613ba0403f2d068c03a5103165663b58d8dd50892ef032dec916",
+      "code/prim_secded_inc.svh": "59591eea595305d0ece809e980ee080990d52f1c4fef564e1a6e9c4f54812c3d",
+      "code/prim_secded_inv_28_22_dec.sv": "06c0dfdf59f2dbfffa7c73e609ae6361c94927a298f13ac6815c9543633b35a4",
+      "code/prim_secded_inv_28_22_enc.sv": "15b373e491fba6d6251c241229bd78d2766214771942e3fac0bdbe4cbff720fd",
+      "code/prim_secded_inv_39_32_dec.sv": "f07f26fd2375952e4ec7cfc1641cebcea373a8030d82dd5977a76f81c430cb12",
+      "code/prim_secded_inv_39_32_enc.sv": "4588fda3fd5ebdd711c98f6900caaaaddddf1257337c5b931ca86de7fb0ef8ff",
+      "code/prim_secded_pkg.sv": "bcbd03333a30e7a1cb01195d1c40c7d0e736f91d9f73c2347ef5b0bd9dc3c82b",
+      "code/prim_util_pkg.sv": "f71235ef5b92eaa3d2ed5c676f76108082df93b8aae8f9baa816584d1d285208",
+      "constraints.json": "f4113f6d3e1f5b35e8418d90742838706a5e31e21612dff0e724bdf0df420191",
+      "issue.md": "28cf777872d56af4508907f0e5938bd2a294098a6b40f4bfee04fd99ae7c602b",
+      "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+      "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+      "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+    },
+    "gold_hashes": {
+      "code/ibex_compressed_decoder.sv": "16d4d2b3685b5f4e0f1d44f14630f5cdf9ed2711187ca37a6a46fcd007b82dfc",
+      "code/ibex_icache.sv": "b80debbb332ee277b1170efad7b7895edbe2121e6fee193f12afa0f41e4d71b7",
+      "code/ibex_if_stage.sv": "aa8d2d39c26d9e70d863b8cb2b68902bf560e86c28c173af26de6ee7738955bc",
+      "constraints.json": "d537007635063bd4e6f853fa278b7bbd57da222c677d6f1ac6bb18f989647309"
+    },
+    "grader_hashes": {
+      "run.py": "1ff0b0511c30e65dc9e208c0d2643866c11546be396a4f72c23936ef860ef823"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 10,
+      "mutant_total": 10
+    }
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT3_Timing_Area_PPA_Closure",
+  "problem_type_label": "High-Frequency Timing & Area Optimization",
+  "primary_domain": "gatelevel_physical_effects",
+  "multi_domains": [
+    "gatelevel_physical_effects",
+    "parameters_widths",
+    "rtl_integration",
+    "rtl_semantics",
+    "sdc_sta"
+  ],
+  "pdk_profile": {
+    "pdk_id": "custom_multicorner_liberty",
+    "pdk_name": "Task-Specific Multi-Corner Liberty & SDC Timing Views",
+    "location": "Task-bundled in environment/public/ and tests/private/",
+    "customized": true,
+    "notes": "Custom characterized fast/slow/scan corner Liberty libraries for multi-mode OpenSTA closure."
+  },
+  "public_hashes": {
+    "BUILD.md": "48aea959d43b64dfb6b7ee71bdf07ef0cb2038e7a1146d695395b8aa7a16550f",
+    "code/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "code/dv_fcov_macros.svh": "d8d02ae47a12d78f611e15e4ab6e14775b55a0bdbb0815f36fbe8ddb242984ae",
+    "code/ibex_branch_predict.sv": "78d4120eac2606e34b9338581eac55e3ba3b48c718799a46a887ac9efab2240e",
+    "code/ibex_cheriot_pkg.sv": "2bb73146800d94b54e350b0c84216ef0ea0bb82049032ec83b64b6afd0717823",
+    "code/ibex_compressed_decoder.sv": "32315edba85294fffc5f7df0f3461dad978e7a544e5e4f5cf53496fa44f924ab",
+    "code/ibex_dummy_instr.sv": "25808602342cc1b2b0560280d0dde76bf545a9e6565cfba3fd953369139ace0f",
+    "code/ibex_fetch_fifo.sv": "3e0b48b771055ea50356cdff418decae16e7d9586a7f953e6799112b238bb63c",
+    "code/ibex_icache.sv": "fd751fcc92c2fd615aefa8a71bbc0c1cff460094ba3dede454ea42e4e820e727",
+    "code/ibex_icache_if_subsys_top.sv": "55c900fa4b82a6d86704b7e17be39b5c11fdb11df1fca5a0ec5ef0b3832e225b",
+    "code/ibex_if_stage.sv": "34fe59a13f6ec32b16d3bf865e73abbe2f374246bb43d0d0cf2a6d43d317dcad",
+    "code/ibex_pkg.sv": "18c986c83664daee64660dab3a57796d9b6ae2cb95fd4fc76543753cfe57110e",
+    "code/ibex_prefetch_buffer.sv": "988ca05039f033c0eef9feffba996771c3449f255c64d7d78de04e1984249ccc",
+    "code/prim_assert.sv": "d717d5dbcba3b5aa8a731ef9f8af18b036b49edef282f0a43a51f5ad2dd9bb40",
+    "code/prim_assert_dummy_macros.svh": "cac4a930105da662547de873f0b80246074fb22df9a398663e1c8ac3e7998218",
+    "code/prim_assert_sec_cm.svh": "25db89fe5f250c1bcbd808d0b4808206b9e85ac337b26e4ebb23f2ad569e1a13",
+    "code/prim_assert_standard_macros.svh": "4835706249e017eae999256ea807c526a39a49729196fc0aa18bb8818de86ab6",
+    "code/prim_assert_yosys_macros.svh": "d1fd8c350785a7c6d8cccc0b0c385392b71575397e7dc58c70f07716c8f9f3a3",
+    "code/prim_buf.sv": "9b00bd8ac203169268262ac9337076781fa962b19beed36f28dde54e360aaaf5",
+    "code/prim_cipher_pkg.sv": "9cd66bdbc64020e3fe1f14a5baee30a93609b7887a9d21df7991929087b0973f",
+    "code/prim_flop_macros.sv": "2e8e6c2ee484899ae5d0020eaf0c9732c31537c60c30cb2a0a0acd2e92baee03",
+    "code/prim_lfsr.sv": "c61632878728613ba0403f2d068c03a5103165663b58d8dd50892ef032dec916",
+    "code/prim_secded_inc.svh": "59591eea595305d0ece809e980ee080990d52f1c4fef564e1a6e9c4f54812c3d",
+    "code/prim_secded_inv_28_22_dec.sv": "06c0dfdf59f2dbfffa7c73e609ae6361c94927a298f13ac6815c9543633b35a4",
+    "code/prim_secded_inv_28_22_enc.sv": "15b373e491fba6d6251c241229bd78d2766214771942e3fac0bdbe4cbff720fd",
+    "code/prim_secded_inv_39_32_dec.sv": "f07f26fd2375952e4ec7cfc1641cebcea373a8030d82dd5977a76f81c430cb12",
+    "code/prim_secded_inv_39_32_enc.sv": "4588fda3fd5ebdd711c98f6900caaaaddddf1257337c5b931ca86de7fb0ef8ff",
+    "code/prim_secded_pkg.sv": "bcbd03333a30e7a1cb01195d1c40c7d0e736f91d9f73c2347ef5b0bd9dc3c82b",
+    "code/prim_util_pkg.sv": "f71235ef5b92eaa3d2ed5c676f76108082df93b8aae8f9baa816584d1d285208",
+    "constraints.json": "f4113f6d3e1f5b35e8418d90742838706a5e31e21612dff0e724bdf0df420191",
+    "issue.md": "28cf777872d56af4508907f0e5938bd2a294098a6b40f4bfee04fd99ae7c602b",
+    "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+    "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+    "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 10,
+    "mutant_total": 10
+  }
+}

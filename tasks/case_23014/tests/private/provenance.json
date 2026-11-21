@@ -1,0 +1,26 @@
+{
+  "case_id": "case_23014",
+  "repo_id": "repo_37",
+  "origin": "https://github.com/vortexgpgpu/vortex",
+  "commit": "90a626217597099e2667b1bf3395c70b1965c1e",
+  "archive_sha256": "afb7869c698c7291de07249f4609a51107b3d0278fd11a19838735b0e4318af5",
+  "license": "Apache License 2.0; see public/code/LICENSE",
+  "native_sources": [
+    "hw/rtl/cache/VX_cache.sv",
+    "hw/rtl/cache/VX_cache_bank.sv",
+    "hw/rtl/cache/VX_cache_repl.sv",
+    "hw/rtl/cache/VX_cache_tags.sv",
+    "hw/rtl/cache/VX_cache_data.sv",
+    "hw/rtl/cache/VX_cache_mshr.sv",
+    "hw/rtl/cache/VX_cache_amo.sv"
+  ],
+  "editable_files": [
+    "code/VX_cache_repl.sv",
+    "code/VX_cache_tags.sv",
+    "code/VX_cache_data.sv",
+    "plan/macro_placement.json",
+    "constraints/cache_subsys.sdc"
+  ],
+  "qualification": "upstream/repo_37",
+  "build_scope": "Vortex 16 KB 2-bank 4-way sectored way-folded GPU L1 D-Cache subsystem verified via Verilator 5.038 RTL simulation plus Yosys+slang synthesis and OpenROAD CTS/GRT/STA physical signoff with ten RM_IHPSG13_1P_256x64_c2_bm_bist macros on IHP SG13G2 130nm."
+}

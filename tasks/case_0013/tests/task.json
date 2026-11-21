@@ -1,0 +1,98 @@
+{
+  "case_id": "case_0013",
+  "task_id": "case_0013",
+  "version": 1,
+  "title": "Handle external resets during DMA operation",
+  "repo_id": "repo_38",
+  "repository": "analogdevicesinc/hdl",
+  "topic": "cdc_reset_clock",
+  "family": "rtl_reset_integration",
+  "editable_files": [
+    "code/axi_dmac_reset_manager.v"
+  ],
+  "editable": [
+    "code/axi_dmac_reset_manager.v"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_0013",
+    "version": 1,
+    "frozen_utc": "2026-11-04T17:55:26.360227+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/axi_dmac_reset_manager.v"
+    ],
+    "public_hashes": {
+      "BUILD.md": "64bc8d2c0fe1804bcf1a5ff5a878b8c01925bee3ccf9630e1f4a146dae28b498",
+      "code/LICENSE_ADIBSD": "c090bb95dddea392c9aec4422df46f2b2d8511067058272700b169ecf3b0d40b",
+      "code/LICENSE_GPL2": "d982acba4653bb8267df569bb9f403a2f4ccf6a11d60f74aa4235229238e82cf",
+      "code/axi_dmac_reset_manager.v": "0531706c60e6754a6460366dc4506b63292fea61dcff5ddbb038ff44938d6916",
+      "code/sync_bits.v": "999f072e0cd61d5b7b240138286454d2ca6c7a0b7640189e819e006c0a619905",
+      "issue.md": "b0cf713ddee38f9ad9e4165e79d5f278084dedb694a88b1ff78e28a79f2ca97d"
+    },
+    "gold_hashes": {
+      "code/axi_dmac_reset_manager.v": "c200320e04d69124a52b502bc7399003b5d4ae7ec336635a5c0e3c7f52535a32"
+    },
+    "grader_hashes": {
+      "run.py": "f5c217e816a59d0c8c1c93633a7db5ef1be04482a524233bfe4bf771616cf511"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 2,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 5,
+      "mutant_killed": 10,
+      "mutant_total": 10
+    }
+  },
+  "eda_stage": "stage1_rtl_sim",
+  "eda_stage_name": "Stage 1: Frontend RTL Design & Functional Simulation",
+  "eda_track": "stage1_rtl_sim",
+  "eda_track_name": "Stage 1: Frontend RTL Design & Functional Simulation",
+  "problem_type": "PT4_GateLevel_Security_CDC",
+  "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+  "primary_domain": "reset_rdc",
+  "multi_domains": [
+    "reset_rdc"
+  ],
+  "pdk_profile": {
+    "pdk_id": "rtl_dual_sim_standard",
+    "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+    "location": "Unified base image (/opt/siliconbench/tools)",
+    "customized": false,
+    "notes": "Pure RTL/protocol/synthesis check without external PDK Liberty files."
+  },
+  "public_hashes": {
+    "BUILD.md": "64bc8d2c0fe1804bcf1a5ff5a878b8c01925bee3ccf9630e1f4a146dae28b498",
+    "code/LICENSE_ADIBSD": "c090bb95dddea392c9aec4422df46f2b2d8511067058272700b169ecf3b0d40b",
+    "code/LICENSE_GPL2": "d982acba4653bb8267df569bb9f403a2f4ccf6a11d60f74aa4235229238e82cf",
+    "code/axi_dmac_reset_manager.v": "0531706c60e6754a6460366dc4506b63292fea61dcff5ddbb038ff44938d6916",
+    "code/sync_bits.v": "999f072e0cd61d5b7b240138286454d2ca6c7a0b7640189e819e006c0a619905",
+    "issue.md": "b0cf713ddee38f9ad9e4165e79d5f278084dedb694a88b1ff78e28a79f2ca97d"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 2,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 5,
+    "mutant_killed": 10,
+    "mutant_total": 10
+  }
+}

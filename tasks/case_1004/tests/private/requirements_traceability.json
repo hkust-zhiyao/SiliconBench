@@ -1,0 +1,29 @@
+{
+  "case_id": "case_1004",
+  "obligations": [
+    {
+      "id": "REQ-STALL-LOCK",
+      "behavior": "Lock selected channel and requester across clock cycles while sram_req_o == 1 and sram_gnt_i == 0, advancing arbitration state only on granted handshakes.",
+      "public_source": "public/issue.md item 1",
+      "enforced_by": "private/tests/tb.sv (Test 1)"
+    },
+    {
+      "id": "REQ-POLICY1-FAIRNESS-AND-CH-ALT",
+      "behavior": "Bound requester starvation to at most P_c - 1 other grants on channel c under arb_policy_i[c] == 1, and update channel priority away from the granted channel (rr_flag_q <= ~sel_ch1).",
+      "public_source": "public/issue.md item 1",
+      "enforced_by": "private/tests/tb.sv (Tests 2, 3, 3b)"
+    },
+    {
+      "id": "REQ-AMO-WDATA-AND-RSP-FIFO",
+      "behavior": "Sample and forward chc_wdata_i on the second cycle of an atomic RMW read, and qualify u_req_fifo pushes with sram_gnt_i.",
+      "public_source": "public/issue.md item 1",
+      "enforced_by": "private/tests/tb.sv (Test 4)"
+    },
+    {
+      "id": "REQ-PPA-STA-LATCHFREE",
+      "behavior": "Synthesize latch-free RTL within 2850.0 um^2 in Nangate45 and achieve WNS >= 0.20 ns, WHS >= 0.00 ns at 3.80 ns in OpenROAD.",
+      "public_source": "public/issue.md item 2, public/BUILD.md §3-4",
+      "enforced_by": "private/grader/run.py"
+    }
+  ]
+}

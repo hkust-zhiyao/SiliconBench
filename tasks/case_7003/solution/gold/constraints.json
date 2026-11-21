@@ -1,0 +1,22 @@
+{
+  "max_delays": [
+    {
+      "from": [
+        "qos_in"
+      ],
+      "to": [
+        "qos_out"
+      ],
+      "ns": 10.75
+    },
+    {
+      "from": [
+        "region_in"
+      ],
+      "to": [
+        "region_out"
+      ],
+      "ns": 11.75
+    }
+  ]
+}

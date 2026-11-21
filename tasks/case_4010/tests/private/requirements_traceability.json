@@ -1,0 +1,29 @@
+{
+  "case_id": "case_4010",
+  "obligations": [
+    {
+      "id": "REQ-INT-WAKEUP-SEC-ENC",
+      "behavior": "In cv32e41p_int_controller, mask irq_wu_ctrl_o with IRQ_MASK, qualify U-mode secure interrupts on registered irq_sec_q, and drive irq_id_ctrl_o = 5'd0 when idle while preserving CV32E41P priority order.",
+      "public_source": "public/issue.md item 1",
+      "enforced_by": "private/tests/tb.sv (test_int_controller_wakeup_and_secure_align), killed by baseline, wrong_fix_1, mutant_01, mutant_02, and mutant_03"
+    },
+    {
+      "id": "REQ-HWLP-SAT-AND-NESTED-PRIO",
+      "behavior": "In cv32e41p_hwloop_regs and cv32e41p_controller, saturate counter decrement at 0, enforce Loop 0 > Loop 1 priority on shared end addresses ($countones(hwlp_dec_cnt_o) <= 1) and pc+4 target selection, and qualify DECODE/DECODE_HWLOOP transitions on hwlp_counter_o > 1.",
+      "public_source": "public/issue.md item 2",
+      "enforced_by": "private/tests/tb.sv (test_hwloop_underflow_and_nested_priority), killed by wrong_fix_2, mutant_04, mutant_05, mutant_06, mutant_07, and mutant_08"
+    },
+    {
+      "id": "REQ-DATA-ERR-CAUSE-AND-DBE",
+      "behavior": "In cv32e41p_controller, latch data_we_ex_i when data_err_i is acknowledged and drive exc_cause_o = EXC_CAUSE_STORE_FAULT (we=1) or EXC_CAUSE_LOAD_FAULT (we=0) and exc_pc_mux_o = debug_mode_o ? EXC_PC_DBE : EXC_PC_EXCEPTION in FLUSH_WB.",
+      "public_source": "public/issue.md item 3",
+      "enforced_by": "private/tests/tb.sv (test_data_err_flush_wb_and_debug_vector), killed by wrong_fix_3, mutant_09, and mutant_10"
+    },
+    {
+      "id": "REQ-SYNTH-LATCH-AREA-STA",
+      "behavior": "Synthesize cv32e41p_int_controller (PULP_SECURE=1) latch-free with area <= 181.5 um^2 and cv32e41p_ctrl_subsystem latch-free with area <= 3,275.0 um^2 and OpenROAD STA WNS >= 0.00 ns, WHS >= 0.00 ns at 1.92 ns clk.",
+      "public_source": "public/issue.md, public/BUILD.md §3-4",
+      "enforced_by": "private/grader/run.py (synthesis, area, and timing stages), killed by wrong_fix_4"
+    }
+  ]
+}

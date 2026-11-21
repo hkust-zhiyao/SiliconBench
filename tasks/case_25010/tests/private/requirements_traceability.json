@@ -1,0 +1,53 @@
+{
+  "case_id": "case_25010",
+  "obligations": [
+    {
+      "id": "REQ-ICACHE-ALIGN-AND-FETCH",
+      "behavior": "Serve concurrent 2-port cacheable and bypass 32-bit fetches and issue 16-byte cache-line-aligned 2-beat AXI4 INCR refill bursts.",
+      "public_source": "public/issue.md Architectural & Coherence Contract item 1",
+      "verified_by": [
+        "private/tests/tb_icache.sv",
+        "wf2_last_beat_only_axi_err"
+      ]
+    },
+    {
+      "id": "REQ-ICACHE-FLUSH-COHERENCE",
+      "behavior": "Invalidate L0/L1 state and quarantine in-flight pre-flush MSHRs on per-port and global flush_valid_i without deadlocking un-flushed ports.",
+      "public_source": "public/issue.md Architectural & Coherence Contract item 2",
+      "verified_by": [
+        "private/tests/tb_icache.sv",
+        "wf1_global_flush_on_single_port",
+        "m03_l0_no_flush_strb_clear",
+        "m04_write_stale_to_l1",
+        "m05_coalesce_onto_stale_mshr",
+        "m07_no_l1_sweep_on_flush"
+      ]
+    },
+    {
+      "id": "REQ-ICACHE-AXI-ERR-CONTAINMENT",
+      "behavior": "Accumulate multi-beat AXI read errors to retire demand misses with inst_error_o without L1/L0 line allocation while silently discarding speculative prefetch errors.",
+      "public_source": "public/issue.md Architectural & Coherence Contract item 3",
+      "verified_by": [
+        "private/tests/tb_icache.sv",
+        "wf3_l0_validates_errored_refill",
+        "m01_drop_beat1_err",
+        "m02_alloc_errored_line_l1",
+        "m08_suppress_demand_err"
+      ]
+    },
+    {
+      "id": "REQ-ICACHE-SG13G2-PNR-SIGNOFF",
+      "behavior": "Synthesize zero-latch netlist preserving 6x RM_IHPSG13_1P_256x64_c2_bm_bist macros, place legally with >=8um halo, constrain clk_i <= 11.5ns, and pass OpenROAD PDN, GRT overflow <= 10, wirelength <= 1,850,000 um, and post-GRT setup/hold >= 0.0 ns.",
+      "public_source": "public/issue.md Physical Floorplan & Signoff Timing Targets",
+      "verified_by": [
+        "private/grader/run.py",
+        "wf4_macro_halo_violation",
+        "wf5_overrelaxed_sdc_period",
+        "m09_inferred_latch_lookup",
+        "m10_macro_core_margin_violation",
+        "m11_sdc_multicycle_exception",
+        "m12_sdc_low_io_delay"
+      ]
+    }
+  ]
+}

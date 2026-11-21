@@ -1,0 +1,149 @@
+{
+  "case_id": "case_2002",
+  "task_id": "case_2002",
+  "version": 1,
+  "title": "Ibex TRVK Capability Revocation Bridge Backpressure, Heap-Base Underflow Guard, Flush Recovery, and Transparent Channel Timing Budgets",
+  "repo_id": "repo_02",
+  "repository": "lowRISC/ibex",
+  "topic": "rtl_and_sdc_boundary_timing_budgets",
+  "family": "rtl_to_sta_constraints",
+  "editable_files": [
+    "code/ibex_trvk.sv",
+    "code/stream_fork.sv",
+    "constraints.json"
+  ],
+  "editable": [
+    "code/ibex_trvk.sv",
+    "code/stream_fork.sv",
+    "constraints.json"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 1,
+        "extra_args": []
+      },
+      {
+        "seed": 2,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_2002",
+    "version": 1,
+    "frozen_utc": "2026-11-03T21:19:50.243280+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/ibex_trvk.sv",
+      "code/stream_fork.sv",
+      "constraints.json"
+    ],
+    "public_hashes": {
+      "BUILD.md": "4e16044ace15b12ec72ae6d05243aa34d72ca98bb0783e8acf1d59ca3e6479d9",
+      "code/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "code/ibex_cheriot_pkg.sv": "2bb73146800d94b54e350b0c84216ef0ea0bb82049032ec83b64b6afd0717823",
+      "code/ibex_trvk.sv": "2cde4724d6b6a1a04342274cefb10ca1c14975183b98abfcc02a00e9b30ddd38",
+      "code/ibex_trvk_bridge_top.sv": "3b9d85e016fa3770a8ba516539e32bd1a5f0e305312bbf2c3bdf3fc316780da1",
+      "code/prim_assert.sv": "d717d5dbcba3b5aa8a731ef9f8af18b036b49edef282f0a43a51f5ad2dd9bb40",
+      "code/prim_assert_dummy_macros.svh": "cac4a930105da662547de873f0b80246074fb22df9a398663e1c8ac3e7998218",
+      "code/prim_assert_sec_cm.svh": "25db89fe5f250c1bcbd808d0b4808206b9e85ac337b26e4ebb23f2ad569e1a13",
+      "code/prim_assert_standard_macros.svh": "4835706249e017eae999256ea807c526a39a49729196fc0aa18bb8818de86ab6",
+      "code/prim_assert_yosys_macros.svh": "d1fd8c350785a7c6d8cccc0b0c385392b71575397e7dc58c70f07716c8f9f3a3",
+      "code/prim_count.sv": "b48580aefff674a48a674489c9b21a98d5399ca5b4c7623f3a7c907a75d8f0cb",
+      "code/prim_count_pkg.sv": "8e465ed25b7d59f29faf0f315243a774cf0e50d178ec2068d8c71983cb2f18df",
+      "code/prim_fifo_assert.svh": "9cd4f9edd759567ff6941618477117765e44e810627480b89f41211ea8ba8517",
+      "code/prim_fifo_sync.sv": "2655befe56a70ee672c2f1259a82ef2beb2adf429ed0405bcf26bea7c4de3630",
+      "code/prim_fifo_sync_cnt.sv": "be647efa36aa4228db8a9151ac07c83a95cdd9aef71a4488fa619a876d809fbc",
+      "code/prim_flop_macros.sv": "2e8e6c2ee484899ae5d0020eaf0c9732c31537c60c30cb2a0a0acd2e92baee03",
+      "code/prim_mubi_pkg.sv": "11a2f1a16ddaf750d859c95e07fc48c54743fe6ad3b5c5eabe2e14a51d9fb1af",
+      "code/prim_secded_inc.svh": "59591eea595305d0ece809e980ee080990d52f1c4fef564e1a6e9c4f54812c3d",
+      "code/prim_secded_inv_39_32_dec.sv": "f07f26fd2375952e4ec7cfc1641cebcea373a8030d82dd5977a76f81c430cb12",
+      "code/prim_secded_pkg.sv": "bcbd03333a30e7a1cb01195d1c40c7d0e736f91d9f73c2347ef5b0bd9dc3c82b",
+      "code/prim_util_pkg.sv": "f71235ef5b92eaa3d2ed5c676f76108082df93b8aae8f9baa816584d1d285208",
+      "code/stream_fork.sv": "06c968e2b77cdc6891b4de3d04f139e99bb13ee0f1a6d7c3d7e0c2576b239b8b",
+      "code/stream_join_dynamic.sv": "1c3cbfb64869114c36fbadb599379c2d639d8e7d501b983a8fad84e78dd5f128",
+      "constraints.json": "f4113f6d3e1f5b35e8418d90742838706a5e31e21612dff0e724bdf0df420191",
+      "issue.md": "ffede25bd44f403043b7c486a2cb991d2919f8ff5b68897c9ac08747fbb15074"
+    },
+    "gold_hashes": {
+      "code/ibex_trvk.sv": "7b706261e0be2839f6ab5464f86fdbb6516c2aeb18888f62b3589c0bbf05095f",
+      "code/stream_fork.sv": "d927a967982bfb5dd5446eda37b44be283351810379a05aa437ce6cfe1954969",
+      "constraints.json": "9374ac04ca71e8a9deb04328dbfc023c0f91317f8e23b94a4dffe28fac55aa65"
+    },
+    "grader_hashes": {
+      "run.py": "4a551dd2b17177d7106d05fdb3877b863d67c7523c38125a85222d830c6ba628"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 10,
+      "mutant_total": 10
+    }
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT4_GateLevel_Security_CDC",
+  "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+  "primary_domain": "protocol_control",
+  "multi_domains": [
+    "protocol_control",
+    "reset_rdc",
+    "rtl_integration",
+    "rtl_semantics",
+    "sdc_sta",
+    "verification_debug"
+  ],
+  "pdk_profile": {
+    "pdk_id": "nangate45_45nm_shared",
+    "pdk_name": "Nangate45 45nm Open Cell Library (Shared Base Image)",
+    "location": "/opt/siliconbench/pdk/Nangate45 (bundled in environments/pdk/Nangate45)",
+    "customized": false,
+    "notes": "Uses unified Nangate45 typical Liberty and LEF from base image."
+  },
+  "public_hashes": {
+    "BUILD.md": "4e16044ace15b12ec72ae6d05243aa34d72ca98bb0783e8acf1d59ca3e6479d9",
+    "code/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "code/ibex_cheriot_pkg.sv": "2bb73146800d94b54e350b0c84216ef0ea0bb82049032ec83b64b6afd0717823",
+    "code/ibex_trvk.sv": "2cde4724d6b6a1a04342274cefb10ca1c14975183b98abfcc02a00e9b30ddd38",
+    "code/ibex_trvk_bridge_top.sv": "3b9d85e016fa3770a8ba516539e32bd1a5f0e305312bbf2c3bdf3fc316780da1",
+    "code/prim_assert.sv": "d717d5dbcba3b5aa8a731ef9f8af18b036b49edef282f0a43a51f5ad2dd9bb40",
+    "code/prim_assert_dummy_macros.svh": "cac4a930105da662547de873f0b80246074fb22df9a398663e1c8ac3e7998218",
+    "code/prim_assert_sec_cm.svh": "25db89fe5f250c1bcbd808d0b4808206b9e85ac337b26e4ebb23f2ad569e1a13",
+    "code/prim_assert_standard_macros.svh": "4835706249e017eae999256ea807c526a39a49729196fc0aa18bb8818de86ab6",
+    "code/prim_assert_yosys_macros.svh": "d1fd8c350785a7c6d8cccc0b0c385392b71575397e7dc58c70f07716c8f9f3a3",
+    "code/prim_count.sv": "b48580aefff674a48a674489c9b21a98d5399ca5b4c7623f3a7c907a75d8f0cb",
+    "code/prim_count_pkg.sv": "8e465ed25b7d59f29faf0f315243a774cf0e50d178ec2068d8c71983cb2f18df",
+    "code/prim_fifo_assert.svh": "9cd4f9edd759567ff6941618477117765e44e810627480b89f41211ea8ba8517",
+    "code/prim_fifo_sync.sv": "2655befe56a70ee672c2f1259a82ef2beb2adf429ed0405bcf26bea7c4de3630",
+    "code/prim_fifo_sync_cnt.sv": "be647efa36aa4228db8a9151ac07c83a95cdd9aef71a4488fa619a876d809fbc",
+    "code/prim_flop_macros.sv": "2e8e6c2ee484899ae5d0020eaf0c9732c31537c60c30cb2a0a0acd2e92baee03",
+    "code/prim_mubi_pkg.sv": "11a2f1a16ddaf750d859c95e07fc48c54743fe6ad3b5c5eabe2e14a51d9fb1af",
+    "code/prim_secded_inc.svh": "59591eea595305d0ece809e980ee080990d52f1c4fef564e1a6e9c4f54812c3d",
+    "code/prim_secded_inv_39_32_dec.sv": "f07f26fd2375952e4ec7cfc1641cebcea373a8030d82dd5977a76f81c430cb12",
+    "code/prim_secded_pkg.sv": "bcbd03333a30e7a1cb01195d1c40c7d0e736f91d9f73c2347ef5b0bd9dc3c82b",
+    "code/prim_util_pkg.sv": "f71235ef5b92eaa3d2ed5c676f76108082df93b8aae8f9baa816584d1d285208",
+    "code/stream_fork.sv": "06c968e2b77cdc6891b4de3d04f139e99bb13ee0f1a6d7c3d7e0c2576b239b8b",
+    "code/stream_join_dynamic.sv": "1c3cbfb64869114c36fbadb599379c2d639d8e7d501b983a8fad84e78dd5f128",
+    "constraints.json": "f4113f6d3e1f5b35e8418d90742838706a5e31e21612dff0e724bdf0df420191",
+    "issue.md": "ffede25bd44f403043b7c486a2cb991d2919f8ff5b68897c9ac08747fbb15074"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 10,
+    "mutant_total": 10
+  }
+}

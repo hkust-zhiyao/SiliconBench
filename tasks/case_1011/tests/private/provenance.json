@@ -1,0 +1,15 @@
+{
+  "upstream": "https://github.com/lowRISC/opentitan",
+  "commit": "0e880c84fa5e6ff1d43354eae9ad9f13c96231ee",
+  "archive_sha256": "c71b2041453c7bfa1676830f80f4f46e0d35fa9c3484fd13d87011f07913ece5",
+  "license": "Apache-2.0",
+  "rtl": [
+    "hw/ip/spi_host/rtl/spi_host_core.sv",
+    "hw/ip/spi_host/rtl/spi_host_fsm.sv",
+    "hw/ip/spi_host/rtl/spi_host_shift_register.sv",
+    "hw/ip/spi_host/rtl/spi_host_byte_select.sv",
+    "hw/ip/spi_host/rtl/spi_host_byte_merge.sv"
+  ],
+  "pdk": "NangateOpenCellLibrary 45nm typical (lib/NangateOpenCellLibrary_typical.lib)",
+  "tools": "Verilator 5.038 + Yosys (slang) + OpenROAD/OpenSTA"
+}

@@ -1,0 +1,112 @@
+{
+  "case_id": "case_0011",
+  "task_id": "case_0011",
+  "version": 1,
+  "repo_id": "repo_33",
+  "topic": "synthesis_qor",
+  "editable_files": [
+    "code/rtl/hwpe_ctrl_partial_mult.sv"
+  ],
+  "editable": [
+    "code/rtl/hwpe_ctrl_partial_mult.sv"
+  ],
+  "grading": {
+    "eda_class": "pnr",
+    "grader_timeout_seconds": 600,
+    "verifier_timeout_seconds": 1200,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 1,
+        "extra_args": []
+      },
+      {
+        "seed": 2,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_0011",
+    "version": 1,
+    "frozen_utc": "2026-11-03T12:28:44.943922+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/rtl/hwpe_ctrl_partial_mult.sv"
+    ],
+    "public_hashes": {
+      "BUILD.md": "ee10743a60f3fb135b1e770eb72ddcef2fd4bbc96ca688a1c588713b2f9b126e",
+      "code/LICENSE": "6527a46225891b976fa94f634f6ee0cd22e1c7129d6f11c5c98c997627625fc7",
+      "code/README.md": "4fb9c2a098cf02700cd9da6a9bf926aec3fffd65f261515de553134db81f54bf",
+      "code/rtl/hwpe_ctrl_package.sv": "1c53ca3d97a021178fd7604f169b57bfe7f31ebe0e1cf02102e3b3b72d11c960",
+      "code/rtl/hwpe_ctrl_partial_mult.sv": "255fa77c5d5d0f6ff4e12a788aa5913e7295394a2f17cdc386d68b8378ad70fa",
+      "code/rtl/hwpe_ctrl_uloop.sv": "c3e258497006e3fe8071499e37cfb2e015a9746e655a8e9b96572d90d07fd1e4",
+      "issue.md": "8d803541d54acf3998e47c33e38a4c8586552268ab1ce419b4e8bdb590316922",
+      "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+      "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+      "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+      "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+    },
+    "gold_hashes": {
+      "code/LICENSE": "6527a46225891b976fa94f634f6ee0cd22e1c7129d6f11c5c98c997627625fc7",
+      "code/README.md": "4fb9c2a098cf02700cd9da6a9bf926aec3fffd65f261515de553134db81f54bf",
+      "code/rtl/hwpe_ctrl_package.sv": "1c53ca3d97a021178fd7604f169b57bfe7f31ebe0e1cf02102e3b3b72d11c960",
+      "code/rtl/hwpe_ctrl_partial_mult.sv": "c66b67538f270bb6e345d83a1c86375bb777b44be5ff608eab2829123ddd4dd2",
+      "code/rtl/hwpe_ctrl_uloop.sv": "c3e258497006e3fe8071499e37cfb2e015a9746e655a8e9b96572d90d07fd1e4"
+    },
+    "grader_hashes": {
+      "run.py": "4903bdb0f5569b72ada9fd963f77fb42b96bf275abe05bdef6cce602c8cbf7d2"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 6,
+      "anti_hack_fail_runs": 5,
+      "mutant_killed": 10,
+      "mutant_total": 10
+    }
+  },
+  "title": "Reduce Area and Critical-Path Delay in the HWPE Chunked Stride Multiplier",
+  "repository": "pulp-platform/hwpe-ctrl",
+  "eda_stage": "stage4_macro_pnr",
+  "eda_stage_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+  "eda_track": "stage4_macro_pnr",
+  "eda_track_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+  "problem_type": "PT3_Timing_Area_PPA_Closure",
+  "problem_type_label": "High-Frequency Timing & Area Optimization",
+  "primary_domain": "arithmetic_datapath",
+  "multi_domains": [
+    "arithmetic_datapath",
+    "synthesis_qor"
+  ],
+  "pdk_profile": {
+    "pdk_id": "nangate45_plus_multicorner_lib",
+    "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+    "location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+    "customized": true,
+    "notes": "Uses shared Nangate45 library for synthesis plus task-bundled fast/slow/scan corner timing views."
+  },
+  "public_hashes": {
+    "BUILD.md": "ee10743a60f3fb135b1e770eb72ddcef2fd4bbc96ca688a1c588713b2f9b126e",
+    "code/LICENSE": "6527a46225891b976fa94f634f6ee0cd22e1c7129d6f11c5c98c997627625fc7",
+    "code/README.md": "4fb9c2a098cf02700cd9da6a9bf926aec3fffd65f261515de553134db81f54bf",
+    "code/rtl/hwpe_ctrl_package.sv": "1c53ca3d97a021178fd7604f169b57bfe7f31ebe0e1cf02102e3b3b72d11c960",
+    "code/rtl/hwpe_ctrl_partial_mult.sv": "255fa77c5d5d0f6ff4e12a788aa5913e7295394a2f17cdc386d68b8378ad70fa",
+    "code/rtl/hwpe_ctrl_uloop.sv": "c3e258497006e3fe8071499e37cfb2e015a9746e655a8e9b96572d90d07fd1e4",
+    "issue.md": "8d803541d54acf3998e47c33e38a4c8586552268ab1ce419b4e8bdb590316922",
+    "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+    "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+    "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+    "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 6,
+    "anti_hack_fail_runs": 5,
+    "mutant_killed": 10,
+    "mutant_total": 10
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "upstream": "https://github.com/pulp-platform/cluster_interconnect",
+  "commit": "2967d8d17be0a6139229ca8d3d4956e182aec3de",
+  "archive_sha256": "8cc1be5848b8697a34cad28b746d1ea4fe3d186ba93ba0c7cf112940e520c7d6",
+  "license": "Solderpad Hardware License 0.51 (SHL-0.51)",
+  "rtl": [
+    "rtl/low_latency_interco/RequestBlock2CH.sv",
+    "rtl/low_latency_interco/ArbitrationTree.sv",
+    "rtl/low_latency_interco/MUX2_REQ.sv",
+    "rtl/low_latency_interco/TestAndSet.sv",
+    "rtl/low_latency_interco/FanInPrimitive_Req.sv",
+    "rtl/low_latency_interco/priority_Flag_Req.sv",
+    "rtl/low_latency_interco/AddressDecoder_Resp.sv",
+    "rtl/low_latency_interco/parameters.v"
+  ],
+  "baseline": "2-channel TCDM RequestBlock2CH combining intra-channel ArbitrationTree, inter-channel MUX2_REQ, and TestAndSet with Nangate45 Yosys/Slang synthesis and OpenROAD placement STA.",
+  "tools": "Verilator 5.038 + Yosys/Slang (OSS CAD Suite) + OpenROAD (Nangate45)"
+}

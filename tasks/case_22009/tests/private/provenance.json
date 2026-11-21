@@ -1,0 +1,32 @@
+{
+  "case_id": "case_22009",
+  "slot_id": "builder_03_vector_tensor_fpu__P09",
+  "blueprint_id": "bp_s03_023",
+  "repo_id": "repo_30",
+  "origin": "https://github.com/pulp-platform/redmule",
+  "commit": "5a07d64df152c7f432fbd24e2971c2aa5f12b685",
+  "archive_sha256": "48f69c08b1b02b5f6db7d78ece010f6a1ffa635abb9db33d038ff04dc7395a54",
+  "license": "SHL-0.51; see public/code/LICENSE and source headers",
+  "native_sources": [
+    "snapshot/rtl/redmule_pkg.sv",
+    "snapshot/rtl/redmule_tiler.sv",
+    "snapshot/rtl/redmule_scheduler.sv",
+    "snapshot/rtl/redmule_memory_scheduler.sv",
+    "snapshot/rtl/redmule_ctrl.sv",
+    "snapshot/rtl/redmule_config_fifo.sv",
+    "snapshot/rtl/redmule_engine.sv",
+    "snapshot/rtl/redmule_row.sv",
+    "snapshot/rtl/redmule_fma.sv",
+    "snapshot/rtl/x_buffer/redmule_x_buffer.sv",
+    "snapshot/rtl/w_buffer/redmule_w_buffer.sv",
+    "snapshot/rtl/z_buffer/redmule_z_buffer.sv"
+  ],
+  "editable_files": [
+    "code/redmule_tiler.sv",
+    "code/redmule_scheduler.sv",
+    "code/redmule_memory_scheduler.sv"
+  ],
+  "qualification": "upstream/repo_30",
+  "build_scope": "Full FP16 systolic matrix engine subsystem (`redmule_subsys`: `Width=4`, `Height=4`, `NumPipeRegs=1`, `DataW=128`) verified across 27 subtests covering small-N (`N <= Height`), `N % Height == 1` weight leftovers, odd/even `K` drain transitions, non-divisible `M` OOB canary protection, prime `(M, N, K)` GEMM/MATMUL under randomized TCDM stalls, two-pass `loopback_w`, queued back-to-back jobs, and mid-job `target_clear_i` recovery, plus `yosys -m slang` zero-latch synthesis check.",
+  "tool": "Verilator 5.038 + Yosys 0.70+286 (`-m slang`)"
+}

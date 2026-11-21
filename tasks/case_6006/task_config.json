@@ -1,0 +1,125 @@
+{
+  "case_id": "case_6006",
+  "task_id": "case_6006",
+  "version": 1,
+  "title": "VeeR-EH1 IFU Branch Predictor (BTB/BHT/RAS), I-Cache/ICCM Memory Controller, and Fetch Pipe Closure",
+  "repo_id": "repo_06",
+  "repository": "chipsalliance/cores-veer-eh1",
+  "topic": "ifu_bp_btb_bht_ras_icache_iccm_mem_ctl",
+  "family": "rtl_multi_module_ppa_sta",
+  "editable_files": [
+    "code/ifu_ifc_ctl.sv",
+    "code/ifu_bp_ctl.sv",
+    "code/ifu_mem_ctl.sv"
+  ],
+  "editable": [
+    "code/ifu_ifc_ctl.sv",
+    "code/ifu_bp_ctl.sv",
+    "code/ifu_mem_ctl.sv"
+  ],
+  "grading": {
+    "eda_class": "heavy",
+    "grader_timeout_seconds": 480,
+    "verifier_timeout_seconds": 960,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_6006",
+    "version": 1,
+    "frozen_utc": "2026-11-04T08:45:34.624565+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/ifu_ifc_ctl.sv",
+      "code/ifu_bp_ctl.sv",
+      "code/ifu_mem_ctl.sv"
+    ],
+    "public_hashes": {
+      "BUILD.md": "af300d165c709222aec57646690540638ad09d66a56dd9f5516c6cff71159b39",
+      "code/LICENSE": "eb3203ed1cc2086e377b0d6cc7603be45d19739d47101ee2f8813f724be9c353",
+      "code/beh_lib.sv": "06eed3047efe87f84896499a85e693fb1f6778d9e67ed1824549af27be22a0b4",
+      "code/common_defines.vh": "5a7d277d3fb294953a430557f359ad2d04cd5f21c40d8822cff8e30f238c98c4",
+      "code/global.h": "cedc17c27520e795d89d1f8ecea8184b70f3657c4a2de683d339e64a6cca8b2d",
+      "code/ifu_bp_ctl.sv": "7712878db5b6d604358fbb469cf96795a7e5fd3cd5c39f7deed7811d2b9ce8f0",
+      "code/ifu_ifc_ctl.sv": "347aa7622d0ca094c78d61ca56fd502431b379f3f3b2c9a2fb2b32b06bb3025e",
+      "code/ifu_mem_ctl.sv": "cd771b349d47c0eb808f2820721c6f5c45edd788c4d4a5b83f50158de819287a",
+      "code/veer_ifu_bp_mem_top.sv": "272e5da324c36da4ec7641d704a03e72742695cc5a772396012b24f27f995bc4",
+      "code/veer_types.sv": "e2390fd23055b590147b21cb635132409113b84d36cef5fbc340259aa1810279",
+      "issue.md": "5ec722843b356a2fa78feacdf11acae7f468d22445e0558faab661c05b34d915",
+      "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+      "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+      "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+      "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+    },
+    "gold_hashes": {
+      "code/ifu_bp_ctl.sv": "c1ec52117b9dd13bf425f71a225f6a78db18bbf7f25667dec9130842c4678143",
+      "code/ifu_ifc_ctl.sv": "d576f2dc2545a6d4e2d2d1a8fc42462c4fa844e4b22b529d118805b10fb39ff8",
+      "code/ifu_mem_ctl.sv": "0f3ba23dd74684426317f80f4c2e7c6d48570fe952eed349b06ccad2c4fd20b3"
+    },
+    "grader_hashes": {
+      "run.py": "f838be7b0aa608a3f3e8848758e6729f78abb23ceb8ba36d62c07177ab8dbf2c"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 2,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 5,
+      "mutant_killed": 12,
+      "mutant_total": 12
+    }
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+  "problem_type_label": "Architectural & Protocol Bug Repair",
+  "primary_domain": "rtl_integration",
+  "multi_domains": [
+    "gatelevel_physical_effects",
+    "rtl_integration"
+  ],
+  "pdk_profile": {
+    "pdk_id": "nangate45_plus_multicorner_lib",
+    "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+    "location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+    "customized": true,
+    "notes": "Uses shared Nangate45 library for synthesis plus task-bundled fast/slow/scan corner timing views."
+  },
+  "public_hashes": {
+    "BUILD.md": "af300d165c709222aec57646690540638ad09d66a56dd9f5516c6cff71159b39",
+    "code/LICENSE": "eb3203ed1cc2086e377b0d6cc7603be45d19739d47101ee2f8813f724be9c353",
+    "code/beh_lib.sv": "06eed3047efe87f84896499a85e693fb1f6778d9e67ed1824549af27be22a0b4",
+    "code/common_defines.vh": "5a7d277d3fb294953a430557f359ad2d04cd5f21c40d8822cff8e30f238c98c4",
+    "code/global.h": "cedc17c27520e795d89d1f8ecea8184b70f3657c4a2de683d339e64a6cca8b2d",
+    "code/ifu_bp_ctl.sv": "7712878db5b6d604358fbb469cf96795a7e5fd3cd5c39f7deed7811d2b9ce8f0",
+    "code/ifu_ifc_ctl.sv": "347aa7622d0ca094c78d61ca56fd502431b379f3f3b2c9a2fb2b32b06bb3025e",
+    "code/ifu_mem_ctl.sv": "cd771b349d47c0eb808f2820721c6f5c45edd788c4d4a5b83f50158de819287a",
+    "code/veer_ifu_bp_mem_top.sv": "272e5da324c36da4ec7641d704a03e72742695cc5a772396012b24f27f995bc4",
+    "code/veer_types.sv": "e2390fd23055b590147b21cb635132409113b84d36cef5fbc340259aa1810279",
+    "issue.md": "5ec722843b356a2fa78feacdf11acae7f468d22445e0558faab661c05b34d915",
+    "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+    "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+    "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+    "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 2,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 5,
+    "mutant_killed": 12,
+    "mutant_total": 12
+  }
+}

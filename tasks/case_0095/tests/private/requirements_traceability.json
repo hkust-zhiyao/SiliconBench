@@ -1,0 +1,45 @@
+{
+  "case_id": "case_0095",
+  "requirements": [
+    {
+      "id": "REQ-FUNC-CAST-MULTI",
+      "source": "public/issue.md",
+      "description": "Preserve exact IEEE-754 and RISC-V semantics in fpnew_cast_multi across F2F, F2I, and I2F casts (FP32, FP16, FP16ALT and signed/unsigned INT8, INT16, INT32), all rounding modes, subnormals, NaN-boxing, status flags (NV, DZ, OF, UF, NX), extension_bit_o, and pipeline handshakes/flushes.",
+      "verified_by": "private/tests/tb.sv (4000 directed and random multi-format cast equivalence checks)",
+      "negative_controls": [
+        "wrong_fix_3_drop_subnormal_sticky",
+        "wrong_fix_4_missing_nan_box_check",
+        "mutant_01_drop_neg_int_round",
+        "mutant_02_drop_d0_sticky",
+        "mutant_03_drop_uf_nx_gate",
+        "mutant_04_wrong_int_special_nv",
+        "mutant_05_drop_i2f_zero_detect",
+        "mutant_06_wrong_extension_bit"
+      ]
+    },
+    {
+      "id": "REQ-FUNC-NONCOMP",
+      "source": "public/issue.md",
+      "description": "Preserve exact IEEE-754 and RISC-V semantics in fpnew_noncomp across MINMAX, SGNJ, CMP, and CLASSIFY operations, signed zero equality, sNaN/qNaN handling, and pipeline handshakes/flushes.",
+      "verified_by": "private/tests/tb.sv (4000 directed and random noncomp equivalence checks)",
+      "negative_controls": [
+        "wrong_fix_5_noncomp_signed_cmp_bug",
+        "mutant_07_noncomp_drop_zero_eq",
+        "mutant_08_noncomp_drop_minmax_snan_nv",
+        "mutant_09_noncomp_invert_sgnj_rtz",
+        "mutant_10_noncomp_wrong_classify_subnorm"
+      ]
+    },
+    {
+      "id": "REQ-QOR-AREA-TIMING",
+      "source": "public/issue.md & public/BUILD.md",
+      "description": "Mapped standard-cell area <= 3,525.0 um^2 on NangateOpenCellLibrary_typical.lib for fpnew_cast_noncomp_top (NumPipeRegs=1, PipeConfig=INSIDE) and nonnegative setup and hold slack at 2.80 ns clock period.",
+      "verified_by": "private/grader/run.py",
+      "negative_controls": [
+        "baseline (3549.770 um^2, -0.141 ns setup slack)",
+        "wrong_fix_1_65bit_shifter_kept (3706.444 um^2)",
+        "wrong_fix_2_unfolded_int_negate_adder (-0.238 ns setup slack)"
+      ]
+    }
+  ]
+}

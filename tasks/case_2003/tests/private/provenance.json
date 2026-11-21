@@ -1,0 +1,23 @@
+{
+  "case_id": "case_2003",
+  "repo_id": "repo_02",
+  "upstream": "https://github.com/lowRISC/ibex",
+  "commit": "1b29dae8866e6c0f0a3cd9dead53a77b4f45e357",
+  "archive_sha256": "e3e6741a4f11f4cdea7775c063246b3d98f213f2e21e0b1469cdc6d6f0089007",
+  "license": "Apache-2.0 (see public/code/LICENSE)",
+  "native_source": [
+    "rtl/ibex_load_store_unit.sv",
+    "rtl/ibex_wb_stage.sv",
+    "rtl/ibex_pmp.sv",
+    "rtl/ibex_pkg.sv",
+    "rtl/ibex_cheriot_pkg.sv",
+    "vendor/lowrisc_ip/ip/prim/rtl/prim_secded_inv_39_32_dec.sv",
+    "vendor/lowrisc_ip/ip/prim/rtl/prim_secded_inv_39_32_enc.sv"
+  ],
+  "constructed_source": "ibex_lsu_wb_pmp_top.sv integrates ibex_pmp, ibex_load_store_unit, and ibex_wb_stage with AGU misaligned/capability address increment feedback and 39-bit SECDED ECC.",
+  "tooling": {
+    "simulator": "Verilator 5.038",
+    "synthesis": "Yosys 0.70+286 with Slang frontend",
+    "sta": "OpenROAD 26Q2-1164-g08f67ee5ec"
+  }
+}

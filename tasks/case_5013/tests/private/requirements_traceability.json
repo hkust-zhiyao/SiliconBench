@@ -1,0 +1,50 @@
+{
+  "case_id": "case_5013",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "description": "Same-cycle non-MMU DTLB PPN in load_store_unit, combinational and queued speculative non-idempotent load branch resolution across lsu_bypass and load_unit, and SEND_TAG exception retirement with killed/aborted load-buffer slot reclamation.",
+      "verified_by": [
+        "tb.sv:T1a",
+        "tb.sv:T1b",
+        "tb.sv:T1c",
+        "tb.sv:T1d",
+        "tb.sv:T1e",
+        "tb.sv:T1f",
+        "tb.sv:T2a",
+        "tb.sv:T2b",
+        "tb.sv:T6a",
+        "tb.sv:T6b",
+        "tb.sv:T6c",
+        "tb.sv:T6d"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "description": "32-bit word-granular ([11:2]) store-buffer page-offset hazard detection and two-phase CBO commit-queue completion handshaking.",
+      "verified_by": [
+        "tb.sv:T3a",
+        "tb.sv:T3b",
+        "tb.sv:T3c",
+        "tb.sv:T3d",
+        "tb.sv:T3e",
+        "tb.sv:T3f",
+        "tb.sv:T4a",
+        "tb.sv:T4b",
+        "tb.sv:T4c",
+        "tb.sv:T4d",
+        "tb.sv:T5a",
+        "tb.sv:T5b"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "description": "Critical-path AGU/control and storage optimization across the LSU subsystem achieving setup/hold slack >= 0.0 ns at 1.80 ns clock and area <= 8260.0 um^2.",
+      "verified_by": [
+        "grader/run.py:synthesis",
+        "grader/run.py:area",
+        "grader/run.py:timing"
+      ]
+    }
+  ]
+}

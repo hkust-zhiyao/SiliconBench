@@ -1,0 +1,29 @@
+{
+  "case_id": "case_7004",
+  "obligations": [
+    {
+      "id": "REQ-AMO-SIGNED-MINMAX-AND-SC",
+      "behavior": "eh2_lsu_amo computes signed/unsigned AMOMIN.W and AMOMAX.W across same-sign and opposite-sign 32-bit operands, forwards store_data_dc3 for SC.W, and eh2_lsu_dccm_ctl preserves sec_data_lo_dc3 on the upper channel to restore ECC-corrected memory data when SC.W fails (~lsu_sc_success_dc5).",
+      "public_source": "public/issue.md item 1",
+      "enforced_by": "private/tests/tb.sv Phase 1 & Phase 2; killed by wrong_fix_1, mutant_01, mutant_02, mutant_03"
+    },
+    {
+      "id": "REQ-ECC-SUBWORD-SCRUB-AND-HAZARD-GATING",
+      "behavior": "eh2_lsu_ecc and eh2_lsu_dccm_ctl align sub-word store byte enables across all byte offsets [1:0], gate upper-bank DC3 ECC errors by ldst_dual_dc3 and fault absence, suppress DC5 load single-ECC errors on RAW store-buffer forwarding or younger DC1..DC4 DMA store overlap, replicate single-bank ECC scrub data across both write ports, and assert disable_ecc_check_lo/hi_dc2 on store-buffer commit bypass into DC2 stores.",
+      "public_source": "public/issue.md item 2",
+      "enforced_by": "private/tests/tb.sv Phase 3 & Phase 4; killed by wrong_fix_2, wrong_fix_3, mutant_04..mutant_08"
+    },
+    {
+      "id": "REQ-STBUF-COALESCE-DMAKILL-AND-FORWARDING",
+      "behavior": "eh2_lsu_stbuf blocks coalescing into draining or DMA-killed entries, fills unwritten bytes from store_ecc_datafn during partial-word coalescing, blocks stbuf_reqvld_any when any stbuf_dma_kill_en is asserted, and prioritizes DC3 > DC4 > DC5 > store-queue in DC2 load byte forwarding.",
+      "public_source": "public/issue.md item 3",
+      "enforced_by": "private/tests/tb.sv Phase 5 & Phase 6; killed by wrong_fix_4, wrong_fix_5, mutant_09..mutant_12"
+    },
+    {
+      "id": "REQ-PPA-STA-CLOSURE",
+      "behavior": "Latch-free synthesis under Yosys/Slang Nangate45 flow with mapped area <= 17,050.0 um^2 and OpenROAD STA WNS >= 0.00 ns, WHS >= 0.00 ns at 3.15 ns clock.",
+      "public_source": "public/issue.md final paragraph, public/BUILD.md §3-4",
+      "enforced_by": "private/grader/run.py"
+    }
+  ]
+}

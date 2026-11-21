@@ -1,0 +1,141 @@
+{
+  "case_id": "case_7004",
+  "task_id": "case_7004",
+  "version": 1,
+  "title": "VeeR EH2 Dual-Thread LSU DCCM, SECDED ECC, Atomic RMW, and Coalescing Store-Buffer Subsystem Closure",
+  "repo_id": "repo_07",
+  "repository": "chipsalliance/cores-veer-eh2",
+  "source_commit": "32bdfe24c0194a5b625a70624144e4c6dec5f682",
+  "license": "Apache-2.0",
+  "family": "rtl_to_sta",
+  "topic": "eh2_lsu_dccm_ecc_amo_stbuf_coalesce_forwarding_ppa_sta",
+  "editable_files": [
+    "code/eh2_lsu_amo.sv",
+    "code/eh2_lsu_ecc.sv",
+    "code/eh2_lsu_dccm_ctl.sv",
+    "code/eh2_lsu_stbuf.sv"
+  ],
+  "editable": [
+    "code/eh2_lsu_amo.sv",
+    "code/eh2_lsu_ecc.sv",
+    "code/eh2_lsu_dccm_ctl.sv",
+    "code/eh2_lsu_stbuf.sv"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_7004",
+    "version": 1,
+    "frozen_utc": "2026-11-04T15:32:49.790952+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/eh2_lsu_amo.sv",
+      "code/eh2_lsu_ecc.sv",
+      "code/eh2_lsu_dccm_ctl.sv",
+      "code/eh2_lsu_stbuf.sv"
+    ],
+    "public_hashes": {
+      "BUILD.md": "f653f5e1306f72891976223b38e265ddd21773997f2ea73ecfff81743d238cd5",
+      "LICENSE": "eb3203ed1cc2086e377b0d6cc7603be45d19739d47101ee2f8813f724be9c353",
+      "code/LICENSE": "eb3203ed1cc2086e377b0d6cc7603be45d19739d47101ee2f8813f724be9c353",
+      "code/beh_lib.sv": "f90db53a3d8cbf3823b584afe6ff6b9fdbdc5ff16f47f634eb204f2d73878b2a",
+      "code/common_defines.vh": "0ae15e38f80d074495e89747bdd674680b57d880f2d6dd0dc69b81738d7878c4",
+      "code/eh2_def.sv": "a1950abcbef049cc5b3ef5baf7704dfcc78c01dfea157bd45803a1a3984913d9",
+      "code/eh2_lib.sv": "35edc0e0d70a933436246d76931e90a0527cf5d3b7a68410ce62c41c55b485d2",
+      "code/eh2_lsu_amo.sv": "7b2dca684d253e2e3ca158b49987c2d3551d41a423fc4c948742a43e62578481",
+      "code/eh2_lsu_dccm_ctl.sv": "e9329345035072c2c14876785daade8c65d29701f0f62d883e9199c1a5cb45ce",
+      "code/eh2_lsu_ecc.sv": "2b46b0d1b6be6ee14d439c4d353cc13c45f13576b1a393a22bb7317f7ce6fbad",
+      "code/eh2_lsu_stbuf.sv": "92ef2fcd210923271b978535787a0d319fd707dceddb7cd8592357c573f96bc3",
+      "code/eh2_lsu_subsys_top.sv": "705cdb2402c3ff524c6820764fc46f281c109e073d1d4c16d4fa42d2955993af",
+      "code/eh2_param.vh": "6bad4252bde525577c64cbfded85cc4d32a3675a88feca299f7583d1eda49bd5",
+      "code/eh2_pdef.vh": "bb47d0d0393d6ea7edbed06ae610975228e9953b2403ff6e7edfa2f059a75d95",
+      "issue.md": "ea5930e5843beb7cdaea1fef1d11d542d7a44227ea9295aa30e95c7555b199b2",
+      "lib/LICENSE.Nangate45": "6b8bf553f4504fcdde9350adba7af0fadcd6c63449220976570ebf840a5749b7",
+      "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+      "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+      "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+    },
+    "gold_hashes": {
+      "code/eh2_lsu_amo.sv": "177bb26e60ac8f63f9208585b646f62c99e5eaaffdd522e6fb030e3eb0da2421",
+      "code/eh2_lsu_dccm_ctl.sv": "dbb978930aedf9a910f9fff636cfc7f26ab1b151aa0fa7e97ebb65f63b7fbdf7",
+      "code/eh2_lsu_ecc.sv": "0d66e2a67efa0b0f5178cf937d0bffae27be2ebebe356b49782d3b66b5f0536e",
+      "code/eh2_lsu_stbuf.sv": "d55fc452d09dceb650a0eda27ab76e81d4a31e87a6909bd7d509ad447f674c06"
+    },
+    "grader_hashes": {
+      "run.py": "945bc91399cec1e5f5192e73e18c5413f4e6e2e33ef367640268d7e29243df82"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 12,
+      "mutant_total": 12
+    }
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+  "problem_type_label": "Architectural & Protocol Bug Repair",
+  "primary_domain": "gatelevel_physical_effects",
+  "multi_domains": [
+    "arithmetic_datapath",
+    "gatelevel_physical_effects",
+    "rtl_integration",
+    "rtl_semantics"
+  ],
+  "pdk_profile": {
+    "pdk_id": "nangate45_plus_multicorner_lib",
+    "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+    "location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+    "customized": true,
+    "notes": "Uses shared Nangate45 library for synthesis plus task-bundled fast/slow/scan corner timing views."
+  },
+  "public_hashes": {
+    "BUILD.md": "f653f5e1306f72891976223b38e265ddd21773997f2ea73ecfff81743d238cd5",
+    "LICENSE": "eb3203ed1cc2086e377b0d6cc7603be45d19739d47101ee2f8813f724be9c353",
+    "code/LICENSE": "eb3203ed1cc2086e377b0d6cc7603be45d19739d47101ee2f8813f724be9c353",
+    "code/beh_lib.sv": "f90db53a3d8cbf3823b584afe6ff6b9fdbdc5ff16f47f634eb204f2d73878b2a",
+    "code/common_defines.vh": "0ae15e38f80d074495e89747bdd674680b57d880f2d6dd0dc69b81738d7878c4",
+    "code/eh2_def.sv": "a1950abcbef049cc5b3ef5baf7704dfcc78c01dfea157bd45803a1a3984913d9",
+    "code/eh2_lib.sv": "35edc0e0d70a933436246d76931e90a0527cf5d3b7a68410ce62c41c55b485d2",
+    "code/eh2_lsu_amo.sv": "7b2dca684d253e2e3ca158b49987c2d3551d41a423fc4c948742a43e62578481",
+    "code/eh2_lsu_dccm_ctl.sv": "e9329345035072c2c14876785daade8c65d29701f0f62d883e9199c1a5cb45ce",
+    "code/eh2_lsu_ecc.sv": "2b46b0d1b6be6ee14d439c4d353cc13c45f13576b1a393a22bb7317f7ce6fbad",
+    "code/eh2_lsu_stbuf.sv": "92ef2fcd210923271b978535787a0d319fd707dceddb7cd8592357c573f96bc3",
+    "code/eh2_lsu_subsys_top.sv": "705cdb2402c3ff524c6820764fc46f281c109e073d1d4c16d4fa42d2955993af",
+    "code/eh2_param.vh": "6bad4252bde525577c64cbfded85cc4d32a3675a88feca299f7583d1eda49bd5",
+    "code/eh2_pdef.vh": "bb47d0d0393d6ea7edbed06ae610975228e9953b2403ff6e7edfa2f059a75d95",
+    "issue.md": "ea5930e5843beb7cdaea1fef1d11d542d7a44227ea9295aa30e95c7555b199b2",
+    "lib/LICENSE.Nangate45": "6b8bf553f4504fcdde9350adba7af0fadcd6c63449220976570ebf840a5749b7",
+    "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+    "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+    "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 12,
+    "mutant_total": 12
+  }
+}

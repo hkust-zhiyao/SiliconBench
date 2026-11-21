@@ -1,0 +1,127 @@
+{
+  "case_id": "case_4010",
+  "task_id": "case_4010",
+  "version": 1,
+  "title": "CV32E41P Control and Sleep Subsystem: Sticky Fetch-Enable/ELW Sleep Gating, Secure Interrupt Qualification, Nested Hardware-Loop Priority, and Area/Timing Closure",
+  "repo_id": "repo_04",
+  "repository": "openhwfoundation/cv32e41p",
+  "family": "control_sleep_fsm_and_ppa_sta",
+  "topic": "sleep_unit_int_controller_hwloop_regs_controller_and_ppa_sta",
+  "editable_files": [
+    "code/cv32e41p_sleep_unit.sv",
+    "code/cv32e41p_int_controller.sv",
+    "code/cv32e41p_hwloop_regs.sv",
+    "code/cv32e41p_controller.sv"
+  ],
+  "editable": [
+    "code/cv32e41p_sleep_unit.sv",
+    "code/cv32e41p_int_controller.sv",
+    "code/cv32e41p_hwloop_regs.sv",
+    "code/cv32e41p_controller.sv"
+  ],
+  "grading": {
+    "eda_class": "heavy",
+    "grader_timeout_seconds": 360,
+    "verifier_timeout_seconds": 720,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 1,
+        "extra_args": []
+      },
+      {
+        "seed": 2,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_4010",
+    "version": 1,
+    "frozen_utc": "2026-11-04T07:45:00.456848+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/cv32e41p_sleep_unit.sv",
+      "code/cv32e41p_int_controller.sv",
+      "code/cv32e41p_hwloop_regs.sv",
+      "code/cv32e41p_controller.sv"
+    ],
+    "public_hashes": {
+      "BUILD.md": "c712e4044c2460467d76de5c73da38ffa444712fde21df6852f02c450f564697",
+      "code/LICENSE": "6527a46225891b976fa94f634f6ee0cd22e1c7129d6f11c5c98c997627625fc7",
+      "code/cv32e41p_controller.sv": "8866999b30bb6381c045cf05c2276292b40d7409422005df44aa30529c2c454d",
+      "code/cv32e41p_ctrl_subsystem.sv": "c2b4469b644107dedb1056b15e131f49f88bf60097dfa0b1b7f3ca068377394e",
+      "code/cv32e41p_hwloop_regs.sv": "0c3341989e815d3ab384933b86b7eac1f8222becd9ed98f47ea89a9ab9b211de",
+      "code/cv32e41p_int_controller.sv": "79a5442367dfd16f560f4fb36ea2b4865205adf8d5b28fdec1e69ada78051eaa",
+      "code/cv32e41p_pkg.sv": "b90844025951e7fabba2f9da41414a47283255af850e23f21c01e3b53210a875",
+      "code/cv32e41p_sleep_unit.sv": "278372a54eb1fec5dd28da8cfc32201bbb8b833f206b26f570683a877e9f449f",
+      "issue.md": "33b6b44eb8be8284840dc8ee6d52c681660df8970d27f36574b5a8c8fdda23a4",
+      "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+      "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+      "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+      "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+    },
+    "gold_hashes": {
+      "code/cv32e41p_controller.sv": "9f51af96740fe27c43169e1ea8e8fee4d4fac92b343764191d109a540d809dac",
+      "code/cv32e41p_hwloop_regs.sv": "bb38503cd5481a96d421cd270aa0c122398b14c81cbdcc94c0c84360774ff4a1",
+      "code/cv32e41p_int_controller.sv": "f2fc9d42e1bae90eb8dbeacf3c2f9b8926262f5c50fdd60d954be16e1ad95658",
+      "code/cv32e41p_sleep_unit.sv": "377a29e2e528b506780a8629bf33484e20286220c27b361170a1507f2aa30d9a"
+    },
+    "grader_hashes": {
+      "run.py": "8e43a1367ff1015230d9a3b1d66ba1f55f03cd3c939667ef6671923afd5add78"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 10,
+      "mutant_total": 10
+    }
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+  "problem_type_label": "Architectural & Protocol Bug Repair",
+  "primary_domain": "low_power",
+  "multi_domains": [
+    "clocking",
+    "low_power",
+    "rtl_integration",
+    "synthesis_qor"
+  ],
+  "pdk_profile": {
+    "pdk_id": "nangate45_plus_multicorner_lib",
+    "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+    "location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+    "customized": true,
+    "notes": "Uses shared Nangate45 library for synthesis plus task-bundled fast/slow/scan corner timing views."
+  },
+  "public_hashes": {
+    "BUILD.md": "c712e4044c2460467d76de5c73da38ffa444712fde21df6852f02c450f564697",
+    "code/LICENSE": "6527a46225891b976fa94f634f6ee0cd22e1c7129d6f11c5c98c997627625fc7",
+    "code/cv32e41p_controller.sv": "8866999b30bb6381c045cf05c2276292b40d7409422005df44aa30529c2c454d",
+    "code/cv32e41p_ctrl_subsystem.sv": "c2b4469b644107dedb1056b15e131f49f88bf60097dfa0b1b7f3ca068377394e",
+    "code/cv32e41p_hwloop_regs.sv": "0c3341989e815d3ab384933b86b7eac1f8222becd9ed98f47ea89a9ab9b211de",
+    "code/cv32e41p_int_controller.sv": "79a5442367dfd16f560f4fb36ea2b4865205adf8d5b28fdec1e69ada78051eaa",
+    "code/cv32e41p_pkg.sv": "b90844025951e7fabba2f9da41414a47283255af850e23f21c01e3b53210a875",
+    "code/cv32e41p_sleep_unit.sv": "278372a54eb1fec5dd28da8cfc32201bbb8b833f206b26f570683a877e9f449f",
+    "issue.md": "33b6b44eb8be8284840dc8ee6d52c681660df8970d27f36574b5a8c8fdda23a4",
+    "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+    "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+    "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+    "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 10,
+    "mutant_total": 10
+  }
+}

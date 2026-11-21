@@ -1,0 +1,47 @@
+{
+  "case_id": "case_3006",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "public_section": "issue.md#1",
+      "description": "Hold obi_addr_o/obi_we_o/obi_be_o/obi_wdata_o/obi_atop_o stable in REGISTERED state when TRANS_STABLE=0 and forward obi_err_i to resp_err_o.",
+      "verified_by": "private/tests/tb.sv Phase 1 & Phase 2",
+      "wrong_fix_or_mutant_caught": [
+        "baseline",
+        "wrong_fix_1_obi_missing_be_atop_err",
+        "mutant_01_obi_we_not_registered",
+        "mutant_02_obi_be_not_registered",
+        "mutant_03_obi_atop_not_registered",
+        "mutant_04_obi_err_tied_low"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "public_section": "issue.md#2",
+      "description": "Report load_err_o/store_err_o without corrupting rdata_q, suppress second half of faulted misaligned transfer, drain flushed in-flight OBI responses, and pulse p_elw_start_o/p_elw_finish_o accurately.",
+      "verified_by": "private/tests/tb.sv Phase 1, Phase 2, Phase 3, Phase 4",
+      "wrong_fix_or_mutant_caught": [
+        "wrong_fix_2_misaligned_second_half_not_suppressed",
+        "wrong_fix_3_flushed_resp_not_ignored",
+        "mutant_05_faulted_load_corrupts_rdata_q",
+        "mutant_06_p_elw_start_not_gated_by_trans_ready",
+        "mutant_07_second_half_not_suppressed_on_pmp_fault",
+        "mutant_08_flush_does_not_block_trans_valid",
+        "mutant_09_flushed_resp_triggers_load_err"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "public_section": "issue.md#3",
+      "description": "Constrain mpu_region_in->mpu_region_out (1.35 ns internal budget) and hart_dbg_in->hart_dbg_out (2.15 ns internal budget) under 4.25 ns input and 3.25 ns output delays across 10 ns and 12 ns clocks without excepting registered ports.",
+      "verified_by": "private/grader/run.py OpenSTA timing check",
+      "wrong_fix_or_mutant_caught": [
+        "wrong_fix_4_raw_internal_delay_without_io_delays",
+        "wrong_fix_5_registered_port_in_max_delays",
+        "mutant_10_swapped_channel_budgets",
+        "mutant_11_missing_hart_dbg_constraint",
+        "mutant_12_missing_output_delay_in_budget"
+      ]
+    }
+  ]
+}

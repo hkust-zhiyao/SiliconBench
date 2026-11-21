@@ -1,0 +1,610 @@
+// SPDX-License-Identifier: Apache-2.0
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+//======================================================================
+//
+// hmac.sv
+// ------
+// HMAC-512/384 top-level wrapper with 32 bit data access.
+//
+//======================================================================
+`include "caliptra_macros.svh"
+`include "kv_macros.svh"
+`include "caliptra_prim_assert.sv"
+
+module hmac
+       import hmac_param_pkg::*;
+       import hmac_reg_pkg::*;
+       import kv_defines_pkg::*;
+      #(
+        ADDR_WIDTH = 32,
+        DATA_WIDTH = 32
+      )(
+        // Clock and reset.
+        input wire           clk,
+        input wire           reset_n,
+        input wire           cptra_pwrgood,
+
+        // CSR key
+        input logic [`CLP_CSR_HMAC_KEY_DWORDS-1:0][31:0] cptra_csr_hmac_key,
+
+        // Control.
+        input wire           cs,
+        input wire           we,
+
+        // Data ports.
+        input wire  [ADDR_WIDTH - 1 : 0] address,
+        input wire  [DATA_WIDTH - 1 : 0] write_data,
+        output wire [DATA_WIDTH - 1 : 0] read_data,
+
+        // KV interface
+        output kv_read_t [1:0] kv_read,
+        output kv_write_t kv_write,
+        input kv_rd_resp_t [1:0] kv_rd_resp,
+        input kv_wr_resp_t kv_wr_resp,
+
+        output logic busy_o,
+
+        output wire error_intr,
+        output wire notif_intr,
+        input logic ocp_lock_in_progress,
+        input logic debugUnlock_or_scan_mode_switch
+      );
+
+  //----------------------------------------------------------------
+  // Registers including update variables and write enable.
+  //----------------------------------------------------------------
+  reg init_reg;
+  reg next_reg;
+  reg last_reg;
+
+  reg mode_reg;
+
+  reg ready_reg;
+  reg tag_valid_reg;
+
+  localparam BLOCK_NUM_DWORDS = BLOCK_SIZE / DATA_WIDTH;
+  localparam KEY_NUM_DWORDS   = KEY_SIZE / DATA_WIDTH;
+  localparam TAG_NUM_DWORDS   = TAG_SIZE / DATA_WIDTH;
+  localparam SEED_NUM_DWORDS  = ((LFSR_SEED_SIZE - 1) / DATA_WIDTH) + 1;
+
+  localparam logic [HMAC_REG_ADDR_WIDTH-1:0] CTRL_ADDR_OFFSET      = 12'h010;
+  localparam logic [HMAC_REG_ADDR_WIDTH-1:0] LFSR_SEED_BASE_OFFSET = 12'h140;
+
+  reg [KEY_NUM_DWORDS - 1   : 0][DATA_WIDTH - 1 : 0]    key_reg;
+  reg [BLOCK_NUM_DWORDS - 1 : 0][DATA_WIDTH - 1 : 0]    block_reg;
+  reg [SEED_NUM_DWORDS - 1  : 0][DATA_WIDTH - 1 : 0]    lfsr_seed_reg;
+  reg [SEED_NUM_DWORDS - 1  : 0][DATA_WIDTH - 1 : 0]    lfsr_seed_shadow_q;
+  reg                                                   csr_mode_active_q;
+
+  logic zeroize_reg;
+  logic sw_zeroize_write;
+
+  //----------------------------------------------------------------
+  // Wires.
+  //----------------------------------------------------------------
+  wire [KEY_SIZE-1 : 0]         core_key;
+  wire [BLOCK_SIZE-1 : 0]       core_block;
+  wire                          core_ready;
+  wire [TAG_SIZE-1 : 0]         core_tag;
+  wire                          core_tag_valid;
+  wire [LFSR_SEED_SIZE-1 : 0]   core_lfsr_seed;
+  reg [TAG_NUM_DWORDS - 1 : 0][DATA_WIDTH - 1 : 0] tag_reg;
+  reg [TAG_NUM_DWORDS - 1 : 0][DATA_WIDTH - 1 : 0] kv_reg;
+
+  reg [TAG_NUM_DWORDS - 1 : 0][DATA_WIDTH - 1 : 0] get_mask;
+
+  hmac_reg__in_t hwif_in;
+  hmac_reg__out_t hwif_out;
+
+  // Interface with KV client
+  logic kv_key_write_en;
+  logic [3:0] kv_key_write_offset;
+  logic [31:0] kv_key_write_data;
+  logic kv_block_write_en;
+  logic [4:0] kv_block_write_offset;
+  logic [31:0] kv_block_write_data;
+
+  // KV Read Data Present
+  logic kv_key_data_present, kv_key_data_present_set;
+  logic [BLOCK_NUM_DWORDS-1:0] block_reg_lock, block_reg_lock_nxt;
+  logic kv_block_data_present, kv_block_data_present_set;
+  logic kv_data_present, kv_data_present_reset;
+
+  logic dest_keyvault;
+  kv_error_code_e kv_key_error, kv_block_error, kv_write_error;
+  logic kv_key_ready, kv_key_done;
+  logic kv_block_ready, kv_block_done;
+  logic kv_write_ready, kv_write_done;
+  logic [KV_ENTRY_SIZE_W-1:0] hmac_expected_key_size;
+
+  kv_read_ctrl_reg_t kv_key_read_ctrl_reg;
+  kv_read_ctrl_reg_t kv_block_read_ctrl_reg;
+  kv_write_ctrl_reg_t kv_write_ctrl_reg;
+  kv_read_filter_metrics_t  kv_key_read_metrics;
+  kv_read_filter_metrics_t  kv_block_read_metrics;
+  kv_write_filter_metrics_t kv_write_metrics;
+  logic core_tag_we;
+
+  logic kv_rd_key_busy;
+  logic kv_rd_block_busy;
+  logic kv_wr_busy;
+  logic subsys_ready;
+  logic ctrl_cmd_pulse;
+  logic cmd_blocked;
+  logic sw_ctrl_allow;
+  logic sw_csr_mode_allow;
+  logic use_csr_key_mode;
+  logic suppress_csr_tag;
+  logic kv_key_preclear;
+  logic kv_block_preclear;
+
+  logic key_zero_error, key_zero_error_reg, key_zero_error_edge;
+  logic key_mode_error, key_mode_error_reg, key_mode_error_edge;
+  logic last_alone_error, last_alone_error_reg, last_alone_error_edge;
+
+  logic error_flag;
+  logic error_flag_reg;
+  logic error_flag_edge;
+
+  //----------------------------------------------------------------
+  // Concurrent connectivity for ports etc.
+  //----------------------------------------------------------------
+  assign core_block = {block_reg[00], block_reg[01], block_reg[02], block_reg[03],
+                       block_reg[04], block_reg[05], block_reg[06], block_reg[07],
+                       block_reg[08], block_reg[09], block_reg[10], block_reg[11],
+                       block_reg[12], block_reg[13], block_reg[14], block_reg[15],
+                       block_reg[16], block_reg[17], block_reg[18], block_reg[19],
+                       block_reg[20], block_reg[21], block_reg[22], block_reg[23],
+                       block_reg[24], block_reg[25], block_reg[26], block_reg[27],
+                       block_reg[28], block_reg[29], block_reg[30], block_reg[31]};
+
+  assign core_key = {key_reg[00], key_reg[01], key_reg[02], key_reg[03], key_reg[04], key_reg[05],
+                     key_reg[06], key_reg[07], key_reg[08], key_reg[09], key_reg[10], key_reg[11],
+                     key_reg[12], key_reg[13], key_reg[14], key_reg[15]} & get_mask;
+
+  assign core_lfsr_seed = {lfsr_seed_reg[00], lfsr_seed_reg[01], lfsr_seed_reg[02],
+                           lfsr_seed_reg[03], lfsr_seed_reg[04], lfsr_seed_reg[05]};
+
+  // Rising edge detect on core tag valid
+  assign core_tag_we = (core_tag_valid & ~tag_valid_reg) & ~error_flag_reg;
+
+  //----------------------------------------------------------------
+  // Core instantiation.
+  //----------------------------------------------------------------
+  hmac_core core(
+                 .clk(clk),
+                 .reset_n(reset_n),
+                 .zeroize(zeroize_reg),
+
+                 .init_cmd(init_reg),
+                 .next_cmd(next_reg),
+                 .last_cmd(last_reg),
+                 .mode_cmd(mode_reg),
+
+                 .lfsr_seed(core_lfsr_seed),
+
+                 .key(core_key),
+
+                 .block_msg(core_block),
+
+                 .ready(core_ready),
+                 .tag(core_tag),
+                 .tag_valid(core_tag_valid)
+                );
+
+  //----------------------------------------------------------------
+  // Engine & KeyVault busy / isolation qualification
+  //----------------------------------------------------------------
+  always_comb begin
+    zeroize_reg       = hwif_out.HMAC512_CTRL.ZEROIZE.value | debugUnlock_or_scan_mode_switch;
+    sw_zeroize_write  = cs && we && (address[HMAC_REG_ADDR_WIDTH-1:0] == CTRL_ADDR_OFFSET) && write_data[2];
+
+    kv_rd_key_busy    = kv_key_read_ctrl_reg.read_en | ~kv_key_ready;
+    kv_rd_block_busy  = kv_block_read_ctrl_reg.read_en | ~kv_block_ready;
+    kv_wr_busy        = ~kv_write_ready | (core_tag_we & dest_keyvault);
+
+    subsys_ready      = core_ready & ~kv_rd_key_busy & ~kv_rd_block_busy & ~kv_wr_busy & ~zeroize_reg;
+    ctrl_cmd_pulse    = (hwif_out.HMAC512_CTRL.INIT.value | hwif_out.HMAC512_CTRL.NEXT.value) & subsys_ready;
+    cmd_blocked       = error_flag | error_flag_reg | last_alone_error;
+
+    init_reg          = hwif_out.HMAC512_CTRL.INIT.value & subsys_ready & ~cmd_blocked;
+    next_reg          = hwif_out.HMAC512_CTRL.NEXT.value & subsys_ready & ~cmd_blocked;
+    last_reg          = hwif_out.HMAC512_CTRL.LAST.value & (init_reg | next_reg);
+    mode_reg          = hwif_out.HMAC512_CTRL.MODE.value;
+
+    busy_o            = ~core_ready | kv_rd_key_busy | kv_rd_block_busy | kv_wr_busy | init_reg | next_reg;
+    sw_ctrl_allow     = ready_reg & ~busy_o & ~zeroize_reg;
+    sw_csr_mode_allow = sw_ctrl_allow & ~kv_key_data_present & ~kv_key_read_ctrl_reg.read_en;
+
+    use_csr_key_mode  = csr_mode_active_q & ~kv_key_data_present & ~kv_key_read_ctrl_reg.read_en & ~zeroize_reg;
+    suppress_csr_tag  = dest_keyvault | ~kv_write_ready;
+
+    kv_key_preclear   = kv_key_read_ctrl_reg.read_en & ~kv_key_data_present;
+    kv_block_preclear = kv_block_read_ctrl_reg.read_en & ~kv_block_data_present;
+  end
+
+  //----------------------------------------------------------------
+  // Shadow tracking for CSR_MODE and LFSR_SEED sanitization
+  //----------------------------------------------------------------
+  always_ff @(posedge clk or negedge reset_n) begin : shadow_sanitize_regs
+    if (!reset_n) begin
+      csr_mode_active_q  <= 1'b0;
+      lfsr_seed_shadow_q <= '0;
+    end
+    else if (zeroize_reg) begin
+      csr_mode_active_q  <= 1'b0;
+      lfsr_seed_shadow_q <= '0;
+    end
+    else begin
+      if (kv_key_read_ctrl_reg.read_en || kv_key_data_present || sw_zeroize_write) begin
+        csr_mode_active_q <= 1'b0;
+      end
+      else if (cs && we && (address[HMAC_REG_ADDR_WIDTH-1:0] == CTRL_ADDR_OFFSET) && sw_csr_mode_allow) begin
+        csr_mode_active_q <= write_data[4];
+      end
+
+      for (int dword = 0; dword < SEED_NUM_DWORDS; dword++) begin
+        if (cs && we && !busy_o &&
+            (address[HMAC_REG_ADDR_WIDTH-1:0] == (LFSR_SEED_BASE_OFFSET + HMAC_REG_ADDR_WIDTH'(dword * 4)))) begin
+          lfsr_seed_shadow_q[dword] <= write_data;
+        end
+      end
+    end
+  end
+
+  //----------------------------------------------------------------
+  // reg_update
+  //----------------------------------------------------------------
+  always_ff @(posedge clk or negedge reset_n)
+    begin : reg_update
+      if (!reset_n)
+        begin
+          kv_reg                <= '0;
+          tag_reg               <= '0;
+          tag_valid_reg         <= '0;
+          ready_reg             <= '0;
+          block_reg_lock        <= '0;
+          kv_key_data_present   <= '0;
+          kv_block_data_present <= '0;
+        end
+      else if (zeroize_reg)
+        begin
+          kv_reg                <= '0;
+          tag_reg               <= '0;
+          tag_valid_reg         <= '0;
+          ready_reg             <= '0;
+          block_reg_lock        <= '0;
+          kv_key_data_present   <= '0;
+          kv_block_data_present <= '0;
+        end
+      else
+        begin
+          tag_valid_reg <= core_tag_valid & ~error_flag_reg;
+          ready_reg     <= ~busy_o;
+
+          if (suppress_csr_tag)
+            tag_reg <= '0;
+          else if (core_tag_we)
+            tag_reg <= core_tag & get_mask;
+
+          if (core_tag_we & (dest_keyvault | kv_data_present))
+            kv_reg  <= core_tag & get_mask;
+
+          block_reg_lock <= block_reg_lock_nxt;
+          kv_key_data_present <= kv_key_data_present_set ? '1 :
+                                 kv_data_present_reset   ? '0 : kv_key_data_present;
+          kv_block_data_present <= kv_block_data_present_set ? '1 :
+                                   kv_data_present_reset     ? '0 : kv_block_data_present;
+        end
+    end
+
+  // HMAC register hardware interfaces
+  always_comb begin
+    hwif_in.error_reset_b = cptra_pwrgood;
+    hwif_in.reset_b       = reset_n;
+
+    hwif_in.HMAC512_NAME[0].NAME.next       = HMAC_CORE_NAME[31:0];
+    hwif_in.HMAC512_NAME[1].NAME.next       = HMAC_CORE_NAME[63:32];
+    hwif_in.HMAC512_VERSION[0].VERSION.next = HMAC_CORE_VERSION[31:0];
+    hwif_in.HMAC512_VERSION[1].VERSION.next = HMAC_CORE_VERSION[63:32];
+
+    hwif_in.HMAC512_CTRL.CSR_MODE.swwe = sw_csr_mode_allow;
+    hwif_in.HMAC512_CTRL.INIT.swwe     = sw_ctrl_allow;
+    hwif_in.HMAC512_CTRL.NEXT.swwe     = sw_ctrl_allow;
+    hwif_in.HMAC512_CTRL.LAST.swwe     = sw_ctrl_allow;
+    hwif_in.HMAC512_CTRL.MODE.swwe     = sw_ctrl_allow;
+
+    hwif_in.HMAC512_STATUS.READY.next = ready_reg & ~busy_o & ~zeroize_reg;
+    hwif_in.HMAC512_STATUS.VALID.next = tag_valid_reg & ~zeroize_reg;
+    for (int dword = 0; dword < TAG_NUM_DWORDS; dword++) begin
+      hwif_in.HMAC512_TAG[dword].TAG.next  = suppress_csr_tag ? 32'h0 : tag_reg[(TAG_NUM_DWORDS - 1) - dword];
+      hwif_in.HMAC512_TAG[dword].TAG.hwclr = zeroize_reg | suppress_csr_tag;
+    end
+
+    for (int dword = 0; dword < BLOCK_NUM_DWORDS; dword++) begin
+      hwif_in.HMAC512_BLOCK[dword].BLOCK.we    = (kv_block_write_en & (kv_block_write_offset == 5'(dword))) & !(zeroize_reg | kv_data_present_reset);
+      hwif_in.HMAC512_BLOCK[dword].BLOCK.next  = kv_block_write_data;
+      hwif_in.HMAC512_BLOCK[dword].BLOCK.hwclr = zeroize_reg | kv_data_present_reset | kv_block_preclear | (kv_block_error != KV_SUCCESS);
+      hwif_in.HMAC512_BLOCK[dword].BLOCK.swwel = zeroize_reg | busy_o | kv_block_read_ctrl_reg.read_en | kv_block_data_present | block_reg_lock[dword];
+    end
+    for (int dword = 0; dword < KEY_NUM_DWORDS; dword++) begin
+      hwif_in.HMAC512_KEY[dword].KEY.we    = (kv_key_write_en & (kv_key_write_offset == 4'(dword))) & !(zeroize_reg | kv_data_present_reset);
+      hwif_in.HMAC512_KEY[dword].KEY.next  = kv_key_write_data;
+      hwif_in.HMAC512_KEY[dword].KEY.hwclr = zeroize_reg | kv_data_present_reset | kv_key_preclear | (kv_key_error != KV_SUCCESS);
+      hwif_in.HMAC512_KEY[dword].KEY.swwel = zeroize_reg | busy_o | kv_key_read_ctrl_reg.read_en | kv_key_data_present;
+    end
+
+    hwif_in.HMAC512_KV_RD_KEY_STATUS.READY.next   = kv_key_ready & ~kv_key_read_ctrl_reg.read_en;
+    hwif_in.HMAC512_KV_RD_BLOCK_STATUS.READY.next = kv_block_ready & ~kv_block_read_ctrl_reg.read_en;
+    hwif_in.HMAC512_KV_WR_STATUS.READY.next       = kv_write_ready & ~(core_tag_we & dest_keyvault);
+
+    hwif_in.HMAC512_KV_RD_KEY_STATUS.ERROR.next   = kv_key_error;
+    hwif_in.HMAC512_KV_RD_BLOCK_STATUS.ERROR.next = kv_block_error;
+    hwif_in.HMAC512_KV_WR_STATUS.ERROR.next       = kv_write_error;
+
+    hwif_in.HMAC512_KV_RD_KEY_STATUS.VALID.hwset   = kv_key_done & ~zeroize_reg;
+    hwif_in.HMAC512_KV_RD_BLOCK_STATUS.VALID.hwset = kv_block_done & ~zeroize_reg;
+    hwif_in.HMAC512_KV_WR_STATUS.VALID.hwset       = kv_write_done & ~zeroize_reg;
+
+    hwif_in.HMAC512_KV_RD_KEY_STATUS.VALID.hwclr   = kv_key_read_ctrl_reg.read_en | zeroize_reg;
+    hwif_in.HMAC512_KV_RD_BLOCK_STATUS.VALID.hwclr = kv_block_read_ctrl_reg.read_en | zeroize_reg;
+    hwif_in.HMAC512_KV_WR_STATUS.VALID.hwclr       = kv_write_ctrl_reg.write_en | zeroize_reg;
+
+    hwif_in.HMAC512_KV_RD_KEY_CTRL.read_en.hwclr   = ~kv_key_ready | zeroize_reg;
+    hwif_in.HMAC512_KV_RD_BLOCK_CTRL.read_en.hwclr = ~kv_block_ready | zeroize_reg;
+    hwif_in.HMAC512_KV_WR_CTRL.write_en.hwclr      = ~kv_write_ready | zeroize_reg;
+
+    for (int dword = 0; dword < KEY_NUM_DWORDS; dword++) begin
+      key_reg[dword] = zeroize_reg ? '0 :
+                       (use_csr_key_mode ? cptra_csr_hmac_key[dword] : hwif_out.HMAC512_KEY[dword].KEY.value);
+    end
+    for (int dword = 0; dword < BLOCK_NUM_DWORDS; dword++) begin
+      block_reg[dword] = zeroize_reg ? '0 : hwif_out.HMAC512_BLOCK[dword].BLOCK.value;
+    end
+    for (int dword = 0; dword < SEED_NUM_DWORDS; dword++) begin
+      lfsr_seed_reg[dword] = zeroize_reg ? '0 : lfsr_seed_shadow_q[dword];
+    end
+  end
+
+  always_comb begin
+    unique case (mode_reg)
+      1'b0 :    get_mask = {{(HMAC384_TAG_SIZE/DATA_WIDTH){ {DATA_WIDTH{1'b1}} }},
+                            {(HMAC384_TAG_PAD /DATA_WIDTH){ {DATA_WIDTH{1'b0}} }}};
+      default : get_mask = {TAG_NUM_DWORDS{ {DATA_WIDTH{1'b1}} }};
+    endcase
+  end
+
+  always_comb begin
+    for (int dword = 0; dword < BLOCK_NUM_DWORDS; dword++) begin
+      if (kv_data_present_reset || (kv_block_error != KV_SUCCESS)) begin
+        block_reg_lock_nxt[dword] = 1'b0;
+      end
+      else if (kv_block_write_en && (kv_block_write_offset == 5'(dword))) begin
+        block_reg_lock_nxt[dword] = 1'b1;
+      end
+      else begin
+        block_reg_lock_nxt[dword] = block_reg_lock[dword];
+      end
+    end
+  end
+
+  always_comb hwif_in.HMAC512_KV_RD_KEY_CTRL.read_en.swwe         = !kv_key_data_present && !busy_o && !zeroize_reg;
+  always_comb hwif_in.HMAC512_KV_RD_KEY_CTRL.read_entry.swwe      = !kv_key_data_present && !busy_o && !zeroize_reg;
+  always_comb hwif_in.HMAC512_KV_RD_KEY_CTRL.pcr_hash_extend.swwe = 0;
+  always_comb hwif_in.HMAC512_KV_RD_KEY_CTRL.rsvd.swwe            = 0;
+
+  always_comb hwif_in.HMAC512_KV_RD_BLOCK_CTRL.read_en.swwe         = !kv_block_data_present && !busy_o && !zeroize_reg;
+  always_comb hwif_in.HMAC512_KV_RD_BLOCK_CTRL.read_entry.swwe      = !kv_block_data_present && !busy_o && !zeroize_reg;
+  always_comb hwif_in.HMAC512_KV_RD_BLOCK_CTRL.pcr_hash_extend.swwe = 0;
+  always_comb hwif_in.HMAC512_KV_RD_BLOCK_CTRL.rsvd.swwe            = 0;
+
+  always_comb hwif_in.HMAC512_KV_WR_CTRL.write_en.swwe              = !busy_o && !zeroize_reg;
+  always_comb hwif_in.HMAC512_KV_WR_CTRL.write_entry.swwe           = !busy_o && !zeroize_reg;
+  always_comb hwif_in.HMAC512_KV_WR_CTRL.hmac_key_dest_valid.swwe   = !busy_o && !zeroize_reg;
+  always_comb hwif_in.HMAC512_KV_WR_CTRL.hmac_block_dest_valid.swwe = !busy_o && !zeroize_reg;
+  always_comb hwif_in.HMAC512_KV_WR_CTRL.mldsa_seed_dest_valid.swwe = !busy_o && !zeroize_reg;
+  always_comb hwif_in.HMAC512_KV_WR_CTRL.ecc_pkey_dest_valid.swwe   = !busy_o && !zeroize_reg;
+  always_comb hwif_in.HMAC512_KV_WR_CTRL.ecc_seed_dest_valid.swwe   = !busy_o && !zeroize_reg;
+  always_comb hwif_in.HMAC512_KV_WR_CTRL.aes_key_dest_valid.swwe    = !busy_o && !zeroize_reg;
+  always_comb hwif_in.HMAC512_KV_WR_CTRL.mlkem_seed_dest_valid.swwe = !busy_o && !zeroize_reg;
+  always_comb hwif_in.HMAC512_KV_WR_CTRL.mlkem_msg_dest_valid.swwe  = !busy_o && !zeroize_reg;
+  always_comb hwif_in.HMAC512_KV_WR_CTRL.dma_data_dest_valid.swwe   = !busy_o && !zeroize_reg;
+  always_comb hwif_in.HMAC512_KV_WR_CTRL.rsvd.swwe                  = 0;
+
+  `CALIPTRA_KV_READ_CTRL_REG2STRUCT(kv_key_read_ctrl_reg, HMAC512_KV_RD_KEY_CTRL)
+  `CALIPTRA_KV_READ_CTRL_REG2STRUCT(kv_block_read_ctrl_reg, HMAC512_KV_RD_BLOCK_CTRL)
+  `CALIPTRA_KV_WRITE_CTRL_REG2STRUCT(kv_write_ctrl_reg, HMAC512_KV_WR_CTRL)
+
+  always_comb kv_key_data_present_set   = kv_key_read_ctrl_reg.read_en;
+  always_comb kv_block_data_present_set = kv_block_read_ctrl_reg.read_en;
+  always_comb kv_data_present           = kv_key_data_present | kv_block_data_present;
+  always_comb kv_data_present_reset     = kv_data_present & core_tag_we;
+
+  hmac_reg i_hmac_reg (
+      .clk(clk),
+      .rst(1'b0),
+
+      .s_cpuif_req         (cs),
+      .s_cpuif_req_is_wr   (we),
+      .s_cpuif_addr        (address[HMAC_REG_ADDR_WIDTH-1:0]),
+      .s_cpuif_wr_data     (write_data),
+      .s_cpuif_wr_biten    ('1),
+      .s_cpuif_req_stall_wr(),
+      .s_cpuif_req_stall_rd(),
+      .s_cpuif_rd_ack      (),
+      .s_cpuif_rd_err      (),
+      .s_cpuif_rd_data     (read_data),
+      .s_cpuif_wr_ack      (),
+      .s_cpuif_wr_err      (),
+
+      .hwif_in (hwif_in),
+      .hwif_out(hwif_out)
+  );
+
+  always_comb key_mode_error   = kv_key_data_present & ctrl_cmd_pulse & (mode_reg == HMAC512_MODE) & (key_reg[KEY_NUM_DWORDS-1 : HMAC384_KEY_SIZE/DATA_WIDTH] == '0);
+  always_comb key_zero_error   = kv_key_data_present & ctrl_cmd_pulse & (key_reg == '0);
+  always_comb last_alone_error = hwif_out.HMAC512_CTRL.LAST.value & ~hwif_out.HMAC512_CTRL.INIT.value & ~hwif_out.HMAC512_CTRL.NEXT.value;
+
+  always_comb error_flag = key_zero_error | key_mode_error | (kv_key_error == KV_RD_LEN_MISMATCH);
+
+  always_ff @(posedge clk or negedge reset_n)
+  begin : error_detection
+      if (!reset_n) begin
+        error_flag_reg       <= 1'b0;
+        key_mode_error_reg   <= 1'b0;
+        key_zero_error_reg   <= 1'b0;
+        last_alone_error_reg <= 1'b0;
+      end
+      else if (zeroize_reg) begin
+        error_flag_reg       <= 1'b0;
+        key_mode_error_reg   <= 1'b0;
+        key_zero_error_reg   <= 1'b0;
+        last_alone_error_reg <= 1'b0;
+      end
+      else begin
+        if (error_flag)
+          error_flag_reg <= 1'b1;
+        key_mode_error_reg   <= key_mode_error;
+        key_zero_error_reg   <= key_zero_error;
+        last_alone_error_reg <= last_alone_error;
+      end
+  end
+
+  always_comb error_flag_edge       = error_flag & (!error_flag_reg);
+  always_comb key_mode_error_edge   = key_mode_error & (!key_mode_error_reg);
+  always_comb key_zero_error_edge   = key_zero_error & (!key_zero_error_reg);
+  always_comb last_alone_error_edge = last_alone_error & (!last_alone_error_reg);
+
+  assign hwif_in.intr_block_rf.notif_internal_intr_r.notif_cmd_done_sts.hwset   = core_tag_we;
+  assign hwif_in.intr_block_rf.error_internal_intr_r.key_mode_error_sts.hwset   = key_mode_error_edge;
+  assign hwif_in.intr_block_rf.error_internal_intr_r.key_zero_error_sts.hwset   = key_zero_error_edge;
+  assign hwif_in.intr_block_rf.error_internal_intr_r.error2_sts.hwset           = last_alone_error_edge;
+  assign hwif_in.intr_block_rf.error_internal_intr_r.error3_sts.hwset           = 1'b0;
+
+  assign error_intr = hwif_out.intr_block_rf.error_global_intr_r.intr;
+  assign notif_intr = hwif_out.intr_block_rf.notif_global_intr_r.intr;
+
+  always_comb begin
+      kv_key_read_metrics.ocp_lock_in_progress = ocp_lock_in_progress;
+      kv_key_read_metrics.kv_read_dest         = KV_NUM_READ'(1<<KV_DEST_IDX_HMAC_KEY);
+      kv_key_read_metrics.kv_key_entry         = kv_key_read_ctrl_reg.read_entry;
+  end
+
+  kv_read_client #(
+    .DATA_WIDTH(KEY_SIZE),
+    .PAD(0),
+    .LEN_CHECK_AT_KEY_USE(1)
+  )
+  hmac_key_kv_read
+  (
+      .clk(clk),
+      .rst_b(reset_n),
+      .zeroize(zeroize_reg),
+
+      .read_ctrl_reg(kv_key_read_ctrl_reg),
+      .read_metrics (kv_key_read_metrics ),
+
+      .kv_read(kv_read[0]),
+      .kv_resp(kv_rd_resp[0]),
+
+      .write_en(kv_key_write_en),
+      .write_offset(kv_key_write_offset),
+      .write_data(kv_key_write_data),
+
+      .error_code(kv_key_error),
+      .kv_ready(kv_key_ready),
+      .read_done(kv_key_done),
+      .check_key_size(ctrl_cmd_pulse & kv_key_data_present),
+      .expected_key_size(hmac_expected_key_size)
+  );
+
+  always_comb hmac_expected_key_size = (mode_reg == HMAC512_MODE) ? KV_ENTRY_SIZE_W'(HMAC512_KV_LAST_DWORD)
+                                                                  : KV_ENTRY_SIZE_W'(HMAC384_KV_LAST_DWORD);
+
+  always_comb begin
+      kv_block_read_metrics.ocp_lock_in_progress = ocp_lock_in_progress;
+      kv_block_read_metrics.kv_read_dest         = KV_NUM_READ'(1<<KV_DEST_IDX_HMAC_BLOCK);
+      kv_block_read_metrics.kv_key_entry         = kv_block_read_ctrl_reg.read_entry;
+  end
+
+  kv_read_client #(
+    .DATA_WIDTH(BLOCK_SIZE),
+    .HMAC(1),
+    .PAD(1),
+    .LEN_CHECK(0)
+  )
+  hmac_block_kv_read
+  (
+      .clk(clk),
+      .rst_b(reset_n),
+      .zeroize(zeroize_reg),
+
+      .read_ctrl_reg(kv_block_read_ctrl_reg),
+      .read_metrics(kv_block_read_metrics),
+
+      .kv_read(kv_read[1]),
+      .kv_resp(kv_rd_resp[1]),
+
+      .write_en(kv_block_write_en),
+      .write_offset(kv_block_write_offset),
+      .write_data(kv_block_write_data),
+
+      .error_code(kv_block_error),
+      .kv_ready(kv_block_ready),
+      .read_done(kv_block_done),
+      .check_key_size(1'b0),
+      .expected_key_size('0)
+  );
+
+  logic [$clog2(TAG_SIZE/32):0] num_dwords;
+  always_comb num_dwords = mode_reg ? 'd16 : 'd12;
+
+  always_comb begin
+      kv_write_metrics.ocp_lock_in_progress = ocp_lock_in_progress;
+      kv_write_metrics.kv_data0_present     = kv_key_data_present;
+      kv_write_metrics.kv_data0_entry       = kv_key_read_ctrl_reg.read_entry;
+      kv_write_metrics.kv_data1_present     = kv_block_data_present;
+      kv_write_metrics.kv_data1_entry       = kv_block_read_ctrl_reg.read_entry;
+      kv_write_metrics.kv_write_src         = KV_NUM_WRITE'(1 << KV_WRITE_IDX_HMAC);
+      kv_write_metrics.kv_write_entry       = kv_write_ctrl_reg.write_entry;
+      kv_write_metrics.aes_decrypt_ecb_op   = 1'b0;
+  end
+
+  kv_write_client #(
+    .DATA_WIDTH(TAG_SIZE)
+  )
+  hmac_result_kv_write
+  (
+    .clk(clk),
+    .rst_b(reset_n),
+    .zeroize(zeroize_reg),
+
+    .write_ctrl_reg(kv_write_ctrl_reg),
+    .write_metrics(kv_write_metrics),
+    .num_dwords(num_dwords),
+
+    .kv_write(kv_write),
+    .kv_resp(kv_wr_resp),
+
+    .dest_keyvault(dest_keyvault),
+    .dest_data_avail(core_tag_we),
+    .dest_data(kv_reg),
+
+    .error_code(kv_write_error),
+    .kv_ready(kv_write_ready),
+    .dest_done(kv_write_done)
+  );
+
+endmodule

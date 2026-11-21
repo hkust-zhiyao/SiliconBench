@@ -1,0 +1,118 @@
+{
+  "case_id": "case_3003",
+  "task_id": "case_3003",
+  "version": 1,
+  "repo_id": "repo_03",
+  "title": "CV32E40P Stream-to-OBI Bridge Flush Drain, Registered Address-Phase Stability, and Transparent Channel Timing Budgets",
+  "topic": "protocol_flush_drain_and_sdc_timing_constraints",
+  "editable_files": [
+    "code/stream_to_mem.sv",
+    "code/cv32e40p_obi_interface.sv",
+    "constraints.json"
+  ],
+  "editable": [
+    "code/stream_to_mem.sv",
+    "code/cv32e40p_obi_interface.sv",
+    "constraints.json"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 600,
+    "verifier_timeout_seconds": 1200,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 1,
+        "extra_args": []
+      },
+      {
+        "seed": 2,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_3003",
+    "version": 1,
+    "frozen_utc": "2026-11-04T04:29:25.190556+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/stream_to_mem.sv",
+      "code/cv32e40p_obi_interface.sv",
+      "constraints.json"
+    ],
+    "public_hashes": {
+      "BUILD.md": "00e732c938043509f6cf484831abfd2704d316dd8a34f6d23f6c092a4fbeeaff",
+      "code/LICENSE": "6527a46225891b976fa94f634f6ee0cd22e1c7129d6f11c5c98c997627625fc7",
+      "code/cv32e40p_obi_interface.sv": "8c43687ac6cbcb685a3327724e934d374851eafc7d5c8857f192c1c4ff6e494c",
+      "code/fifo_v3.sv": "0b33c4ca3d81eb0af72772aa8f064d655974627841e4ba5aca5634cbb46147ce",
+      "code/include/common_cells/registers.svh": "4958be84265b95bf22983f5698d657239f1d9e4eae635163a63186b6b2a6ba08",
+      "code/spill_register.sv": "692cb74f9f419f8751c43b0713ee759d4bbec24250bb23cf4d8aa6a50d8686ee",
+      "code/stream_fifo.sv": "b24dbfeff17323b339fcf38854e5dfadd8b8e15489936d4a029988ece240eac3",
+      "code/stream_to_mem.sv": "7947a158ec8facf20fbad5939cd57de8dece89974c2a462afe696bbe79731f50",
+      "code/top.sv": "e30d39d5219f310a89e99a8f753f3045a700df14b74793fc3759718ff8468642",
+      "constraints.json": "f4113f6d3e1f5b35e8418d90742838706a5e31e21612dff0e724bdf0df420191",
+      "issue.md": "c5f4bf03e1f080a4d088753b211ad68d8e26f22e19828ea3d0412073d9847c35"
+    },
+    "gold_hashes": {
+      "code/cv32e40p_obi_interface.sv": "9fbb349184dbb446f0ed8aa5a244c704aa3facbec023052a8a7a6d5ac4ea3322",
+      "code/stream_to_mem.sv": "9d7d32cd3c98c2861c16a4d091a403777474a01ba01f567a4d804f4bcacffa2a",
+      "constraints.json": "25f6200ae38b15690dc82aa0110b30a00dd3ef3417e25dd0b4451a853dd15298"
+    },
+    "grader_hashes": {
+      "run.py": "7b41f4209ff6c32117ec08d2402d8e4f56ad0cf952df1b18c31d56e6ed6131fb"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 12,
+      "mutant_total": 12
+    }
+  },
+  "repository": "openhwfoundation/cv32e40p",
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT3_Timing_Area_PPA_Closure",
+  "problem_type_label": "High-Frequency Timing & Area Optimization",
+  "primary_domain": "sdc_sta",
+  "multi_domains": [
+    "protocol_control",
+    "reset_rdc",
+    "rtl_integration",
+    "sdc_sta"
+  ],
+  "pdk_profile": {
+    "pdk_id": "nangate45_45nm_shared",
+    "pdk_name": "Nangate45 45nm Open Cell Library (Shared Base Image)",
+    "location": "/opt/siliconbench/pdk/Nangate45 (bundled in environments/pdk/Nangate45)",
+    "customized": false,
+    "notes": "Uses unified Nangate45 typical Liberty and LEF from base image."
+  },
+  "public_hashes": {
+    "BUILD.md": "00e732c938043509f6cf484831abfd2704d316dd8a34f6d23f6c092a4fbeeaff",
+    "code/LICENSE": "6527a46225891b976fa94f634f6ee0cd22e1c7129d6f11c5c98c997627625fc7",
+    "code/cv32e40p_obi_interface.sv": "8c43687ac6cbcb685a3327724e934d374851eafc7d5c8857f192c1c4ff6e494c",
+    "code/fifo_v3.sv": "0b33c4ca3d81eb0af72772aa8f064d655974627841e4ba5aca5634cbb46147ce",
+    "code/include/common_cells/registers.svh": "4958be84265b95bf22983f5698d657239f1d9e4eae635163a63186b6b2a6ba08",
+    "code/spill_register.sv": "692cb74f9f419f8751c43b0713ee759d4bbec24250bb23cf4d8aa6a50d8686ee",
+    "code/stream_fifo.sv": "b24dbfeff17323b339fcf38854e5dfadd8b8e15489936d4a029988ece240eac3",
+    "code/stream_to_mem.sv": "7947a158ec8facf20fbad5939cd57de8dece89974c2a462afe696bbe79731f50",
+    "code/top.sv": "e30d39d5219f310a89e99a8f753f3045a700df14b74793fc3759718ff8468642",
+    "constraints.json": "f4113f6d3e1f5b35e8418d90742838706a5e31e21612dff0e724bdf0df420191",
+    "issue.md": "c5f4bf03e1f080a4d088753b211ad68d8e26f22e19828ea3d0412073d9847c35"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 12,
+    "mutant_total": 12
+  }
+}

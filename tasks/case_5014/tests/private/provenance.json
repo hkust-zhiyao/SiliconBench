@@ -1,0 +1,11 @@
+{
+  "case_id": "case_5014",
+  "repo_id": "repo_05",
+  "upstream_repo": "openhwfoundation/cva6",
+  "source_files": [
+    "core/cache_subsystem/wt_axi_adapter.sv",
+    "core/cache_subsystem/axi_shim.sv",
+    "core/cva6_fifo_v3.sv"
+  ],
+  "authoring_mode": "real_upstream_defects_plus_synthesis_ppa_closure"
+}

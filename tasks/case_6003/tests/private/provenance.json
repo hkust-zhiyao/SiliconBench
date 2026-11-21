@@ -1,0 +1,21 @@
+{
+  "case_id": "case_6003",
+  "repo_id": "repo_06",
+  "upstream_url": "https://github.com/chipsalliance/cores-veer-eh1",
+  "commit": "d04b1c7ae675a63dc4307cacfd10547ec937b928",
+  "source_files": [
+    "design/lib/axi4_to_ahb.sv",
+    "design/lib/ahb_to_axi4.sv",
+    "design/dma_ctrl.sv",
+    "design/lib/beh_lib.sv",
+    "design/include/veer_types.sv",
+    "design/include/global.h"
+  ],
+  "top_module": "veer_bus_dma_top",
+  "editable_files": [
+    "code/axi4_to_ahb.sv",
+    "code/ahb_to_axi4.sv",
+    "code/dma_ctrl.sv",
+    "constraints.json"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "max_delays": [
+    {
+      "from": [
+        "qos_in[0]",
+        "qos_in[1]",
+        "qos_in[2]",
+        "qos_in[3]",
+        "qos_in[4]",
+        "qos_in[5]",
+        "qos_in[6]",
+        "qos_in[7]"
+      ],
+      "to": [
+        "qos_out[0]",
+        "qos_out[1]",
+        "qos_out[2]",
+        "qos_out[3]",
+        "qos_out[4]",
+        "qos_out[5]",
+        "qos_out[6]",
+        "qos_out[7]"
+      ],
+      "ns": 10.75
+    },
+    {
+      "from": [
+        "region_in[0]",
+        "region_in[1]",
+        "region_in[2]",
+        "region_in[3]",
+        "region_in[4]",
+        "region_in[5]",
+        "region_in[6]",
+        "region_in[7]"
+      ],
+      "to": [
+        "region_out[0]",
+        "region_out[1]",
+        "region_out[2]",
+        "region_out[3]",
+        "region_out[4]",
+        "region_out[5]",
+        "region_out[6]",
+        "region_out[7]"
+      ],
+      "ns": 11.75
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "case_id": "case_21015",
+  "blueprint_id": "bp_s02_027",
+  "flow_scenario": "S4_interconnect_nic_dma_protocol",
+  "coupling_mode": "deep_stage_authentic",
+  "repo_id": "repo_40",
+  "origin": "https://github.com/alexforencich/verilog-axi",
+  "commit": "516bd5dadc3365b7f9e225d2af8fe0b8d804fe53",
+  "archive_sha256": "1ab8b3f0320c3757d968f86cc79ad42968e378bab22d045a6cd8ca6c6a3b6676",
+  "license": "MIT; see public/code/COPYING and source headers",
+  "native_sources": [
+    "rtl/axi_dma.v",
+    "rtl/axi_dma_wr.v",
+    "rtl/axi_dma_rd.v",
+    "rtl/axi_dma_desc_mux.v",
+    "rtl/arbiter.v",
+    "rtl/priority_encoder.v"
+  ],
+  "editable_files": [
+    "code/axi_dma_wr.v",
+    "code/axi_dma_rd.v",
+    "code/axi_dma_desc_mux.v"
+  ],
+  "qualification": "upstream/repo_40",
+  "build_scope": "Full SmartNIC streaming AXI4 DMA subsystem coupling 4-port axi_dma_desc_mux instances on read and write descriptor channels with axi_dma (axi_dma_rd + axi_dma_wr), plus multi-parameter 4-state Icarus Verilog (PORTS=1, PORTS=3, 256-bit AXI_MAX_BURST_LEN=128) and Yosys synthesis/latch checks.",
+  "tool": "Verilator 5.038 + Icarus Verilog 13.0 + Yosys (oss-cad-suite)"
+}

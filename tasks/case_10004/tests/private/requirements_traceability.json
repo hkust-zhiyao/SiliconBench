@@ -1,0 +1,29 @@
+{
+  "case_id": "case_10004",
+  "obligations": [
+    {
+      "id": "REQ-DESER-ALIGNMENT-AND-CLEAR",
+      "behavior": "noc_axi4_bridge_deser qualifies data capture with flit_in_go, clears stale payload words on each packet, and aligns beat k at data_out[64*k +: 64] so 1-beat NC stores appear at data_out[63:0].",
+      "public_source": "public/issue.md item 1",
+      "enforced_by": "private/tests/tb.sv, killed by wrong_fix_1, mutant_01..mutant_04"
+    },
+    {
+      "id": "REQ-BUFFER-SLOT-PROTECTION-AND-RR",
+      "behavior": "noc_axi4_bridge_buffer gates deser_rdy with bram_rdy[fifo_in], arbitrates read_resp_val and write_resp_val work-conservingly with round-robin alternation, and aligns ser_header with ser_data in single-stage output registers.",
+      "public_source": "public/issue.md item 2",
+      "enforced_by": "private/tests/tb.sv, killed by wrong_fix_2, wrong_fix_3, mutant_08..mutant_10"
+    },
+    {
+      "id": "REQ-SER-NC-LOAD-SIZE-AND-STALL",
+      "behavior": "noc_axi4_bridge_ser encodes MSG_LENGTH=0/1/8 based on request type and MSG_DATA_SIZE, latches inputs on in_go, and holds every flit (including the final payload beat) stable under flit_out_rdy==0.",
+      "public_source": "public/issue.md item 3",
+      "enforced_by": "private/tests/tb.sv, killed by wrong_fix_4, mutant_05..mutant_07"
+    },
+    {
+      "id": "REQ-PPA-AND-1P08NS-STA",
+      "behavior": "Under BUILD.md, noc_axi4_bridge_deser maps to <= 4955.0 um^2, noc_axi4_bridge_ser to <= 4810.0 um^2, and noc_axi4_bridge_buffer to <= 21350.0 um^2, with >= 0.0 ns setup and hold slack at 1.08 ns clock.",
+      "public_source": "public/issue.md item 4, public/BUILD.md sections 3-4",
+      "enforced_by": "private/grader/run.py, killed by wrong_fix_2, wrong_fix_5"
+    }
+  ]
+}

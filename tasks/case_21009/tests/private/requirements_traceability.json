@@ -1,0 +1,45 @@
+{
+  "case_id": "case_21009",
+  "obligations": [
+    {
+      "id": "REQ-TX-CSUM-BACKPRESSURE-AND-OFFSETS",
+      "behavior": "Compute RFC 1071 ones'-complement checksums across DATA_WIDTH in {64, 256} with even/odd/multi-beat csum_start, split-beat csum_offset, USE_INIT_VALUE, passthrough mode, and lossless 1-to-1 packet/checksum alignment under csum_fifo backpressure.",
+      "public_source": "public/issue.md item 1",
+      "verified_by": [
+        "private/tests/tb.sv (Test 1, Test 2, Test 4)",
+        "wf1_tx_drop_csum_under_fifo_backpressure",
+        "m01_tx_missing_ones_comp_inversion",
+        "m02_tx_missing_odd_start_byteswap",
+        "m03_tx_ignore_use_init_value",
+        "m04_tx_broken_split_beat_lo_mask",
+        "m05_tx_overwrite_when_csum_disabled",
+        "m06_tx_missing_final_end_around_carry",
+        "m10_tx_swap_endian_lane_pair"
+      ]
+    },
+    {
+      "id": "REQ-RX-CSUM-MULTIBEAT-OFFSET-AND-RESET",
+      "behavior": "Compute RX ones'-complement packet sums across arbitrary START_OFFSET >= 2*KEEP_WIDTH and short frames, and synchronously reset all control/accumulator state for Zero-X ASIC gate-level parity.",
+      "public_source": "public/issue.md item 1",
+      "verified_by": [
+        "private/tests/tb.sv (Test 3, Test 5)",
+        "private/tests/tb_gl.sv",
+        "wf2_rx_truncated_skip_offset_width",
+        "wf4_unreset_sum_acc_asic_gl_xprop",
+        "m07_rx_missing_end_around_carry",
+        "m08_rx_ignore_tkeep_masking",
+        "m09_rx_no_clear_acc_on_tlast"
+      ]
+    },
+    {
+      "id": "REQ-CSUM-NANGATE45-PPA-SIGNOFF",
+      "behavior": "Close Nangate45 OpenSTA timing at clk = 1.20ns (WNS >= 0, TNS >= 0, hold >= 0) with mapped cell area <= 1,150 um^2 on rx_checksum and <= 6,300 um^2 on tx_checksum.",
+      "public_source": "public/issue.md item 2",
+      "verified_by": [
+        "private/grader/run.py (Yosys + OpenSTA PPA check)",
+        "wf3_unpipelined_blocking_carry_fold_timing_fail",
+        "ah4_rx_area_bloat"
+      ]
+    }
+  ]
+}

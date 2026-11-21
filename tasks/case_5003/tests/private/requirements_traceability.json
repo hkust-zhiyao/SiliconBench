@@ -1,0 +1,30 @@
+{
+  "case_id": "case_5003",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "module": "cva6_shared_tlb",
+      "description": "ITLB miss progress during DTLB hit"
+    },
+    {
+      "id": "REQ-2",
+      "module": "cva6_shared_tlb",
+      "description": "64KiB Svnapot set indexing above subpage offset and walk requester stage-enable preservation"
+    },
+    {
+      "id": "REQ-3",
+      "module": "cva6_tlb",
+      "description": "Unconditional refill installation on update_i.valid and PLRU update on refill"
+    },
+    {
+      "id": "REQ-4",
+      "module": "cva6_ptw",
+      "description": "Idle stability and update/error suppression on flush_i verified via boundary ports and external memory handshakes"
+    },
+    {
+      "id": "REQ-5",
+      "module": "cva6_tlb",
+      "description": "Nangate45 mapped area <= 2260.0 um^2 and setup/hold slack >= 0.00 ns at 2.42 ns clock"
+    }
+  ]
+}

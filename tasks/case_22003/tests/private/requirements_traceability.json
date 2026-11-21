@@ -1,0 +1,45 @@
+{
+  "case_id": "case_22003",
+  "obligations": [
+    {
+      "id": "REQ-RVV-INT-EQUIV-AND-ORDERING",
+      "behavior": "Preserve exact RVV 1.0 and Ara lane semantics across VMUL..VSMUL and VDIVU..VREM for EW8/EW16/EW32/EW64, including vector-scalar replication, swap_vs2_vd_op source queue mapping, partial tail beats, vxrm rounding, active-element-masked mfpu_vxsat_o, divide-by-zero / signed-overflow corner cases, and in-order VRF commit + mfpu_vinsn_done_o across back-to-back multi-SEW instructions under random operand/mask/grant stalls.",
+      "public_source": "public/issue.md Requirement 1, public/code/vmfpu.sv, public/code/simd_div.sv",
+      "verified_by": [
+        "private/tests/tb.sv (Suite 1 directed corner cases + Suite 3 180-instruction backpressure stress)",
+        "wf4_broken_subword_align",
+        "m01_div_signed_polarity",
+        "m02_ew16_mask_bit_idx",
+        "m03_rem_mask_not_cleared",
+        "m04_no_all_masked_bypass",
+        "m05_proc_vaddr_no_inc",
+        "m06_vxsat_unmasked_by_be",
+        "m07_tail_be_ignored",
+        "m08_no_cross_insn_lat_stall",
+        "m09_mask_ready_popped_unmasked",
+        "m10_scalar_mux_inverted"
+      ]
+    },
+    {
+      "id": "REQ-MASKED-DIV-FAST-SKIP",
+      "behavior": "Skip masked-inactive subwords in simd_div.sv without running serdiv iterations and complete all-masked 64-bit beats without invoking serdiv, achieving <= 32 cycles on 8-beat all-masked EW8 VDIV, <= 76 cycles on 8-beat 1/8-active EW8 VDIVU, and <= 84 cycles on 8-beat 1/4-active EW16 VREM while aligning active subword results to their exact byte lanes.",
+      "public_source": "public/issue.md Requirement 2, public/code/simd_div.sv",
+      "verified_by": [
+        "private/tests/tb.sv (Suite 2 quantitative cycle benchmarks 2A, 2B, 2C)",
+        "baseline (public/ fails 91 > 32, 123 > 76, 91 > 84)",
+        "wf3_fpu_prune_no_div_fastskip",
+        "wf4_broken_subword_align"
+      ]
+    },
+    {
+      "id": "REQ-SYNTH-AREA-STA-CLOSURE",
+      "behavior": "Synthesize vmfpu_synth_top cleanly with zero combinational logic loops under Yosys+slang (`proc; check -assert`), achieve mapped Nangate45 cell area <= 83600.0 um^2, and meet OpenROAD STA setup slack >= 0.000 ns and hold slack >= 0.000 ns at a 5.20 ns clk_i period.",
+      "public_source": "public/issue.md Requirement 3, public/BUILD.md Sections 3 & 4",
+      "verified_by": [
+        "private/grader/run.py (Yosys check -assert, stat -liberty <= 83600.0 um^2, OpenROAD STA @ 5.20 ns)",
+        "wf1_wide_shared_vinsn_table",
+        "wf2_unregistered_div_steer"
+      ]
+    }
+  ]
+}

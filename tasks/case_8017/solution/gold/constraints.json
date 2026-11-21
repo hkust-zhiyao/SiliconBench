@@ -1,0 +1,14 @@
+{
+  "max_delays": [
+    {
+      "from": ["pmu_in"],
+      "to": ["pmu_out"],
+      "ns": 9.25
+    },
+    {
+      "from": ["fir_in"],
+      "to": ["fir_out"],
+      "ns": 10.25
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "case_id": "case_23010",
+  "obligations": [
+    {
+      "id": "REQ-CACC-RMW-CTRL",
+      "behavior": "Accumulate Direct and Winograd multi-stripe channel groups across INT8, INT16, and FP16 calculator latencies.",
+      "public_source": "public/issue.md Architectural & Protocol Contract item 1",
+      "verified_by": [
+        "private/tests/tb.v",
+        "wf1_fp16_wb_cycle4_mismatch",
+        "m01_ctrl_channel_st_sticky_clear",
+        "m03_ctrl_fp16_wb_c2",
+        "m04_ctrl_fp16_dlv_c3",
+        "m05_ctrl_direct_addr_collide"
+      ]
+    },
+    {
+      "id": "REQ-CACC-1P-SRAM-ABUF-DBUF",
+      "behavior": "Resolve 1P SRAM read/write conflicts and RAW hazards across 8 RM_IHPSG13_1P_256x64_c2_bm_bist macros, gate extension banks in INT16/FP16, and deliver lossless backpressured SDP packets with alternating layer interrupts.",
+      "public_source": "public/issue.md Architectural & Protocol Contract items 2-3",
+      "verified_by": [
+        "private/tests/tb.v",
+        "wf2_abuf_no_1p_conflict_buffer",
+        "wf3_dbuf_backpressure_corrupt",
+        "m02_ctrl_wg_ext_men_leak",
+        "m06_abuf_trunc_pri_wr_data",
+        "m08_abuf_ext_drop_pend",
+        "m09_dbuf_odd_bank_mux_drop",
+        "m10_dbuf_unstalled_done_pulse",
+        "m11_dbuf_intr_no_toggle"
+      ]
+    },
+    {
+      "id": "REQ-CACC-PNR-STA-SIGNOFF",
+      "behavior": "Place all 8 SRAM macros legally inside core bounds, constrain nvdla_core_clk <= 15.0 ns with >= 1.2 ns I/O delays, and close OpenROAD PDN, post-GRT WNS/hold >= 0.0 ns, overflow <= 15, and wirelength <= 2,650,000 um.",
+      "public_source": "public/issue.md Physical Floorplan & Signoff Timing Targets",
+      "verified_by": [
+        "private/grader.py",
+        "wf4_bad_corner_floorplan",
+        "wf5_overrelaxed_sdc",
+        "m07_abuf_drop_raw_bypass",
+        "m12_plan_macro_overlap"
+      ]
+    }
+  ]
+}

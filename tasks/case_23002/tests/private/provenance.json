@@ -1,0 +1,22 @@
+{
+  "case_id": "case_23002",
+  "repo_id": "repo_37",
+  "origin": "https://github.com/vortexgpgpu/vortex",
+  "commit": "90a626217597099e2667b1bf3395c70b1965c1e",
+  "archive_sha256": "afb7869c698c7291de07249f4609a51107b3d0278fd11a19838735b0e4318af5",
+  "license": "Apache-2.0; see public/code/LICENSE and source headers",
+  "native_sources": [
+    "hw/rtl/core/VX_wctl_unit.sv",
+    "hw/rtl/core/VX_split_join.sv",
+    "hw/rtl/core/VX_ipdom_stack.sv",
+    "hw/rtl/interfaces/VX_warp_ctl_if.sv",
+    "hw/rtl/interfaces/VX_execute_if.sv"
+  ],
+  "editable_files": [
+    "code/VX_wctl_unit.sv",
+    "code/VX_split_join.sv",
+    "code/VX_ipdom_stack.sv"
+  ],
+  "qualification": "upstream/repo_37",
+  "build_scope": "Vortex SIMT warp control and IPDOM divergence/reconvergence subsystem (VX_wctl_ipdom_top) verified across multi-packet and single-packet SIMT configurations via Yosys+slang and Verilator."
+}

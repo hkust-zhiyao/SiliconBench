@@ -1,0 +1,57 @@
+version = "1.0"
+
+[metadata]
+task_id = "case_10004"
+title = "OpenPiton NoC-to-AXI4 Memory Bridge Framing, In-Flight Slot Protection, Response Arbitration, and PPA/STA Closure"
+repository = "princetonuniversity/openpiton"
+repo_id = "repo_10"
+split = "test"
+eda_stage = "stage4_macro_pnr"
+eda_stage_name = "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)"
+problem_type = "PT3_Timing_Area_PPA_Closure"
+problem_type_label = "High-Frequency Timing & Area Optimization"
+primary_domain = "protocol_control"
+domains = ["protocol_control", "rtl_integration", "synthesis_qor"]
+public_rtl_files = 11
+public_rtl_loc = 1827
+editable_files_count = 3
+editable_loc = 653
+
+[agent]
+timeout_sec = 5400
+
+[environment]
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+workdir = "/workspace"
+allow_internet = false
+cpus = 4
+memory_mb = 16384
+
+[environment.variables]
+OMP_NUM_THREADS = "1"
+OPENBLAS_NUM_THREADS = "1"
+MKL_NUM_THREADS = "1"
+MAKEFLAGS = "-j1"
+SILICONBENCH_TOOLS = "/opt/siliconbench/tools"
+SILICONBENCH_NANGATE45 = "/opt/siliconbench/pdk/Nangate45"
+
+[verifier]
+environment_mode = "separate"
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+timeout_sec = 1200
+entrypoint = "/tests/test.sh"
+reward_file = "/logs/verifier/reward.txt"
+reward_json = "/logs/verifier/reward.json"
+
+[verifier.environment]
+allow_internet = false
+
+[siliconbench]
+allowed_edits = ["code/rtl/noc_axi4_bridge_deser.v", "code/rtl/noc_axi4_bridge_ser.v", "code/rtl/noc_axi4_bridge_buffer.v"]
+pdk_id = "nangate45_plus_multicorner_lib"
+pdk_name = "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC"
+pdk_customized = true
+accepts_seed = true
+grading_seeds = [1, 2]

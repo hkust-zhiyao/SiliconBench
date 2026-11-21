@@ -1,0 +1,23 @@
+{
+  "case_id": "case_21008",
+  "slot_id": "builder_02_smartnic_axi_fabric__P08",
+  "blueprint_id": "bp_s02_023",
+  "repo_id": "repo_40",
+  "origin": "https://github.com/alexforencich/verilog-axi",
+  "commit": "516bd5dadc3365b7f9e225d2af8fe0b8d804fe53",
+  "archive_sha256": "1ab8b3f0320c3757d968f86cc79ad42968e378bab22d045a6cd8ca6c6a3b6676",
+  "license": "MIT; see public/code/COPYING",
+  "native_sources": [
+    "snapshot/rtl/axi_adapter.v",
+    "snapshot/rtl/axi_adapter_rd.v",
+    "snapshot/rtl/axi_adapter_wr.v"
+  ],
+  "editable_files": [
+    "code/axi_adapter.v",
+    "code/axi_adapter_rd.v",
+    "code/axi_adapter_wr.v"
+  ],
+  "qualification": "upstream/repo_40",
+  "build_scope": "Multi-ratio AXI4 width adapter (64->64, 32->128, 64->256, 128->32, 256->64) verified across Icarus Verilog 13.0, Verilator 5.038, Yosys 0.70+286 latch-free synthesis, and gate-level co-simulation.",
+  "tool": "Icarus Verilog 13.0 + Verilator 5.038 + Yosys 0.70+286"
+}

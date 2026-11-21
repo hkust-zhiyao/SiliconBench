@@ -1,0 +1,57 @@
+version = "1.0"
+
+[metadata]
+task_id = "case_23013"
+title = "Vortex SIMT 8-Bank Shared Local Memory AMO/DMA Subsystem & Physical Macro Co-Design"
+repository = "vortexgpgpu/vortex"
+repo_id = "repo_37"
+split = "test"
+eda_stage = "stage4_macro_pnr"
+eda_stage_name = "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)"
+problem_type = "PT5_RTL_HardSRAM_Macro_PnR"
+problem_type_label = "RTL + Hard-SRAM Macro Physical Co-Design"
+primary_domain = "Vector_GPU_NPU_Accelerators"
+domains = ["Vector_GPU_NPU_Accelerators"]
+public_rtl_files = 56
+public_rtl_loc = 13055
+editable_files_count = 4
+editable_loc = 1137
+
+[agent]
+timeout_sec = 5400
+
+[environment]
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+workdir = "/workspace"
+allow_internet = false
+cpus = 4
+memory_mb = 16384
+
+[environment.variables]
+OMP_NUM_THREADS = "1"
+OPENBLAS_NUM_THREADS = "1"
+MKL_NUM_THREADS = "1"
+MAKEFLAGS = "-j1"
+SILICONBENCH_TOOLS = "/opt/siliconbench/tools"
+SILICONBENCH_NANGATE45 = "/opt/siliconbench/pdk/Nangate45"
+
+[verifier]
+environment_mode = "separate"
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+timeout_sec = 1800
+entrypoint = "/tests/test.sh"
+reward_file = "/logs/verifier/reward.txt"
+reward_json = "/logs/verifier/reward.json"
+
+[verifier.environment]
+allow_internet = false
+
+[siliconbench]
+allowed_edits = ["code/VX_lmem_switch.sv", "code/VX_local_mem.sv", "plan/macro_placement.json", "constraints/lmem_subsys.sdc"]
+pdk_id = "ihp_sg13g2_130nm_8sram"
+pdk_name = "IHP SG13G2 130nm Open PDK + RM_IHPSG13_1P Hard-SRAM Macros"
+pdk_customized = true
+accepts_seed = true
+grading_seeds = [101, 202]

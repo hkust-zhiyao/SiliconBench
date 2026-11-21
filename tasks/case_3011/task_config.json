@@ -1,0 +1,114 @@
+{
+  "case_id": "case_3011",
+  "task_id": "case_3011",
+  "version": 1,
+  "repo_id": "repo_03",
+  "title": "CV32E40P Interrupt Controller Qualification, Dual-Mode Sleep Unit Clock Gating, and Transparent Channel Timing Budgets",
+  "topic": "rtl_sleep_irq_protocol_and_sdc_timing_constraints",
+  "editable_files": [
+    "code/cv32e40p_int_controller.sv",
+    "code/cv32e40p_sleep_unit.sv",
+    "constraints.json"
+  ],
+  "editable": [
+    "code/cv32e40p_int_controller.sv",
+    "code/cv32e40p_sleep_unit.sv",
+    "constraints.json"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 600,
+    "verifier_timeout_seconds": 1200,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 1,
+        "extra_args": []
+      },
+      {
+        "seed": 2,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_3011",
+    "version": 1,
+    "frozen_utc": "2026-11-04T17:45:14.045727+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/cv32e40p_int_controller.sv",
+      "code/cv32e40p_sleep_unit.sv",
+      "constraints.json"
+    ],
+    "public_hashes": {
+      "BUILD.md": "97b6125a3f1b86b833fc41671e563b06c153a583e2938d13ae51d37a63a4e492",
+      "code/LICENSE": "6527a46225891b976fa94f634f6ee0cd22e1c7129d6f11c5c98c997627625fc7",
+      "code/cv32e40p_int_controller.sv": "24df51d9cb33f5c8760a8cfbc7931aafc94c2ab0523c7df55b2635e7778af16f",
+      "code/cv32e40p_sim_clock_gate.sv": "6ae2e47b98f8129b67a05494826002d3db71f80a89e9caf038c197df1d548759",
+      "code/cv32e40p_sleep_unit.sv": "e023e2531e507c81c60ff2d05de0542e7c6a94c8d22802b43257570a17dfa7cc",
+      "code/include/cv32e40p_pkg.sv": "3fee39d262ef44bff6ee00b591fe08830e5e35cdd1b9e5eb9eb06da6f6525805",
+      "code/top.sv": "cd1fb6638c992d1d9e311558fb82e9056914a6557c0b7abc3479419d5171c5fe",
+      "constraints.json": "f4113f6d3e1f5b35e8418d90742838706a5e31e21612dff0e724bdf0df420191",
+      "issue.md": "dc7a58f27ee35891afd2072119c9456e296f822ced09fdf5b55472f4b2c17cb7"
+    },
+    "gold_hashes": {
+      "code/cv32e40p_int_controller.sv": "f0ca61022f527738dffe61e87a8a026113daaa98c1ad381144064e52b98b4ff3",
+      "code/cv32e40p_sleep_unit.sv": "01eaab6a672b3a9628ad207890e1dd48cd3925993d681ec4dbbd380b80accaac",
+      "constraints.json": "965b7f5415537a0ed7766f376e266952734dfc7e8b1131a3dd2ef90caf5c6422"
+    },
+    "grader_hashes": {
+      "run.py": "1e8eb6499b0566a48a76496bc6e437f6adf1076f4841d030741ce48efd214580"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 12,
+      "mutant_total": 12
+    }
+  },
+  "repository": "openhwfoundation/cv32e40p",
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT4_GateLevel_Security_CDC",
+  "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+  "primary_domain": "low_power",
+  "multi_domains": [
+    "clocking",
+    "low_power",
+    "rtl_integration",
+    "sdc_sta"
+  ],
+  "pdk_profile": {
+    "pdk_id": "nangate45_45nm_shared",
+    "pdk_name": "Nangate45 45nm Open Cell Library (Shared Base Image)",
+    "location": "/opt/siliconbench/pdk/Nangate45 (bundled in environments/pdk/Nangate45)",
+    "customized": false,
+    "notes": "Uses unified Nangate45 typical Liberty and LEF from base image."
+  },
+  "public_hashes": {
+    "BUILD.md": "97b6125a3f1b86b833fc41671e563b06c153a583e2938d13ae51d37a63a4e492",
+    "code/LICENSE": "6527a46225891b976fa94f634f6ee0cd22e1c7129d6f11c5c98c997627625fc7",
+    "code/cv32e40p_int_controller.sv": "24df51d9cb33f5c8760a8cfbc7931aafc94c2ab0523c7df55b2635e7778af16f",
+    "code/cv32e40p_sim_clock_gate.sv": "6ae2e47b98f8129b67a05494826002d3db71f80a89e9caf038c197df1d548759",
+    "code/cv32e40p_sleep_unit.sv": "e023e2531e507c81c60ff2d05de0542e7c6a94c8d22802b43257570a17dfa7cc",
+    "code/include/cv32e40p_pkg.sv": "3fee39d262ef44bff6ee00b591fe08830e5e35cdd1b9e5eb9eb06da6f6525805",
+    "code/top.sv": "cd1fb6638c992d1d9e311558fb82e9056914a6557c0b7abc3479419d5171c5fe",
+    "constraints.json": "f4113f6d3e1f5b35e8418d90742838706a5e31e21612dff0e724bdf0df420191",
+    "issue.md": "dc7a58f27ee35891afd2072119c9456e296f822ced09fdf5b55472f4b2c17cb7"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 12,
+    "mutant_total": 12
+  }
+}

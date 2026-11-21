@@ -1,0 +1,59 @@
+{
+  "case_id": "case_22006",
+  "obligations": [
+    {
+      "id": "REQ-XIF-LEGALITY-AND-MOPCNT-NO-REG",
+      "behavior": "Accept only `MCNFIG`, `MARITH`, and `MOPCNT` for valid `hartid < XifNumHarts`, reject illegal instructions (`accept=0`) without allocating buffer slots or emitting `x_result`, and retire operandless `MOPCNT` (`register_read=3'b000`) without waiting for `x_register`.",
+      "public_source": "public/issue.md Architectural & Protocol Requirements items 1, 2, 4",
+      "verified_by": [
+        "private/tests/tb.sv (T1_illegal_and_mopcnt_reset, T6_multihart_mopcnt_spin_fairness)",
+        "m01_mopcnt_waits_for_reg",
+        "m02_illegal_allocates_slot"
+      ]
+    },
+    {
+      "id": "REQ-XIF-SPLIT-AND-OOO-OPERAND-ASSEMBLY",
+      "behavior": "Support both `XifIssueRegisterSplit=0` (in-order `x_register` with backpressure) and `XifIssueRegisterSplit=1` (out-of-order `(hartid, id)` matching and multi-beat partial `rs_valid[2:0]` assembly).",
+      "public_source": "public/issue.md Architectural & Protocol Requirements item 2",
+      "verified_by": [
+        "private/tests/tb.sv (T3_split_ooo_partial_rs_valid, T7_randomized_stress_all_configs)",
+        "wf1_missing_split_register_buffer",
+        "m03_ignore_rs_valid_partial_merge",
+        "m04_split_wrong_id_match"
+      ]
+    },
+    {
+      "id": "REQ-XIF-COMMIT-KILL-SELECTIVE-NONSPEC",
+      "behavior": "Hold architectural `config_q` updates, `MARITH` job enqueues (`config_valid_o`), op ID increments, and `x_result_valid_o` until non-speculative `x_commit` (`commit_kill=0`), and selectively discard `commit_kill=1` entries without emitting `x_result` or flushing older/younger valid instructions.",
+      "public_source": "public/issue.md Architectural & Protocol Requirements item 3",
+      "verified_by": [
+        "private/tests/tb.sv (T2_speculative_commit_and_selective_kill, T7_randomized_stress_all_configs)",
+        "wf2_flush_whole_fifo_on_kill",
+        "m05_speculative_retire_before_commit",
+        "m06_killed_emits_x_result"
+      ]
+    },
+    {
+      "id": "REQ-FULL-DESCRIPTOR-FAIRNESS-RESULT-STABILITY",
+      "behavior": "Decode all `MCNFIG` fields (`gemm_ops[22:20]`, `gemm_input_fmt[24:23]`, `gemm_output_fmt[26:25]`, `y_offs`, stream flags) and preserve them across `MARITH`, advance multi-hart round-robin priority on every retired instruction, prevent tracker overflow under full pipeline occupancy, and hold `(x_result_valid_o, x_result_o)` stable across `x_result_ready_i=0` with no combinational path to `config_valid_o`.",
+      "public_source": "public/issue.md Architectural & Protocol Requirements item 4",
+      "verified_by": [
+        "private/tests/tb.sv (T4_full_rdl_formats_and_ops, T5_result_backpressure_no_dup_push, T6_multihart_mopcnt_spin_fairness)",
+        "wf3_clobber_format_and_rr_starve",
+        "m07_marith_overwrites_fmt_float16",
+        "m08_rr_only_advances_on_marith"
+      ]
+    },
+    {
+      "id": "REQ-CTRL-QUEUED-ISOLATION-AND-POST-DRAIN-EVT",
+      "behavior": "Isolate active `redmule_ctrl` execution (`config_o`) from queued `i_config_fifo` descriptors by starting `i_cfg_tiler` only in `REDMULE_IDLE` with `fifo_ready_i`, and emit single-cycle `evt_o` strictly on `REDMULE_FINISHED` after `store_fifo_empty`.",
+      "public_source": "public/issue.md Architectural & Protocol Requirements item 5",
+      "verified_by": [
+        "private/tests/tb.sv (T5_queued_jobs_isolation_and_store_drain_evt, T7_randomized_stress_all_configs)",
+        "wf4_ungated_ctrl_tiler_and_early_evt",
+        "m09_ctrl_ungated_start_cfg",
+        "m10_ctrl_premature_evt_before_store_drain"
+      ]
+    }
+  ]
+}

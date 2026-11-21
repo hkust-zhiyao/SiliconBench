@@ -1,0 +1,30 @@
+{
+  "case_id": "case_22016",
+  "requirements": [
+    {
+      "id": "REQ_01",
+      "summary": "Propagate effective EMUL for multi-register OPMVV vector instructions while keeping scalar/mask operands and RESHUFFLE micro-ops at LMUL_1, and scoreboard all concurrent readers/writers across full 1..8 register spans",
+      "verified_by": "tb.sv multi-LMUL OPMVV, multi-reader WAR, multi-writer WAW, and reshuffle suites"
+    },
+    {
+      "id": "REQ_02",
+      "summary": "Allow concurrent element-level chaining on aligned same-EEW linear dependencies while stalling unchainable hazards (offset sub-register overlaps, width-mismatched widening/narrowing, v0 mask RAW/WAR, slides/permutations/reductions/indexed mem, no-source ops)",
+      "verified_by": "tb.sv real 2-lane VRF + operand_requester chaining overlap and hazard-interlock suites"
+    },
+    {
+      "id": "REQ_03",
+      "summary": "Enforce exact per-VFU InsnQueueDepth limits without stale priority-ticket leakage, and cleanly multiplex/pop Lane-0 MaskB scalar moves vs MASKU vcpop.m/vfirst.m responses",
+      "verified_by": "tb.sv VFU queue saturation assertions and concurrent MASKU + vmv.x.s / vcpop.m / vfirst.m suites"
+    },
+    {
+      "id": "REQ_04",
+      "summary": "Suppress RESHUFFLE micro-ops and EEW updates on zero-length vector instructions, and serialize OpcodeSystem CSR reads/writes after full backend and flag drain with accurate vxrm/vxsat/vcsr bit extraction",
+      "verified_by": "tb.sv zero-vl reshuffle guard and back-to-back CSR drain + bitfield suites"
+    },
+    {
+      "id": "REQ_05",
+      "summary": "Zero-latch synthesizability under yosys -m slang",
+      "verified_by": "grader/run.py synth_top yosys-slang check"
+    }
+  ]
+}

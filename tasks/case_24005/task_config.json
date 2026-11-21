@@ -1,0 +1,134 @@
+{
+  "case_id": "case_24005",
+  "task_id": "case_24005",
+  "version": 1,
+  "title": "Cross-Domain Unilateral Reset Isolation, Segmented Output Gating, and Multi-Corner STA in BaseJump Async FIFO",
+  "repo_id": "repo_12",
+  "repository": "bespoke-silicon-group/basejump_stl",
+  "topic": "async_fifo_rdc_isolation_sdc_sta",
+  "family": "cross_stage",
+  "editable_files": [
+    "code/bsg_async_fifo.sv",
+    "code/bsg_async_ptr_gray.sv",
+    "code/bsg_mem_1r1w.sv",
+    "constraints/bsg_async_fifo.sdc"
+  ],
+  "grading": {
+    "eda_class": "heavy",
+    "grader_timeout_seconds": 360,
+    "verifier_timeout_seconds": 720,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_24005",
+    "version": 1,
+    "frozen_utc": "2026-11-11T19:49:57.445374+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/bsg_async_fifo.sv",
+      "code/bsg_async_ptr_gray.sv",
+      "code/bsg_mem_1r1w.sv",
+      "constraints/bsg_async_fifo.sdc"
+    ],
+    "public_hashes": {
+      "BUILD.md": "8e708e5f90c1a66075bf8a556c8c8565cf99d071e334ece6c3ee99906bf0bfd6",
+      "code/LICENSE": "2e77070466e0c6d653e29ae4dfbc1a549cf1aa0b320237de0421db176dff87c0",
+      "code/bsg_and.sv": "7e4ba896f24a6a6c606009df3387d9742fd338b12e0d8a2a1d5b4d030304793e",
+      "code/bsg_async_fifo.sv": "37514009d4fcf5fd264e806ea81edd646312ea7e62306bef6926e0461612b942",
+      "code/bsg_async_ptr_gray.sv": "edbefdf8eec716c611dd6fc6cf2df4b360a5efd593fa49e7a76b09a2066baf98",
+      "code/bsg_defines.sv": "18e287f94bdfad2fdeae435b3a42262eb43065e79171530d272a21a06b14b5fc",
+      "code/bsg_launch_sync_sync.sv": "3c4a91d03b4d33a65fcf9456c6f04071d7f3a8bb40876e5dca219262d26a8c02",
+      "code/bsg_mem_1r1w.sv": "8c1b36effb9f1e2c2d1eba82e0412e45ec48ac2defe5563bd090e9cf56cc7019",
+      "code/bsg_mem_1r1w_synth.sv": "c07a724c4d907e09fc549f229c1b8664882cb6e1604f312d75ce2463cde28d65",
+      "constraints/bsg_async_fifo.sdc": "cd0e64f0f5e6f5cdb4eac0c18d2a5aa638337d7c9a6a3be75864af32be107c5d",
+      "issue.md": "2ff5ecd1a3896f8dd8e68f875c7e972163a73dc43848099ee373e4217bc36d58",
+      "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+      "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+      "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+      "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+    },
+    "gold_hashes": {
+      "code/LICENSE": "2e77070466e0c6d653e29ae4dfbc1a549cf1aa0b320237de0421db176dff87c0",
+      "code/bsg_and.sv": "7e4ba896f24a6a6c606009df3387d9742fd338b12e0d8a2a1d5b4d030304793e",
+      "code/bsg_async_fifo.sv": "aad75ace45bf39499437ddf1a85202dc37d3d808b2e8a93e95670dd622ae0549",
+      "code/bsg_async_ptr_gray.sv": "edbefdf8eec716c611dd6fc6cf2df4b360a5efd593fa49e7a76b09a2066baf98",
+      "code/bsg_defines.sv": "18e287f94bdfad2fdeae435b3a42262eb43065e79171530d272a21a06b14b5fc",
+      "code/bsg_launch_sync_sync.sv": "3c4a91d03b4d33a65fcf9456c6f04071d7f3a8bb40876e5dca219262d26a8c02",
+      "code/bsg_mem_1r1w.sv": "8c1b36effb9f1e2c2d1eba82e0412e45ec48ac2defe5563bd090e9cf56cc7019",
+      "code/bsg_mem_1r1w_synth.sv": "c07a724c4d907e09fc549f229c1b8664882cb6e1604f312d75ce2463cde28d65",
+      "constraints/bsg_async_fifo.sdc": "21754a1e44ead57bafe8e2e25768b41331029f83fa992441114772a0456fe1ae"
+    },
+    "grader_hashes": {
+      "run.py": "0331149c0763906ea44c58e293cc5d0a40e069cb5205be2d047dc5b930de4cf3"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 2,
+      "wrong_fix_fail_runs": 4,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 12,
+      "mutant_total": 12
+    },
+    "test_hashes": {
+      "delay_cells.v": "362aabbcb2ae9978dd8b0be28c370a4ab3f56c9bc6c47c321920dcb6dc068b4e",
+      "tb_edge.sv": "788764b00bcdbc170e2a6c53a6cbaabbacadff0753c59b9451fa9a7a10ef2346",
+      "tb_gls.sv": "bbe65772d2712d49cadff6873af8b20fcf206eedcd99742ee127b4ae876e4ec4",
+      "tb_rtl.sv": "09c2554ededd2b29818fab074044861a1b450935d50ad9e470223c23ab76b451"
+    },
+    "grader_revalidated_utc": "2026-11-13T20:03:55.623117+00:00"
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT4_GateLevel_Security_CDC",
+  "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+  "primary_domain": "MultiCore_SoCs_and_NoC",
+  "multi_domains": [
+    "MultiCore_SoCs_and_NoC"
+  ],
+  "pdk_profile": {
+    "pdk_id": "nangate45_plus_multicorner_lib",
+    "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+    "location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+    "customized": true,
+    "notes": "Uses shared Nangate45 library for synthesis plus task-bundled fast/slow/scan corner timing views."
+  },
+  "public_hashes": {
+    "BUILD.md": "8e708e5f90c1a66075bf8a556c8c8565cf99d071e334ece6c3ee99906bf0bfd6",
+    "code/LICENSE": "2e77070466e0c6d653e29ae4dfbc1a549cf1aa0b320237de0421db176dff87c0",
+    "code/bsg_and.sv": "7e4ba896f24a6a6c606009df3387d9742fd338b12e0d8a2a1d5b4d030304793e",
+    "code/bsg_async_fifo.sv": "37514009d4fcf5fd264e806ea81edd646312ea7e62306bef6926e0461612b942",
+    "code/bsg_async_ptr_gray.sv": "edbefdf8eec716c611dd6fc6cf2df4b360a5efd593fa49e7a76b09a2066baf98",
+    "code/bsg_defines.sv": "18e287f94bdfad2fdeae435b3a42262eb43065e79171530d272a21a06b14b5fc",
+    "code/bsg_launch_sync_sync.sv": "3c4a91d03b4d33a65fcf9456c6f04071d7f3a8bb40876e5dca219262d26a8c02",
+    "code/bsg_mem_1r1w.sv": "8c1b36effb9f1e2c2d1eba82e0412e45ec48ac2defe5563bd090e9cf56cc7019",
+    "code/bsg_mem_1r1w_synth.sv": "c07a724c4d907e09fc549f229c1b8664882cb6e1604f312d75ce2463cde28d65",
+    "constraints/bsg_async_fifo.sdc": "cd0e64f0f5e6f5cdb4eac0c18d2a5aa638337d7c9a6a3be75864af32be107c5d",
+    "issue.md": "2ff5ecd1a3896f8dd8e68f875c7e972163a73dc43848099ee373e4217bc36d58",
+    "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+    "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+    "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+    "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 2,
+    "wrong_fix_fail_runs": 4,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 12,
+    "mutant_total": 12
+  }
+}

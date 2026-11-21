@@ -1,0 +1,46 @@
+{
+  "case_id": "case_0009",
+  "obligations": [
+    {
+      "id": "REQ-STALL-MULTIOP",
+      "behavior": "Hold busy_sticky and suppress flags_valid when enable_int is 0 on the final operation of a multi-op loop body (~busy_int), so that flags_o.valid only asserts after all nb_ops operations execute under enable_int=1 and no half-updated results or skipped iterations occur across stalls in SHADOWED=1 or SHADOWED=0.",
+      "public_source": "public/issue.md item 1, public/code/hwpe_ctrl_uloop.sv",
+      "verified_by": [
+        "private/tests/tb.sv (shadowed and unshadowed multi-op stall checks on flags_o.valid)",
+        "wf1_no_stall_gate",
+        "wf4_clear_busy_sticky_on_stall",
+        "wf5_deepseek_v41_flash_replay",
+        "m01_ungated_flags_valid",
+        "m02_ungated_busy_sticky_clr",
+        "m11_no_ready_gate_in_shadowed"
+      ]
+    },
+    {
+      "id": "REQ-LOOP-METADATA",
+      "behavior": "When flags_o.valid is 1 on a non-terminal iteration result (!flags_o.done), flags_o.loop must report the loop index (0..NB_LOOPS-1) whose body just completed to produce flags_o.offs, flags_o.idx, and flags_o.idx_update in both SHADOWED=1 and SHADOWED=0.",
+      "public_source": "public/issue.md item 2, public/code/hwpe_ctrl_uloop.sv",
+      "verified_by": [
+        "private/tests/tb.sv (check_shadowed_result and check_unshadowed_result when valid==1)",
+        "wf3_ungated_out_loop_no_snapshot",
+        "m03_hardcoded_loop_zero",
+        "m08_wrong_op_sel_polarity",
+        "m09_missing_inner_idx_reset",
+        "m10_invert_idx_update_cmp",
+        "m12_corrupt_loop0_idx_inc"
+      ]
+    },
+    {
+      "id": "REQ-CLEAR-PARITY",
+      "behavior": "Both clear_i and ctrl_i.clear synchronously reset all internal and shadowed state (including shadow_flags_wr, shadow_flags_rd, out_valid, and out_loop) and block enable_int during the clear cycle, leaving flags_o.valid, flags_o.done, flags_o.offs, flags_o.idx, flags_o.idx_update, flags_o.loop (and flags_o.ready in SHADOWED=1) at 0 on the following cycle and starting the next job cleanly from iteration 0.",
+      "public_source": "public/issue.md item 3, public/code/hwpe_ctrl_uloop.sv",
+      "verified_by": [
+        "private/tests/tb.sv (post-clear and mid-body clear checks for ctrl_i.clear and clear_i in SHADOWED=1 and SHADOWED=0)",
+        "wf2_no_ctrl_clear_shadow",
+        "m04_no_ctrl_clear_shadow_wr",
+        "m05_no_ctrl_clear_out_loop",
+        "m06_no_ctrl_clear_shadow_rd",
+        "m07_no_external_clear_shadow_wr"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "macros": [
+    {
+      "instance": "u_sram_ctrl.g_bank[0].u_sram",
+      "x": 115.0,
+      "y": 1360.0,
+      "orientation": "MY"
+    },
+    {
+      "instance": "u_sram_ctrl.g_bank[1].u_sram",
+      "x": 115.0,
+      "y": 980.0,
+      "orientation": "MY"
+    },
+    {
+      "instance": "u_sram_ctrl.g_bank[2].u_sram",
+      "x": 115.0,
+      "y": 560.0,
+      "orientation": "MY"
+    },
+    {
+      "instance": "u_sram_ctrl.g_bank[3].u_sram",
+      "x": 115.0,
+      "y": 180.0,
+      "orientation": "MY"
+    },
+    {
+      "instance": "u_sram_ctrl.g_bank[4].u_sram",
+      "x": 1700.0,
+      "y": 1360.0,
+      "orientation": "R0"
+    },
+    {
+      "instance": "u_sram_ctrl.g_bank[5].u_sram",
+      "x": 1700.0,
+      "y": 980.0,
+      "orientation": "R0"
+    },
+    {
+      "instance": "u_sram_ctrl.g_bank[6].u_sram",
+      "x": 1700.0,
+      "y": 560.0,
+      "orientation": "R0"
+    },
+    {
+      "instance": "u_sram_ctrl.g_bank[7].u_sram",
+      "x": 1700.0,
+      "y": 180.0,
+      "orientation": "R0"
+    }
+  ]
+}

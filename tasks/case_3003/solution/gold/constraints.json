@@ -1,0 +1,14 @@
+{
+  "max_delays": [
+    {
+      "from": ["pmp_in"],
+      "to": ["pmp_out"],
+      "ns": 8.75
+    },
+    {
+      "from": ["dbg_in"],
+      "to": ["dbg_out"],
+      "ns": 9.75
+    }
+  ]
+}

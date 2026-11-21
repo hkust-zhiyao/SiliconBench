@@ -1,0 +1,26 @@
+{
+  "case_id": "case_25015",
+  "repo_id": "repo_22",
+  "origin": "https://github.com/pulp-platform/snitch",
+  "commit": "0fb308e47fc21c72f782a95438808e68aa016c35",
+  "archive_sha256": "ef0f5790ef19c777d147464904cc3e6ea9e17368d12539957736ccfad8e22454",
+  "license": "Solderpad Hardware License v0.51",
+  "native_sources": [
+    "hw/ip/snitch_cluster/src/snitch_clkdiv2.sv",
+    "hw/ip/snitch/src/snitch_l0_tlb.sv",
+    "hw/ip/snitch_vm/src/snitch_ptw.sv",
+    "hw/ip/snitch_cluster/src/snitch_shared_muldiv.sv",
+    "hw/ip/snitch_cluster/src/snitch_hive.sv",
+    "hw/ip/reqrsp_interface/src/reqrsp_iso.sv"
+  ],
+  "editable_files": [
+    "code/snitch_clkdiv2.sv",
+    "code/snitch_l0_tlb.sv",
+    "code/snitch_ptw.sv",
+    "code/snitch_shared_muldiv.sv",
+    "code/snitch_iso_hive.sv",
+    "constraints/snitch_iso_hive.sdc"
+  ],
+  "qualification": "upstream/repo_22",
+  "build_scope": "Snitch multi-core (CoreCount=2,4) isochronous Sv32 L0 TLB/PTW + shared RV32M cluster subsystem verified via Verilator 5.038, 4-state Icarus Verilog gate-level simulation, and 4-corner Nangate45 OpenROAD STA."
+}

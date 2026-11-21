@@ -1,0 +1,183 @@
+{
+  "case_id": "case_0033",
+  "task_id": "case_0033",
+  "version": 1,
+  "title": "BSG Manycore Tile Memory Interface Stall Lock, Flush Cancellation, and PPA/STA Closure",
+  "repo_id": "repo_11",
+  "repository": "bespoke-silicon-group/bsg_manycore",
+  "family": "synthesis_and_datapath",
+  "topic": "lsu_network_tx_endpoint_stall_flush_ppa_sta",
+  "editable_files": [
+    "code/lsu.sv",
+    "code/network_tx.sv",
+    "code/bsg_manycore_endpoint_standard.sv"
+  ],
+  "editable": [
+    "code/lsu.sv",
+    "code/network_tx.sv",
+    "code/bsg_manycore_endpoint_standard.sv"
+  ],
+  "grading": {
+    "eda_class": "pnr",
+    "grader_timeout_seconds": 600,
+    "verifier_timeout_seconds": 1200,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 1,
+        "extra_args": []
+      },
+      {
+        "seed": 2,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_0033",
+    "version": 1,
+    "frozen_utc": "2026-11-04T18:02:49.501994+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/lsu.sv",
+      "code/network_tx.sv",
+      "code/bsg_manycore_endpoint_standard.sv"
+    ],
+    "public_hashes": {
+      "BUILD.md": "61fb32256915a1762ae915ea2cd2f36bbe52e6091bff7b152e84af049b2341d0",
+      "code/LICENSE": "aff747ab33579f1832e9435cd4e7b471f807a68517ee799af1694e5f7dd179c7",
+      "code/bsg_circular_ptr.sv": "e0a3705749543514b4ac898ad3aeed96bb9a78ec3f7354deb38ed3d9a90225dc",
+      "code/bsg_counter_up_down.sv": "86096e3f1a33a03906d332cd46def1ac54083cb1ee3919be51414219e437bc41",
+      "code/bsg_defines.sv": "18e287f94bdfad2fdeae435b3a42262eb43065e79171530d272a21a06b14b5fc",
+      "code/bsg_dff_reset.sv": "2706d0890b56f84185c23664bd056a4d885f32ec487441b64a2155650c95aae8",
+      "code/bsg_fifo_1r1w_small.sv": "092a13fec7717ce378c20e51784cf5cea3cc3c30b89f870da550690f862f385c",
+      "code/bsg_fifo_1r1w_small_unhardened.sv": "9b80dd3776fde67cfeaf02c1ed61eae449d33560388e1a475396a4ba75b9c5d1",
+      "code/bsg_fifo_tracker.sv": "fe0d58ef6c38cbc76f626d0d3093a8789bd2dd54a09afb7c05f9083b649ce6ec",
+      "code/bsg_hashing_ipoly.sv": "300788dfcce9bd1b3341243667d39725be4a14d22c89c597beae7aec11c4080e",
+      "code/bsg_manycore_addr_pkg.sv": "8584779be37ef150fdf7ebe6f46e5d0b42e98f8e94b7feb7c4d22e16484cd352",
+      "code/bsg_manycore_defines.svh": "092bb2fd2770685be84bb031f6adecc87018779d43b60e6e8db95ad4e341ab16",
+      "code/bsg_manycore_dram_hash_function.sv": "ae8866465c9166809f89c620448d739944c92584fac0c3490ae09934793efde5",
+      "code/bsg_manycore_endpoint.sv": "e272c92152c6e4ef0a260fb8b2fec216b3544517e7c6a2fb7d7afee0fc571aa6",
+      "code/bsg_manycore_endpoint_fc.sv": "b982a04ba2f658bbccff6abc17ed1e1d74e64d200d2874a2de5b701aff0e14ad",
+      "code/bsg_manycore_endpoint_standard.sv": "a41fcc387e0cc34c50990d0309b740083b7884a786fd6ceb90b2b5b04d456d4a",
+      "code/bsg_manycore_eva_to_npa.sv": "6475dba4ffa1acf26010e830c6649aa8270bcade03e8b00d7a98b5691f64e537",
+      "code/bsg_manycore_pkg.sv": "593d96192169df6b45559c623410585ff4b46249be8358cb79ed9649d36b0402",
+      "code/bsg_manycore_reg_id_decode.sv": "eb0403d087aec448b4832efd9f30dd8bf925e7efba48ce4aca3b8e0af5c65a5d",
+      "code/bsg_manycore_tile_mem_if.sv": "27191b80efa72cbc5de98053cbcea3d31029513343b93987e75efdd921878f4c",
+      "code/bsg_mem_1r1w.sv": "8c1b36effb9f1e2c2d1eba82e0412e45ec48ac2defe5563bd090e9cf56cc7019",
+      "code/bsg_mem_1r1w_synth.sv": "c07a724c4d907e09fc549f229c1b8664882cb6e1604f312d75ce2463cde28d65",
+      "code/bsg_noc_links.svh": "158532b684859178a608ec10e941ace6a9306b6312a5b0aa48b2df46bfe7eb51",
+      "code/bsg_two_fifo.sv": "fdd69f8798742775b6aa46259812c6c26c8c5d740aa9a46f516c4b07ae486cb5",
+      "code/bsg_vanilla_pkg.sv": "78f1eb0d2b2adef244d95dd2e6e7629b14803c1d286ba8b5de244d3ec737837f",
+      "code/lsu.sv": "b24e64e04f76ee60fbd12d46ed8f80ab52db55290e1325f6f88fecfed9a0f8df",
+      "code/network_tx.sv": "08a6e50b0f619a510903b72629e98ee727c463b9ac7d0942b30ca02de59a8aec",
+      "issue.md": "f642ead970ecbf5c45f59f64040fbb6ceeaa518f8dc6a6ac4f657989bba82474",
+      "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+      "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+      "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+      "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+    },
+    "gold_hashes": {
+      "code/LICENSE": "aff747ab33579f1832e9435cd4e7b471f807a68517ee799af1694e5f7dd179c7",
+      "code/bsg_circular_ptr.sv": "e0a3705749543514b4ac898ad3aeed96bb9a78ec3f7354deb38ed3d9a90225dc",
+      "code/bsg_counter_up_down.sv": "86096e3f1a33a03906d332cd46def1ac54083cb1ee3919be51414219e437bc41",
+      "code/bsg_defines.sv": "18e287f94bdfad2fdeae435b3a42262eb43065e79171530d272a21a06b14b5fc",
+      "code/bsg_dff_reset.sv": "2706d0890b56f84185c23664bd056a4d885f32ec487441b64a2155650c95aae8",
+      "code/bsg_fifo_1r1w_small.sv": "092a13fec7717ce378c20e51784cf5cea3cc3c30b89f870da550690f862f385c",
+      "code/bsg_fifo_1r1w_small_unhardened.sv": "9b80dd3776fde67cfeaf02c1ed61eae449d33560388e1a475396a4ba75b9c5d1",
+      "code/bsg_fifo_tracker.sv": "fe0d58ef6c38cbc76f626d0d3093a8789bd2dd54a09afb7c05f9083b649ce6ec",
+      "code/bsg_hashing_ipoly.sv": "300788dfcce9bd1b3341243667d39725be4a14d22c89c597beae7aec11c4080e",
+      "code/bsg_manycore_addr_pkg.sv": "8584779be37ef150fdf7ebe6f46e5d0b42e98f8e94b7feb7c4d22e16484cd352",
+      "code/bsg_manycore_defines.svh": "092bb2fd2770685be84bb031f6adecc87018779d43b60e6e8db95ad4e341ab16",
+      "code/bsg_manycore_dram_hash_function.sv": "ae8866465c9166809f89c620448d739944c92584fac0c3490ae09934793efde5",
+      "code/bsg_manycore_endpoint.sv": "e272c92152c6e4ef0a260fb8b2fec216b3544517e7c6a2fb7d7afee0fc571aa6",
+      "code/bsg_manycore_endpoint_fc.sv": "b982a04ba2f658bbccff6abc17ed1e1d74e64d200d2874a2de5b701aff0e14ad",
+      "code/bsg_manycore_endpoint_standard.sv": "ed5cd2cf62d3f90e25d14dc9984a88705638c0d3e272a69b293f63cc8ffeb4b4",
+      "code/bsg_manycore_eva_to_npa.sv": "6475dba4ffa1acf26010e830c6649aa8270bcade03e8b00d7a98b5691f64e537",
+      "code/bsg_manycore_pkg.sv": "593d96192169df6b45559c623410585ff4b46249be8358cb79ed9649d36b0402",
+      "code/bsg_manycore_reg_id_decode.sv": "eb0403d087aec448b4832efd9f30dd8bf925e7efba48ce4aca3b8e0af5c65a5d",
+      "code/bsg_manycore_tile_mem_if.sv": "27191b80efa72cbc5de98053cbcea3d31029513343b93987e75efdd921878f4c",
+      "code/bsg_mem_1r1w.sv": "8c1b36effb9f1e2c2d1eba82e0412e45ec48ac2defe5563bd090e9cf56cc7019",
+      "code/bsg_mem_1r1w_synth.sv": "c07a724c4d907e09fc549f229c1b8664882cb6e1604f312d75ce2463cde28d65",
+      "code/bsg_noc_links.svh": "158532b684859178a608ec10e941ace6a9306b6312a5b0aa48b2df46bfe7eb51",
+      "code/bsg_two_fifo.sv": "fdd69f8798742775b6aa46259812c6c26c8c5d740aa9a46f516c4b07ae486cb5",
+      "code/bsg_vanilla_pkg.sv": "78f1eb0d2b2adef244d95dd2e6e7629b14803c1d286ba8b5de244d3ec737837f",
+      "code/lsu.sv": "8d1d12c5719b53724c66e3c525a07f0a6709fa7f9635ff443ec4538da6bbafa8",
+      "code/network_tx.sv": "664fbeaec70efc4060d0c41cade77d170a68d8d500ce3df221e126967984b40d"
+    },
+    "grader_hashes": {
+      "run.py": "c497a95b6f1f2a4b1c9a048630af1dd9bd61fa927abf6ad257d812d56e7958ee"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 10,
+      "mutant_total": 10
+    }
+  },
+  "eda_stage": "stage4_macro_pnr",
+  "eda_stage_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+  "eda_track": "stage4_macro_pnr",
+  "eda_track_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+  "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+  "problem_type_label": "Architectural & Protocol Bug Repair",
+  "primary_domain": "synthesis_qor",
+  "multi_domains": [
+    "reset_rdc",
+    "rtl_integration",
+    "synthesis_qor"
+  ],
+  "pdk_profile": {
+    "pdk_id": "nangate45_plus_multicorner_lib",
+    "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+    "location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+    "customized": true,
+    "notes": "Uses shared Nangate45 library for synthesis plus task-bundled fast/slow/scan corner timing views."
+  },
+  "public_hashes": {
+    "BUILD.md": "61fb32256915a1762ae915ea2cd2f36bbe52e6091bff7b152e84af049b2341d0",
+    "code/LICENSE": "aff747ab33579f1832e9435cd4e7b471f807a68517ee799af1694e5f7dd179c7",
+    "code/bsg_circular_ptr.sv": "e0a3705749543514b4ac898ad3aeed96bb9a78ec3f7354deb38ed3d9a90225dc",
+    "code/bsg_counter_up_down.sv": "86096e3f1a33a03906d332cd46def1ac54083cb1ee3919be51414219e437bc41",
+    "code/bsg_defines.sv": "18e287f94bdfad2fdeae435b3a42262eb43065e79171530d272a21a06b14b5fc",
+    "code/bsg_dff_reset.sv": "2706d0890b56f84185c23664bd056a4d885f32ec487441b64a2155650c95aae8",
+    "code/bsg_fifo_1r1w_small.sv": "092a13fec7717ce378c20e51784cf5cea3cc3c30b89f870da550690f862f385c",
+    "code/bsg_fifo_1r1w_small_unhardened.sv": "9b80dd3776fde67cfeaf02c1ed61eae449d33560388e1a475396a4ba75b9c5d1",
+    "code/bsg_fifo_tracker.sv": "fe0d58ef6c38cbc76f626d0d3093a8789bd2dd54a09afb7c05f9083b649ce6ec",
+    "code/bsg_hashing_ipoly.sv": "300788dfcce9bd1b3341243667d39725be4a14d22c89c597beae7aec11c4080e",
+    "code/bsg_manycore_addr_pkg.sv": "8584779be37ef150fdf7ebe6f46e5d0b42e98f8e94b7feb7c4d22e16484cd352",
+    "code/bsg_manycore_defines.svh": "092bb2fd2770685be84bb031f6adecc87018779d43b60e6e8db95ad4e341ab16",
+    "code/bsg_manycore_dram_hash_function.sv": "ae8866465c9166809f89c620448d739944c92584fac0c3490ae09934793efde5",
+    "code/bsg_manycore_endpoint.sv": "e272c92152c6e4ef0a260fb8b2fec216b3544517e7c6a2fb7d7afee0fc571aa6",
+    "code/bsg_manycore_endpoint_fc.sv": "b982a04ba2f658bbccff6abc17ed1e1d74e64d200d2874a2de5b701aff0e14ad",
+    "code/bsg_manycore_endpoint_standard.sv": "a41fcc387e0cc34c50990d0309b740083b7884a786fd6ceb90b2b5b04d456d4a",
+    "code/bsg_manycore_eva_to_npa.sv": "6475dba4ffa1acf26010e830c6649aa8270bcade03e8b00d7a98b5691f64e537",
+    "code/bsg_manycore_pkg.sv": "593d96192169df6b45559c623410585ff4b46249be8358cb79ed9649d36b0402",
+    "code/bsg_manycore_reg_id_decode.sv": "eb0403d087aec448b4832efd9f30dd8bf925e7efba48ce4aca3b8e0af5c65a5d",
+    "code/bsg_manycore_tile_mem_if.sv": "27191b80efa72cbc5de98053cbcea3d31029513343b93987e75efdd921878f4c",
+    "code/bsg_mem_1r1w.sv": "8c1b36effb9f1e2c2d1eba82e0412e45ec48ac2defe5563bd090e9cf56cc7019",
+    "code/bsg_mem_1r1w_synth.sv": "c07a724c4d907e09fc549f229c1b8664882cb6e1604f312d75ce2463cde28d65",
+    "code/bsg_noc_links.svh": "158532b684859178a608ec10e941ace6a9306b6312a5b0aa48b2df46bfe7eb51",
+    "code/bsg_two_fifo.sv": "fdd69f8798742775b6aa46259812c6c26c8c5d740aa9a46f516c4b07ae486cb5",
+    "code/bsg_vanilla_pkg.sv": "78f1eb0d2b2adef244d95dd2e6e7629b14803c1d286ba8b5de244d3ec737837f",
+    "code/lsu.sv": "b24e64e04f76ee60fbd12d46ed8f80ab52db55290e1325f6f88fecfed9a0f8df",
+    "code/network_tx.sv": "08a6e50b0f619a510903b72629e98ee727c463b9ac7d0942b30ca02de59a8aec",
+    "issue.md": "f642ead970ecbf5c45f59f64040fbb6ceeaa518f8dc6a6ac4f657989bba82474",
+    "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+    "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+    "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+    "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 10,
+    "mutant_total": 10
+  }
+}

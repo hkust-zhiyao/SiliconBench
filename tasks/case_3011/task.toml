@@ -1,0 +1,57 @@
+version = "1.0"
+
+[metadata]
+task_id = "case_3011"
+title = "CV32E40P Interrupt Controller Qualification, Dual-Mode Sleep Unit Clock Gating, and Transparent Channel Timing Budgets"
+repository = "openhwfoundation/cv32e40p"
+repo_id = "repo_03"
+split = "test"
+eda_stage = "stage3_sta_cdc"
+eda_stage_name = "Stage 3: Static Timing (STA) & CDC/RDC Closure"
+problem_type = "PT4_GateLevel_Security_CDC"
+problem_type_label = "Gate-Level Equivalence, Security & CDC/RDC"
+primary_domain = "low_power"
+domains = ["clocking", "low_power", "rtl_integration", "sdc_sta"]
+public_rtl_files = 6
+public_rtl_loc = 1158
+editable_files_count = 3
+editable_loc = 233
+
+[agent]
+timeout_sec = 5400
+
+[environment]
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+workdir = "/workspace"
+allow_internet = false
+cpus = 4
+memory_mb = 16384
+
+[environment.variables]
+OMP_NUM_THREADS = "1"
+OPENBLAS_NUM_THREADS = "1"
+MKL_NUM_THREADS = "1"
+MAKEFLAGS = "-j1"
+SILICONBENCH_TOOLS = "/opt/siliconbench/tools"
+SILICONBENCH_NANGATE45 = "/opt/siliconbench/pdk/Nangate45"
+
+[verifier]
+environment_mode = "separate"
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+timeout_sec = 1200
+entrypoint = "/tests/test.sh"
+reward_file = "/logs/verifier/reward.txt"
+reward_json = "/logs/verifier/reward.json"
+
+[verifier.environment]
+allow_internet = false
+
+[siliconbench]
+allowed_edits = ["code/cv32e40p_int_controller.sv", "code/cv32e40p_sleep_unit.sv", "constraints.json"]
+pdk_id = "nangate45_45nm_shared"
+pdk_name = "Nangate45 45nm Open Cell Library (Shared Base Image)"
+pdk_customized = false
+accepts_seed = true
+grading_seeds = [1, 2]

@@ -1,0 +1,104 @@
+{
+  "case_id": "case_20011",
+  "task_id": "case_20011",
+  "version": 1,
+  "title": "Fix Sv32 PTW Address Drift, Superpage Alignment, SFENCE Race, and In-Order Faulting in biRISC-V MMU",
+  "repo_id": "repo_44",
+  "repository": "ultraembedded/biriscv",
+  "topic": "sv32_mmu_ptw_superpage_sfence_ordering",
+  "family": "functional",
+  "editable_files": [
+    "code/biriscv_mmu.v"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_20011",
+    "version": 1,
+    "frozen_utc": "2026-11-11T20:04:46.705064+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/biriscv_mmu.v"
+    ],
+    "public_hashes": {
+      "BUILD.md": "fb5b823ca02c112c8c9720efe68719a671e81418535b493fbddc7877690ac4bd",
+      "code/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "code/biriscv_csr.v": "02a5eb4a1274493ba3aaf029717e09ca1f75a3af06c78941e5faad2d74427976",
+      "code/biriscv_defs.v": "dcfb61c19a3d12cd7e1fb419dcce2bac0a815c21f293593c033efd8b3d225292",
+      "code/biriscv_fetch.v": "bfe0afa48a744da203924e4776e227a0a9e07af839e0a24f45312aad6dfe47af",
+      "code/biriscv_lsu.v": "3c579674a0851335406b2bc1089eeea4956263c7b2550760b59870c19de853dd",
+      "code/biriscv_mmu.v": "d6de4ba3ee65db0d80146d85175f121524c099e636ade59cf58bb67469282c26",
+      "issue.md": "28074e4fe9ead0317aac645af3134a60218ffee36228229bdfc32715474bccb8"
+    },
+    "gold_hashes": {
+      "code/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "code/biriscv_csr.v": "02a5eb4a1274493ba3aaf029717e09ca1f75a3af06c78941e5faad2d74427976",
+      "code/biriscv_defs.v": "dcfb61c19a3d12cd7e1fb419dcce2bac0a815c21f293593c033efd8b3d225292",
+      "code/biriscv_fetch.v": "bfe0afa48a744da203924e4776e227a0a9e07af839e0a24f45312aad6dfe47af",
+      "code/biriscv_lsu.v": "3c579674a0851335406b2bc1089eeea4956263c7b2550760b59870c19de853dd",
+      "code/biriscv_mmu.v": "b863db88fd584326c8d730f1f8610f1aab8527421b9c23bcda0219c02adc3024"
+    },
+    "grader_hashes": {
+      "run.py": "8e560e364d9290716fb8925e81c7ddcc70e664686221384335bf46a8bbc8c738"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 2,
+      "wrong_fix_fail_runs": 4,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 10,
+      "mutant_total": 10
+    }
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+  "problem_type_label": "Architectural & Protocol Bug Repair",
+  "primary_domain": "Core_RISCV_Processors",
+  "multi_domains": [
+    "Core_RISCV_Processors"
+  ],
+  "pdk_profile": {
+    "pdk_id": "rtl_dual_sim_standard",
+    "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+    "location": "Unified base image (/opt/siliconbench/tools)",
+    "customized": false,
+    "notes": "Pure RTL/protocol/synthesis check without external PDK Liberty files."
+  },
+  "public_hashes": {
+    "BUILD.md": "fb5b823ca02c112c8c9720efe68719a671e81418535b493fbddc7877690ac4bd",
+    "code/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "code/biriscv_csr.v": "02a5eb4a1274493ba3aaf029717e09ca1f75a3af06c78941e5faad2d74427976",
+    "code/biriscv_defs.v": "dcfb61c19a3d12cd7e1fb419dcce2bac0a815c21f293593c033efd8b3d225292",
+    "code/biriscv_fetch.v": "bfe0afa48a744da203924e4776e227a0a9e07af839e0a24f45312aad6dfe47af",
+    "code/biriscv_lsu.v": "3c579674a0851335406b2bc1089eeea4956263c7b2550760b59870c19de853dd",
+    "code/biriscv_mmu.v": "d6de4ba3ee65db0d80146d85175f121524c099e636ade59cf58bb67469282c26",
+    "issue.md": "28074e4fe9ead0317aac645af3134a60218ffee36228229bdfc32715474bccb8"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 2,
+    "wrong_fix_fail_runs": 4,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 10,
+    "mutant_total": 10
+  }
+}

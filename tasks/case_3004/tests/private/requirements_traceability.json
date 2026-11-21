@@ -1,0 +1,55 @@
+{
+  "case_id": "case_3004",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "public_section": "issue.md#1",
+      "description": "Preserve FIFO head instruction across flush_cnt_q > 0, suppress same-cycle wrong-path FIFO push on hwlp_jump_i && !fifo_empty_i, clear stale delayed flush on hwlp_flush_resp, update trans_addr_o on hwlp_jump_i in BRANCH_WAIT, and count only non-flushed outstanding requests (cnt_q - flush_cnt_q) in FIFO capacity check.",
+      "verified_by": "tb.sv Phase 1, Phase 2, Phase 3",
+      "wrong_fix_or_mutant_caught": [
+        "baseline",
+        "wrong_fix_1_fifo_suppressed_by_flush_cnt",
+        "wrong_fix_2_same_cycle_wrong_resp_pushed",
+        "mutant_01_active_cnt_ignores_flush_cnt",
+        "mutant_02_branch_wait_ignores_hwlp_jump",
+        "mutant_03_stale_delayed_flush_not_cleared",
+        "mutant_04_fifo_pop_on_branch"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "public_section": "issue.md#2",
+      "description": "Update pc_n and next_state (ALIGNED32 vs BRANCH_MISALIGNED based on target[1]) across all instruction-advancing states (ALIGNED32 32b/16b, MISALIGNED32 32b/16b, MISALIGNED16 32b/16b, BRANCH_MISALIGNED 16b) when hwlp_update_pc_i || hwlp_update_pc_q.",
+      "verified_by": "tb.sv Phase 4A, Phase 4B, Phase 4C",
+      "wrong_fix_or_mutant_caught": [
+        "wrong_fix_3_aligner_hwlp_only_aligned32",
+        "mutant_05_aligner_hwlp_ignores_target_bit1",
+        "mutant_06_aligner_hwlp_missing_misaligned32",
+        "mutant_07_aligner_hwlp_missing_misaligned16"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "public_section": "issue.md#3",
+      "description": "Propagate OBI instruction errors through prefetch_buffer/fifo to aligner and if_stage, freeze speculative requests after a non-flushed error until branch_i/hwlp_jump_i, attribute errors to the exact instruction across spanning/compressed states, transition aligner to WAIT_VALID_BRANCH on error, and mask illegal_c_insn_id_o on fetch_failed.",
+      "verified_by": "tb.sv Phase 5A, Phase 5B, Phase 5C, Phase 5D, Phase 6",
+      "wrong_fix_or_mutant_caught": [
+        "wrong_fix_4_no_error_propagation_or_freeze",
+        "mutant_08_no_err_freeze_in_prefetch",
+        "mutant_09_flushed_err_freezes_prefetch",
+        "mutant_10_misaligned32_16b_corrupted_by_next_err",
+        "mutant_11_misaligned16_buffered_err_lost",
+        "mutant_12_illegal_c_insn_not_masked_on_err"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "public_section": "issue.md#4",
+      "description": "Synthesize latch-free under Yosys/Slang and meet Nangate45 area <= 3850.0 um^2 and OpenSTA WNS >= 0.00 ns, WHS >= 0.00 ns at 1.50 ns clock.",
+      "verified_by": "private/grader/run.py synthesis, area, and timing stages",
+      "wrong_fix_or_mutant_caught": [
+        "wrong_fix_5_shared_adder_timing_violation"
+      ]
+    }
+  ]
+}

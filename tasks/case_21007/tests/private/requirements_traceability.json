@@ -1,0 +1,43 @@
+{
+  "case_id": "case_21007",
+  "obligations": [
+    {
+      "id": "REQ-QOS-PRIO-AND-PER-LEVEL-RR",
+      "behavior": "Arbitrate contending AR and AW/W requests per master output interface by highest effective 4-bit QoS with independent per-QoS-level round-robin tie-breaking not reset by higher-QoS grants, forward unmodified s_axi_*qos to m_axi_*qos, forward M_*_REG_TYPE in axi_crossbar, and preserve AW/W alignment and AXI4 handshake stability.",
+      "public_source": "public/issue.md item 1",
+      "verified_by": [
+        "private/tests/tb.sv (test_qos_ordering, test_per_level_rr_fairness, test_mid_stall_aw_w_alignment, continuous AXI4 stability monitor)",
+        "wf2_shared_rr_mask_starvation",
+        "m01_invert_qos_cmp",
+        "m02_corrupt_forwarded_arqos",
+        "m03_shared_rr_mask_wipe",
+        "m09_unblock_arb_preemption"
+      ]
+    },
+    {
+      "id": "REQ-STARVATION-BOUNDED-AGEING",
+      "behavior": "Disable ageing when AGEING_LIMIT == 0; when AGEING_LIMIT > 0, promote a pending ungranted contender on a master output interface to effective QoS 4'hF after AGEING_LIMIT grants on that interface go to other ports, preserving count across multi-beat W bursts.",
+      "public_source": "public/issue.md item 2",
+      "verified_by": [
+        "private/tests/tb.sv (test_ageing_promotion 3A/3B/3C)",
+        "wf1_w_burst_ageing_reset",
+        "m04_disable_wr_ageing",
+        "m05_disable_rd_ageing",
+        "m06_ignore_ageing_zero_guard"
+      ]
+    },
+    {
+      "id": "REQ-RESERVE-ADMISSION-AND-DECERR",
+      "behavior": "Pause normal-QoS (< HIGH_QOS_MIN) slave admission when effective in-flight count >= S_ACCEPT - QOS_RESERVE while admitting high-QoS (>= HIGH_QOS_MIN) up to S_ACCEPT, and track DECERR transactions in in-flight counters and S_THREADS without underflow or same-ID reordering.",
+      "public_source": "public/issue.md item 3",
+      "verified_by": [
+        "private/tests/tb.sv (test_qos_reserve_admission, test_decerr_and_same_id_ordering, test_random_stress)",
+        "wf3_same_cycle_completion_reserve_leak",
+        "wf4_decerr_underflow_and_id_bypass",
+        "m07_strict_gt_high_qos_min",
+        "m08_same_cycle_cpl_bypass_reserve",
+        "m10_drop_decerr_thread_tracking"
+      ]
+    }
+  ]
+}

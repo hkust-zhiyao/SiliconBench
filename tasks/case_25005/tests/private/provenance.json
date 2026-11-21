@@ -1,0 +1,38 @@
+{
+  "case_id": "case_25005",
+  "repo_id": "repo_50",
+  "origin": "https://github.com/chipsalliance/caliptra-rtl",
+  "commit": "a2192d99327a94ade30929315a94fe28bba598df",
+  "archive_sha256": "ed4b2037d16be0ff8f31ba350d73c60084b191c453a93b50c5191e67e5245384",
+  "license": "Apache-2.0; see public/code/LICENSE and source headers",
+  "native_sources": [
+    "src/hmac/rtl/hmac.sv",
+    "src/hmac/rtl/hmac_ctrl.sv",
+    "src/hmac/rtl/hmac_core.sv",
+    "src/hmac/rtl/hmac_param_pkg.sv",
+    "src/hmac/rtl/hmac_reg_pkg.sv",
+    "src/hmac/rtl/hmac_reg.sv",
+    "src/hmac_drbg/rtl/hmac_drbg.sv",
+    "src/sha512_masked/rtl/sha512_masked_core.sv",
+    "src/sha512_masked/rtl/sha512_masked_w_mem.sv",
+    "src/sha512_masked/rtl/sha512_masked_defines_pkg.sv",
+    "src/sha512_masked/rtl/sha512_h_constants.v",
+    "src/sha512_masked/rtl/sha512_k_constants.v",
+    "src/keyvault/rtl/kv_defines_pkg.sv",
+    "src/keyvault/rtl/kv_fsm.sv",
+    "src/keyvault/rtl/kv_read_client.sv",
+    "src/keyvault/rtl/kv_read_rule_check.sv",
+    "src/keyvault/rtl/kv_write_client.sv",
+    "src/keyvault/rtl/kv_write_rule_check.sv",
+    "src/libs/rtl/ahb_defines_pkg.sv",
+    "src/libs/rtl/ahb_slv_sif.sv"
+  ],
+  "editable_files": [
+    "code/hmac.sv",
+    "code/hmac_ctrl.sv",
+    "code/hmac_drbg.sv"
+  ],
+  "qualification": "upstream/repo_50",
+  "build_scope": "Full Caliptra HMAC-384/512 AHB-Lite + KeyVault controller hierarchy (hmac_ctrl -> ahb_slv_sif + hmac -> hmac_reg + kv_read_client + kv_write_client + hmac_core -> sha512_masked_core) and SP 800-90A P-384 hmac_drbg hierarchy.",
+  "tool": "Verilator 5.038 + Yosys 0.70 with Slang frontend (-m slang)"
+}

@@ -1,0 +1,16 @@
+{
+  "obligations": [
+    {
+      "obligation": "Advance sram_write_ptr_q on immediate grant in mbx_empty in mbx_imbx",
+      "source": "public/issue.md"
+    },
+    {
+      "obligation": "Zeroize hostif_ombx_object_size_o on hostif_control_abort_clear_i in mbx_ombx and gate ombx_sram_read_resp_vld_o on any_outstanding_reqs in mbx_sramrwarb",
+      "source": "public/issue.md"
+    },
+    {
+      "obligation": "Achieve Nangate45 mapped area <= 1950.0 um^2 and OpenROAD setup/hold slack >= 0.0 ns at 1.45 ns clock period",
+      "source": "public/issue.md"
+    }
+  ]
+}

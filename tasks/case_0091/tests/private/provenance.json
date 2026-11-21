@@ -1,0 +1,51 @@
+{
+  "case_id": "case_0091",
+  "repo_id": "repo_31",
+  "origin": "https://github.com/pulp-platform/neureka",
+  "commit": "b2a04aaee3fde1936f75e7395cbb2836ef2b18d9",
+  "license": "SHL-0.51 (Solderpad Hardware License 0.51 in public/code/LICENSE; Nangate45 license in public/lib/LICENSE.Nangate45)",
+  "qualification": "upstream/repo_31",
+  "upstream_files": [
+    "code/rtl/hwpe_stream_package.sv",
+    "code/rtl/hci_package.sv",
+    "code/rtl/neureka_package.sv",
+    "code/rtl/neureka_normquant_multiplier.sv",
+    "code/rtl/neureka_normquant_shifter.sv",
+    "code/rtl/neureka_normquant.sv",
+    "code/README.md",
+    "code/LICENSE"
+  ],
+  "scope": "Native upstream neureka_normquant.sv, neureka_normquant_shifter.sv, neureka_normquant_multiplier.sv, and packages. Public baseline is unmodified upstream RTL.",
+  "measured_qor": {
+    "wrong_fix_1_preshift_rounding_adder": {
+      "shifter_area_um2": 1302.07,
+      "normquant_area_um2": 6034.742,
+      "worst_setup_slack_ns_at_1p75ns": -1.18,
+      "worst_hold_slack_ns": 0.07
+    },
+    "wrong_fix_2_48bit_postshift_adder": {
+      "shifter_area_um2": 1131.564,
+      "normquant_area_um2": 5347.664,
+      "worst_setup_slack_ns_at_1p75ns": -0.79,
+      "worst_hold_slack_ns": 0.07
+    },
+    "gold_postshift_32inc_shared_pair": {
+      "shifter_area_um2": 892.43,
+      "normquant_area_um2": 4550.728,
+      "worst_setup_slack_ns_at_1p75ns": 0.12,
+      "worst_hold_slack_ns": 0.07
+    },
+    "alternate_gold_postshift_4bit_cla_shared_pair": {
+      "shifter_area_um2": 881.258,
+      "normquant_area_um2": 4552.324,
+      "worst_setup_slack_ns_at_1p75ns": 0.04,
+      "worst_hold_slack_ns": 0.07
+    }
+  },
+  "tools": {
+    "simulation": "Verilator 5.053 (--binary --timing)",
+    "synthesis": "Yosys 0.70+286 with Slang frontend and ABC technology mapping to NangateOpenCellLibrary_typical.lib",
+    "sta": "OpenROAD 26Q2 static timing analysis at 1.75 ns clock period, 0.25 ns I/O delays, 5.0 fF output load"
+  },
+  "limitations": "Cycle-accurate simulation across 600 directed and randomized multi-mode vectors, not unbounded formal equivalence. Nangate45 mapped standard-cell area and OpenSTA static timing, not detailed routing or foundry signoff."
+}

@@ -1,0 +1,45 @@
+{
+  "case_id": "case_21005",
+  "obligations": [
+    {
+      "id": "REQ-TDMA-GE-BOUNDARY-AND-1P5NS-STA",
+      "behavior": "Trigger TDMA schedule_start, timeslot_start, and timeslot_end on inclusive >= PTP (seconds, nanoseconds) boundaries with decimal 10^9 ns rollover within <=3 cycles in STATE_WAIT, and close Nangate45 OpenSTA at clk=1.50ns (WNS/TNS/hold >= 0.00ns, area <= 4500 um^2).",
+      "public_source": "public/issue.md item 1",
+      "verified_by": [
+        "private/tests/tb.sv (Test 1)",
+        "private/grader/run.py (Yosys + OpenSTA)",
+        "wf1_tdma_strict_gt_boundary_and_timing_fail",
+        "m01_tdma_strict_gt_ns_cmp",
+        "m02_tdma_wrong_ns_rollover_modulus",
+        "m03_tdma_missing_timeslot_index_inc"
+      ]
+    },
+    {
+      "id": "REQ-CTRL-TDMA-EVENT-RETENTION-AND-AXIL-PIPE",
+      "behavior": "Retain tdma_timeslot_start and tdma_timeslot_end arriving during active start/stop bursts or inconsistent rescans without dropping transitions, and propagate AXI4-Lite reads cleanly across PIPELINE>=2 under s_axil_rready stalls.",
+      "public_source": "public/issue.md item 2",
+      "verified_by": [
+        "private/tests/tb.sv (Test 2, Test 3)",
+        "wf2_ctrl_drop_overlapping_timeslot_start",
+        "wf3_ctrl_broken_axil_deep_read_pipeline",
+        "m04_ctrl_drop_stop_during_stop_drain",
+        "m05_ctrl_ignore_inconsistent_rescan",
+        "m06_ctrl_wrong_axil_segment_shift"
+      ]
+    },
+    {
+      "id": "REQ-RR-OP-COMPLETE-GATING-AND-ASIC-GL-PARITY",
+      "behavior": "Reschedule queues on TX status completion iff queue enabled and permitted by global_enable/sched_enable, and initialize/reset all control, pipeline, and queue_ram fields for Zero-X ASIC gate-level parity.",
+      "public_source": "public/issue.md item 3",
+      "verified_by": [
+        "private/tests/tb.sv (Test 4)",
+        "private/tests/tb_gl.sv",
+        "wf4_rr_reschedule_disabled_and_half_init_xprop",
+        "m07_rr_complete_ignore_enabled_bit",
+        "m08_rr_complete_ignore_global_enable",
+        "m09_rr_doorbell_ignore_sched_ctrl",
+        "m10_rr_corrupt_active_queue_count"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "case_id": "case_23013",
+  "repo_id": "repo_37",
+  "origin": "https://github.com/vortexgpgpu/vortex",
+  "commit": "90a626217597099e2667b1bf3395c70b1965c1e",
+  "archive_sha256": "afb7869c698c7291de07249f4609a51107b3d0278fd11a19838735b0e4318af5",
+  "license": "Apache License 2.0; see public/code/LICENSE",
+  "native_sources": [
+    "hw/rtl/mem/VX_local_mem.sv",
+    "hw/rtl/mem/VX_lmem_switch.sv",
+    "hw/rtl/core/VX_lsu_adapter.sv",
+    "hw/rtl/mem/VX_amo_unit.sv",
+    "hw/rtl/mem/VX_amo_alu.sv"
+  ],
+  "editable_files": [
+    "code/VX_lmem_switch.sv",
+    "code/VX_local_mem.sv",
+    "plan/macro_placement.json",
+    "constraints/lmem_subsys.sdc"
+  ],
+  "qualification": "upstream/repo_37",
+  "build_scope": "Vortex 8-bank 64-bit SIMT Shared Local Memory subsystem verified via Verilator 5.038 RTL simulation plus Yosys+slang synthesis and OpenROAD CTS/GRT/STA physical signoff on IHP SG13G2 130nm."
+}

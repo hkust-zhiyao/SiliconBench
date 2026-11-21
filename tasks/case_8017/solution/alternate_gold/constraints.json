@@ -1,0 +1,14 @@
+{
+  "max_delays": [
+    {
+      "from": ["pmu_in[0]", "pmu_in[1]", "pmu_in[2]", "pmu_in[3]", "pmu_in[4]", "pmu_in[5]", "pmu_in[6]", "pmu_in[7]"],
+      "to": ["pmu_out[0]", "pmu_out[1]", "pmu_out[2]", "pmu_out[3]", "pmu_out[4]", "pmu_out[5]", "pmu_out[6]", "pmu_out[7]"],
+      "ns": 9.25
+    },
+    {
+      "from": ["fir_in[0]", "fir_in[1]", "fir_in[2]", "fir_in[3]", "fir_in[4]", "fir_in[5]", "fir_in[6]", "fir_in[7]"],
+      "to": ["fir_out[0]", "fir_out[1]", "fir_out[2]", "fir_out[3]", "fir_out[4]", "fir_out[5]", "fir_out[6]", "fir_out[7]"],
+      "ns": 10.25
+    }
+  ]
+}

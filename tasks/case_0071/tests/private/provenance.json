@@ -1,0 +1,18 @@
+{
+  "case_id": "case_0071",
+  "repo_id": "repo_08",
+  "upstream": "https://github.com/chipsalliance/cores-veer-el2",
+  "commit": "45c9b425f4c666c095a17e21fce4d3b0721cbfa0",
+  "archive_sha256": "801512d5be74fae52ce9c3fd3c01e29c3df1d1b810a5d678e4abcc5806c5c724",
+  "license": "Apache-2.0",
+  "rtl": [
+    "design/ifu/el2_ifu_ifc_ctl.sv",
+    "design/ifu/el2_ifu_aln_ctl.sv",
+    "design/ifu/el2_ifu_compress_ctl.sv",
+    "design/dec/el2_dec_ib_ctl.sv",
+    "design/include/el2_def.sv",
+    "design/lib/beh_lib.sv",
+    "design/lib/el2_lib.sv"
+  ],
+  "tools": "Verilator 5.038 + Yosys/Slang (OSS CAD Suite) + OpenROAD (Nangate45)"
+}

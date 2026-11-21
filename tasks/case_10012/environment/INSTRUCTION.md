@@ -1,0 +1,70 @@
+# case_10012: OpenPiton 8-Port Chipset I/O Crossbar Route Decoding, 8-Bit Payload Framing, Output Arbitration Fairness, and Timing Closure
+
+> **SiliconBench Standardized Harbor Task**
+> - **Repository**: `princetonuniversity/openpiton` (`repo_10`)
+> - **Engineering Problem Type**: `Architectural & Protocol Bug Repair` (`PT1_Arch_Protocol_Bug_Repair`)
+> - **EDA Evaluation Stage**: `Stage 3: Static Timing (STA) & CDC/RDC Closure` (`stage3_sta_cdc`)
+> - **PDK / Environment Profile**: `Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC`
+> - **Editable Files (`allowed_edits`)**: `code/rtl/io_xbar_input_route_request_calc.v`, `code/rtl/io_xbar_input_control.v`, `code/rtl/io_xbar_output_control.v`
+
+---
+
+## Problem Specification
+
+# OpenPiton 8-Port Chipset I/O Crossbar Route Decoding, 8-Bit Payload Framing, Output Arbitration Fairness, and Timing Closure
+
+In the OpenPiton 8-port chipset I/O crossbar router (`code/rtl/io_xbar_output_top.v` and `code/rtl/io_xbar_input_control.v`), update `code/rtl/io_xbar_input_route_request_calc.v`, `code/rtl/io_xbar_input_control.v`, and `code/rtl/io_xbar_output_control.v` so that 8-port crossbar route decoding, 8-bit multi-flit packet framing, work-conserving round-robin output arbitration across all 8 ports, reset initialization, and static timing closure pass verification:
+
+- **Eight-port crossbar route decoding and off-chip/unmapped fallback (`io_xbar_route_request_calc`)**: When `header_in` is high, compare `abs_chip_id` against `my_chip_id_in` (`off_chip = (abs_chip_id != my_chip_id_in)`). For on-chip device ports `k in 1..7`, assert `route_req_k` when `header_in & (!off_chip) & (abs_x == 8'd<k>)`. For port `0` (the default/off-chip gateway port), assert `route_req_0` when `header_in & (off_chip | (abs_x == 8'd0) | (abs_x >= 8'd8))` so every valid header asserts exactly one route request (`route_req_0..7` is one-hot when `header_in == 1`), with `default_ready_0..7` matching `route_req_0..7`.
+- **Full 8-bit payload length tracking and synchronous reset (`io_xbar_input_control`)**: Track all `PAYLOAD_LEN` (`8`) bits of `length` across reset and packet transfers (`0` to `255` payload flits following the header), asserting `tail_out` on single-flit headers (`length == 8'd0`) and on the final payload beat of multi-flit packets, and holding `tail_out` stable across upstream NIB bubbles (`valid_in == 1'b0`) or downstream stalls (`thanks_0..7 == 8'b0`) until that final beat is granted.
+- **Work-conserving 8-port round-robin output arbitration and starvation bound (`io_xbar_output_control`)**: On `reset`, initialize `current_route_f <= 3'd0`, `planned_f <= 1'b0`, and `ec_wants_to_send_but_cannot <= 1'b0`, and drive `thanks_0..7` and `tail_current_route` to `1'b0` (never `1'bx`). When `planned_f` is high, hold `current_route_f` locked across cycles until the active packet's tail flit is transferred (`valid_out && tail_current_route`). In the 8-port rotating priority encoder (`0 -> 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 0`), include the self-fallback branch on every route (`0` through `7`) so a requester that just completed a packet is immediately re-selected (`planned_temp = 1'b1`) if no other port requests, and preserve the last-completed route across idle cycles (`!planned_f`) so any continuously requesting input port is granted after at most `7` packets from other inputs even when contenders request across intermittent idle gaps.
+
+Under the Nangate45 synthesis and OpenROAD placement-estimated STA flows in `BUILD.md`:
+1. `io_xbar_input_control` must map to **`<= 195.0 um^2`** and achieve setup and hold slack **`>= 0.0 ns`** at a **`0.85 ns`** clock (`0.15 ns` I/O delays, `5.0 fF` load).
+2. `io_xbar_output_top` must map to **`<= 720.0 um^2`** and achieve setup and hold slack **`>= 0.0 ns`** at a **`0.85 ns`** clock (`0.15 ns` I/O delays, `5.0 fF` load).
+
+Edit only `code/rtl/io_xbar_input_route_request_calc.v`, `code/rtl/io_xbar_input_control.v`, and `code/rtl/io_xbar_output_control.v`.
+
+---
+
+## Build, Simulation, and EDA Verification Instructions
+
+# Build, Simulation, and Synthesis/STA Guide
+
+## 1. Editable Files
+Only the following files are collected and graded:
+- `code/rtl/io_xbar_input_route_request_calc.v`
+- `code/rtl/io_xbar_input_control.v`
+- `code/rtl/io_xbar_output_control.v`
+
+All other files in `code/` (`code/rtl/io_xbar_output_top.v`, `code/rtl/io_xbar_output_datapath.v`, `code/rtl/one_of_eight.v`, `code/rtl/space_avail_top.v`, `code/rtl/bus_compare_equal.v`, `code/rtl/flip_bus.v`, `code/rtl/net_dff.v`, `code/include/*`, `code/LICENSE`, and `lib/*`) are read-only and must remain unmodified.
+
+## 2. Functional Simulation (`Icarus Verilog`)
+```bash
+iverilog -g2012 -s tb -I code/include -o sim.vvp \
+  code/rtl/bus_compare_equal.v code/rtl/flip_bus.v code/rtl/net_dff.v \
+  code/rtl/one_of_eight.v code/rtl/space_avail_top.v \
+  code/rtl/io_xbar_input_route_request_calc.v code/rtl/io_xbar_input_control.v \
+  code/rtl/io_xbar_output_control.v code/rtl/io_xbar_output_datapath.v \
+  code/rtl/io_xbar_output_top.v <your_tb.sv>
+vvp sim.vvp
+```
+
+## 3. Synthesis and Static Timing Analysis (`Yosys/Slang` + `OpenROAD`)
+1. `io_xbar_input_control` (elaborated with `io_xbar_input_route_request_calc.v`):
+   - Synthesized with `yosys -m slang` (`synth -top io_xbar_input_control; opt; dfflibmap -liberty lib/NangateOpenCellLibrary_typical.lib; abc -liberty lib/NangateOpenCellLibrary_typical.lib; clean`) -> mapped area **`<= 195.0 um^2`**;
+   - Evaluated in OpenROAD (`60x60 um` die, `6..54 um` core, `0.85 ns` clock period on `clk`, `0.15 ns` I/O delays, `5.0 fF` load, `0.50` density) -> setup and hold slack **`>= 0.0 ns`**.
+2. `io_xbar_output_top` (elaborated with `one_of_eight.v`, `space_avail_top.v`, `io_xbar_output_datapath.v`, `io_xbar_output_control.v`, `io_xbar_output_top.v`):
+   - Synthesized with `yosys -m slang` -> mapped area **`<= 720.0 um^2`**;
+   - Evaluated in OpenROAD (`90x90 um` die, `9..81 um` core, `0.85 ns` clock period on `clk`, `0.15 ns` I/O delays, `5.0 fF` load, `0.50` density, `repair_design`, `detailed_placement`) -> setup and hold slack **`>= 0.0 ns`**.
+
+---
+
+## Submission Contract (`allowed_edits`)
+
+You must modify **only** the following allowlisted file(s) in your workspace:
+- `code/rtl/io_xbar_input_route_request_calc.v`
+- `code/rtl/io_xbar_input_control.v`
+- `code/rtl/io_xbar_output_control.v`
+
+All other files in the workspace are read-only reference context and must remain unmodified.

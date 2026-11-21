@@ -1,0 +1,118 @@
+{
+  "case_id": "case_21005",
+  "task_id": "case_21005",
+  "version": 2,
+  "title": "TSN/TDMA Transmit Scheduler Boundary Precision, Pipeline Hazard Control & Nangate45 Timing Closure",
+  "repo_id": "repo_39",
+  "repository": "corundum/corundum",
+  "topic": "interconnect_nic_dma_protocol",
+  "family": "tdma_packet_scheduling",
+  "flow_scenario": "S4_interconnect_nic_dma_protocol",
+  "coupling_mode": "natural_cross_stage",
+  "editable_files": [
+    "code/tdma_scheduler.v",
+    "code/tx_scheduler_ctrl_tdma.v",
+    "code/tx_scheduler_rr.v"
+  ],
+  "grading": {
+    "eda_class": "sta",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_21005",
+    "version": 2,
+    "frozen_utc": "2026-11-12T09:56:09.273586+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/tdma_scheduler.v",
+      "code/tx_scheduler_ctrl_tdma.v",
+      "code/tx_scheduler_rr.v"
+    ],
+    "public_hashes": {
+      "BUILD.md": "aaedcbdc251da9acfc46d74d15355b9d0bd4cdd49c9127e76ff999a61a928e74",
+      "code/LICENSE": "e718ce52d815d36c0576b9f759001200731db9b16775286ffc1b66bbf97eb1b6",
+      "code/axis_fifo.v": "7d1ea178349654c92f2ac4823620004abe067b37f9fbd09fcff97fe00db6e19c",
+      "code/priority_encoder.v": "df28220d95b47df349a72803a9751aad331eb8e1435416e8686d00572a974dd5",
+      "code/tdma_scheduler.v": "474bbdfdc8c3c1ad147898a898cc0fcafc92672e9704d9b8470c1687a79228a2",
+      "code/tx_scheduler_ctrl_tdma.v": "93aab479ae0e9a61bf9ca218cdd6c0849be8413b23da963ab094f7c79cd32160",
+      "code/tx_scheduler_rr.v": "fdfe75f525e99f6c46290db58638fe0de17e248df9e9cb87c092d1a648e78765",
+      "issue.md": "f2b6f832abe7dec406788d897911676234998be782e59e2ff5b54e7104c90ffb",
+      "pdk/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+    },
+    "gold_hashes": {
+      "code/LICENSE": "e718ce52d815d36c0576b9f759001200731db9b16775286ffc1b66bbf97eb1b6",
+      "code/axis_fifo.v": "7d1ea178349654c92f2ac4823620004abe067b37f9fbd09fcff97fe00db6e19c",
+      "code/priority_encoder.v": "df28220d95b47df349a72803a9751aad331eb8e1435416e8686d00572a974dd5",
+      "code/tdma_scheduler.v": "29f2d60ea8a254a0318792d5711304d62fb4ccfea833f1bbc69d955e9a49a7af",
+      "code/tx_scheduler_ctrl_tdma.v": "c3f442c875cde61cf9afdeb221e6dfbc0df0956a9d781fb5e5db960bc54ed159",
+      "code/tx_scheduler_rr.v": "78fecd00254519450b16606e1552d3af2051946e2adaf3e840adb9dad0c407fa",
+      "pdk/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+    },
+    "grader_hashes": {
+      "run.py": "f316039e3560a43d5bb4546e439514802f153fd1d957f6904ec65aa4a1f37dda"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 2,
+      "wrong_fix_fail_runs": 4,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 10,
+      "mutant_total": 10
+    },
+    "test_hashes": {
+      "tb.sv": "c1a71c05c8d3cbbe9c2c4ea7f1bd319e5177e52151f19f8db4dfdc401db8dad1",
+      "tb_gl.sv": "602ebf19d837708db24d0dfc031e6bec12b344f7c49738a0c0be9ffc343574a2"
+    },
+    "grader_revalidated_utc": "2026-11-16T10:17:42.058352+00:00"
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT3_Timing_Area_PPA_Closure",
+  "problem_type_label": "High-Frequency Timing & Area Optimization",
+  "primary_domain": "HighSpeed_AXI_NIC_Cache_DMA",
+  "multi_domains": [
+    "HighSpeed_AXI_NIC_Cache_DMA"
+  ],
+  "pdk_profile": {
+    "pdk_id": "ihp_sg13g2_130nm_8sram",
+    "pdk_name": "IHP SG13G2 130nm Open PDK + RM_IHPSG13_1P Hard-SRAM Macros",
+    "location": "Task-bundled in environment/public/pdk/ and tests/private/pdk/",
+    "customized": true,
+    "notes": "Includes task-bundled IHP SG13G2 standard-cell LEF/Liberty and single-port hard-SRAM macro LEF/Liberty/Verilog models."
+  },
+  "public_hashes": {
+    "BUILD.md": "aaedcbdc251da9acfc46d74d15355b9d0bd4cdd49c9127e76ff999a61a928e74",
+    "code/LICENSE": "e718ce52d815d36c0576b9f759001200731db9b16775286ffc1b66bbf97eb1b6",
+    "code/axis_fifo.v": "7d1ea178349654c92f2ac4823620004abe067b37f9fbd09fcff97fe00db6e19c",
+    "code/priority_encoder.v": "df28220d95b47df349a72803a9751aad331eb8e1435416e8686d00572a974dd5",
+    "code/tdma_scheduler.v": "474bbdfdc8c3c1ad147898a898cc0fcafc92672e9704d9b8470c1687a79228a2",
+    "code/tx_scheduler_ctrl_tdma.v": "93aab479ae0e9a61bf9ca218cdd6c0849be8413b23da963ab094f7c79cd32160",
+    "code/tx_scheduler_rr.v": "fdfe75f525e99f6c46290db58638fe0de17e248df9e9cb87c092d1a648e78765",
+    "issue.md": "f2b6f832abe7dec406788d897911676234998be782e59e2ff5b54e7104c90ffb",
+    "pdk/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 2,
+    "wrong_fix_fail_runs": 4,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 10,
+    "mutant_total": 10
+  }
+}

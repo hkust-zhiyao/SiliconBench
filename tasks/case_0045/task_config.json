@@ -1,0 +1,119 @@
+{
+  "case_id": "case_0045",
+  "task_id": "case_0045",
+  "version": 1,
+  "title": "TCDM Variable-Latency Crossbar Stall Lock, Bounded Starvation Fairness, and Latch-Free Synthesis",
+  "repo_id": "repo_28",
+  "repository": "pulp-platform/cluster_interconnect",
+  "source_commit": "2967d8d17be0a6139229ca8d3d4956e182aec3de",
+  "license": "SHL-0.51",
+  "family": "functional",
+  "topic": "arbitration_stall_lock_and_bounded_fairness",
+  "editable_files": [
+    "code/ArbitrationTree.sv",
+    "code/priority_Flag_Req.sv"
+  ],
+  "editable": [
+    "code/ArbitrationTree.sv",
+    "code/priority_Flag_Req.sv"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 1,
+        "extra_args": []
+      },
+      {
+        "seed": 2,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_0045",
+    "version": 1,
+    "frozen_utc": "2026-11-03T15:54:28.234998+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/ArbitrationTree.sv",
+      "code/priority_Flag_Req.sv"
+    ],
+    "public_hashes": {
+      "BUILD.md": "c3da4dcd95e9ffe50dad8d378fbf79d28ae731bd1eeb7f5be082aab715922d59",
+      "LICENSE": "6527a46225891b976fa94f634f6ee0cd22e1c7129d6f11c5c98c997627625fc7",
+      "code/AddressDecoder_Resp.sv": "e98d6996b85d82bbfc47f1fc93dc1823efcc61e763aa023a32602e3453c0d6b3",
+      "code/ArbitrationTree.sv": "f771de823c3b24b1d0442bf784588b9b3c3e80ad07a44745d7be8281d87baf7c",
+      "code/FanInPrimitive_Req.sv": "dc986ea211c3b50fe037884d23221fe7db9af325cdfdc40e4c47fbd14a0c5b72",
+      "code/RequestBlock1CH.sv": "ac08ecd4df8234af90416878eaece48aa1666d60df5eadb84b6788a8efa0906b",
+      "code/TestAndSet.sv": "db029af50efd4e5ff2c9f6a63ffcb52f043c02d2127d653cf18bfaa0150e437b",
+      "code/parameters.v": "75d2d935fd26d053e5749880fe3bfe46dec50f57ca5432fefe64528e7c259cb8",
+      "code/priority_Flag_Req.sv": "8d61629f0c5e02006f6aaf9c89433c3fcafbb302964ccccf1625f4db17e99951",
+      "issue.md": "999369a2cfa6acc401d26afc24e499f5d314c7f23645076bc69170ba0a0873cc"
+    },
+    "gold_hashes": {
+      "code/ArbitrationTree.sv": "ba667aea4fab191e3e59338f30d8f7a306f8ab91e84d52d44b36591d55e64be1",
+      "code/priority_Flag_Req.sv": "7e7d18b989ae16a84a29fbee9bb2b527784e2f5f008fd91fdfb99d23539f2320"
+    },
+    "grader_hashes": {
+      "run.py": "0ab4b97cd2c04742e72cdf36ed6f3d9163b8e733bbdf646a2163821a8a0b1ff7"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 2,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 12,
+      "mutant_total": 12
+    },
+    "test_hashes": {
+      "tb.sv": "09c785345fc9a9cfc77b7c17e6c8d20825b96d25091fd5a66576fb26dc448e40"
+    },
+    "grader_revalidated_utc": "2026-11-16T10:17:42.058352+00:00"
+  },
+  "eda_stage": "stage2_synth_gate",
+  "eda_stage_name": "Stage 2: Logic Synthesis & Gate-Level Verification",
+  "eda_track": "stage2_synth_gate",
+  "eda_track_name": "Stage 2: Logic Synthesis & Gate-Level Verification",
+  "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+  "problem_type_label": "Architectural & Protocol Bug Repair",
+  "primary_domain": "rtl_semantics",
+  "multi_domains": [
+    "protocol_control",
+    "rtl_integration",
+    "rtl_semantics",
+    "synthesis_qor"
+  ],
+  "pdk_profile": {
+    "pdk_id": "rtl_dual_sim_standard",
+    "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+    "location": "Unified base image (/opt/siliconbench/tools)",
+    "customized": false,
+    "notes": "Pure RTL/protocol/synthesis check without external PDK Liberty files."
+  },
+  "public_hashes": {
+    "BUILD.md": "c3da4dcd95e9ffe50dad8d378fbf79d28ae731bd1eeb7f5be082aab715922d59",
+    "LICENSE": "6527a46225891b976fa94f634f6ee0cd22e1c7129d6f11c5c98c997627625fc7",
+    "code/AddressDecoder_Resp.sv": "e98d6996b85d82bbfc47f1fc93dc1823efcc61e763aa023a32602e3453c0d6b3",
+    "code/ArbitrationTree.sv": "f771de823c3b24b1d0442bf784588b9b3c3e80ad07a44745d7be8281d87baf7c",
+    "code/FanInPrimitive_Req.sv": "dc986ea211c3b50fe037884d23221fe7db9af325cdfdc40e4c47fbd14a0c5b72",
+    "code/RequestBlock1CH.sv": "ac08ecd4df8234af90416878eaece48aa1666d60df5eadb84b6788a8efa0906b",
+    "code/TestAndSet.sv": "db029af50efd4e5ff2c9f6a63ffcb52f043c02d2127d653cf18bfaa0150e437b",
+    "code/parameters.v": "75d2d935fd26d053e5749880fe3bfe46dec50f57ca5432fefe64528e7c259cb8",
+    "code/priority_Flag_Req.sv": "8d61629f0c5e02006f6aaf9c89433c3fcafbb302964ccccf1625f4db17e99951",
+    "issue.md": "999369a2cfa6acc401d26afc24e499f5d314c7f23645076bc69170ba0a0873cc"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 2,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 12,
+    "mutant_total": 12
+  }
+}

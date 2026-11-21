@@ -1,0 +1,23 @@
+{
+  "case_id": "case_21014",
+  "slot_id": "builder_02_smartnic_axi_fabric__S04",
+  "blueprint_id": "bp_s02_006",
+  "repo_id": "repo_39",
+  "origin": "https://github.com/corundum/corundum",
+  "commit": "1ca0151b97af85aa5dd306d74b6bcec65904d2ce",
+  "license": "BSD-2-Clause; see public/code/LICENSE",
+  "native_sources": [
+    "snapshot/fpga/lib/eth/lib/axis/rtl/axis_cobs_encode.v",
+    "snapshot/fpga/lib/eth/lib/axis/rtl/axis_cobs_decode.v",
+    "snapshot/fpga/lib/eth/lib/axis/rtl/axis_frame_length_adjust.v",
+    "snapshot/fpga/lib/eth/lib/axis/rtl/axis_fifo.v"
+  ],
+  "editable_files": [
+    "code/axis_cobs_encode.v",
+    "code/axis_cobs_decode.v",
+    "code/axis_frame_length_adjust.v"
+  ],
+  "qualification": "upstream/repo_39",
+  "build_scope": "AXI4-Stream COBS encoder/decoder and frame-length adjuster verified across Icarus Verilog 13.0, Verilator 5.038, Yosys 0.70+286 latch-free synthesis, and gate-level co-simulation.",
+  "tool": "Icarus Verilog 13.0 + Verilator 5.038 + Yosys 0.70+286"
+}

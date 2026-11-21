@@ -1,0 +1,23 @@
+{
+  "case_id": "case_6006",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "module": "ifu_bp_ctl",
+      "description": "4-entry RAS call push and ret pop target selection, fetch-group-crossing 4B branch target calculation, and br0 > br1 > mp BHT write priority.",
+      "verified_by": ["tb.sv:Phase_1A", "tb.sv:Phase_1B", "tb.sv:Phase_1C"]
+    },
+    {
+      "id": "REQ-2",
+      "module": "ifu_ifc_ctl & ifu_mem_ctl",
+      "description": "MRAC uncacheable 2-beat vs cacheable 8-beat AXI read burst, critical-word two-half assembly (ic_crit_wd_rdy), ICCM region out-of-range access fault, and single-bit ECC correction state machine (ECC_CORR).",
+      "verified_by": ["tb.sv:Phase_2", "tb.sv:Phase_3"]
+    },
+    {
+      "id": "REQ-3",
+      "module": "veer_ifu_bp_mem_top",
+      "description": "Latch-free synthesis <= 27,850.0 um^2 and WNS/WHS >= 0.00 ns at 3.65 ns clock.",
+      "verified_by": ["grader/run.py:synthesis", "grader/run.py:area", "grader/run.py:timing"]
+    }
+  ]
+}

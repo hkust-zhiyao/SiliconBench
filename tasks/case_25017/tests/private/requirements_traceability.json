@@ -1,0 +1,62 @@
+{
+  "case_id": "case_25017",
+  "obligations": [
+    {
+      "id": "REQ-ROCACHE-WINDOW-BYPASS",
+      "behavior": "Decode active [start_addr_i[r], end_addr_i[r]) windows and route only full-window unlocked BURST_INCR reads (single-beat or 64-bit) when enable_i=1 to the cache while bypassing writes and all other reads.",
+      "public_source": "public/issue.md Architectural & Coherence Contract item 1",
+      "verified_by": [
+        "private/tests/tb_ro_cache.sv",
+        "m01_cache_burst_fixed",
+        "m02_ar_start_only_window",
+        "m08_ignore_enable_pin"
+      ]
+    },
+    {
+      "id": "REQ-ROCACHE-SPLIT-AND-BACKPRESSURE",
+      "behavior": "Split cacheable INCR bursts across 32-byte lines with 32-byte-aligned 4-beat AXI refills and preserve slv_r_* data/id/last/user ordering under slv_r_ready_i backpressure.",
+      "public_source": "public/issue.md Architectural & Coherence Contract item 2",
+      "verified_by": [
+        "private/tests/tb_ro_cache.sv",
+        "m05_short_refill_ar_len",
+        "m06_unguarded_r_cnt_dec"
+      ]
+    },
+    {
+      "id": "REQ-ROCACHE-REFILL-ERR-CONTAINMENT",
+      "behavior": "Sticky-accumulate downstream AXI read errors across all 4 refill beats, return RESP_SLVERR (2'b10), and suppress SRAM line allocation on errored refills.",
+      "public_source": "public/issue.md Architectural & Coherence Contract item 3",
+      "verified_by": [
+        "private/tests/tb_ro_cache.sv",
+        "wf2_last_beat_only_refill_err",
+        "wf3_exokay_resp_mapping",
+        "m04_alloc_errored_line"
+      ]
+    },
+    {
+      "id": "REQ-ROCACHE-WRITE-INVAL-AND-FLUSH",
+      "behavior": "Invalidate all cache sets across both ways touched by overlapping AXI writes with proper read/refill ordering while preserving untouched sets, and drain/clear all sets on flush_valid_i/flush_ready_o.",
+      "public_source": "public/issue.md Architectural & Coherence Contract item 4",
+      "verified_by": [
+        "private/tests/tb_ro_cache.sv",
+        "wf1_no_write_invalidation",
+        "m03_no_flush_sweep",
+        "m07_single_set_write_inval"
+      ]
+    },
+    {
+      "id": "REQ-ROCACHE-SG13G2-PNR-SIGNOFF",
+      "behavior": "Synthesize zero-latch netlist preserving 10x RM_IHPSG13_1P_256x64_c2_bm_bist macros, place legally on 2600x1800um die, constrain clk_i <= 11.8ns, and pass OpenROAD PDN, GRT overflow <= 15, wirelength <= 2,900,000 um, and post-GRT setup/hold >= 0.0 ns.",
+      "public_source": "public/issue.md Physical Floorplan & Signoff Timing Targets",
+      "verified_by": [
+        "private/grader/run.py",
+        "wf4_pin_facing_channel_congestion",
+        "wf5_cross_corner_wirelength_congestion",
+        "m09_inferred_latch_lookup",
+        "m10_macro_halo_violation",
+        "m11_sdc_period_violation",
+        "m12_sdc_low_io_delay"
+      ]
+    }
+  ]
+}

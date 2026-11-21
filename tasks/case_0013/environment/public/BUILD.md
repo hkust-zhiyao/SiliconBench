@@ -1,0 +1,1 @@
+The editable source is `code/axi_dmac_reset_manager.v`; its `sync_bits` dependency is included unchanged from the same upstream HDL repository. Use a free Verilog simulator such as Icarus Verilog with SystemVerilog enabled, or Verilator.

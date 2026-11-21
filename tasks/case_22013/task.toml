@@ -1,0 +1,57 @@
+version = "1.0"
+
+[metadata]
+task_id = "case_22013"
+title = "Resolve Ara VLSU Unaligned 4KB/Max-Burst Splitting, Non-Zero vstart Lane Rotation, and Scatter/Gather Memory Ordering"
+repository = "pulp-platform/ara"
+repo_id = "repo_19"
+split = "test"
+eda_stage = "stage1_rtl_sim"
+eda_stage_name = "Stage 1: Frontend RTL Design & Functional Simulation"
+problem_type = "PT1_Arch_Protocol_Bug_Repair"
+problem_type_label = "Architectural & Protocol Bug Repair"
+primary_domain = "Vector_GPU_NPU_Accelerators"
+domains = ["Vector_GPU_NPU_Accelerators"]
+public_rtl_files = 34
+public_rtl_loc = 11227
+editable_files_count = 4
+editable_loc = 2751
+
+[agent]
+timeout_sec = 5400
+
+[environment]
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+workdir = "/workspace"
+allow_internet = false
+cpus = 4
+memory_mb = 16384
+
+[environment.variables]
+OMP_NUM_THREADS = "1"
+OPENBLAS_NUM_THREADS = "1"
+MKL_NUM_THREADS = "1"
+MAKEFLAGS = "-j1"
+SILICONBENCH_TOOLS = "/opt/siliconbench/tools"
+SILICONBENCH_NANGATE45 = "/opt/siliconbench/pdk/Nangate45"
+
+[verifier]
+environment_mode = "separate"
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+timeout_sec = 900
+entrypoint = "/tests/test.sh"
+reward_file = "/logs/verifier/reward.txt"
+reward_json = "/logs/verifier/reward.json"
+
+[verifier.environment]
+allow_internet = false
+
+[siliconbench]
+allowed_edits = ["code/vlsu.sv", "code/addrgen.sv", "code/vldu.sv", "code/vstu.sv"]
+pdk_id = "rtl_dual_sim_standard"
+pdk_name = "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang"
+pdk_customized = false
+accepts_seed = true
+grading_seeds = [101, 202]

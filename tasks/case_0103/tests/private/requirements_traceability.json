@@ -1,0 +1,29 @@
+{
+  "case_id": "case_0103",
+  "obligations": [
+    {
+      "id": "REQ-WBM2AXI-SUBWORD-AND-FLUSH",
+      "description": "Shift 32-bit write strobes and extract 32-bit read lanes on 64-bit AXI4 in wbm2axisp, lock read/write direction while npending > 0, and flush in-flight responses upon AXI SLVERR or premature i_wb_cyc drop.",
+      "public_source": "public/issue.md paragraph 1, public/BUILD.md section 2",
+      "enforced_by": "private/tests/tb.sv (Test 1a, 1b, 1c), killed by wf3_wbm_no_flush_on_cyc_drop, mutant_01, mutant_02, mutant_03, and mutant_04"
+    },
+    {
+      "id": "REQ-AXI2WBM-WRITE-ABORT-AND-ID",
+      "description": "Enforce single-ID in-flight ordering in aximwr2wbsp, drop o_wb_cyc/stb immediately on i_wb_err, drain remaining write beats, and return S_AXI_BRESP = 2'b10 with matching S_AXI_BID.",
+      "public_source": "public/issue.md paragraph 2, public/BUILD.md section 2",
+      "enforced_by": "private/tests/tb.sv (Test 2), killed by wf4_wr_no_err_bresp, mutant_05, mutant_06, and mutant_07"
+    },
+    {
+      "id": "REQ-AXI2WBM-READ-ABORT-AND-ID",
+      "description": "Enforce single-ID in-flight ordering in aximrd2wbsp, drop o_wb_cyc/stb immediately on i_wb_err, and synthesize S_AXI_RRESP = 2'b10 for all remaining beats of the faulted read burst with S_AXI_RLAST on the final beat.",
+      "public_source": "public/issue.md paragraph 2, public/BUILD.md section 2",
+      "enforced_by": "private/tests/tb.sv (Test 3), killed by wf5_rd_no_err_state_drain, mutant_08, mutant_09, and mutant_10"
+    },
+    {
+      "id": "REQ-NANGATE45-AREA-AND-OPENSTA",
+      "description": "Share active transaction IDs across in-flight beats to achieve Nangate45 area <= 6,750.0 um^2, worst setup slack >= 2.48 ns, and worst hold slack >= 0.00 ns on wb2axip_bridge_top.",
+      "public_source": "public/issue.md paragraph 2, public/BUILD.md sections 3-4",
+      "enforced_by": "private/grader/run.py stages 4-5, killed by wf1_unshared_id_fifos_area and wf2_slow_stall_chain_timing"
+    }
+  ]
+}

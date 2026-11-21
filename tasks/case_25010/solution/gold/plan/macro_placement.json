@@ -1,0 +1,40 @@
+{
+  "macros": [
+    {
+      "instance": "u_icache.i_lookup.g_sets[0].i_tag.gen_tag_macro.u_sram",
+      "x": 100.0,
+      "y": 180.0,
+      "orientation": "R180"
+    },
+    {
+      "instance": "u_icache.i_lookup.g_sets[0].i_data.gen_data_macros.u_sram_lo",
+      "x": 100.0,
+      "y": 740.0,
+      "orientation": "MY"
+    },
+    {
+      "instance": "u_icache.i_lookup.g_sets[0].i_data.gen_data_macros.u_sram_hi",
+      "x": 100.0,
+      "y": 1220.0,
+      "orientation": "MY"
+    },
+    {
+      "instance": "u_icache.i_lookup.g_sets[1].i_tag.gen_tag_macro.u_sram",
+      "x": 1465.0,
+      "y": 180.0,
+      "orientation": "MX"
+    },
+    {
+      "instance": "u_icache.i_lookup.g_sets[1].i_data.gen_data_macros.u_sram_lo",
+      "x": 1465.0,
+      "y": 740.0,
+      "orientation": "R0"
+    },
+    {
+      "instance": "u_icache.i_lookup.g_sets[1].i_data.gen_data_macros.u_sram_hi",
+      "x": 1465.0,
+      "y": 1220.0,
+      "orientation": "R0"
+    }
+  ]
+}

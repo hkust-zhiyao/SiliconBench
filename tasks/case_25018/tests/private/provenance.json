@@ -1,0 +1,30 @@
+{
+  "case_id": "case_25018",
+  "repo_id": "repo_50",
+  "origin": "https://github.com/chipsalliance/caliptra-rtl",
+  "commit": "a2192d99327a94ade30929315a94fe28bba598df",
+  "archive_sha256": "ed4b2037d16be0ff8f31ba350d73c60084b191c453a93b50c5191e67e5245384",
+  "dependencies": [],
+  "license": "Apache-2.0 and BSD-2-Clause; see public/code/LICENSE and source headers",
+  "native_sources": [
+    "src/soc_ifc/rtl/sha512_acc_top.sv",
+    "src/soc_ifc/rtl/sha512_acc_csr.sv",
+    "src/axi/rtl/axi_sub.sv",
+    "src/axi/rtl/axi_sub_rd.sv",
+    "src/axi/rtl/axi_sub_wr.sv",
+    "src/axi/rtl/axi_sub_arb.sv",
+    "src/sha512/rtl/sha512_core.v",
+    "src/caliptra_prim/rtl/caliptra_prim_secded_inv_39_32_enc.sv",
+    "src/caliptra_prim/rtl/caliptra_prim_secded_inv_39_32_dec.sv"
+  ],
+  "editable_files": [
+    "code/sha512_acc_top.sv",
+    "code/axi_sub_rd.sv",
+    "code/axi_sub_wr.sv",
+    "code/rot_sram_ecc_ctrl.sv",
+    "plan/macro_placement.json",
+    "constraints/rot_staging_subsys.sdc"
+  ],
+  "qualification": "upstream/repo_50",
+  "build_scope": "Caliptra RoT 8-bank inverted-Hsiao 39/32 SECDED hard-SRAM staging subsystem (`rot_staging_subsys`: `axi_sub` + `rot_sram_ecc_ctrl` + `sha512_acc_top`) verified via Verilator 5.038 multi-seed simulation plus Yosys-Slang and OpenROAD PDN/CTS/GRT/STA physical signoff on IHP SG13G2 130nm."
+}

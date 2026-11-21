@@ -1,0 +1,35 @@
+{
+  "case_id": "case_6003",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "module": "axi4_to_ahb",
+      "description": "Aligned sub-dword write offset/size mapping (including 8'h30 -> offset 4) and unaligned/sparse 64-bit write byte walking with termination after the highest asserted byte lane.",
+      "verified_by": ["tb.sv:Phase_1A", "tb.sv:Phase_1B"]
+    },
+    {
+      "id": "REQ-2",
+      "module": "axi4_to_ahb",
+      "description": "Streaming AXI read error transition (STREAM_RD -> STREAM_ERR_RD -> DATA_RD) and SLVERR response with {2{last_bus_addr}} read data.",
+      "verified_by": ["tb.sv:Phase_1C"]
+    },
+    {
+      "id": "REQ-3",
+      "module": "ahb_to_axi4",
+      "description": "Two-cycle AHB-Lite error protocol (HRESP=1, HREADYOUT=0 then HRESP=1, HREADYOUT=1) on out-of-range, unaligned word/dword, illegal ICCM/DCCM size, or read ECC error, clearing cmdbuf_vld on read error.",
+      "verified_by": ["tb.sv:Phase_2A", "tb.sv:Phase_2C"]
+    },
+    {
+      "id": "REQ-4",
+      "module": "dma_ctrl",
+      "description": "64-bit single-word strobe (8'hf0/8'h0f) address/size normalization, illegal strobe alignment DECERR reporting, QoS NACK counter stall persistence, wrbuf/rdbuf alternating priority, and upper-word debug read extraction.",
+      "verified_by": ["tb.sv:Phase_2B", "tb.sv:Phase_2D", "tb.sv:Phase_2E", "tb.sv:Phase_2F"]
+    },
+    {
+      "id": "REQ-5",
+      "module": "constraints.json / veer_bus_dma_top",
+      "description": "Latch-free synthesis <= 12,350.0 um^2, registered WNS/WHS >= 0.00 ns at 5.60/6.00 ns clock with 2.50 ns input and 2.00 ns output external delays, and exact 1.65 ns (qos) / 2.45 ns (region) internal combinational budgets.",
+      "verified_by": ["grader/run.py:synthesis", "grader/run.py:timing"]
+    }
+  ]
+}

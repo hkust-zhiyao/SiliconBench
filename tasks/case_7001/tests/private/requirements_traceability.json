@@ -1,0 +1,29 @@
+{
+  "case_id": "case_7001",
+  "obligations": [
+    {
+      "id": "REQ-IFC-MASS-BALANCE-AND-CONSUME-BYPASS",
+      "behavior": "eh2_ifu_ifc_ctl maintains 4-buffer occupancy across single/dual consumption and winning fetches (including fb_right on ifu_fb_consume2 & fetch_req_f1_won & ~miss_f2) and permits fetch_req_f1 while clearing pmu_fetch_stall when fb_full_f1 is high and ifu_fb_consume1 or ifu_fb_consume2 is asserted.",
+      "public_source": "public/issue.md paragraph 1",
+      "enforced_by": "private/tests/tb.sv Phase 1, Phase 2, Phase 4C; killed by wrong_fix_1, mutant_01, mutant_02, mutant_03"
+    },
+    {
+      "id": "REQ-ALN-CROSSBEAT-SHIFTS-AND-FAULT-SUPPRESSION",
+      "behavior": "eh2_ifu_aln_ctl computes f1_shift_2B, f1_shift_4B, and f1_shift_6B across 2B/4B/6B/8B alignment shifts, suppresses i1_valid on i1_icaf or i1_dbecc, attributes i0_icaf, i0_icaf_second, i0_icaf_type, and i0_dbecc across split 32-bit instructions, and latches error_stall on ifu_async_error_start until exu_flush_final.",
+      "public_source": "public/issue.md paragraph 1",
+      "enforced_by": "private/tests/tb.sv Phase 4A..4D, Phase 5, Phase 7; killed by wrong_fix_2, wrong_fix_3, mutant_04..mutant_08"
+    },
+    {
+      "id": "REQ-IB-CANCEL-ROLLBACK-AND-DEBUG",
+      "behavior": "eh2_dec_ib_ctl rolls back ib0..ib3, bp0..bp3, and ibval from ibsave/bpsave when dec_i1_cancel_e1 asserts, and synthesizes halted debug GPR/CSR read/write instructions when dbg_cmd_valid && dbg_cmd_type != 2'h2 with debug_wdata_rs1_d on writes and debug_fence_d on CSR 12'h7c4.",
+      "public_source": "public/issue.md paragraph 1",
+      "enforced_by": "private/tests/tb.sv Phase 3, Phase 6; killed by wrong_fix_4, wrong_fix_5, mutant_09..mutant_12"
+    },
+    {
+      "id": "REQ-PPA-STA-CLOSURE",
+      "behavior": "Latch-free synthesis under Yosys/Slang Nangate45 flow with mapped area <= 20,250.0 um^2 and OpenROAD STA WNS >= 0.00 ns, WHS >= 0.00 ns at 9.25 ns clock.",
+      "public_source": "public/issue.md paragraph 2, public/BUILD.md §3-4",
+      "enforced_by": "private/grader/run.py"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+version = "1.0"
+
+[metadata]
+task_id = "case_21008"
+title = "Parameterized AXI4 Width Adapter Multi-Ratio Burst Repacking, Splitting, and Synthesis Parity"
+repository = "alexforencich/verilog-axi"
+repo_id = "repo_40"
+split = "test"
+eda_stage = "stage3_sta_cdc"
+eda_stage_name = "Stage 3: Static Timing (STA) & CDC/RDC Closure"
+problem_type = "PT2_New_Feature_ISA_Impl"
+problem_type_label = "New ISA & Subsystem Feature Implementation"
+primary_domain = "HighSpeed_AXI_NIC_Cache_DMA"
+domains = ["HighSpeed_AXI_NIC_Cache_DMA"]
+public_rtl_files = 3
+public_rtl_loc = 1789
+editable_files_count = 3
+editable_loc = 1789
+
+[agent]
+timeout_sec = 5400
+
+[environment]
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+workdir = "/workspace"
+allow_internet = false
+cpus = 4
+memory_mb = 16384
+
+[environment.variables]
+OMP_NUM_THREADS = "1"
+OPENBLAS_NUM_THREADS = "1"
+MKL_NUM_THREADS = "1"
+MAKEFLAGS = "-j1"
+SILICONBENCH_TOOLS = "/opt/siliconbench/tools"
+SILICONBENCH_NANGATE45 = "/opt/siliconbench/pdk/Nangate45"
+
+[verifier]
+environment_mode = "separate"
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+timeout_sec = 600
+entrypoint = "/tests/test.sh"
+reward_file = "/logs/verifier/reward.txt"
+reward_json = "/logs/verifier/reward.json"
+
+[verifier.environment]
+allow_internet = false
+
+[siliconbench]
+allowed_edits = ["code/axi_adapter.v", "code/axi_adapter_rd.v", "code/axi_adapter_wr.v"]
+pdk_id = "rtl_dual_sim_standard"
+pdk_name = "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang"
+pdk_customized = false
+accepts_seed = true
+grading_seeds = [101, 202]

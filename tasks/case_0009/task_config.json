@@ -1,0 +1,96 @@
+{
+  "case_id": "case_0009",
+  "task_id": "case_0009",
+  "version": 1,
+  "title": "Keep HWPE Micro-Loop Multi-Op Results, Loop Metadata, and Clears Coherent Across Stalls",
+  "repo_id": "repo_33",
+  "repository": "pulp-platform/hwpe-ctrl",
+  "topic": "verification_debug",
+  "family": "functional",
+  "editable_files": [
+    "code/hwpe_ctrl_uloop.sv"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_0009",
+    "version": 1,
+    "frozen_utc": "2026-11-03T12:11:18.495941+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/hwpe_ctrl_uloop.sv"
+    ],
+    "public_hashes": {
+      "BUILD.md": "017e1a58d8421933f6af3007b583544247a0a066cbf7035f69a0624e41259354",
+      "code/LICENSE": "6527a46225891b976fa94f634f6ee0cd22e1c7129d6f11c5c98c997627625fc7",
+      "code/hwpe_ctrl_package.sv": "84af89ed3dbfed0c6076a16609c2f861066203d20abbdc6c4c223f0bf3f53de9",
+      "code/hwpe_ctrl_uloop.sv": "d06643d57c2a11a08ad93b5621524b9bf574276875a91feb8be8d82ac1b0b156",
+      "issue.md": "9f4fda5e0ebad0595045ae1004f74d9533aaeed9329ff3214575514b24d703c3"
+    },
+    "gold_hashes": {
+      "code/LICENSE": "6527a46225891b976fa94f634f6ee0cd22e1c7129d6f11c5c98c997627625fc7",
+      "code/hwpe_ctrl_package.sv": "84af89ed3dbfed0c6076a16609c2f861066203d20abbdc6c4c223f0bf3f53de9",
+      "code/hwpe_ctrl_uloop.sv": "2261fc5b72e64e35f2343d25b16a451ed376a8a1697c6ce9ac12926066777b4c"
+    },
+    "grader_hashes": {
+      "run.py": "72a0402473f88ab34a2b766e01585b98de0d59d4ad48f19f73da6ca21a63a3f6"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 2,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 12,
+      "mutant_total": 12
+    }
+  },
+  "eda_stage": "stage1_rtl_sim",
+  "eda_stage_name": "Stage 1: Frontend RTL Design & Functional Simulation",
+  "eda_track": "stage1_rtl_sim",
+  "eda_track_name": "Stage 1: Frontend RTL Design & Functional Simulation",
+  "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+  "problem_type_label": "Architectural & Protocol Bug Repair",
+  "primary_domain": "rtl_integration",
+  "multi_domains": [
+    "reset_rdc",
+    "rtl_integration"
+  ],
+  "pdk_profile": {
+    "pdk_id": "rtl_dual_sim_standard",
+    "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+    "location": "Unified base image (/opt/siliconbench/tools)",
+    "customized": false,
+    "notes": "Pure RTL/protocol/synthesis check without external PDK Liberty files."
+  },
+  "public_hashes": {
+    "BUILD.md": "017e1a58d8421933f6af3007b583544247a0a066cbf7035f69a0624e41259354",
+    "code/LICENSE": "6527a46225891b976fa94f634f6ee0cd22e1c7129d6f11c5c98c997627625fc7",
+    "code/hwpe_ctrl_package.sv": "84af89ed3dbfed0c6076a16609c2f861066203d20abbdc6c4c223f0bf3f53de9",
+    "code/hwpe_ctrl_uloop.sv": "d06643d57c2a11a08ad93b5621524b9bf574276875a91feb8be8d82ac1b0b156",
+    "issue.md": "9f4fda5e0ebad0595045ae1004f74d9533aaeed9329ff3214575514b24d703c3"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 2,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 12,
+    "mutant_total": 12
+  }
+}

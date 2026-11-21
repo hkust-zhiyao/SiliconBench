@@ -1,0 +1,126 @@
+{
+  "case_id": "case_7003",
+  "task_id": "case_7003",
+  "version": 1,
+  "title": "VeeR EH2 AXI4-to-AHB and AHB-to-AXI4 Bus Bridge Force-Halt Cancellation, Error Drain, and Transparent Channel Timing Budgets",
+  "repo_id": "repo_07",
+  "repository": "chipsalliance/cores-veer-eh2",
+  "source_commit": "32bdfe24c0194a5b625a70624144e4c6dec5f682",
+  "license": "Apache-2.0",
+  "family": "rtl_and_sta_constraints",
+  "topic": "eh2_axi4_ahb_bridge_force_halt_error_and_sta_exceptions",
+  "editable_files": [
+    "code/axi4_to_ahb.sv",
+    "code/ahb_to_axi4.sv",
+    "constraints.json"
+  ],
+  "editable": [
+    "code/axi4_to_ahb.sv",
+    "code/ahb_to_axi4.sv",
+    "constraints.json"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 1,
+        "extra_args": []
+      },
+      {
+        "seed": 2,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_7003",
+    "version": 1,
+    "frozen_utc": "2026-11-04T17:55:10.152725+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/axi4_to_ahb.sv",
+      "code/ahb_to_axi4.sv",
+      "constraints.json"
+    ],
+    "public_hashes": {
+      "BUILD.md": "c71a43ba6f61a1cde3fe8c487afb92fb541c7573b4793d5d6085823387d262bb",
+      "code/LICENSE": "eb3203ed1cc2086e377b0d6cc7603be45d19739d47101ee2f8813f724be9c353",
+      "code/ahb_to_axi4.sv": "afeb68a3728a0776720bbecaf0f576a0ac84d940207300130c83c8fb58dc3436",
+      "code/axi4_to_ahb.sv": "4b6d5b7ebdc66a095e8a919d347e4de63318940e9104caafd9e1804349a4d635",
+      "code/beh_lib.sv": "f90db53a3d8cbf3823b584afe6ff6b9fdbdc5ff16f47f634eb204f2d73878b2a",
+      "code/common_defines.vh": "6ef89d48a2fa69c21df7783154e207bba88eed2025ce07de057a41141b1d0535",
+      "code/eh2_def.sv": "a1950abcbef049cc5b3ef5baf7704dfcc78c01dfea157bd45803a1a3984913d9",
+      "code/eh2_lib.sv": "35edc0e0d70a933436246d76931e90a0527cf5d3b7a68410ce62c41c55b485d2",
+      "code/eh2_param.vh": "6bad4252bde525577c64cbfded85cc4d32a3675a88feca299f7583d1eda49bd5",
+      "code/eh2_pdef.vh": "bb47d0d0393d6ea7edbed06ae610975228e9953b2403ff6e7edfa2f059a75d95",
+      "code/top.sv": "f483283f8b044598730d216c526415a5a23ac8b3cdfed1fcaf2495ea9d33e448",
+      "constraints.json": "f4113f6d3e1f5b35e8418d90742838706a5e31e21612dff0e724bdf0df420191",
+      "issue.md": "2bd3be3f25a990aa4d889bfb77f7e042c3dbd8ae5c472e7866d49c69fab86775"
+    },
+    "gold_hashes": {
+      "code/ahb_to_axi4.sv": "064c9bfc3488056b0f89b5355787cf61f3f7fd31ef21704353d0d84878b36671",
+      "code/axi4_to_ahb.sv": "91b8f62e6f740c13394eca07d4c9370c23ba80dd4cc3264107bc9131364b6a77",
+      "constraints.json": "d1cda5601280fbc5b410397301cdd06833104dc1ff5ebae0ce7b3ebfda474788"
+    },
+    "grader_hashes": {
+      "run.py": "c610a497f2972914971753240e2199aa8b9b236bd5e7cb96ffca61e6ef811d4e"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 12,
+      "mutant_total": 12
+    }
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT3_Timing_Area_PPA_Closure",
+  "problem_type_label": "High-Frequency Timing & Area Optimization",
+  "primary_domain": "reset_rdc",
+  "multi_domains": [
+    "protocol_control",
+    "reset_rdc",
+    "rtl_integration",
+    "sdc_sta",
+    "verification_debug"
+  ],
+  "pdk_profile": {
+    "pdk_id": "nangate45_45nm_shared",
+    "pdk_name": "Nangate45 45nm Open Cell Library (Shared Base Image)",
+    "location": "/opt/siliconbench/pdk/Nangate45 (bundled in environments/pdk/Nangate45)",
+    "customized": false,
+    "notes": "Uses unified Nangate45 typical Liberty and LEF from base image."
+  },
+  "public_hashes": {
+    "BUILD.md": "c71a43ba6f61a1cde3fe8c487afb92fb541c7573b4793d5d6085823387d262bb",
+    "code/LICENSE": "eb3203ed1cc2086e377b0d6cc7603be45d19739d47101ee2f8813f724be9c353",
+    "code/ahb_to_axi4.sv": "afeb68a3728a0776720bbecaf0f576a0ac84d940207300130c83c8fb58dc3436",
+    "code/axi4_to_ahb.sv": "4b6d5b7ebdc66a095e8a919d347e4de63318940e9104caafd9e1804349a4d635",
+    "code/beh_lib.sv": "f90db53a3d8cbf3823b584afe6ff6b9fdbdc5ff16f47f634eb204f2d73878b2a",
+    "code/common_defines.vh": "6ef89d48a2fa69c21df7783154e207bba88eed2025ce07de057a41141b1d0535",
+    "code/eh2_def.sv": "a1950abcbef049cc5b3ef5baf7704dfcc78c01dfea157bd45803a1a3984913d9",
+    "code/eh2_lib.sv": "35edc0e0d70a933436246d76931e90a0527cf5d3b7a68410ce62c41c55b485d2",
+    "code/eh2_param.vh": "6bad4252bde525577c64cbfded85cc4d32a3675a88feca299f7583d1eda49bd5",
+    "code/eh2_pdef.vh": "bb47d0d0393d6ea7edbed06ae610975228e9953b2403ff6e7edfa2f059a75d95",
+    "code/top.sv": "f483283f8b044598730d216c526415a5a23ac8b3cdfed1fcaf2495ea9d33e448",
+    "constraints.json": "f4113f6d3e1f5b35e8418d90742838706a5e31e21612dff0e724bdf0df420191",
+    "issue.md": "2bd3be3f25a990aa4d889bfb77f7e042c3dbd8ae5c472e7866d49c69fab86775"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 12,
+    "mutant_total": 12
+  }
+}

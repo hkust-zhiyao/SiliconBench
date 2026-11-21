@@ -1,0 +1,21 @@
+{
+  "case_id": "case_1014",
+  "repo_id": "repo_01",
+  "upstream": "https://github.com/lowRISC/opentitan",
+  "commit": "0e880c84fa5e6ff1d43354eae9ad9f13c96231ee",
+  "archive_sha256": "c71b2041453c7bfa1676830f80f4f46e0d35fa9c3484fd13d87011f07913ece5",
+  "license": "Apache-2.0",
+  "rtl": [
+    "hw/ip/csrng/rtl/csrng_cmd_stage.sv",
+    "hw/ip/csrng/rtl/csrng_main_sm.sv",
+    "hw/ip/edn/rtl/edn_main_sm.sv",
+    "hw/ip/edn/rtl/edn_ack_sm.sv"
+  ],
+  "stage1_inspirations": [
+    "ISS-DP-cfbb568b098bc582 (doc-39e48231e3ded273)",
+    "raw-rtl-4c416bbd65781975 (doc-7531fe1b3b895837)",
+    "raw-rtl-cd1669648a459d9c (doc-7531fe1b3b895837)"
+  ],
+  "pdk": "NangateOpenCellLibrary 45nm typical (lib/NangateOpenCellLibrary_typical.lib)",
+  "tools": "Verilator 5.038 + Yosys (slang) + OpenROAD/OpenSTA"
+}

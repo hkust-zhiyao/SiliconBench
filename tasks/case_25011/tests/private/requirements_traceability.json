@@ -1,0 +1,53 @@
+{
+  "case_id": "case_25011",
+  "obligations": [
+    {
+      "id": "REQ-FIPS-MODES-GATING",
+      "behavior": "sha512_masked_core produces bit-exact FIPS 180-4 SHA-512/224, SHA-512/256, SHA-384, and SHA-512 single- and multi-block digests across arbitrary entropy streams, retains full 512-bit internal chaining precision, and gates digest to 512'h0 whenever digest_valid == 0.",
+      "public_source": "public/issue.md section 1, public/code/sha512_masked_core.sv",
+      "verified_by": [
+        "private/tests/tb.sv (5-profile x 4-mode single/two-block KATs, 3-block seeded random vectors, continuous !digest_valid -> digest==0 monitor)",
+        "wf1_unmasked_chaining_and_a2b",
+        "m01_missing_mode_truncation",
+        "m02_ungated_digest_when_invalid",
+        "m03_wrong_b2a_or_a2b_carry"
+      ]
+    },
+    {
+      "id": "REQ-HANDSHAKE-VALIDATION",
+      "behavior": "Commands are sampled only when ready == 1 and !zeroize; init_cmd latches mode and captures block_msg into masked storage on the handshake edge; next_cmd requires an active completed chain and preserves latched mode; init_cmd && next_cmd or bare next_cmd without active chain are ignored without side effects.",
+      "public_source": "public/issue.md section 2, public/code/sha512_masked_core.sv, public/code/sha512_masked_w_mem.sv",
+      "verified_by": [
+        "private/tests/tb.sv (post-handshake bus scrambling & mode flipping, bare next_cmd rejection, simultaneous init_cmd && next_cmd preservation)",
+        "wf3_no_handshake_capture_or_cmd_guard",
+        "m04_unlatched_mode_on_next",
+        "m05_accept_init_and_next",
+        "m06_accept_uninitialized_next"
+      ]
+    },
+    {
+      "id": "REQ-SHARE-PROBING-AND-REFRESH",
+      "behavior": "Ch, Maj, and A2B_conv eliminate combinational share cancellation; chaining state H0..H7 remains in two-share masked form while digest_valid == 0; and all 8 working shares (a_reg..h_reg) and 16 schedule shares (w_mem[0:15]) refresh masks every round.",
+      "public_source": "public/issue.md section 3, public/BUILD.md, public/code/sha512_masked_defines_pkg.sv, public/code/sha512_masked_w_mem.sv, public/code/sha512_masked_core.sv",
+      "verified_by": [
+        "private/grader/run.py (64-stream gate-level first-order zero-variance probing check under independent and correlated masks)",
+        "private/tests/tb.sv (3-instance lockstep share check, per-round shift-refresh check, zero-init + round-entropy recovery check)",
+        "wf1_unmasked_chaining_and_a2b",
+        "wf2_no_per_round_share_refresh",
+        "m07_buggy_a2b_xor_cancel",
+        "m08_buggy_maj_share_cancel",
+        "m09_no_w_mem_round_refresh"
+      ]
+    },
+    {
+      "id": "REQ-ZEROIZE-SANITIZATION",
+      "behavior": "Synchronous zeroize across any FSM state or command collision clears a_reg..h_reg, w_mem[0:15], masked chaining state, masking_rnd, and active-chain status on the next rising clock edge, setting ready=1, digest_valid=0, and digest=0.",
+      "public_source": "public/issue.md section 4, public/code/sha512_masked_core.sv, public/code/sha512_masked_w_mem.sv",
+      "verified_by": [
+        "private/tests/tb.sv (CTRL_RND, mid-CTRL_ROUNDS, post-done, and simultaneous init_cmd zeroize checks + post-zeroize bare next_cmd rejection)",
+        "wf4_incomplete_zeroize_wipe",
+        "m10_chain_valid_survives_zeroize"
+      ]
+    }
+  ]
+}

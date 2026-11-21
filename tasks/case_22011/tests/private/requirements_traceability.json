@@ -1,0 +1,30 @@
+{
+  "case_id": "case_22011",
+  "requirements": [
+    {
+      "id": "REQ_01",
+      "summary": "Decode and validate EMUL*NFIELDS<=8, register alignment/wrap, and v0 mask overlap for segmented loads/stores",
+      "verified_by": "tb.sv directed illegal + randomized legal suites"
+    },
+    {
+      "id": "REQ_02",
+      "summary": "Decompose unit-stride and positive/zero/negative strided NFIELDS=2..8 AoS accesses into SoA EMUL register groups with vstart support",
+      "verified_by": "tb.sv AoS/SoA golden VRF & AXI RAM scoreboard"
+    },
+    {
+      "id": "REQ_03",
+      "summary": "Reshuffle all NFIELDS*max(1,EMUL) registers and propagate true per-field old_eew_vs1 on segmented stores",
+      "verified_by": "tb.sv mixed-EEW reshuffle tests"
+    },
+    {
+      "id": "REQ_04",
+      "summary": "Enforce exact exception_vstart reporting, fault-only-first vl trimming, and single load/store_complete pulses",
+      "verified_by": "tb.sv MMU fault & completion counters"
+    },
+    {
+      "id": "REQ_05",
+      "summary": "Zero-latch synthesizability under yosys+slang",
+      "verified_by": "grader/run.py synth_top yosys-slang check"
+    }
+  ]
+}

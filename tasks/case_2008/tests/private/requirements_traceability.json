@@ -1,0 +1,23 @@
+{
+  "case_id": "case_2008",
+  "obligations": [
+    {
+      "id": "REQ-ICACHE-SCR-INVAL-TWEAK-ECC-SKID",
+      "behavior": "Enforce scramble key request out of reset and mid-sweep invalidation restart, tag/data tweak infection, tag-hit-qualified data ECC check & hit suppression, and unaligned skid err_plus2_o attribution in ibex_icache.sv.",
+      "public_source": "public/issue.md item 1",
+      "enforced_by": "private/tests/tb.sv (Tests 1-4), killed by wrong_fix_3, mutant_01..06"
+    },
+    {
+      "id": "REQ-IF-MEM-ECC-MISPRED-AND-ZCMP",
+      "behavior": "Propagate 39-bit memory SECDED errors, squash fetch_valid on nt_branch_mispredict_i, and enforce Zcmp atomic SP commit & exception flush.",
+      "public_source": "public/issue.md item 2",
+      "enforced_by": "private/tests/tb.sv (Tests 5-6), killed by wrong_fix_4, wrong_fix_5, mutant_07..10"
+    },
+    {
+      "id": "REQ-TRANSPARENT-CHANNEL-MAX-DELAY-BUDGETS",
+      "behavior": "Constrain scr_mon_in->scr_mon_out to 1.25 ns internal budget (7.75 ns max_delay) and pmp_mon_in->pmp_mon_out to 2.25 ns internal budget (8.75 ns max_delay) in constraints.json.",
+      "public_source": "public/issue.md item 3, public/BUILD.md \u00a73",
+      "enforced_by": "private/grader/run.py (OpenROAD/OpenSTA), killed by wrong_fix_1, wrong_fix_2, anti_hack_4"
+    }
+  ]
+}

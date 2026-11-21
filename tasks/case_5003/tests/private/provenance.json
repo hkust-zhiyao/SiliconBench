@@ -1,0 +1,11 @@
+{
+  "case_id": "case_5003",
+  "repo_id": "repo_05",
+  "upstream": "https://github.com/openhwfoundation/cva6",
+  "commit": "81245a47fad8fe1a5d562d953ef2662e099def76",
+  "editable_files": [
+    "code/cva6_tlb.sv",
+    "code/cva6_shared_tlb.sv",
+    "code/cva6_ptw.sv"
+  ]
+}

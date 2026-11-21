@@ -1,0 +1,34 @@
+{
+  "case_id": "case_1003",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "description": "Byte-granular packing across arbitrary leading byte offsets and simultaneous ack_in/ack_out handshakes with full flush_i/FlushSend ready_o gating.",
+      "verified_by": [
+        "private/tests/tb.sv"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "description": "kmac_msgfifo non-bypass write blocking throughout flush states, any-state clear_i recovery to FlushIdle, and bypass flush_done_o forwarding.",
+      "verified_by": [
+        "private/tests/tb.sv"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "description": "kmac_errchk command validation, sw_cmd_o reset to CmdNone when blocked/rejected/escalated, and sticky StTerminalError on lc_escalate_en_i.",
+      "verified_by": [
+        "private/tests/tb.sv"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "description": "Nangate45 Yosys/Slang + ABC mapped cell area <= 2,260.0 um^2 and OpenROAD placement-estimated setup/hold slack >= 0.0 ns at 1.50 ns clock period.",
+      "verified_by": [
+        "private/grader/run.py",
+        "private/tests/flow.tcl"
+      ]
+    }
+  ]
+}

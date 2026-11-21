@@ -1,0 +1,9 @@
+read_slang --top banked pdk/256_stub.v code/bp_sram_256x128.sv code/banked.sv
+hierarchy -check -top banked
+synth -top banked
+dfflibmap -liberty pdk/sg13g2_stdcell_typ_1p20V_25C.lib
+abc -liberty pdk/sg13g2_stdcell_typ_1p20V_25C.lib
+clean
+read_liberty -lib pdk/sg13g2_stdcell_typ_1p20V_25C.lib
+check -assert
+write_verilog -noattr mapped.v

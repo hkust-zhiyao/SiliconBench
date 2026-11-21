@@ -1,0 +1,139 @@
+{
+  "case_id": "case_5011",
+  "task_id": "case_5011",
+  "version": 1,
+  "repo_id": "repo_05",
+  "repository": "openhwfoundation/cva6",
+  "title": "CVA6 RV32 Zcmp/Zcmt ID-Stage Macro & Table-Jump Expansion, Pipeline Flush/Backpressure Control, and Synthesis/Timing Closure",
+  "topic": "id_stage_macro_zcmt_decoder_flush_and_ppa",
+  "family": "qor_and_functional",
+  "editable_files": [
+    "code/macro_decoder.sv",
+    "code/zcmt_decoder.sv",
+    "code/id_stage.sv"
+  ],
+  "editable": [
+    "code/macro_decoder.sv",
+    "code/zcmt_decoder.sv",
+    "code/id_stage.sv"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_5011",
+    "version": 1,
+    "frozen_utc": "2026-11-04T17:44:18.489686+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/macro_decoder.sv",
+      "code/zcmt_decoder.sv",
+      "code/id_stage.sv"
+    ],
+    "public_hashes": {
+      "BUILD.md": "3d92c409d646a29722f3bfa644d2573f3f2ebdb62eb1664c6c3db8fc0526dda3",
+      "code/LICENSE": "b41106a9d0de1cf6ab4ea56bedf677503085c0570248f37fe2cdf657a5e72601",
+      "code/ariane_pkg.sv": "f492b1dda7044c4d202df1a1e4609a53fbecc94ad3f08b5d6d9a150b4569d2d7",
+      "code/compressed_decoder.sv": "8fcbc36f099de87018068fc788fc488712ba3db2fb7b7f6a9715bd46919c0c62",
+      "code/config_pkg.sv": "f6f193daa7dfe1161689f651d6aa6e2b1fdec6560fc83c1313385e944ce4c97c",
+      "code/cv64a60ax_config_pkg.sv": "6b2bd15f21283ff8eac2c8daa62030b7be5d2b342437f4b863baa0c74b88688c",
+      "code/cva6_accel_first_pass_decoder_stub.sv": "77aa80671e09f200b25c5dcc2e65b3da4e50c413e9e3f4d74f56d8acf875da70",
+      "code/cvxif_compressed_if_driver.sv": "e5dd565b9a6fcf95129182075d481771c5dc4ae45e5fb760476b50e9fcc5f318",
+      "code/decoder.sv": "cd419137a624bb73cfc800e14d1852f65b603b7a8a64bd5c0e9617a5c7db422a",
+      "code/id_stage.sv": "2c6bdf3d746093c95d719d4ccb79cc2a966e8c05724d25853bdabca933740863",
+      "code/macro_decoder.sv": "08ae0281cb26f3de6ac6b1c512feb9783e8b160ef0c27f291ff2200da51d96b8",
+      "code/riscv_pkg.sv": "225881e0df4c08d0d9768999408c7c93186a59270955a391bccd63f34b95777a",
+      "code/zcmt_decoder.sv": "ff7a3debc5981f8a4df280a6a5efa9a5f8ae249815ac6b8b68db3f59693f865e",
+      "flow/id_decode_top.sv": "768c18462ca92eead13752f071ad8992b5110a6381425b418dcd55693f95b689",
+      "include/common_cells/LICENSE.Apache-2.0": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "include/common_cells/assertions.svh": "d39c7afa893656e235b0019233c1bcf12491cd421639791c827cc53236bd4841",
+      "issue.md": "2482c8ecc998b40d7e81317d51d2f709cb0ed535c1a5e5842f74bc4fc52dd127",
+      "lef/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+      "lef/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+      "lib/LICENSE_NANGATE": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+      "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+    },
+    "gold_hashes": {
+      "code/id_stage.sv": "f509fddfee771fbca56c534026e34b1996692437caa344762961612a20fb2d3c",
+      "code/macro_decoder.sv": "725c9a3030615fa4b3b2833819615055feefa4a1252d94c9f756f405e640b300",
+      "code/zcmt_decoder.sv": "edb49fd8df8b9a1ab6a39f3e3ec9030d5541a02dd60991d6a1cb26bbca1cde87"
+    },
+    "grader_hashes": {
+      "run.py": "559142c4418fa49b15f0a27715146137eb3bfc633109b11fe3f77061f4913be6"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 4,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 10,
+      "mutant_total": 10
+    }
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT2_New_Feature_ISA_Impl",
+  "problem_type_label": "New ISA & Subsystem Feature Implementation",
+  "primary_domain": "parameters_widths",
+  "multi_domains": [
+    "parameters_widths",
+    "reset_rdc",
+    "rtl_integration",
+    "synthesis_qor"
+  ],
+  "pdk_profile": {
+    "pdk_id": "custom_multicorner_liberty",
+    "pdk_name": "Task-Specific Multi-Corner Liberty & SDC Timing Views",
+    "location": "Task-bundled in environment/public/ and tests/private/",
+    "customized": true,
+    "notes": "Custom characterized fast/slow/scan corner Liberty libraries for multi-mode OpenSTA closure."
+  },
+  "public_hashes": {
+    "BUILD.md": "3d92c409d646a29722f3bfa644d2573f3f2ebdb62eb1664c6c3db8fc0526dda3",
+    "code/LICENSE": "b41106a9d0de1cf6ab4ea56bedf677503085c0570248f37fe2cdf657a5e72601",
+    "code/ariane_pkg.sv": "f492b1dda7044c4d202df1a1e4609a53fbecc94ad3f08b5d6d9a150b4569d2d7",
+    "code/compressed_decoder.sv": "8fcbc36f099de87018068fc788fc488712ba3db2fb7b7f6a9715bd46919c0c62",
+    "code/config_pkg.sv": "f6f193daa7dfe1161689f651d6aa6e2b1fdec6560fc83c1313385e944ce4c97c",
+    "code/cv64a60ax_config_pkg.sv": "6b2bd15f21283ff8eac2c8daa62030b7be5d2b342437f4b863baa0c74b88688c",
+    "code/cva6_accel_first_pass_decoder_stub.sv": "77aa80671e09f200b25c5dcc2e65b3da4e50c413e9e3f4d74f56d8acf875da70",
+    "code/cvxif_compressed_if_driver.sv": "e5dd565b9a6fcf95129182075d481771c5dc4ae45e5fb760476b50e9fcc5f318",
+    "code/decoder.sv": "cd419137a624bb73cfc800e14d1852f65b603b7a8a64bd5c0e9617a5c7db422a",
+    "code/id_stage.sv": "2c6bdf3d746093c95d719d4ccb79cc2a966e8c05724d25853bdabca933740863",
+    "code/macro_decoder.sv": "08ae0281cb26f3de6ac6b1c512feb9783e8b160ef0c27f291ff2200da51d96b8",
+    "code/riscv_pkg.sv": "225881e0df4c08d0d9768999408c7c93186a59270955a391bccd63f34b95777a",
+    "code/zcmt_decoder.sv": "ff7a3debc5981f8a4df280a6a5efa9a5f8ae249815ac6b8b68db3f59693f865e",
+    "flow/id_decode_top.sv": "768c18462ca92eead13752f071ad8992b5110a6381425b418dcd55693f95b689",
+    "include/common_cells/LICENSE.Apache-2.0": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "include/common_cells/assertions.svh": "d39c7afa893656e235b0019233c1bcf12491cd421639791c827cc53236bd4841",
+    "issue.md": "2482c8ecc998b40d7e81317d51d2f709cb0ed535c1a5e5842f74bc4fc52dd127",
+    "lef/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+    "lef/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+    "lib/LICENSE_NANGATE": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+    "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 4,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 10,
+    "mutant_total": 10
+  }
+}

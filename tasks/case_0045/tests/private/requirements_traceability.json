@@ -1,0 +1,20 @@
+{
+  "obligations": [
+    {
+      "obligation": "Hold the arbitrated winner's request and payload strictly stable on the output while downstream data_gnt_i == 0, even when a higher-priority or favored master asserts data_req_i or TCDM_arb_policy_i changes during the stall",
+      "source": "public/issue.md"
+    },
+    {
+      "obligation": "Advance priority_Flag_Req and Policy 1 per-node fairness state only on an actual granted transfer (data_req_o && data_gnt_i)",
+      "source": "public/issue.md"
+    },
+    {
+      "obligation": "Bound Policy 1 starvation to at most P - 1 other accepted requests while preserving Policy 0 round-robin counter behavior and TestAndSet two-cycle continuation",
+      "source": "public/issue.md"
+    },
+    {
+      "obligation": "Maintain latch-free synthesizable RTL across all editable files",
+      "source": "public/issue.md"
+    }
+  ]
+}

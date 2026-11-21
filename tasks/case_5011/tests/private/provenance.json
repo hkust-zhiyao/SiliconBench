@@ -1,0 +1,13 @@
+{
+  "case_id": "case_5011",
+  "repo_id": "repo_05",
+  "upstream_repo": "openhwfoundation/cva6",
+  "source_files": [
+    "core/macro_decoder.sv",
+    "core/zcmt_decoder.sv",
+    "core/id_stage.sv",
+    "core/compressed_decoder.sv",
+    "core/decoder.sv"
+  ],
+  "authoring_mode": "real_upstream_defects_plus_synthesis_ppa_closure"
+}

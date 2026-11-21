@@ -1,0 +1,17 @@
+{
+  "upstream": "https://github.com/pulp-platform/cluster_interconnect",
+  "commit": "2967d8d17be0a6139229ca8d3d4956e182aec3de",
+  "archive_sha256": "8cc1be5848b8697a34cad28b746d1ea4fe3d186ba93ba0c7cf112940e520c7d6",
+  "license": "Solderpad Hardware License 0.51 (SHL-0.51)",
+  "rtl": [
+    "rtl/low_latency_interco/RequestBlock1CH.sv",
+    "rtl/low_latency_interco/ArbitrationTree.sv",
+    "rtl/low_latency_interco/FanInPrimitive_Req.sv",
+    "rtl/low_latency_interco/priority_Flag_Req.sv",
+    "rtl/low_latency_interco/TestAndSet.sv",
+    "rtl/low_latency_interco/AddressDecoder_Resp.sv",
+    "rtl/low_latency_interco/parameters.v"
+  ],
+  "baseline": "Combines a500_0503 multi-level TCDM bounded fairness and a500_0024 stalled-output winner lock with Yosys latch-free synthesis check.",
+  "tools": "Yosys (OSS CAD Suite) + Verilator 5.038"
+}

@@ -1,0 +1,19 @@
+{
+  "requirements": [
+    {
+      "id": "R1",
+      "issue_section": "Functional, Coherency & 4-State Gate-Level Contract",
+      "summary": "4-way 8KiB AXI4 LLC FIXED/INCR/Critical-Word-First WRAP burst coherency across narrow/64b sizes, 4-way dirty eviction, dynamic SPM/SLVERR protection, and 4-state partial-strobe X hygiene in iverilog gate-level simulation"
+    },
+    {
+      "id": "R2",
+      "issue_section": "Multi-Corner Hard-SRAM Timing Contract",
+      "summary": "Complete native constraints/axi_llc_ways.sdc with sync I/O delays, async/strap false paths, and [-0.50, -0.45]ns macro A_CLK balance across all 8 hard SRAM macros"
+    },
+    {
+      "id": "R3",
+      "issue_section": "Multi-Corner Hard-SRAM Timing Contract",
+      "summary": "Zero setup and hold WNS/TNS violations across SS (1.08V, 125C), TT (1.20V, 25C), and FF (1.32V, -40C) corners after elastic datapath pipelining"
+    }
+  ]
+}

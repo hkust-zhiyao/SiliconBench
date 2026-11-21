@@ -1,0 +1,153 @@
+{
+  "case_id": "case_10002",
+  "task_id": "case_10002",
+  "version": 1,
+  "title": "OpenPiton 5-Port Mesh Router Input Control, Output Arbitration Fairness, and Timing Closure",
+  "repo_id": "repo_10",
+  "repository": "princetonuniversity/openpiton",
+  "source_commit": "1c6bfd2d2ea53ddd7b6f933fa2d439d1a540e207",
+  "license": "BSD-3-Clause",
+  "family": "rtl_and_synthesis_timing",
+  "topic": "noc_mesh_router_control_arbitration_ppa_sta",
+  "editable_files": [
+    "code/rtl/dynamic_input_route_request_calc.v",
+    "code/rtl/dynamic_input_control.v",
+    "code/rtl/dynamic_output_control.v"
+  ],
+  "editable": [
+    "code/rtl/dynamic_input_route_request_calc.v",
+    "code/rtl/dynamic_input_control.v",
+    "code/rtl/dynamic_output_control.v"
+  ],
+  "grading": {
+    "eda_class": "heavy",
+    "grader_timeout_seconds": 600,
+    "verifier_timeout_seconds": 1200,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 1,
+        "extra_args": []
+      },
+      {
+        "seed": 2,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_10002",
+    "version": 1,
+    "frozen_utc": "2026-11-04T18:04:25.354944+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/rtl/dynamic_input_route_request_calc.v",
+      "code/rtl/dynamic_input_control.v",
+      "code/rtl/dynamic_output_control.v"
+    ],
+    "public_hashes": {
+      "BUILD.md": "9679308a1c72f32698bac6f1978837c9922c121f7b759ff0a54e88b044d24cf0",
+      "code/LICENSE": "dfd7ca7e83697b770341ad20bbf21b2f584ed2afcf2038e49eac53b5bc8ab2fd",
+      "code/include/define.tmp.h": "ccf44933d59e5d4c8297a3b4e54d422b5f2c1a54b50818e7e4f2ba6a953fac8f",
+      "code/include/network_define.v": "58f3166346f70d3d6cf59af54f36d360460b104874a54cd72c711a9e3ebe3128",
+      "code/rtl/bus_compare_equal.v": "adeedf937c04176211c9b46163692c521372dffb4e66b076b29abf2677e5040e",
+      "code/rtl/dynamic_input_control.v": "8d79286a960bbbef590e8b64a764416bb0a00235ce35d90942cc8d34e4ca3841",
+      "code/rtl/dynamic_input_route_request_calc.v": "0198455aa177af8de4930011890b66297142b32110020bda370e251fb91445d9",
+      "code/rtl/dynamic_input_top_16.v": "07f8e301c8f3eadba71705b483469dd43c42bc7d06b0253b1f67b45a81f88685",
+      "code/rtl/dynamic_input_top_4.v": "4910dfcee0e348864a821bb850ec0d86ef822636c59a327d95e5a64cec903728",
+      "code/rtl/dynamic_node_top.v": "5d1a420ffc61c72f119e6d2cc6df76e19da65c478fc4c882a1cafffa660173f4",
+      "code/rtl/dynamic_node_top_wrap.v": "f210b5233a2cbdbada6002894fe3370a178f2d0857d08be2e7d340dfa346a065",
+      "code/rtl/dynamic_output_control.v": "4bacf588eeb44387e62bbfbc066b5ad9b5bef04f5a6429a7b932925ac99d8f6e",
+      "code/rtl/dynamic_output_datapath.v": "39b67aedaf8e83542f86b0729c4bb7e5a9931aa900ffc81d8e15f0b7066e93ea",
+      "code/rtl/dynamic_output_top.v": "fc55d665f8e690ade59f38dc0bbfe94240b9143f5af0a424b5856a17ffa2efd9",
+      "code/rtl/flip_bus.v": "187c28de4937c1649a717308f3accc9c0cd7615fb50575e3766c878d9be56d86",
+      "code/rtl/net_dff.v": "118e1259a21e9f7808ec6beb22e20eae5fed1dfb896469ef350eb392aa17dae8",
+      "code/rtl/network_input_blk_multi_out.v": "07eb66a93870bc4082cfeab5641b250a24b49cede6c267b269ffdd8a1f441665",
+      "code/rtl/one_of_eight.v": "ddaf31732e034bfaae2751317a8adcadd2462a71cc4b69be9204fb9e7d670311",
+      "code/rtl/one_of_five.v": "05c44888cc98ebd593e2d0714cffb39923b45abd5000fdee16f68c0d6c3fd34c",
+      "code/rtl/space_avail_top.v": "acf352d4b04910d61e7897f0336e66158573e5ed6b35b54bd5067279eae6a102",
+      "issue.md": "a4b1c10d29c48990541a3da0392cb57e72544f955d7838af5217e1b553d38196",
+      "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+      "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+      "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+      "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+    },
+    "gold_hashes": {
+      "code/rtl/dynamic_input_control.v": "e52cbcabfbf351ba719e20700c94e904cf5d95a5911e275bad8b58f31a1d8b96",
+      "code/rtl/dynamic_input_route_request_calc.v": "ddb5583ea9360d4b7f06ebf359cf599768729ee4abe43755e4e578cbd0c2d13c",
+      "code/rtl/dynamic_output_control.v": "ea23ce2fd9f17da2694aa2cfeab21a1f320d3642cc9fe34d9fd7a27b7b7687e9"
+    },
+    "grader_hashes": {
+      "run.py": "c8e288886602de03745f7b027fdade822700e74d3a795bcda42cbce9199a4a77"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 12,
+      "mutant_total": 12
+    },
+    "test_hashes": {
+      "flow_ic.tcl": "c718326928d9fb21adf3006f5beb022a19ba48291dc907101a574d912396c82d",
+      "flow_out.tcl": "cd42921e96d046898276e990c32ad447b31cb9039718c4a59e6372ad41e8b73e",
+      "tb.sv": "22c4ac4eed0b9aa8e325390448869727379875d87e9cc7da841e4a73bdfbfbf6"
+    },
+    "grader_revalidated_utc": "2026-11-16T10:17:42.058352+00:00"
+  },
+  "eda_stage": "stage4_macro_pnr",
+  "eda_stage_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+  "eda_track": "stage4_macro_pnr",
+  "eda_track_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+  "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+  "problem_type_label": "Architectural & Protocol Bug Repair",
+  "primary_domain": "protocol_control",
+  "multi_domains": [
+    "protocol_control",
+    "rtl_integration"
+  ],
+  "pdk_profile": {
+    "pdk_id": "nangate45_plus_multicorner_lib",
+    "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+    "location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+    "customized": true,
+    "notes": "Uses shared Nangate45 library for synthesis plus task-bundled fast/slow/scan corner timing views."
+  },
+  "public_hashes": {
+    "BUILD.md": "9679308a1c72f32698bac6f1978837c9922c121f7b759ff0a54e88b044d24cf0",
+    "code/LICENSE": "dfd7ca7e83697b770341ad20bbf21b2f584ed2afcf2038e49eac53b5bc8ab2fd",
+    "code/include/define.tmp.h": "ccf44933d59e5d4c8297a3b4e54d422b5f2c1a54b50818e7e4f2ba6a953fac8f",
+    "code/include/network_define.v": "58f3166346f70d3d6cf59af54f36d360460b104874a54cd72c711a9e3ebe3128",
+    "code/rtl/bus_compare_equal.v": "adeedf937c04176211c9b46163692c521372dffb4e66b076b29abf2677e5040e",
+    "code/rtl/dynamic_input_control.v": "8d79286a960bbbef590e8b64a764416bb0a00235ce35d90942cc8d34e4ca3841",
+    "code/rtl/dynamic_input_route_request_calc.v": "0198455aa177af8de4930011890b66297142b32110020bda370e251fb91445d9",
+    "code/rtl/dynamic_input_top_16.v": "07f8e301c8f3eadba71705b483469dd43c42bc7d06b0253b1f67b45a81f88685",
+    "code/rtl/dynamic_input_top_4.v": "4910dfcee0e348864a821bb850ec0d86ef822636c59a327d95e5a64cec903728",
+    "code/rtl/dynamic_node_top.v": "5d1a420ffc61c72f119e6d2cc6df76e19da65c478fc4c882a1cafffa660173f4",
+    "code/rtl/dynamic_node_top_wrap.v": "f210b5233a2cbdbada6002894fe3370a178f2d0857d08be2e7d340dfa346a065",
+    "code/rtl/dynamic_output_control.v": "4bacf588eeb44387e62bbfbc066b5ad9b5bef04f5a6429a7b932925ac99d8f6e",
+    "code/rtl/dynamic_output_datapath.v": "39b67aedaf8e83542f86b0729c4bb7e5a9931aa900ffc81d8e15f0b7066e93ea",
+    "code/rtl/dynamic_output_top.v": "fc55d665f8e690ade59f38dc0bbfe94240b9143f5af0a424b5856a17ffa2efd9",
+    "code/rtl/flip_bus.v": "187c28de4937c1649a717308f3accc9c0cd7615fb50575e3766c878d9be56d86",
+    "code/rtl/net_dff.v": "118e1259a21e9f7808ec6beb22e20eae5fed1dfb896469ef350eb392aa17dae8",
+    "code/rtl/network_input_blk_multi_out.v": "07eb66a93870bc4082cfeab5641b250a24b49cede6c267b269ffdd8a1f441665",
+    "code/rtl/one_of_eight.v": "ddaf31732e034bfaae2751317a8adcadd2462a71cc4b69be9204fb9e7d670311",
+    "code/rtl/one_of_five.v": "05c44888cc98ebd593e2d0714cffb39923b45abd5000fdee16f68c0d6c3fd34c",
+    "code/rtl/space_avail_top.v": "acf352d4b04910d61e7897f0336e66158573e5ed6b35b54bd5067279eae6a102",
+    "issue.md": "a4b1c10d29c48990541a3da0392cb57e72544f955d7838af5217e1b553d38196",
+    "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+    "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+    "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+    "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 12,
+    "mutant_total": 12
+  }
+}

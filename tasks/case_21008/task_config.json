@@ -1,0 +1,104 @@
+{
+  "case_id": "case_21008",
+  "task_id": "case_21008",
+  "version": 1,
+  "title": "Parameterized AXI4 Width Adapter Multi-Ratio Burst Repacking, Splitting, and Synthesis Parity",
+  "repo_id": "repo_40",
+  "repository": "alexforencich/verilog-axi",
+  "topic": "interconnect_fabric_rtl",
+  "family": "synthesis_parity",
+  "flow_scenario": "S2_elab_synth_sim_parity",
+  "coupling_mode": "deep_stage_authentic",
+  "editable_files": [
+    "code/axi_adapter.v",
+    "code/axi_adapter_rd.v",
+    "code/axi_adapter_wr.v"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_21008",
+    "version": 1,
+    "frozen_utc": "2026-11-11T19:52:34.379307+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/axi_adapter.v",
+      "code/axi_adapter_rd.v",
+      "code/axi_adapter_wr.v"
+    ],
+    "public_hashes": {
+      "BUILD.md": "e33907fe65f72fd0d75e956ab19ebc77e38769c237fa42968f7b8a2517af1a27",
+      "code/COPYING": "ba81481b2d63a33e0dce336d9e736130709549feeaf6cd424b34beba712baa50",
+      "code/axi_adapter.v": "38f7a2ca6396fc95bcc74050b0298c8682dbd4b0a7b0b095b90d980ca73f7e9e",
+      "code/axi_adapter_rd.v": "e9031d79a7699c1b7fa55400fa41106645d141f56615eacd0f5973cdc4459036",
+      "code/axi_adapter_wr.v": "915b13883a1f13fd7b2c279186e5857778812802c52aea1580aacd804b82abe1",
+      "issue.md": "3899b92fac3dc62a6ba05933dcc8605a305b93b2438f1b6d84f5dc37f339744d"
+    },
+    "gold_hashes": {
+      "code/COPYING": "ba81481b2d63a33e0dce336d9e736130709549feeaf6cd424b34beba712baa50",
+      "code/axi_adapter.v": "38f7a2ca6396fc95bcc74050b0298c8682dbd4b0a7b0b095b90d980ca73f7e9e",
+      "code/axi_adapter_rd.v": "06222f04b482fdcf9ced0de807e4d61979a6363b8f0f99529120c04b16bed638",
+      "code/axi_adapter_wr.v": "1d0b222f429cdfcd69add1ff90e0f0b8eaff4ae4e380f649811a044237d8a9d2"
+    },
+    "grader_hashes": {
+      "run.py": "902e578bbca89bf956fbfb3082e80f57671ea3a2f0d953fae5cbd6a8fca7385e"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 2,
+      "wrong_fix_fail_runs": 4,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 10,
+      "mutant_total": 10
+    }
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT2_New_Feature_ISA_Impl",
+  "problem_type_label": "New ISA & Subsystem Feature Implementation",
+  "primary_domain": "HighSpeed_AXI_NIC_Cache_DMA",
+  "multi_domains": [
+    "HighSpeed_AXI_NIC_Cache_DMA"
+  ],
+  "pdk_profile": {
+    "pdk_id": "rtl_dual_sim_standard",
+    "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+    "location": "Unified base image (/opt/siliconbench/tools)",
+    "customized": false,
+    "notes": "Pure RTL/protocol/synthesis check without external PDK Liberty files."
+  },
+  "public_hashes": {
+    "BUILD.md": "e33907fe65f72fd0d75e956ab19ebc77e38769c237fa42968f7b8a2517af1a27",
+    "code/COPYING": "ba81481b2d63a33e0dce336d9e736130709549feeaf6cd424b34beba712baa50",
+    "code/axi_adapter.v": "38f7a2ca6396fc95bcc74050b0298c8682dbd4b0a7b0b095b90d980ca73f7e9e",
+    "code/axi_adapter_rd.v": "e9031d79a7699c1b7fa55400fa41106645d141f56615eacd0f5973cdc4459036",
+    "code/axi_adapter_wr.v": "915b13883a1f13fd7b2c279186e5857778812802c52aea1580aacd804b82abe1",
+    "issue.md": "3899b92fac3dc62a6ba05933dcc8605a305b93b2438f1b6d84f5dc37f339744d"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 2,
+    "wrong_fix_fail_runs": 4,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 10,
+    "mutant_total": 10
+  }
+}

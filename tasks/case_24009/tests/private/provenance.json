@@ -1,0 +1,16 @@
+{
+  "case_id": "case_24009",
+  "repo_id": "repo_38",
+  "target_repo": "hdl",
+  "upstream_url": "https://github.com/analogdevicesinc/hdl",
+  "commit": "c9a501d87a420d2e28aa9d931557bdb4122f3c4f",
+  "archive_sha256": "4e8cc71ffaf89e18107427fd3d1cb402f225325954bbaefc8b4f811645bbf183",
+  "license": "Dual GPL-2.0 / ADI BSD",
+  "editable_files": [
+    "code/util_cpack2_impl.v",
+    "code/util_upack2_impl.v",
+    "code/pack_shell.v",
+    "code/pack_ctrl.v",
+    "code/pack_network.v"
+  ]
+}

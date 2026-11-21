@@ -1,0 +1,32 @@
+{
+  "case_id": "case_1003",
+  "repo_id": "repo_01",
+  "upstream_url": "https://github.com/lowRISC/opentitan",
+  "commit": "0e880c84fa5e6ff1d43354eae9ad9f13c96231ee",
+  "archive_sha256": "c71b2041453c7bfa1676830f80f4f46e0d35fa9c3484fd13d87011f07913ece5",
+  "license": "Apache-2.0; Nangate45 Open Cell Library License",
+  "native_source": [
+    "hw/ip/prim/rtl/prim_packer.sv",
+    "hw/ip/kmac/rtl/kmac_msgfifo.sv",
+    "hw/ip/kmac/rtl/kmac_errchk.sv",
+    "hw/ip/kmac/rtl/kmac_pkg.sv",
+    "hw/ip/kmac/rtl/sha3_pkg.sv",
+    "hw/ip/prim/rtl/prim_count.sv",
+    "hw/ip/prim/rtl/prim_fifo_sync.sv"
+  ],
+  "constructed_source": "code/kmac_msg_err_top.sv integrates OpenTitan's prim_packer, kmac_msgfifo, and kmac_errchk into a self-contained synthesis/STA and verification wrapper, with seeded defects in byte-offset packing, flush-sequence input gating/clear recovery, and error-blocked sw_cmd_o suppression, paired with benchmark-specific Nangate45 area (<= 2,260.0 um^2) and 1.50 ns OpenROAD STA closure targets.",
+  "industrial_inspiration_lineage": {
+    "primary_issue_id": "ISS-DP-2e5b760672b49413",
+    "primary_doc_id": "doc-1789cb7cebb860ec",
+    "primary_title": "Automating Datapath Verification and Bug Correction via Equality Saturation (DVCon US 2025, pp. 6-7)",
+    "secondary_sources": [
+      "raw-rtl-5b16a3092dc06976 -> doc-7258f8b1ed17c1a7: An Efficient and Modular Approach for Formally Verifying Cache Implementations (DVCon US 2018, p. 7, multi-cycle flush isolation)",
+      "ISS-DP-4c51f7a6370baa12 -> doc-47440f773eb80647: Scalable Sequential Optimization Under Observability Don't Cares (DATE 2024, pp. 1-3)"
+    ]
+  },
+  "editable_files": [
+    "code/prim_packer.sv",
+    "code/kmac_msgfifo.sv",
+    "code/kmac_errchk.sv"
+  ]
+}

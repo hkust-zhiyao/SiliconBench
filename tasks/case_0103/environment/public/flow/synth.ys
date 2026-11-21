@@ -1,0 +1,10 @@
+read_verilog code/skidbuffer.v code/sfifo.v code/axi_addr.v code/wbarbiter.v code/axim2wbsp.v code/wbm2axisp.v code/aximwr2wbsp.v code/aximrd2wbsp.v code/wb2axip_bridge_top.v
+hierarchy -check -top wb2axip_bridge_top
+synth -top wb2axip_bridge_top -flatten
+dfflibmap -liberty lib/NangateOpenCellLibrary_typical.lib
+abc -liberty lib/NangateOpenCellLibrary_typical.lib
+clean
+read_liberty -lib lib/NangateOpenCellLibrary_typical.lib
+check -assert
+write_verilog -noattr -noexpr mapped.v
+stat -liberty lib/NangateOpenCellLibrary_typical.lib

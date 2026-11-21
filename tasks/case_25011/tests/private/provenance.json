@@ -1,0 +1,24 @@
+{
+  "case_id": "case_25011",
+  "repo_id": "repo_50",
+  "origin": "https://github.com/chipsalliance/caliptra-rtl",
+  "commit": "a2192d99327a94ade30929315a94fe28bba598df",
+  "archive_sha256": "ed4b2037d16be0ff8f31ba350d73c60084b191c453a93b50c5191e67e5245384",
+  "dependencies": [],
+  "license": "Apache-2.0 and BSD-2-Clause; see public/code/LICENSE and source headers",
+  "native_sources": [
+    "src/sha512_masked/rtl/sha512_masked_defines_pkg.sv",
+    "src/sha512_masked/rtl/sha512_masked_w_mem.sv",
+    "src/sha512_masked/rtl/sha512_masked_core.sv",
+    "src/sha512/rtl/sha512_h_constants.v",
+    "src/sha512/rtl/sha512_k_constants.v"
+  ],
+  "editable_files": [
+    "code/sha512_masked_defines_pkg.sv",
+    "code/sha512_masked_w_mem.sv",
+    "code/sha512_masked_core.sv"
+  ],
+  "qualification": "upstream/repo_50",
+  "build_scope": "Caliptra boolean/arithmetic masked SHA-512 family compression core (sha512_masked_core + sha512_masked_w_mem + sha512_masked_defines_pkg) verified with Yosys-Slang synthesis, 64-stream gate-level first-order zero-variance probing analysis, and Verilator multi-mode/multi-entropy/zeroize simulation.",
+  "tool": "Yosys-Slang (read_slang + check -assert + scc -expect 0 + gate-level probing netlist) and Verilator 5.038 (--binary --timing -Wno-fatal -DSYNTHESIS)"
+}

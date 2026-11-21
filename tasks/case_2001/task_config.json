@@ -1,0 +1,157 @@
+{
+  "case_id": "case_2001",
+  "task_id": "case_2001",
+  "version": 1,
+  "title": "Co-design Ibex Prefetch/FIFO Fault Handling, Four-Cluster SRAM Mirror Relay, and 8-Macro CTS Floorplan",
+  "repo_id": "repo_02",
+  "repository": "lowRISC/ibex",
+  "topic": "rtl_and_macro_floorplan_codesign",
+  "family": "rtl_physical_codesign",
+  "editable_files": [
+    "code/ibex_prefetch_buffer.sv",
+    "code/ibex_fetch_fifo.sv",
+    "code/ibex_prefetch_sram_cluster.sv",
+    "plan/placement.json"
+  ],
+  "editable": [
+    "code/ibex_prefetch_buffer.sv",
+    "code/ibex_fetch_fifo.sv",
+    "code/ibex_prefetch_sram_cluster.sv",
+    "plan/placement.json"
+  ],
+  "grading": {
+    "eda_class": "pnr",
+    "grader_timeout_seconds": 600,
+    "verifier_timeout_seconds": 1200,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_2001",
+    "version": 1,
+    "frozen_utc": "2026-11-03T20:54:10.547297+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/ibex_prefetch_buffer.sv",
+      "code/ibex_fetch_fifo.sv",
+      "code/ibex_prefetch_sram_cluster.sv",
+      "plan/placement.json"
+    ],
+    "public_hashes": {
+      "BUILD.md": "0042988f5e47a83d540fc793aca9de50670c478bca7df0b285c989f78982b8af",
+      "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "SOURCE.md": "4d84f6dcf5fa37e6b19ef62e9c7981d1755cdd67e1d960222a6ef29c3a57b4d8",
+      "code/ibex_fetch_fifo.sv": "914108979f6e655d45cba3331c0dad9ebc0b0630aadd40249ab1b48ddde1de10",
+      "code/ibex_prefetch_buffer.sv": "13539fe3f16d832132502b384b11fba0925f370bcdea1a1a2e2d712967fd86ee",
+      "code/ibex_prefetch_sram_cluster.sv": "0f20027abfe2795a3fffe25051a96f8b24674d4742f25a2f18c4e93a48bc9869",
+      "code/prim_assert.sv": "d717d5dbcba3b5aa8a731ef9f8af18b036b49edef282f0a43a51f5ad2dd9bb40",
+      "code/prim_assert_dummy_macros.svh": "cac4a930105da662547de873f0b80246074fb22df9a398663e1c8ac3e7998218",
+      "code/prim_assert_sec_cm.svh": "25db89fe5f250c1bcbd808d0b4808206b9e85ac337b26e4ebb23f2ad569e1a13",
+      "code/prim_assert_standard_macros.svh": "4835706249e017eae999256ea807c526a39a49729196fc0aa18bb8818de86ab6",
+      "code/prim_assert_yosys_macros.svh": "d1fd8c350785a7c6d8cccc0b0c385392b71575397e7dc58c70f07716c8f9f3a3",
+      "code/prim_flop_macros.sv": "2e8e6c2ee484899ae5d0020eaf0c9732c31537c60c30cb2a0a0acd2e92baee03",
+      "code/tc_sram.sv": "41e3584b13d1c68706a65a6c6b24fd8f9f42d64e1f7ae18da4de334fdd2f3793",
+      "issue.md": "37d0a8b3cd3847fad15cc77af800cb1c480e08f521124b92613e3e8e8d75b112",
+      "pdk/256.lef": "246405148ef9df63af32d955f20491c4d087678d03cbfec3eb3ad6653fc8d4c3",
+      "pdk/256.lib": "c3eb5ef42af1af7d0f8eb6bc59952f2f6e0f045aff0b5066c028a7a4ff95ae81",
+      "pdk/256.v": "7f4d1d17a64e29b35bdf765d620dcedc5e367c38e95d08f3a80a6793fa2c7126",
+      "pdk/256_stub.v": "4fe2a528def8d0114f778643abec317c323e7d6744089b101a4f75e19b3fe70e",
+      "pdk/LICENSE.IHP": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "pdk/core.v": "e2e43ec0159cbc34662fe91114e8cb03a697a2a829ad63b0d4f06631908ea787",
+      "pdk/sg13g2_stdcell.lef": "9942e96fb5df56b40f1cac30e1b118e88a34c842b3263a9c285077c2801fae2b",
+      "pdk/sg13g2_stdcell_typ_1p20V_25C.lib": "f3b97e2af56e61f340c5b316d9a352fd54afda130841ec528e8bc2c22411a077",
+      "pdk/sg13g2_tech.lef": "3b05b1b0c9752e14d5153a5aa1594e34a883df6b1acaa84af377cef521f76bb9",
+      "physical/flow.tcl.in": "701a946e693dd903f8d453bf640b3bb4d9e12fa07f81228df294a18b36f27fea",
+      "physical/synth.ys": "a941ea2612b86bda72beefbc5c326b414d2712d08083b10a9b36785c6f448da2",
+      "plan/placement.json": "14e959d3f38d409dca039f1a5d0e6794eb5452474756cafcb116b8e3c32922c5"
+    },
+    "gold_hashes": {
+      "code/ibex_fetch_fifo.sv": "fa285a21e9e5e1a9494cd827b3cef429c3f33463459a4352ce84e2bd622f1df1",
+      "code/ibex_prefetch_buffer.sv": "f3eecc5aa7ec1ace124e8ae52baa3290d8450587d195c07f21cdb4b12696d37b",
+      "code/ibex_prefetch_sram_cluster.sv": "55a5e29ba81e6fcdff91a5e5e6dfa5f15e1e56eeeeefafab34581bccb36a7051",
+      "plan/placement.json": "d301c88a89574b81ad137b97a6d6ff51bba1a893855cbba6d8abb547a6495693"
+    },
+    "grader_hashes": {
+      "run.py": "186babfdf707481d87c41c119c784f91bb685312083f5686fdeb73dc10ca7fe8"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 12,
+      "mutant_total": 12
+    }
+  },
+  "eda_stage": "stage4_macro_pnr",
+  "eda_stage_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+  "eda_track": "stage4_macro_pnr",
+  "eda_track_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+  "problem_type": "PT5_RTL_HardSRAM_Macro_PnR",
+  "problem_type_label": "RTL + Hard-SRAM Macro Physical Co-Design",
+  "primary_domain": "floorplan_macros",
+  "multi_domains": [
+    "clocking",
+    "floorplan_macros",
+    "gatelevel_physical_effects",
+    "pins_routing_congestion",
+    "protocol_control",
+    "rtl_integration",
+    "rtl_semantics",
+    "verification_debug"
+  ],
+  "pdk_profile": {
+    "pdk_id": "ihp_sg13g2_130nm_8sram",
+    "pdk_name": "IHP SG13G2 130nm Open PDK + RM_IHPSG13_1P Hard-SRAM Macros",
+    "location": "Task-bundled in environment/public/pdk/ and tests/private/pdk/",
+    "customized": true,
+    "notes": "Includes task-bundled IHP SG13G2 standard-cell LEF/Liberty and single-port hard-SRAM macro LEF/Liberty/Verilog models."
+  },
+  "public_hashes": {
+    "BUILD.md": "0042988f5e47a83d540fc793aca9de50670c478bca7df0b285c989f78982b8af",
+    "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "SOURCE.md": "4d84f6dcf5fa37e6b19ef62e9c7981d1755cdd67e1d960222a6ef29c3a57b4d8",
+    "code/ibex_fetch_fifo.sv": "914108979f6e655d45cba3331c0dad9ebc0b0630aadd40249ab1b48ddde1de10",
+    "code/ibex_prefetch_buffer.sv": "13539fe3f16d832132502b384b11fba0925f370bcdea1a1a2e2d712967fd86ee",
+    "code/ibex_prefetch_sram_cluster.sv": "0f20027abfe2795a3fffe25051a96f8b24674d4742f25a2f18c4e93a48bc9869",
+    "code/prim_assert.sv": "d717d5dbcba3b5aa8a731ef9f8af18b036b49edef282f0a43a51f5ad2dd9bb40",
+    "code/prim_assert_dummy_macros.svh": "cac4a930105da662547de873f0b80246074fb22df9a398663e1c8ac3e7998218",
+    "code/prim_assert_sec_cm.svh": "25db89fe5f250c1bcbd808d0b4808206b9e85ac337b26e4ebb23f2ad569e1a13",
+    "code/prim_assert_standard_macros.svh": "4835706249e017eae999256ea807c526a39a49729196fc0aa18bb8818de86ab6",
+    "code/prim_assert_yosys_macros.svh": "d1fd8c350785a7c6d8cccc0b0c385392b71575397e7dc58c70f07716c8f9f3a3",
+    "code/prim_flop_macros.sv": "2e8e6c2ee484899ae5d0020eaf0c9732c31537c60c30cb2a0a0acd2e92baee03",
+    "code/tc_sram.sv": "41e3584b13d1c68706a65a6c6b24fd8f9f42d64e1f7ae18da4de334fdd2f3793",
+    "issue.md": "37d0a8b3cd3847fad15cc77af800cb1c480e08f521124b92613e3e8e8d75b112",
+    "pdk/256.lef": "246405148ef9df63af32d955f20491c4d087678d03cbfec3eb3ad6653fc8d4c3",
+    "pdk/256.lib": "c3eb5ef42af1af7d0f8eb6bc59952f2f6e0f045aff0b5066c028a7a4ff95ae81",
+    "pdk/256.v": "7f4d1d17a64e29b35bdf765d620dcedc5e367c38e95d08f3a80a6793fa2c7126",
+    "pdk/256_stub.v": "4fe2a528def8d0114f778643abec317c323e7d6744089b101a4f75e19b3fe70e",
+    "pdk/LICENSE.IHP": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "pdk/core.v": "e2e43ec0159cbc34662fe91114e8cb03a697a2a829ad63b0d4f06631908ea787",
+    "pdk/sg13g2_stdcell.lef": "9942e96fb5df56b40f1cac30e1b118e88a34c842b3263a9c285077c2801fae2b",
+    "pdk/sg13g2_stdcell_typ_1p20V_25C.lib": "f3b97e2af56e61f340c5b316d9a352fd54afda130841ec528e8bc2c22411a077",
+    "pdk/sg13g2_tech.lef": "3b05b1b0c9752e14d5153a5aa1594e34a883df6b1acaa84af377cef521f76bb9",
+    "physical/flow.tcl.in": "701a946e693dd903f8d453bf640b3bb4d9e12fa07f81228df294a18b36f27fea",
+    "physical/synth.ys": "a941ea2612b86bda72beefbc5c326b414d2712d08083b10a9b36785c6f448da2",
+    "plan/placement.json": "14e959d3f38d409dca039f1a5d0e6794eb5452474756cafcb116b8e3c32922c5"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 12,
+    "mutant_total": 12
+  }
+}

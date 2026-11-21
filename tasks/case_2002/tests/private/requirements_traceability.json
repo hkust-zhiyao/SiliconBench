@@ -1,0 +1,35 @@
+{
+  "case_id": "case_2002",
+  "obligations": [
+    {
+      "id": "REQ-STREAM-FORK-LATCH-FREE",
+      "behavior": "Drive ready_o on all combinational paths in stream_fork.sv so Yosys/Slang infers zero level-sensitive latches.",
+      "public_source": "public/issue.md item 1",
+      "enforced_by": "private/grader/run.py (DLH_/DLL_ latch check), killed by wrong_fix_4"
+    },
+    {
+      "id": "REQ-TRVK-RREADY-BACKPRESSURE",
+      "behavior": "Gate misalign_flag_out_ready and pointer storage updates with upstream_rvalid_o && upstream_rready_i, and hold revbm_outstanding_q until revbm_rvalid_i && revbm_rsp_ready so stalled upstream responses preserve alignment and do not issue duplicate revbm_req_o requests.",
+      "public_source": "public/issue.md item 2",
+      "enforced_by": "private/tests/tb.sv (Test 1 & Test 5), killed by wrong_fix_3, mutant_01, and mutant_04"
+    },
+    {
+      "id": "REQ-TRVK-HEAP-UNDERFLOW-GUARD",
+      "behavior": "Suppress revbm_req_required when cap_base_33[32] == 1 or cap_base_33[31:0] < heap_base_addr_i so capabilities below heap_base_addr_i do not wrap around into the revocation bitmap.",
+      "public_source": "public/issue.md item 2",
+      "enforced_by": "private/tests/tb.sv (Test 3A & Test 3B), killed by mutant_02 and mutant_03"
+    },
+    {
+      "id": "REQ-TRVK-FLUSH-RECOVERY",
+      "behavior": "Synchronously clear u_prim_fifo_sync_align, u_prim_fifo_ds_rsp_store, ptr_storage_valid_q, and revbm_outstanding_q when flush_i == 1 while suppressing gnt/req/rvalid outputs during the flush cycle.",
+      "public_source": "public/issue.md item 2",
+      "enforced_by": "private/tests/tb.sv (Test 4), killed by mutant_05 and mutant_06"
+    },
+    {
+      "id": "REQ-STA-TRANSPARENT-BUDGETS",
+      "behavior": "Configure constraints.json (max_delays) so alert_in -> alert_out has 1.50 ns internal budget (ns=9.0 with 4.0 ns input + 3.5 ns output delay) and trace_in -> trace_out has 2.50 ns internal budget (ns=10.0) across all 8 bits at 10 ns and 12 ns clocks without excepting registered bridge ports.",
+      "public_source": "public/issue.md item 3, public/BUILD.md §3",
+      "enforced_by": "private/grader/run.py (OpenROAD STA check), killed by wrong_fix_1, wrong_fix_2, wrong_fix_5, mutant_09, and mutant_10"
+    }
+  ]
+}

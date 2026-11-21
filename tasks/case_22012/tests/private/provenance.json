@@ -1,0 +1,11 @@
+{
+  "case_id": "case_22012",
+  "repo_id": "repo_19",
+  "upstream_project": "pulp-platform/ara",
+  "license": "SHL-0.51",
+  "editable_rtl_origins": [
+    "upstream/hardware/src/lane/fixed_p_rounding.sv",
+    "upstream/hardware/src/lane/simd_alu.sv",
+    "upstream/hardware/src/lane/valu.sv"
+  ]
+}

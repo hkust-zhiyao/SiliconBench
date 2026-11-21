@@ -1,0 +1,136 @@
+{
+  "case_id": "case_0103",
+  "task_id": "case_0103",
+  "version": 1,
+  "title": "Coupled WB2AXIP Outstanding Credit Tracking, Wishbone Error Abort Drain, and Nangate45 Area/Timing Closure",
+  "repo_id": "repo_43",
+  "repository": "zipcpu/wb2axip",
+  "source_commit": "2e8d3bc2d26ddc33d1881022a2a2b9d3f0c16b9b",
+  "license": "Apache-2.0",
+  "family": "rtl_to_sta_ppa",
+  "topic": "coupled_wb2axip_burst_credit_abort_drain_ppa_sta",
+  "editable_files": [
+    "code/wbm2axisp.v",
+    "code/aximwr2wbsp.v",
+    "code/aximrd2wbsp.v"
+  ],
+  "editable": [
+    "code/wbm2axisp.v",
+    "code/aximwr2wbsp.v",
+    "code/aximrd2wbsp.v"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 1,
+        "extra_args": []
+      },
+      {
+        "seed": 2,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_0103",
+    "version": 1,
+    "frozen_utc": "2026-11-03T18:41:40.572092+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/wbm2axisp.v",
+      "code/aximwr2wbsp.v",
+      "code/aximrd2wbsp.v"
+    ],
+    "public_hashes": {
+      "BUILD.md": "4b09809de5adc955cefa43b5ebf2a211e4f102ed253d994b9d0975c1c5479013",
+      "code/LICENSE": "c780621de19f87e2e0aea96005de3ec65f4276a484fa22545712d773fe8d6fcb",
+      "code/axi_addr.v": "33029f0a675a9d8e672340db4b3b6c5ef402da5f504dd5584fb9717453d7e443",
+      "code/axim2wbsp.v": "77451535e0920f69e4b123f4e26859ab81b1addb6be5fa8c2f7f4779de8467a9",
+      "code/aximrd2wbsp.v": "b9abb183f76db5d84f4f81a85f7028ab10b31502cb0a15500471792cfb684749",
+      "code/aximwr2wbsp.v": "1a44612eb00bc9f23198f2a5368a758b85d5c7611a3610c22f4aebccd6f9a1b4",
+      "code/sfifo.v": "76a653781f1ecca1c1da92c4e5105ecd5d0f832b13cbfd31300ec88d9947e0c1",
+      "code/skidbuffer.v": "ed1fda9192563fd7fd7033b564e8cf47ad6cb63ba4f578ed2c302037d47a5389",
+      "code/wb2axip_bridge_top.v": "a9928414d25249a326754a58b745822e5404e140e7350263a878f01fc367d0dd",
+      "code/wbarbiter.v": "a12c18c66d2b1785ec704e14b7b70bae35673eb75094ffd39259598130e9612b",
+      "code/wbm2axisp.v": "337f1ee8be6342380ed6f7e04ce818b7f106511036439f33563439ee1e8fa81b",
+      "flow/synth.ys": "67d854afa24ad23b3d1c94abf4b5c553cb7dd58fae58d0fe07a027fffe5f8e7b",
+      "flow/timing.tcl": "f4c24830bfbf200c3da8ad3c338003acb12b77f39dbc9d543f9a2da507472927",
+      "issue.md": "04d1bdec115674c1ae125d542ed788b15815bdf358f36698dd7c11d1ad71df4c",
+      "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+      "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+    },
+    "gold_hashes": {
+      "code/aximrd2wbsp.v": "d583a9b95accfde172cbc36e586b687b0eb8efa229b9cdce2c3a79fa01ef44f6",
+      "code/aximwr2wbsp.v": "5cd99e14d487bbd1a94c1ef8bf661d3f052613e6980846949212f1a0fa5f2610",
+      "code/wbm2axisp.v": "93c415c38bc047f66888b396f3cfe9890ca59495aac3060fac5aeec89190e591"
+    },
+    "grader_hashes": {
+      "run.py": "7c4d8247e4f4cb649ecc3f7f79f828d4c3052f07aa10f3857a352a00d25eb17c"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 10,
+      "mutant_total": 10
+    },
+    "test_hashes": {
+      "tb.sv": "deea67edb4241e3ec3d3b6c86d4b03e82a37f00402bdbb56a96649169e44128c"
+    },
+    "grader_revalidated_utc": "2026-11-16T10:17:42.058352+00:00"
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+  "problem_type_label": "Architectural & Protocol Bug Repair",
+  "primary_domain": "protocol_control",
+  "multi_domains": [
+    "protocol_control",
+    "reset_rdc",
+    "rtl_integration",
+    "synthesis_qor",
+    "verification_debug"
+  ],
+  "pdk_profile": {
+    "pdk_id": "nangate45_plus_multicorner_lib",
+    "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+    "location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+    "customized": true,
+    "notes": "Uses shared Nangate45 library for synthesis plus task-bundled fast/slow/scan corner timing views."
+  },
+  "public_hashes": {
+    "BUILD.md": "4b09809de5adc955cefa43b5ebf2a211e4f102ed253d994b9d0975c1c5479013",
+    "code/LICENSE": "c780621de19f87e2e0aea96005de3ec65f4276a484fa22545712d773fe8d6fcb",
+    "code/axi_addr.v": "33029f0a675a9d8e672340db4b3b6c5ef402da5f504dd5584fb9717453d7e443",
+    "code/axim2wbsp.v": "77451535e0920f69e4b123f4e26859ab81b1addb6be5fa8c2f7f4779de8467a9",
+    "code/aximrd2wbsp.v": "b9abb183f76db5d84f4f81a85f7028ab10b31502cb0a15500471792cfb684749",
+    "code/aximwr2wbsp.v": "1a44612eb00bc9f23198f2a5368a758b85d5c7611a3610c22f4aebccd6f9a1b4",
+    "code/sfifo.v": "76a653781f1ecca1c1da92c4e5105ecd5d0f832b13cbfd31300ec88d9947e0c1",
+    "code/skidbuffer.v": "ed1fda9192563fd7fd7033b564e8cf47ad6cb63ba4f578ed2c302037d47a5389",
+    "code/wb2axip_bridge_top.v": "a9928414d25249a326754a58b745822e5404e140e7350263a878f01fc367d0dd",
+    "code/wbarbiter.v": "a12c18c66d2b1785ec704e14b7b70bae35673eb75094ffd39259598130e9612b",
+    "code/wbm2axisp.v": "337f1ee8be6342380ed6f7e04ce818b7f106511036439f33563439ee1e8fa81b",
+    "flow/synth.ys": "67d854afa24ad23b3d1c94abf4b5c553cb7dd58fae58d0fe07a027fffe5f8e7b",
+    "flow/timing.tcl": "f4c24830bfbf200c3da8ad3c338003acb12b77f39dbc9d543f9a2da507472927",
+    "issue.md": "04d1bdec115674c1ae125d542ed788b15815bdf358f36698dd7c11d1ad71df4c",
+    "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+    "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 10,
+    "mutant_total": 10
+  }
+}

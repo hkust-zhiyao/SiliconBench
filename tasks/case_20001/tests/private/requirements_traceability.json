@@ -1,0 +1,55 @@
+{
+  "case_id": "case_20001",
+  "obligations": [
+    {
+      "id": "REQ-SB-X0-QUAL",
+      "behavior": "x0 never marked busy in E1/E2 scoreboard; RAW/WAW hazard checks apply only to valid architectural rs1/rs2/rd operands.",
+      "public_source": "public/issue.md item 1",
+      "verified_by": [
+        "Test1",
+        "Test2",
+        "wf2_spurious_itype_rb_stall",
+        "m01_x0_marked_busy_e1",
+        "m02_x0_marked_busy_e2_nobypass",
+        "m03_waw_check_ignores_sb_alloc",
+        "m04_csrrwi_falsely_uses_ra",
+        "m05_cross_slot_raw_not_recorded"
+      ]
+    },
+    {
+      "id": "REQ-POST-LSU-DUAL",
+      "behavior": "Block Slot-1 MUL behind active E1 load/store while allowing Slot-0 ALU single-issue; block dual-issue on faults/invalid ops and drain fetch faults cleanly.",
+      "public_source": "public/issue.md item 2",
+      "verified_by": [
+        "Test3",
+        "Test5",
+        "wf1_missing_slot1_post_lsu_mul_block",
+        "m06_missing_fault_pending_drain_block"
+      ]
+    },
+    {
+      "id": "REQ-UNIT-INTR-ISOLATION",
+      "behavior": "Gate unit valid strobes to matching unit types and suppress on take_interrupt_i or fetch/page faults; qualify interrupt_inhibit_o on active CSR.",
+      "public_source": "public/issue.md item 3",
+      "verified_by": [
+        "Test4",
+        "Test5",
+        "Test7",
+        "wf3_ungated_exec_div_on_interrupt",
+        "m07_csr_valid_fires_on_fetch_fault",
+        "m08_stale_interrupt_inhibit",
+        "m10_lsu_valid_ungated_by_is_lsu"
+      ]
+    },
+    {
+      "id": "REQ-BRANCH-INFO-BUBBLE",
+      "behavior": "Retain resolved E1 branch attributes across fetch bubbles and output on delayed mispredicted_r.",
+      "public_source": "public/issue.md item 4",
+      "verified_by": [
+        "Test6",
+        "wf4_lost_branch_info_after_fetch_bubble",
+        "m09_saved_br_not_cleared_on_match"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "macros": [
+    {
+      "instance": "u_cache.u_bank_0.cache_tags.u_tag_sram",
+      "x": 1680.0,
+      "y": 1960.0,
+      "orientation": "R0"
+    },
+    {
+      "instance": "u_cache.u_bank_0.cache_data.u_data_slice_0",
+      "x": 120.0,
+      "y": 120.0,
+      "orientation": "R0"
+    },
+    {
+      "instance": "u_cache.u_bank_0.cache_data.u_data_slice_1",
+      "x": 120.0,
+      "y": 210.0,
+      "orientation": "R0"
+    },
+    {
+      "instance": "u_cache.u_bank_0.cache_data.u_data_slice_2",
+      "x": 120.0,
+      "y": 300.0,
+      "orientation": "R0"
+    },
+    {
+      "instance": "u_cache.u_bank_0.cache_data.u_data_slice_3",
+      "x": 120.0,
+      "y": 390.0,
+      "orientation": "R0"
+    },
+    {
+      "instance": "u_cache.u_bank_1.cache_tags.u_tag_sram",
+      "x": 120.0,
+      "y": 1960.0,
+      "orientation": "R0"
+    },
+    {
+      "instance": "u_cache.u_bank_1.cache_data.u_data_slice_0",
+      "x": 1680.0,
+      "y": 120.0,
+      "orientation": "R0"
+    },
+    {
+      "instance": "u_cache.u_bank_1.cache_data.u_data_slice_1",
+      "x": 1680.0,
+      "y": 210.0,
+      "orientation": "R0"
+    },
+    {
+      "instance": "u_cache.u_bank_1.cache_data.u_data_slice_2",
+      "x": 1680.0,
+      "y": 300.0,
+      "orientation": "R0"
+    },
+    {
+      "instance": "u_cache.u_bank_1.cache_data.u_data_slice_3",
+      "x": 1680.0,
+      "y": 390.0,
+      "orientation": "R0"
+    }
+  ]
+}

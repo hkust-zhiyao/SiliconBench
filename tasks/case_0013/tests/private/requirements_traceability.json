@@ -1,0 +1,55 @@
+{
+  "case_id": "case_0013",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "obligation": "Immediate asynchronous reset assertion and local-clock-synchronized release for source, destination, and enabled scatter-gather domains",
+      "source": "public/issue.md paragraph 1",
+      "verified_by": "private/tests/tb.sv (immediate assertion and synchronous release checks on src_resetn, dest_resetn, and sg_resetn across SG=0 and SG=1)",
+      "caught_candidates": [
+        "baseline",
+        "wf1_raw_async_release",
+        "m01_no_immediate_src_reset",
+        "m02_no_immediate_dest_reset",
+        "m03_no_immediate_sg_reset",
+        "m04_unsynced_dest_release",
+        "m05_unsynced_sg_release"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "obligation": "Abort active or starting DMA operation on external reset: stop admitting new requests (req_enable=0), allow other domains to acknowledge shutdown (including draining in-flight startup enables before shutdown), then run the full reset sequence before restarting",
+      "source": "public/issue.md paragraph 1",
+      "verified_by": "private/tests/tb.sv (negedge req_resetn shutdown-acknowledgement invariant, active abort, and interrupted startup abort before acknowledgements)",
+      "caught_candidates": [
+        "wf3_undrained_startup_abort",
+        "wf5_deepseek_v41_flash_replay",
+        "m07_req_enable_not_gated_by_fault"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "obligation": "Capture brief sub-cycle external reset pulses and wait for every participating external reset to be released before restarting",
+      "source": "public/issue.md paragraph 1",
+      "verified_by": "private/tests/tb.sv (sub-cycle src_ext_resetn and sg_ext_resetn pulses between clk edges; held dest_ext_resetn check verifying full reset pulse occurs and restart waits until dest_ext_resetn is released)",
+      "caught_candidates": [
+        "wf2_sync_sampled_fault",
+        "wf4_restart_while_held",
+        "wf5_deepseek_v41_flash_replay",
+        "m09_fault_not_cleared_in_reset",
+        "m10_ignore_dest_released_wait"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "obligation": "Ignore scatter-gather external reset when scatter-gather is disabled (DMA_SG_TRANSFER=0) and preserve normal enable, pause, and reset sequencing when external resets remain released",
+      "source": "public/issue.md paragraphs 1-2",
+      "verified_by": "private/tests/tb.sv (SG=0 sg_ext_resetn immunity check, ctrl_pause state preservation check, and ctrl_enable shutdown/restart cycle)",
+      "caught_candidates": [
+        "ah5_vacuous_req_enable_low",
+        "m06_sg_fault_ungated_by_param",
+        "m08_pause_triggers_reset"
+      ]
+    }
+  ]
+}

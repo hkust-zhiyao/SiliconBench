@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.pyo
+*.vvp
+*.vcd
+*.fst
+obj_dir/
+logs/
+environments/tools/
+.DS_Store

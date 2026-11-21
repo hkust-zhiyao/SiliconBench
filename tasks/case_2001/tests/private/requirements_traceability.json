@@ -1,0 +1,35 @@
+{
+  "case_id": "case_2001",
+  "obligations": [
+    {
+      "id": "REQ-PREFETCH-FAULT-FREEZE",
+      "behavior": "Retire every memory response (instr_rvalid_i) from outstanding/discard queues, forward non-discarded error responses to ibex_fetch_fifo, and freeze new sequential fetch requests on the cycle following a non-discarded error response until branch_i asserts while keeping ungranted valid_req_q stable.",
+      "public_source": "public/issue.md item 1",
+      "enforced_by": "private/tests/tb_prefetch_fifo.sv and private/tests/tb_cluster.sv, killed by wrong_fix_2, mutant_01, mutant_02, and mutant_03"
+    },
+    {
+      "id": "REQ-FIFO-UNALIGNED-ERR",
+      "behavior": "When out_addr_o[1]==1 and the first word has err==1, assert out_valid_o=1, out_err_o=1, and out_err_plus2_o=0 immediately without waiting for a second word; assert out_err_plus2_o=1 iff out_addr_o[1]==1, !unaligned_is_compressed, !err, and the second word has an error.",
+      "public_source": "public/issue.md item 1",
+      "enforced_by": "private/tests/tb_prefetch_fifo.sv and private/tests/tb_cluster.sv, killed by mutant_04 and mutant_05"
+    },
+    {
+      "id": "REQ-CLUSTER-MIRROR-RELAY-XOR",
+      "behavior": "For each cluster i in 0..3, drive wd[63:0] = host_wdata_i[63:0], wd[127:64] = host_mirror_i[i] ? bank_rdata[i][63:0] : host_wdata_i[127:64] without extra flip-flops/latches in the cluster loop, be = host_mirror_i[i] ? {host_be_i[15:8] | host_be_i[7:0], host_be_i[7:0] & host_be_i[15:8]} : host_be_i, and cluster_xor_rdata_o = bank_rdata[0] ^ bank_rdata[1] ^ bank_rdata[2] ^ bank_rdata[3].",
+      "public_source": "public/issue.md item 2",
+      "enforced_by": "private/tests/tb_cluster.sv and private/grader/run.py (__RELAY_PATHS__ 256), killed by wrong_fix_5, mutant_06, mutant_07, mutant_08, mutant_09, and mutant_10"
+    },
+    {
+      "id": "REQ-PHYS-GEOM-BAYS",
+      "behavior": "Place all 8 macros inside usable core (65<=x, x+784.48<=2335, 68<=y, y+118.78<=1730) with >=20 um pairwise clearance, matching Y and x(low)<x(high) per bank, banks 0/1 in south bay [68, 420] um (y0<y1), and banks 2/3 in north bay [1340, 1730] um (y2<y3).",
+      "public_source": "public/issue.md item 2, public/BUILD.md §4-5",
+      "enforced_by": "private/grader/run.py (geometry checks), killed by wrong_fix_3 and anti_hack_4"
+    },
+    {
+      "id": "REQ-PHYS-CTS-GRT-STA",
+      "behavior": "Orient and place the 8 macros so OpenROAD achieves legal placement, connected VDD/VSS grids, 0 global-route overflow, rise-to-rise clock network latency spread <= 0.01750 ns, post-GRT setup slack >= 0.60 ns, post-GRT hold slack >= 0.05 ns, and Metal2-Metal5 global-route wirelength <= 1,402,000.0 um.",
+      "public_source": "public/issue.md item 2, public/BUILD.md §4-5, public/physical/flow.tcl.in",
+      "enforced_by": "private/grader/run.py (OpenROAD physical and timing checks), killed by wrong_fix_1, wrong_fix_4, mutant_11, and mutant_12"
+    }
+  ]
+}

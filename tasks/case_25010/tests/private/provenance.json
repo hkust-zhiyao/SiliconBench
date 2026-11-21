@@ -1,0 +1,28 @@
+{
+  "case_id": "case_25010",
+  "repo_id": "repo_22",
+  "origin": "https://github.com/pulp-platform/snitch",
+  "commit": "0fb308e47fc21c72f782a95438808e68aa016c35",
+  "archive_sha256": "ef0f5790ef19c777d147464904cc3e6ea9e17368d12539957736ccfad8e22454",
+  "license": "Solderpad Hardware License v0.51; see public/code/LICENSE",
+  "native_sources": [
+    "hw/ip/snitch_icache/src/snitch_icache.sv",
+    "hw/ip/snitch_icache/src/snitch_icache_l0.sv",
+    "hw/ip/snitch_icache/src/snitch_icache_lookup.sv",
+    "hw/ip/snitch_icache/src/snitch_icache_handler.sv",
+    "hw/ip/snitch_icache/src/snitch_icache_refill.sv",
+    "hw/ip/snitch_icache/src/snitch_icache_lfsr.sv",
+    "hw/ip/snitch_icache/src/snitch_icache_pkg.sv"
+  ],
+  "editable_files": [
+    "code/snitch_icache.sv",
+    "code/snitch_icache_l0.sv",
+    "code/snitch_icache_lookup.sv",
+    "code/snitch_icache_handler.sv",
+    "code/snitch_icache_refill.sv",
+    "plan/macro_placement.json",
+    "constraints/snitch_icache.sdc"
+  ],
+  "qualification": "upstream/repo_22",
+  "build_scope": "Snitch 2-port 2-way 6-SRAM instruction cache subsystem verified via Verilator 5.038 multi-seed functional regression plus Yosys-Slang + OpenROAD CTS/PDN/GRT/STA physical signoff on IHP SG13G2."
+}

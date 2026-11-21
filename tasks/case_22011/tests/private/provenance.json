@@ -1,0 +1,12 @@
+{
+  "case_id": "case_22011",
+  "source_repo_id": "repo_19",
+  "source_repo_name": "pulp-platform/ara",
+  "license": "Solderpad Hardware License v0.51 (SHL-0.51)",
+  "upstream_paths": [
+    "hardware/src/ara_dispatcher.sv",
+    "hardware/src/segment_sequencer.sv",
+    "hardware/src/ara_sequencer.sv",
+    "hardware/src/vlsu/vlsu.sv"
+  ]
+}

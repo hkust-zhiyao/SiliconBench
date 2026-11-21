@@ -1,0 +1,52 @@
+{
+  "macros": [
+    {
+      "instance": "u_local_mem.u_lmem_bank_0",
+      "x": 900.0,
+      "y": 500.0,
+      "orientation": "R0"
+    },
+    {
+      "instance": "u_local_mem.u_lmem_bank_1",
+      "x": 900.0,
+      "y": 615.0,
+      "orientation": "R0"
+    },
+    {
+      "instance": "u_local_mem.u_lmem_bank_2",
+      "x": 900.0,
+      "y": 760.0,
+      "orientation": "R0"
+    },
+    {
+      "instance": "u_local_mem.u_lmem_bank_3",
+      "x": 900.0,
+      "y": 900.0,
+      "orientation": "R0"
+    },
+    {
+      "instance": "u_local_mem.u_lmem_bank_4",
+      "x": 900.0,
+      "y": 1040.0,
+      "orientation": "R180"
+    },
+    {
+      "instance": "u_local_mem.u_lmem_bank_5",
+      "x": 900.0,
+      "y": 1180.0,
+      "orientation": "R180"
+    },
+    {
+      "instance": "u_local_mem.u_lmem_bank_6",
+      "x": 900.0,
+      "y": 1320.0,
+      "orientation": "R180"
+    },
+    {
+      "instance": "u_local_mem.u_lmem_bank_7",
+      "x": 900.0,
+      "y": 1460.0,
+      "orientation": "R180"
+    }
+  ]
+}

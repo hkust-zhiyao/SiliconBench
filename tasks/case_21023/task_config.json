@@ -1,0 +1,117 @@
+{
+  "case_id": "case_21023",
+  "task_id": "case_21023",
+  "version": 1,
+  "title": "Parametric Hardware ARP/INARP Offload Wide-Bus Framing, Cache Read-During-Write Coherence, RFC 826 Selective Learning, and TX Arbitration",
+  "repo_id": "repo_39",
+  "repository": "corundum/corundum",
+  "topic": "interconnect_nic_dma_rtl",
+  "family": "protocol_framing_offload",
+  "flow_scenario": "S4_interconnect_nic_dma_protocol",
+  "coupling_mode": "deep_stage_authentic",
+  "editable_files": [
+    "code/arp.v",
+    "code/arp_cache.v",
+    "code/arp_eth_rx.v",
+    "code/arp_eth_tx.v"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_21023",
+    "version": 1,
+    "frozen_utc": "2026-11-12T05:51:59.934793+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/arp.v",
+      "code/arp_cache.v",
+      "code/arp_eth_rx.v",
+      "code/arp_eth_tx.v"
+    ],
+    "public_hashes": {
+      "BUILD.md": "a33f0e1f840cda58b63987b33cdc809028ea4a91030f948b51b40c1665ed7f14",
+      "code/LICENSE": "e718ce52d815d36c0576b9f759001200731db9b16775286ffc1b66bbf97eb1b6",
+      "code/arp.v": "41e2301695fdfc1cc93252041107574a0ed040ba92c99d57dce73317804f4698",
+      "code/arp_cache.v": "d8b573a7582c08f67f90aba9316d98e5b0e0c5bbcbcd7a6935d6537e3f4aa2f8",
+      "code/arp_eth_rx.v": "4113e03df063b91d64be4da8e455ba45d8251cecc8e66ec75cec93c518443bee",
+      "code/arp_eth_tx.v": "88be298ea8f236900416ebd3295aa2fa86a8785acc2b8edca87278afc2338f86",
+      "code/lfsr.v": "5502c8203b0dfc7246c1a2de93e60c199ded3c1d7840b106350d714f72a9a079",
+      "issue.md": "ff21905bdfa1db52de2d744215e2b07b0fb4d17ba68d5eba840e171de207f0cf"
+    },
+    "gold_hashes": {
+      "code/LICENSE": "e718ce52d815d36c0576b9f759001200731db9b16775286ffc1b66bbf97eb1b6",
+      "code/arp.v": "44336fc3ad00b190b4d6bdae0d2083c64f404df6a8e82aebc0a0ea42d5772e84",
+      "code/arp_cache.v": "c213119527a3fc4fd6aa8d53a9680c7f90b9b81b271551772259d8e364128c9d",
+      "code/arp_eth_rx.v": "7a25d442dfa051f6b8a756f6b7d29408e821621059b2e695d57c95ec54507b56",
+      "code/arp_eth_tx.v": "80953f78a8a9847bc822e186a6a047a569f975995884facf447fc02a9483e18f",
+      "code/lfsr.v": "5502c8203b0dfc7246c1a2de93e60c199ded3c1d7840b106350d714f72a9a079"
+    },
+    "grader_hashes": {
+      "run.py": "b8710c97c45aab31d5a019e3397333d410c250a643e128cf4f225c43f854c560"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 2,
+      "wrong_fix_fail_runs": 4,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 12,
+      "mutant_total": 12
+    },
+    "test_hashes": {
+      "tb.sv": "c766f2ee9a491561bb76b37ed9b1d24dc8543d3640cc120c4cbcfae153615734",
+      "tb_gl.sv": "907ae0f76df59f7498852e82416029709fa5bef67bef5ce8aa700e2cf64f9b3e"
+    },
+    "grader_revalidated_utc": "2026-11-13T20:03:55.623117+00:00"
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT2_New_Feature_ISA_Impl",
+  "problem_type_label": "New ISA & Subsystem Feature Implementation",
+  "primary_domain": "HighSpeed_AXI_NIC_Cache_DMA",
+  "multi_domains": [
+    "HighSpeed_AXI_NIC_Cache_DMA"
+  ],
+  "pdk_profile": {
+    "pdk_id": "rtl_dual_sim_standard",
+    "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+    "location": "Unified base image (/opt/siliconbench/tools)",
+    "customized": false,
+    "notes": "Pure RTL/protocol/synthesis check without external PDK Liberty files."
+  },
+  "public_hashes": {
+    "BUILD.md": "a33f0e1f840cda58b63987b33cdc809028ea4a91030f948b51b40c1665ed7f14",
+    "code/LICENSE": "e718ce52d815d36c0576b9f759001200731db9b16775286ffc1b66bbf97eb1b6",
+    "code/arp.v": "41e2301695fdfc1cc93252041107574a0ed040ba92c99d57dce73317804f4698",
+    "code/arp_cache.v": "d8b573a7582c08f67f90aba9316d98e5b0e0c5bbcbcd7a6935d6537e3f4aa2f8",
+    "code/arp_eth_rx.v": "4113e03df063b91d64be4da8e455ba45d8251cecc8e66ec75cec93c518443bee",
+    "code/arp_eth_tx.v": "88be298ea8f236900416ebd3295aa2fa86a8785acc2b8edca87278afc2338f86",
+    "code/lfsr.v": "5502c8203b0dfc7246c1a2de93e60c199ded3c1d7840b106350d714f72a9a079",
+    "issue.md": "ff21905bdfa1db52de2d744215e2b07b0fb4d17ba68d5eba840e171de207f0cf"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 2,
+    "wrong_fix_fail_runs": 4,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 12,
+    "mutant_total": 12
+  }
+}

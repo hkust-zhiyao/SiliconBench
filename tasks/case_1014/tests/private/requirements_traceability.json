@@ -1,0 +1,16 @@
+{
+  "obligations": [
+    {
+      "obligation": "Clear instantiated_d to 0 and flush sfifo_genbits on cmd_gen_abort_ack in csrng_cmd_stage",
+      "source": "public/issue.md"
+    },
+    {
+      "obligation": "Transition BootDone to BootLoadUni on !boot_req_mode_i and pulse main_sm_done_pulse_o on disable in edn_main_sm, and assert fifo_pop_o on req_i && fifo_not_empty_i in edn_ack_sm Idle",
+      "source": "public/issue.md"
+    },
+    {
+      "obligation": "Achieve Nangate45 mapped area <= 2320.0 um^2 and OpenROAD setup/hold slack >= 0.0 ns at 1.15 ns clock period",
+      "source": "public/issue.md"
+    }
+  ]
+}

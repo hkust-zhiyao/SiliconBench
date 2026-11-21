@@ -1,0 +1,5 @@
+# Keep micro-loop multi-operation results, loop metadata, and clears coherent across stalls
+
+The accelerator consumes shadowed micro-loop results more slowly than the processor can prepare the next iteration. When `ctrl_i.ready` pauses computation during a multi-operation loop body or while a completed result waits for `ctrl_i.enable`, partially updated results can be published and the reported loop number (`flags_o.loop`) can drift away from the offsets and indices it describes.
+
+Update `code/hwpe_ctrl_uloop.sv` so that when `flags_o.valid` is high, `flags_o.loop`, `flags_o.offs`, `flags_o.idx`, and `flags_o.idx_update` always describe the same completed loop-body iteration without partial mid-body updates across pauses, and so that asserting either `clear_i` or `ctrl_i.clear` discards all pending and visible state before a subsequent job. Preserve the existing microcode semantics, handshakes, offsets, and index progression across both shadowed (`SHADOWED = 1`) and unshadowed (`SHADOWED = 0`) configurations.

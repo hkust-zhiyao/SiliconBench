@@ -1,0 +1,60 @@
+{
+  "macros": [
+    {
+      "bank": 0,
+      "half": "low",
+      "x": 70,
+      "y": 100,
+      "orient": "R0"
+    },
+    {
+      "bank": 0,
+      "half": "high",
+      "x": 1530,
+      "y": 100,
+      "orient": "R0"
+    },
+    {
+      "bank": 1,
+      "half": "low",
+      "x": 70,
+      "y": 260,
+      "orient": "R0"
+    },
+    {
+      "bank": 1,
+      "half": "high",
+      "x": 1530,
+      "y": 260,
+      "orient": "R0"
+    },
+    {
+      "bank": 2,
+      "half": "low",
+      "x": 70,
+      "y": 1380,
+      "orient": "R0"
+    },
+    {
+      "bank": 2,
+      "half": "high",
+      "x": 1530,
+      "y": 1380,
+      "orient": "R0"
+    },
+    {
+      "bank": 3,
+      "half": "low",
+      "x": 70,
+      "y": 1540,
+      "orient": "R0"
+    },
+    {
+      "bank": 3,
+      "half": "high",
+      "x": 1530,
+      "y": 1540,
+      "orient": "R0"
+    }
+  ]
+}

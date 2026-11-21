@@ -1,0 +1,22 @@
+{
+  "case_id": "case_0013",
+  "origin_task_id": "a500_0048",
+  "repo_id": "repo_38",
+  "upstream_url": "https://github.com/analogdevicesinc/hdl",
+  "commit": "c9a501d87a420d2e28aa9d931557bdb4122f3c4f",
+  "archive_sha256": "4e8cc71ffaf89e18107427fd3d1cb402f225325954bbaefc8b4f811645bbf183",
+  "license": "Dual GPL-2.0 / ADI BSD (see public/code/LICENSE_GPL2, public/code/LICENSE_ADIBSD, and source headers)",
+  "qualification_ref": "upstream/repo_38",
+  "native_rtl_paths": [
+    "library/axi_dmac/axi_dmac_reset_manager.v",
+    "library/util_cdc/sync_bits.v"
+  ],
+  "editable_file": "public/code/axi_dmac_reset_manager.v",
+  "readonly_dependencies": [
+    "public/code/sync_bits.v",
+    "public/code/LICENSE_GPL2",
+    "public/code/LICENSE_ADIBSD"
+  ],
+  "tool": "Icarus Verilog 13.0 (-g2012)",
+  "scope": "Control sequencing and multi-domain digital reset behavior across synchronous and asynchronous clock configurations with scatter-gather disabled and enabled; no analog metastability or physical RDC signoff claim."
+}

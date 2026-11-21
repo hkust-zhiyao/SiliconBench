@@ -1,0 +1,40 @@
+{
+  "case_id": "case_6012",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "module": "ifu_compress_ctl.sv",
+      "verified_by": [
+        "tests/tb.sv"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "module": "ifu_aln_ctl.sv",
+      "verified_by": [
+        "tests/tb.sv"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "module": "ifu_bp_ctl.sv",
+      "verified_by": [
+        "tests/tb.sv"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "module": "ifu_ifc_ctl.sv",
+      "verified_by": [
+        "tests/tb.sv"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "module": "constraints.json",
+      "verified_by": [
+        "grader/run.py:openroad_sta"
+      ]
+    }
+  ]
+}

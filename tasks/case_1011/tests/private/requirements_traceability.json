@@ -1,0 +1,16 @@
+{
+  "obligations": [
+    {
+      "obligation": "Flush unconsumed TX word bytes on flush_i in spi_host_byte_select",
+      "source": "public/issue.md"
+    },
+    {
+      "obligation": "Prioritize rd_en_i && rd_ready_o over rx_valid_o && rx_ready_i for rx_buf_valid_q in spi_host_shift_register and stretch sd_en_o[0] across last_bit in Standard mode in spi_host_fsm",
+      "source": "public/issue.md"
+    },
+    {
+      "obligation": "Achieve Nangate45 mapped area <= 2035.0 um^2 and OpenROAD setup/hold slack >= 0.0 ns at 2.02 ns clock period",
+      "source": "public/issue.md"
+    }
+  ]
+}

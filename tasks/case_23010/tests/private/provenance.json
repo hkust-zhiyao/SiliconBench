@@ -1,0 +1,25 @@
+{
+  "case_id": "case_23010",
+  "repo_id": "repo_36",
+  "origin": "https://github.com/nvdla/hw",
+  "commit": "8e06b1b9d85aab65b40d43d08eec5ea4681ff715",
+  "archive_sha256": "e6342461a9e962f4ee794743b9b4c2e2609d7fd47c3a3d46ee41bdd436462c34",
+  "license": "NVIDIA Open NVDLA License and Agreement v1.0; see public/code/LICENSE",
+  "native_sources": [
+    "vmod/nvdla/cacc/NV_NVDLA_CACC_assembly_ctrl.v",
+    "vmod/nvdla/cacc/NV_NVDLA_CACC_assembly_buffer.v",
+    "vmod/nvdla/cacc/NV_NVDLA_CACC_delivery_buffer.v",
+    "vmod/nvdla/cacc/NV_NVDLA_CACC_CALC_int8.v",
+    "vmod/nvdla/cacc/NV_NVDLA_CACC_CALC_int16.v",
+    "vmod/nvdla/cacc/NV_NVDLA_CACC_CALC_fp_48b.v"
+  ],
+  "editable_files": [
+    "code/NV_NVDLA_CACC_assembly_ctrl.v",
+    "code/NV_NVDLA_CACC_assembly_buffer.v",
+    "code/NV_NVDLA_CACC_delivery_buffer.v",
+    "plan/macro_placement.json",
+    "constraints/cacc_subsys.sdc"
+  ],
+  "qualification": "upstream/repo_36",
+  "build_scope": "NVDLA CACC 8-SRAM accumulator subsystem verified via Icarus Verilog 13 multi-layer functional simulation plus Yosys + OpenROAD CTS/GRT/STA physical signoff on IHP SG13G2."
+}

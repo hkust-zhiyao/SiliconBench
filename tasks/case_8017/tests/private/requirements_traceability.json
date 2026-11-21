@@ -1,0 +1,55 @@
+{
+  "case_id": "case_8017",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "public_section": "issue.md#1",
+      "description": "Implement memory-map region classification, DMA fault suppression, access/misaligned mscause priority, and fast-interrupt access error detection in el2_lsu_addrcheck.sv.",
+      "verified_by": "private/tests/tb.sv (Phase 1, Phase 2, Phase 4) and Yosys synthesis",
+      "wrong_fix_or_mutant_caught": [
+        "baseline",
+        "wrong_fix_1_missing_regpred_fault",
+        "mutant_01_access_fault_priority_over_misaligned",
+        "mutant_02_sideeffect_misaligned_over_regcross",
+        "mutant_03_picm_over_mpu_access_fault_priority",
+        "mutant_04_dma_not_suppressing_access_fault",
+        "mutant_05_fir_nondccm_error_missing"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "public_section": "issue.md#2",
+      "description": "Implement LSU D/M/R pipeline control, address/data bypasses, DMA write-data shift, PIC store mask, fast-interrupt D-stage flush immunity, and exception/FIR error packet generation in el2_lsu_lsc_ctl.sv.",
+      "verified_by": "private/tests/tb.sv (Phase 2, Phase 3, Phase 4) and Yosys synthesis",
+      "wrong_fix_or_mutant_caught": [
+        "wrong_fix_2_fast_int_killed_by_flush_d",
+        "mutant_06_dma_wdata_not_shifted",
+        "mutant_07_pic_mask_not_applied_to_store_data",
+        "mutant_08_signed_byte_load_zero_extended"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "public_section": "issue.md#3",
+      "description": "Implement size-masked 4-channel LSU hardware trigger matching and DMA trigger suppression in el2_lsu_trigger.sv.",
+      "verified_by": "private/tests/tb.sv (Phase 3, Phase 4) and Yosys synthesis",
+      "wrong_fix_or_mutant_caught": [
+        "wrong_fix_3_trigger_unmasked_store_data",
+        "mutant_09_trigger_not_gated_by_not_dma"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "public_section": "issue.md#4",
+      "description": "Meet Nangate45 mapped area <= 3,850.0 um^2 and configure constraints.json max_delays so external-delay-compensated internal combinational delay budgets are 1.25 ns for pmu_in->pmu_out and 2.25 ns for fir_in->fir_out without adding timing exceptions to registered LSU ports.",
+      "verified_by": "private/grader/run.py Yosys area and OpenROAD/OpenSTA timing stages",
+      "wrong_fix_or_mutant_caught": [
+        "wrong_fix_4_raw_internal_delay_without_io_delays",
+        "wrong_fix_5_registered_port_in_max_delays",
+        "mutant_10_swapped_pmu_fir_budgets",
+        "mutant_11_missing_fir_channel_constraint",
+        "mutant_12_missing_output_delay_in_budget"
+      ]
+    }
+  ]
+}

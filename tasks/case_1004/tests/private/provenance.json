@@ -1,0 +1,23 @@
+{
+  "case_id": "case_1004",
+  "repo_id": "repo_01",
+  "upstream": "https://github.com/lowRISC/opentitan",
+  "commit": "0e880c84fa5e6ff1d43354eae9ad9f13c96231ee",
+  "archive_sha256": "c71b2041453c7bfa1676830f80f4f46e0d35fa9c3484fd13d87011f07913ece5",
+  "license": "Apache-2.0 (see public/code/LICENSE and public/lib/LICENSE.Nangate45)",
+  "native_source": [
+    "hw/ip/prim/rtl/prim_arbiter_tree.sv",
+    "hw/ip/prim/rtl/prim_sram_arbiter.sv",
+    "hw/ip/prim/rtl/prim_fifo_sync.sv",
+    "hw/ip/prim/rtl/prim_fifo_sync_cnt.sv",
+    "hw/ip/prim/rtl/prim_count.sv",
+    "hw/ip/prim/rtl/prim_flop.sv",
+    "hw/ip/prim/rtl/prim_util_pkg.sv"
+  ],
+  "constructed_source": "ot_sram_xbar_2ch.sv integrates two parameterized prim_arbiter_tree instances with prim_sram_arbiter.",
+  "tooling": {
+    "simulator": "Verilator 5.038",
+    "synthesis": "Yosys 0.70+286 with Slang frontend",
+    "sta": "OpenROAD 26Q2-1164-g08f67ee5ec"
+  }
+}

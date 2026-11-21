@@ -1,0 +1,57 @@
+version = "1.0"
+
+[metadata]
+task_id = "case_7003"
+title = "VeeR EH2 AXI4-to-AHB and AHB-to-AXI4 Bus Bridge Force-Halt Cancellation, Error Drain, and Transparent Channel Timing Budgets"
+repository = "chipsalliance/cores-veer-eh2"
+repo_id = "repo_07"
+split = "test"
+eda_stage = "stage3_sta_cdc"
+eda_stage_name = "Stage 3: Static Timing (STA) & CDC/RDC Closure"
+problem_type = "PT3_Timing_Area_PPA_Closure"
+problem_type_label = "High-Frequency Timing & Area Optimization"
+primary_domain = "reset_rdc"
+domains = ["protocol_control", "reset_rdc", "rtl_integration", "sdc_sta", "verification_debug"]
+public_rtl_files = 10
+public_rtl_loc = 3686
+editable_files_count = 3
+editable_loc = 839
+
+[agent]
+timeout_sec = 5400
+
+[environment]
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+workdir = "/workspace"
+allow_internet = false
+cpus = 4
+memory_mb = 16384
+
+[environment.variables]
+OMP_NUM_THREADS = "1"
+OPENBLAS_NUM_THREADS = "1"
+MKL_NUM_THREADS = "1"
+MAKEFLAGS = "-j1"
+SILICONBENCH_TOOLS = "/opt/siliconbench/tools"
+SILICONBENCH_NANGATE45 = "/opt/siliconbench/pdk/Nangate45"
+
+[verifier]
+environment_mode = "separate"
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+timeout_sec = 600
+entrypoint = "/tests/test.sh"
+reward_file = "/logs/verifier/reward.txt"
+reward_json = "/logs/verifier/reward.json"
+
+[verifier.environment]
+allow_internet = false
+
+[siliconbench]
+allowed_edits = ["code/axi4_to_ahb.sv", "code/ahb_to_axi4.sv", "constraints.json"]
+pdk_id = "nangate45_45nm_shared"
+pdk_name = "Nangate45 45nm Open Cell Library (Shared Base Image)"
+pdk_customized = false
+accepts_seed = true
+grading_seeds = [1, 2]

@@ -1,0 +1,128 @@
+{
+  "case_id": "case_8017",
+  "task_id": "case_8017",
+  "version": 1,
+  "title": "VeeR EL2 LSU Load/Store Control, Memory-Map Address/Exception Checker, Hardware Trigger Unit, and Transparent Sideband Timing Budgets",
+  "repo_id": "repo_08",
+  "repository": "chipsalliance/cores-veer-el2",
+  "source_commit": "45c9b425f4c666c095a17e21fce4d3b0721cbfa0",
+  "license": "Apache-2.0",
+  "family": "rtl_and_sta_constraints",
+  "topic": "el2_lsu_lsc_addrcheck_trigger_ppa_and_sta_exceptions",
+  "editable_files": [
+    "code/el2_lsu_lsc_ctl.sv",
+    "code/el2_lsu_addrcheck.sv",
+    "code/el2_lsu_trigger.sv",
+    "constraints.json"
+  ],
+  "editable": [
+    "code/el2_lsu_lsc_ctl.sv",
+    "code/el2_lsu_addrcheck.sv",
+    "code/el2_lsu_trigger.sv",
+    "constraints.json"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 1,
+        "extra_args": []
+      },
+      {
+        "seed": 2,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_8017",
+    "version": 1,
+    "frozen_utc": "2026-11-04T10:27:24.013676+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/el2_lsu_lsc_ctl.sv",
+      "code/el2_lsu_addrcheck.sv",
+      "code/el2_lsu_trigger.sv",
+      "constraints.json"
+    ],
+    "public_hashes": {
+      "BUILD.md": "3c9d633fbd257c60eecc12195c79feda38bb2218c9e73ed809b378150e6e36db",
+      "code/LICENSE": "eb3203ed1cc2086e377b0d6cc7603be45d19739d47101ee2f8813f724be9c353",
+      "code/beh_lib.sv": "e8ee31b4883c3e3d5f9bac003183e74344af604eed918be3f0c73b223ffcc41d",
+      "code/common_defines.vh": "1ce25830147ee0be447866d5191c06c8ab0a6b59278c0c8c98e13ffd298b4b6a",
+      "code/el2_def.sv": "3cd80efbf48788104ecc3f1d2c0c69ed9433e36a85e2f9a0a21a8ac2abeb9dc6",
+      "code/el2_lsu_addrcheck.sv": "273d0fad2e4bc68e4fe1f4da7522b38edfb9ebfc04c59fa93640debc497407dd",
+      "code/el2_lsu_lsc_ctl.sv": "bc8367e9bba433fe10a8bf3f828675279dffc3516de5e2474516e1cf36a0c5cb",
+      "code/el2_lsu_trigger.sv": "782ca8c32c2eb8eda66060366431f17501f5706b9d43937479e1ab9b9985c02a",
+      "code/el2_param.vh": "b98d3be7e5959044dc7e46456c52704edcc5a59f88283274bd9ed0bf2d191b11",
+      "code/el2_pdef.vh": "58be52c90842066f023d89b4ca59992b8dc3d870b8a66f80cee5ea783a362d0e",
+      "code/top.sv": "40f44fd328ffbe45e810c532b88b02cd156b0b238460b8e58a42a8801c536fb6",
+      "constraints.json": "f4113f6d3e1f5b35e8418d90742838706a5e31e21612dff0e724bdf0df420191",
+      "issue.md": "5fc34fc977c73b5f63ee1a9991c08e19317fb4ce6d937d5e696a4c065af6c1fe"
+    },
+    "gold_hashes": {
+      "code/el2_lsu_addrcheck.sv": "3fe66d70ff9da1de31e7ca98b818c3c3c62516511636da114e2af79351f480f0",
+      "code/el2_lsu_lsc_ctl.sv": "df2b2ff5c14742d40e67becc6b3f2043e2bf9b987edfac6406cfa384543e0109",
+      "code/el2_lsu_trigger.sv": "646a7b45823ec42b9efa5e92138374713260f30a46b8b9fadcc535f6bd4aac4e",
+      "constraints.json": "2cd9c5b1c059c56644c627121602395a8fa73a92a16a7e0cba2cd4c68b4b7698"
+    },
+    "grader_hashes": {
+      "run.py": "d571c6ac8d30a7fe2c49b0ed7fbda435e7b3ecba415c1e522ce0896c7bf22d08"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 12,
+      "mutant_total": 12
+    }
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT3_Timing_Area_PPA_Closure",
+  "problem_type_label": "High-Frequency Timing & Area Optimization",
+  "primary_domain": "verification_debug",
+  "multi_domains": [
+    "rtl_integration",
+    "sdc_sta",
+    "verification_debug"
+  ],
+  "pdk_profile": {
+    "pdk_id": "nangate45_45nm_shared",
+    "pdk_name": "Nangate45 45nm Open Cell Library (Shared Base Image)",
+    "location": "/opt/siliconbench/pdk/Nangate45 (bundled in environments/pdk/Nangate45)",
+    "customized": false,
+    "notes": "Uses unified Nangate45 typical Liberty and LEF from base image."
+  },
+  "public_hashes": {
+    "BUILD.md": "3c9d633fbd257c60eecc12195c79feda38bb2218c9e73ed809b378150e6e36db",
+    "code/LICENSE": "eb3203ed1cc2086e377b0d6cc7603be45d19739d47101ee2f8813f724be9c353",
+    "code/beh_lib.sv": "e8ee31b4883c3e3d5f9bac003183e74344af604eed918be3f0c73b223ffcc41d",
+    "code/common_defines.vh": "1ce25830147ee0be447866d5191c06c8ab0a6b59278c0c8c98e13ffd298b4b6a",
+    "code/el2_def.sv": "3cd80efbf48788104ecc3f1d2c0c69ed9433e36a85e2f9a0a21a8ac2abeb9dc6",
+    "code/el2_lsu_addrcheck.sv": "273d0fad2e4bc68e4fe1f4da7522b38edfb9ebfc04c59fa93640debc497407dd",
+    "code/el2_lsu_lsc_ctl.sv": "bc8367e9bba433fe10a8bf3f828675279dffc3516de5e2474516e1cf36a0c5cb",
+    "code/el2_lsu_trigger.sv": "782ca8c32c2eb8eda66060366431f17501f5706b9d43937479e1ab9b9985c02a",
+    "code/el2_param.vh": "b98d3be7e5959044dc7e46456c52704edcc5a59f88283274bd9ed0bf2d191b11",
+    "code/el2_pdef.vh": "58be52c90842066f023d89b4ca59992b8dc3d870b8a66f80cee5ea783a362d0e",
+    "code/top.sv": "40f44fd328ffbe45e810c532b88b02cd156b0b238460b8e58a42a8801c536fb6",
+    "constraints.json": "f4113f6d3e1f5b35e8418d90742838706a5e31e21612dff0e724bdf0df420191",
+    "issue.md": "5fc34fc977c73b5f63ee1a9991c08e19317fb4ce6d937d5e696a4c065af6c1fe"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 12,
+    "mutant_total": 12
+  }
+}

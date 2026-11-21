@@ -1,0 +1,126 @@
+{
+  "case_id": "case_1009",
+  "task_id": "case_1009",
+  "version": 1,
+  "title": "OpenTitan HMAC Core and SHA-256 Padding Backpressure, Abort Recovery, and Timing/Area Closure",
+  "repo_id": "repo_01",
+  "repository": "lowRISC/opentitan",
+  "topic": "hmac_sha256_pad_ppa_sta",
+  "family": "rtl_to_sta",
+  "editable_files": [
+    "code/hmac_core.sv",
+    "code/prim_sha2_pad.sv"
+  ],
+  "editable": [
+    "code/hmac_core.sv",
+    "code/prim_sha2_pad.sv"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_1009",
+    "version": 1,
+    "frozen_utc": "2026-11-04T07:02:53.994636+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/hmac_core.sv",
+      "code/prim_sha2_pad.sv"
+    ],
+    "public_hashes": {
+      "BUILD.md": "1e622da735ae5a3bc61ad5680c7fc12bd7aff357d14e5ba1e5ba1526f57e6f02",
+      "code/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "code/hmac_core.sv": "7929a6da9a7da701c09ad9912f33357187f34c09baa26c88a6feff4463a8a899",
+      "code/ot_hmac_pad_top.sv": "3ea781153f90832b8e6d046090994cb3d0e6c5e379c2e72b58aedb380eddb37d",
+      "code/prim_assert.sv": "d717d5dbcba3b5aa8a731ef9f8af18b036b49edef282f0a43a51f5ad2dd9bb40",
+      "code/prim_assert_dummy_macros.svh": "cac4a930105da662547de873f0b80246074fb22df9a398663e1c8ac3e7998218",
+      "code/prim_assert_sec_cm.svh": "25db89fe5f250c1bcbd808d0b4808206b9e85ac337b26e4ebb23f2ad569e1a13",
+      "code/prim_assert_standard_macros.svh": "4835706249e017eae999256ea807c526a39a49729196fc0aa18bb8818de86ab6",
+      "code/prim_assert_yosys_macros.svh": "d1fd8c350785a7c6d8cccc0b0c385392b71575397e7dc58c70f07716c8f9f3a3",
+      "code/prim_flop_macros.sv": "2e8e6c2ee484899ae5d0020eaf0c9732c31537c60c30cb2a0a0acd2e92baee03",
+      "code/prim_sha2_pad.sv": "024a072016318c4dae97f60d0cc49710e6fc8a7d3d8c1c0a86cf933143a3bc68",
+      "code/prim_sha2_pkg.sv": "7dc41a96fb1638bbb88982abfae26d91949f39d0217d300787c1fb71dda2cf65",
+      "issue.md": "3a067052cfa51194b4b47c77f23631f0b7617cd676d2af096c65e77037ff759f",
+      "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+      "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+      "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+      "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+    },
+    "gold_hashes": {
+      "code/hmac_core.sv": "fae3301d8e3e75d64e04417fb4b5358befaa24695b272caaa57ac1dae13453c6",
+      "code/prim_sha2_pad.sv": "7337a1dfbf1096c3729b80611fcf0e86f155953513ccc2ba1c2470b7f263efd1"
+    },
+    "grader_hashes": {
+      "run.py": "31be58c97f8c80a07137215f18d18e04108d9ec1b5a8461e27f27d54b2f0939d"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 12,
+      "mutant_total": 12
+    }
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT4_GateLevel_Security_CDC",
+  "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+  "primary_domain": "reset_rdc",
+  "multi_domains": [
+    "reset_rdc",
+    "rtl_integration",
+    "synthesis_qor"
+  ],
+  "pdk_profile": {
+    "pdk_id": "nangate45_plus_multicorner_lib",
+    "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+    "location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+    "customized": true,
+    "notes": "Uses shared Nangate45 library for synthesis plus task-bundled fast/slow/scan corner timing views."
+  },
+  "public_hashes": {
+    "BUILD.md": "1e622da735ae5a3bc61ad5680c7fc12bd7aff357d14e5ba1e5ba1526f57e6f02",
+    "code/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "code/hmac_core.sv": "7929a6da9a7da701c09ad9912f33357187f34c09baa26c88a6feff4463a8a899",
+    "code/ot_hmac_pad_top.sv": "3ea781153f90832b8e6d046090994cb3d0e6c5e379c2e72b58aedb380eddb37d",
+    "code/prim_assert.sv": "d717d5dbcba3b5aa8a731ef9f8af18b036b49edef282f0a43a51f5ad2dd9bb40",
+    "code/prim_assert_dummy_macros.svh": "cac4a930105da662547de873f0b80246074fb22df9a398663e1c8ac3e7998218",
+    "code/prim_assert_sec_cm.svh": "25db89fe5f250c1bcbd808d0b4808206b9e85ac337b26e4ebb23f2ad569e1a13",
+    "code/prim_assert_standard_macros.svh": "4835706249e017eae999256ea807c526a39a49729196fc0aa18bb8818de86ab6",
+    "code/prim_assert_yosys_macros.svh": "d1fd8c350785a7c6d8cccc0b0c385392b71575397e7dc58c70f07716c8f9f3a3",
+    "code/prim_flop_macros.sv": "2e8e6c2ee484899ae5d0020eaf0c9732c31537c60c30cb2a0a0acd2e92baee03",
+    "code/prim_sha2_pad.sv": "024a072016318c4dae97f60d0cc49710e6fc8a7d3d8c1c0a86cf933143a3bc68",
+    "code/prim_sha2_pkg.sv": "7dc41a96fb1638bbb88982abfae26d91949f39d0217d300787c1fb71dda2cf65",
+    "issue.md": "3a067052cfa51194b4b47c77f23631f0b7617cd676d2af096c65e77037ff759f",
+    "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+    "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+    "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+    "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 12,
+    "mutant_total": 12
+  }
+}

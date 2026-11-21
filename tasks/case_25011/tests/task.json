@@ -1,0 +1,110 @@
+{
+  "case_id": "case_25011",
+  "task_id": "case_25011",
+  "version": 1,
+  "title": "Harden Caliptra Masked SHA-512 Share Non-Cancellation, Per-Round Refreshing, Masked Chaining, and Synchronous Zeroize",
+  "repo_id": "repo_50",
+  "repository": "chipsalliance/caliptra-rtl",
+  "topic": "hardware_security_and_ras",
+  "family": "functional",
+  "flow_scenario": "S7_hardware_security_rot_fault",
+  "coupling_mode": "deep_stage_authentic",
+  "editable_files": [
+    "code/sha512_masked_defines_pkg.sv",
+    "code/sha512_masked_w_mem.sv",
+    "code/sha512_masked_core.sv"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_25011",
+    "version": 1,
+    "frozen_utc": "2026-11-11T15:30:24.407357+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/sha512_masked_defines_pkg.sv",
+      "code/sha512_masked_w_mem.sv",
+      "code/sha512_masked_core.sv"
+    ],
+    "public_hashes": {
+      "BUILD.md": "11b3323a51bb38f5d857e2266b0b9b1b99a91c1e4a42c0cba2d266e2045e7c58",
+      "code/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "code/sha512_h_constants.v": "f9e2758336ff67e7e8b1f6642435ad161fbc186af84b04a1a03c3032af62f704",
+      "code/sha512_k_constants.v": "2d3747d8b43d86525392481ec737894a83e1c1a0c274ff61c6e5056c67a4b594",
+      "code/sha512_masked_core.sv": "a43471a403e4040ff0cb2d87eb75e27d8ae1a231757387e8259cf6dee87f3365",
+      "code/sha512_masked_defines_pkg.sv": "47d55de42873432556749c210264afc14925c9f950d4ffb38a928546a7932dae",
+      "code/sha512_masked_w_mem.sv": "033b5490f0fbf556a50f0b93d8f4b31e2e731e03fcdeb29cce0646ba28e02049",
+      "issue.md": "6b9c35ab731673eb12838b0835e5c4ad489f3fb25afda85d883a97d325ff99d7"
+    },
+    "gold_hashes": {
+      "code/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "code/sha512_h_constants.v": "f9e2758336ff67e7e8b1f6642435ad161fbc186af84b04a1a03c3032af62f704",
+      "code/sha512_k_constants.v": "2d3747d8b43d86525392481ec737894a83e1c1a0c274ff61c6e5056c67a4b594",
+      "code/sha512_masked_core.sv": "8b80c1c7cf9d65dfa6e0ed9eaafba7ae127334d319b2d910332f98d388708637",
+      "code/sha512_masked_defines_pkg.sv": "926c6bcf10b1c9e14c185e61a9d753e2cfb30b34eb538d2f404a5dec5241d9b5",
+      "code/sha512_masked_w_mem.sv": "3c233badc5495ff2675e69622c6c75bbd011713dd4631f049c81d7d229f7856f"
+    },
+    "grader_hashes": {
+      "run.py": "0b8b7687058e455a6d66eab3b16448b97da98dd7a790ceb897b2d1c9fb71fa39"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 2,
+      "wrong_fix_fail_runs": 4,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 10,
+      "mutant_total": 10
+    }
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT4_GateLevel_Security_CDC",
+  "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+  "primary_domain": "Security_RoT_Subsystems",
+  "multi_domains": [
+    "Security_RoT_Subsystems"
+  ],
+  "pdk_profile": {
+    "pdk_id": "rtl_dual_sim_standard",
+    "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+    "location": "Unified base image (/opt/siliconbench/tools)",
+    "customized": false,
+    "notes": "Pure RTL/protocol/synthesis check without external PDK Liberty files."
+  },
+  "public_hashes": {
+    "BUILD.md": "11b3323a51bb38f5d857e2266b0b9b1b99a91c1e4a42c0cba2d266e2045e7c58",
+    "code/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "code/sha512_h_constants.v": "f9e2758336ff67e7e8b1f6642435ad161fbc186af84b04a1a03c3032af62f704",
+    "code/sha512_k_constants.v": "2d3747d8b43d86525392481ec737894a83e1c1a0c274ff61c6e5056c67a4b594",
+    "code/sha512_masked_core.sv": "a43471a403e4040ff0cb2d87eb75e27d8ae1a231757387e8259cf6dee87f3365",
+    "code/sha512_masked_defines_pkg.sv": "47d55de42873432556749c210264afc14925c9f950d4ffb38a928546a7932dae",
+    "code/sha512_masked_w_mem.sv": "033b5490f0fbf556a50f0b93d8f4b31e2e731e03fcdeb29cce0646ba28e02049",
+    "issue.md": "6b9c35ab731673eb12838b0835e5c4ad489f3fb25afda85d883a97d325ff99d7"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 2,
+    "wrong_fix_fail_runs": 4,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 10,
+    "mutant_total": 10
+  }
+}

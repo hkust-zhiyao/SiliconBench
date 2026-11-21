@@ -1,0 +1,16 @@
+{
+  "case_id": "case_20011",
+  "slot_id": "builder_01_superscalar_cache__S01",
+  "repo_id": "repo_44",
+  "origin": "https://github.com/ultraembedded/biriscv",
+  "commit": "6af9c4be5a0807d368eaad5e49af52322e31d073",
+  "archive_sha256": "c6d25ea1c885076efdd7064c457f5875b9c37b0db309692e3ea49980b0195e3b",
+  "license": "Apache-2.0; see public/code/LICENSE",
+  "native_sources": [
+    "src/core/biriscv_mmu.v",
+    "src/core/biriscv_defs.v"
+  ],
+  "editable_files": [
+    "code/biriscv_mmu.v"
+  ]
+}

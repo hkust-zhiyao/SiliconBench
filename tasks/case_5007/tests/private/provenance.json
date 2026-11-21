@@ -1,0 +1,14 @@
+{
+  "case_id": "case_5007",
+  "repo_id": "repo_05",
+  "upstream_url": "https://github.com/openhwfoundation/cva6",
+  "commit": "81245a47fad8fe1a5d562d953ef2662e099def76",
+  "license": "SHL-0.51",
+  "source_paths": [
+    "core/cache_subsystem/std_nbdcache.sv",
+    "core/cache_subsystem/cache_ctrl.sv",
+    "core/cache_subsystem/miss_handler.sv",
+    "core/cache_subsystem/tag_cmp.sv",
+    "core/cache_subsystem/axi_adapter.sv"
+  ]
+}

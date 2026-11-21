@@ -1,0 +1,26 @@
+{
+  "case_id": "case_22006",
+  "slot_id": "builder_03_vector_tensor_fpu__P06",
+  "blueprint_id": "bp_s03_021",
+  "repo_id": "repo_30",
+  "origin": "https://github.com/pulp-platform/redmule",
+  "commit": "5a07d64df152c7f432fbd24e2971c2aa5f12b685",
+  "archive_sha256": "48f69c08b1b02b5f6db7d78ece010f6a1ffa635abb9db33d038ff04dc7395a54",
+  "license": "SHL-0.51; see public/code/LICENSE and source headers",
+  "native_sources": [
+    "snapshot/rtl/redmule_inst_decoder.sv",
+    "snapshot/rtl/redmule_ctrl.sv",
+    "snapshot/rtl/redmule_config_fifo.sv",
+    "snapshot/rtl/redmule_tiler.sv",
+    "snapshot/rtl/redmule_pkg.sv",
+    "snapshot/rtl/redmule_top.sv",
+    "snapshot/rtl/ctrl/redmule_regif.rdl"
+  ],
+  "editable_files": [
+    "code/redmule_inst_decoder.sv",
+    "code/redmule_ctrl.sv"
+  ],
+  "qualification": "upstream/repo_30",
+  "build_scope": "RedMulE CORE-V-XIF offload subsystem (`redmule_xif_offload_subsys`: `redmule_inst_decoder` + `i_config_fifo` + `redmule_ctrl` with `redmule_tiler`) verified across multi-parameter Verilator configurations (`XifNumHarts=1,2`, `XifIssueRegisterSplit=0,1`, `InstFifoDepth=2,4`) and `yosys -m slang` zero-latch synthesis checks.",
+  "tool": "Verilator 5.038 + Yosys 0.70+286 (`-m slang`)"
+}

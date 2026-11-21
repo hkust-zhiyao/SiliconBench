@@ -1,0 +1,24 @@
+{
+  "case_id": "case_9014",
+  "repo_id": "repo_09",
+  "upstream": "https://github.com/black-parrot/black-parrot",
+  "commit": "22548483723c98fcadcabe0dd232645876fa7dc1",
+  "license": "BSD-3-Clause (BlackParrot host); Apache-2.0 (IHP SG13G2 Open PDK SRAM macros and standard cells)",
+  "native_source": "bp_fe/src/v/bp_fe_icache.sv",
+  "constructed_source": {
+    "files": [
+      "code/banked.sv",
+      "code/bp_sram_256x128.sv",
+      "plan/placement.json",
+      "physical/synth.ys",
+      "physical/flow.tcl.in"
+    ],
+    "description": "Constructed RTL-physical co-design benchmark around the BlackParrot front-end instruction cache (bp_fe_icache.sv): code/bp_sram_256x128.sv maps each 256x128 bank cluster to two characterized IHP SG13G2 RM_IHPSG13_1P_256x64_c2_bm_bist SRAM macro cuts (i_cut_low and i_cut_high), and code/banked.sv implements a 4-cluster 128-bit subword byte-reverse/XOR relay and byte-enable network across 8 SRAM macros placed in a two-bay OpenROAD floorplan (plan/placement.json)."
+  },
+  "tooling": {
+    "simulator": "Icarus Verilog 13.0",
+    "synthesis": "Yosys 0.70+286 with Slang frontend",
+    "physical_and_sta": "OpenROAD 26Q2"
+  },
+  "oracle": "Icarus Verilog functional simulation of four-cluster 128-bit SRAM subword byte-reverse/XOR relay, Yosys/Slang synthesis to 8 RM_IHPSG13_1P_256x64_c2_bm_bist macros, and OpenROAD floorplanning, PDN, placement, CTS, global routing, and propagated STA."
+}

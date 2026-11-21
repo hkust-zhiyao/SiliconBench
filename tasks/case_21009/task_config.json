@@ -1,0 +1,105 @@
+{
+  "case_id": "case_21009",
+  "task_id": "case_21009",
+  "version": 2,
+  "title": "Streaming Ones'-Complement Checksum Offload Pipeline Backpressure, Multi-Beat Offset & Nangate45 PPA Closure",
+  "repo_id": "repo_39",
+  "repository": "corundum/corundum",
+  "topic": "datapath_ppa_optimization",
+  "family": "arithmetic_retiming",
+  "flow_scenario": "S5_datapath_ppa_microarch_opt",
+  "coupling_mode": "natural_cross_stage",
+  "editable_files": [
+    "code/tx_checksum.v",
+    "code/rx_checksum.v"
+  ],
+  "grading": {
+    "eda_class": "sta",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_21009",
+    "version": 2,
+    "frozen_utc": "2026-11-11T23:12:05.357762+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/tx_checksum.v",
+      "code/rx_checksum.v"
+    ],
+    "public_hashes": {
+      "BUILD.md": "967c5d421dc5b9fe10979aa9a815225790f5193aff38f3593c3dca01862a7006",
+      "code/LICENSE": "e718ce52d815d36c0576b9f759001200731db9b16775286ffc1b66bbf97eb1b6",
+      "code/axis_fifo.v": "7d1ea178349654c92f2ac4823620004abe067b37f9fbd09fcff97fe00db6e19c",
+      "code/rx_checksum.v": "be027f25d0560152706f64981e2c925a888a580d6f51986864c8f4f8accbb0ab",
+      "code/tx_checksum.v": "2d5d1b885daf9a77e0121b39b9b21dbef17d8b2716571a47c659e0f14b241386",
+      "issue.md": "6ec5637a259d50f005628a6db5fce331447bfbbc87c79f2789c8d78c3bb8acba",
+      "pdk/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+    },
+    "gold_hashes": {
+      "code/LICENSE": "e718ce52d815d36c0576b9f759001200731db9b16775286ffc1b66bbf97eb1b6",
+      "code/axis_fifo.v": "7d1ea178349654c92f2ac4823620004abe067b37f9fbd09fcff97fe00db6e19c",
+      "code/rx_checksum.v": "6d2bb05dbbfaf16f4b21798dac6499ef0606709dda34d2042f5b718616282349",
+      "code/tx_checksum.v": "9f16d23a017ec9099db17984e4c85479acf10064f531b831308bb98b3279685e",
+      "pdk/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+    },
+    "grader_hashes": {
+      "run.py": "a3f4b022790cf143a5de9d199bfac018c57721c764aae8ce7385f4d169abff1d"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 2,
+      "wrong_fix_fail_runs": 4,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 10,
+      "mutant_total": 10
+    }
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT3_Timing_Area_PPA_Closure",
+  "problem_type_label": "High-Frequency Timing & Area Optimization",
+  "primary_domain": "HighSpeed_AXI_NIC_Cache_DMA",
+  "multi_domains": [
+    "HighSpeed_AXI_NIC_Cache_DMA"
+  ],
+  "pdk_profile": {
+    "pdk_id": "ihp_sg13g2_130nm_8sram",
+    "pdk_name": "IHP SG13G2 130nm Open PDK + RM_IHPSG13_1P Hard-SRAM Macros",
+    "location": "Task-bundled in environment/public/pdk/ and tests/private/pdk/",
+    "customized": true,
+    "notes": "Includes task-bundled IHP SG13G2 standard-cell LEF/Liberty and single-port hard-SRAM macro LEF/Liberty/Verilog models."
+  },
+  "public_hashes": {
+    "BUILD.md": "967c5d421dc5b9fe10979aa9a815225790f5193aff38f3593c3dca01862a7006",
+    "code/LICENSE": "e718ce52d815d36c0576b9f759001200731db9b16775286ffc1b66bbf97eb1b6",
+    "code/axis_fifo.v": "7d1ea178349654c92f2ac4823620004abe067b37f9fbd09fcff97fe00db6e19c",
+    "code/rx_checksum.v": "be027f25d0560152706f64981e2c925a888a580d6f51986864c8f4f8accbb0ab",
+    "code/tx_checksum.v": "2d5d1b885daf9a77e0121b39b9b21dbef17d8b2716571a47c659e0f14b241386",
+    "issue.md": "6ec5637a259d50f005628a6db5fce331447bfbbc87c79f2789c8d78c3bb8acba",
+    "pdk/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 2,
+    "wrong_fix_fail_runs": 4,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 10,
+    "mutant_total": 10
+  }
+}

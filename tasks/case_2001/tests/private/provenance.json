@@ -1,0 +1,19 @@
+{
+  "case_id": "case_2001",
+  "repo_id": "repo_02",
+  "upstream": "https://github.com/lowRISC/ibex",
+  "commit": "1b29dae8866e6c0f0a3cd9dead53a77b4f45e357",
+  "archive_sha256": "e3e6741a4f11f4cdea7775c063246b3d98f213f2e21e0b1469cdc6d6f0089007",
+  "license": "Apache-2.0 (see public/LICENSE); Cheshire tc_sram SHL-0.51; IHP PDK Apache-2.0 (see public/pdk/LICENSE.IHP)",
+  "native_source": [
+    "rtl/ibex_prefetch_buffer.sv",
+    "rtl/ibex_fetch_fifo.sv"
+  ],
+  "constructed_source": "ibex_prefetch_sram_cluster.sv integrates ibex_prefetch_buffer, ibex_fetch_fifo, and four 256x128 tc_sram clusters with low-to-high mirror relay and byte-enable forwarding; public/physical/synth.ys and public/physical/flow.tcl.in provide full synthesis and OpenROAD flow transparency.",
+  "pdk": "IHP-Open-PDK commit 4fdc719503662cdd21793dcc3a1506a057c5d461, RM_IHPSG13_1P_256x64_c2_bm_bist macro LEF/Liberty/Verilog model and SG13G2 standard-cell views.",
+  "tooling": {
+    "simulator": "Icarus Verilog 13",
+    "synthesis": "Yosys 0.70+286 with Slang frontend",
+    "physical": "OpenROAD 26Q2-1164-g08f67ee5ec"
+  }
+}

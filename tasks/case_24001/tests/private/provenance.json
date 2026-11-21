@@ -1,0 +1,22 @@
+{
+  "case_id": "case_24001",
+  "repo_id": "repo_15",
+  "origin": "https://github.com/pulp-platform/croc",
+  "commit": "29b2e748e72c592a5a895c2b11fa85bc9080f67a",
+  "archive_sha256": "ccd5d3b699521475af2b50d395bbd871c63d14c123c31d5b8308dc9873bac7cc",
+  "license": "SHL-0.51; see public/code/LICENSE and source headers",
+  "native_sources": [
+    "rtl/common_cells/cdc_reset_ctrlr_pkg.sv",
+    "rtl/common_cells/cdc_reset_ctrlr.sv",
+    "rtl/common_cells/cdc_4phase.sv",
+    "rtl/common_cells/spill_register.sv",
+    "rtl/common_cells/spill_register_flushable.sv",
+    "rtl/common_cells/sync.sv"
+  ],
+  "editable_files": [
+    "code/cdc_reset_ctrlr.sv"
+  ],
+  "qualification": "upstream/repo_15",
+  "build_scope": "Native cdc_reset_ctrlr.sv with upstream 4-phase CDC and synchronizer primitives verified under Yosys+Slang synthesis and Icarus Verilog v13 multi-clock RDC simulation.",
+  "tool": "Yosys+Slang + Icarus Verilog v13 (-g2012)"
+}

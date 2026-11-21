@@ -1,0 +1,53 @@
+{
+  "case_id": "case_24001",
+  "obligations": [
+    {
+      "id": "REQ-SYNC-STAGES",
+      "behavior": "Propagate SYNC_STAGES to both internal cdc_4phase_src and cdc_4phase_dst instances on Side A and Side B.",
+      "public_source": "public/issue.md item 1",
+      "verified_by": [
+        "tb.sv Test 5 (SYNC_STAGES=4 latency checks)",
+        "m01_hardcode_src_sync_stages_2",
+        "m02_hardcode_dst_sync_stages_2"
+      ]
+    },
+    {
+      "id": "REQ-ISOLATE-BEFORE-CLEAR",
+      "behavior": "Enforce bidirectional isolate-before-clear ordering, post-clear isolate hold, and pulsed/level isolate_ack/clear_ack handling across simultaneous clears.",
+      "public_source": "public/issue.md item 2",
+      "verified_by": [
+        "tb.sv protocol monitors & Test 2",
+        "wf1_only_sync_stages_fix",
+        "m04_clear_without_isolate_ack",
+        "m05_drop_isolate_in_post_clear",
+        "m06_premature_idle_from_clear",
+        "m08_no_iso_ack_latch_rx",
+        "m09_no_clr_ack_latch_rx",
+        "m12_and_clear_instead_of_or"
+      ]
+    },
+    {
+      "id": "REQ-ASYNC-RESET-REENTRY",
+      "behavior": "Drain stale 4-phase handshakes on one-sided async reset re-entry, preserve stopped-clock peer isolation, and enforce receiver isolation before clear after asymmetric reset recovery.",
+      "public_source": "public/issue.md item 3",
+      "verified_by": [
+        "tb.sv Tests 1, 3, 5, 6",
+        "wf2_no_reset_drain",
+        "wf3_no_rx_isolate_guard",
+        "m03_skip_reset_isolate",
+        "m10_rx_clear_without_iso_guard",
+        "m11_send_reset_msg_disabled"
+      ]
+    },
+    {
+      "id": "REQ-TEARDOWN-CLEAR-QUEUE",
+      "behavior": "Preserve synchronous clear_i pulses arriving during POST_CLEAR / FINISHED teardown so a follow-up clear executes.",
+      "public_source": "public/issue.md item 4",
+      "verified_by": [
+        "tb.sv Test 4",
+        "wf4_drop_teardown_clear_and_pulse_ack",
+        "m07_no_pending_clear_in_teardown"
+      ]
+    }
+  ]
+}

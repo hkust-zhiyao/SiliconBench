@@ -1,0 +1,37 @@
+{
+  "case_id": "case_24016",
+  "obligations": [
+    {
+      "id": "REQ-ASYM-BYPASS-FRAMING",
+      "behavior": "Preserve exact byte count, TKEEP, and TLAST packet boundaries across 32b<->128b util_axis_fifo_asym RX/TX bypass paths including unaligned early-TLAST packets and lane backpressure, while driving DAC TX idle data to zero.",
+      "public_source": "public/issue.md item 1",
+      "verified_by": [
+        "tb_data_offload.sv Phase 1 & Phase 1b",
+        "mut01..mut07"
+      ]
+    },
+    {
+      "id": "REQ-THREE-CLOCK-SYNC-AND-CYCLIC",
+      "behavior": "Deliver single-write AXI4-Lite software sync triggers losslessly across up_clk->dev_clk/sys_clk without duplicate or missed pulses, and in TX cyclic replay mode repeat buffers until init_req drops while keeping WR FSM locked until final drain EOT.",
+      "public_source": "public/issue.md items 2 & 3",
+      "verified_by": [
+        "tb_data_offload.sv Phase 2 & Phase 3",
+        "wf3",
+        "wf4",
+        "mut09..mut12"
+      ]
+    },
+    {
+      "id": "REQ-UNILATERAL-RDC-AND-STA",
+      "behavior": "Recover cleanly from unilateral dev_aresetn / sys_aresetn pulses or control soft-reset without stale burst leakage, and close Nangate45 OpenSTA setup/hold timing across 3.00 ns stream clocks with 1.95 ns input / 1.20 ns output boundary budgets.",
+      "public_source": "public/issue.md items 4 & 5",
+      "verified_by": [
+        "tb_data_offload.sv Phase 4",
+        "grader/run.py OpenSTA check",
+        "wf1",
+        "wf2",
+        "mut08"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "case_id": "case_21014",
+  "task_id": "case_21014",
+  "version": 1,
+  "title": "AXI4-Stream COBS Framing & Frame-Length Adjuster Malformed-Frame Recovery, Status Backpressure, and Synthesis Parity",
+  "repo_id": "repo_39",
+  "repository": "corundum/corundum",
+  "topic": "interconnect_nic_dma_rtl",
+  "family": "synthesis_parity",
+  "flow_scenario": "S2_elab_synth_sim_parity",
+  "coupling_mode": "natural_cross_stage",
+  "editable_files": [
+    "code/axis_cobs_encode.v",
+    "code/axis_cobs_decode.v",
+    "code/axis_frame_length_adjust.v"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_21014",
+    "version": 1,
+    "frozen_utc": "2026-11-11T20:39:08.774833+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/axis_cobs_encode.v",
+      "code/axis_cobs_decode.v",
+      "code/axis_frame_length_adjust.v"
+    ],
+    "public_hashes": {
+      "BUILD.md": "c1fc9d0a266b3f6b7f8e8f2795b2168a2f535ef771027b9b0a69a986eb84d296",
+      "code/LICENSE": "e718ce52d815d36c0576b9f759001200731db9b16775286ffc1b66bbf97eb1b6",
+      "code/axis_cobs_decode.v": "5964e1b3a0820c2ab348e0f87793b4a18c08b55586a5c65d6a1c86d9602babf6",
+      "code/axis_cobs_encode.v": "2aa1b67891e6bf61941678ebbccd0f24ffa1fa0ef899206f06f1f435830ac9b9",
+      "code/axis_fifo.v": "7d1ea178349654c92f2ac4823620004abe067b37f9fbd09fcff97fe00db6e19c",
+      "code/axis_frame_length_adjust.v": "4b11a92dbdcd0b7b4999d94a62f57b0fc9e0476c543cffcfc817b0b7405f148b",
+      "issue.md": "946e81fd753ad5a45476d02e89aa4c2bc73a35c9f94273c4080eafc70730eca1"
+    },
+    "gold_hashes": {
+      "code/LICENSE": "e718ce52d815d36c0576b9f759001200731db9b16775286ffc1b66bbf97eb1b6",
+      "code/axis_cobs_decode.v": "37dba4deb18b0239ddffdeff1ec820b7a63ef1b25ebdba2e6ad986d41730a424",
+      "code/axis_cobs_encode.v": "eee1099a6d9f2b97ed7c4be13ea4abb473dd35828c08174c25cc79e5a35a5d34",
+      "code/axis_fifo.v": "7d1ea178349654c92f2ac4823620004abe067b37f9fbd09fcff97fe00db6e19c",
+      "code/axis_frame_length_adjust.v": "b52b588b9c89fa0138deeaf486a64d56ae1d146a1be84bf0b534c99003f7562d"
+    },
+    "grader_hashes": {
+      "run.py": "0168957aa7a67b677a713324efe9468f64e5059eefa395f043584c92f552fdc5"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 2,
+      "wrong_fix_fail_runs": 4,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 10,
+      "mutant_total": 10
+    }
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT4_GateLevel_Security_CDC",
+  "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+  "primary_domain": "HighSpeed_AXI_NIC_Cache_DMA",
+  "multi_domains": [
+    "HighSpeed_AXI_NIC_Cache_DMA"
+  ],
+  "pdk_profile": {
+    "pdk_id": "rtl_dual_sim_standard",
+    "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+    "location": "Unified base image (/opt/siliconbench/tools)",
+    "customized": false,
+    "notes": "Pure RTL/protocol/synthesis check without external PDK Liberty files."
+  },
+  "public_hashes": {
+    "BUILD.md": "c1fc9d0a266b3f6b7f8e8f2795b2168a2f535ef771027b9b0a69a986eb84d296",
+    "code/LICENSE": "e718ce52d815d36c0576b9f759001200731db9b16775286ffc1b66bbf97eb1b6",
+    "code/axis_cobs_decode.v": "5964e1b3a0820c2ab348e0f87793b4a18c08b55586a5c65d6a1c86d9602babf6",
+    "code/axis_cobs_encode.v": "2aa1b67891e6bf61941678ebbccd0f24ffa1fa0ef899206f06f1f435830ac9b9",
+    "code/axis_fifo.v": "7d1ea178349654c92f2ac4823620004abe067b37f9fbd09fcff97fe00db6e19c",
+    "code/axis_frame_length_adjust.v": "4b11a92dbdcd0b7b4999d94a62f57b0fc9e0476c543cffcfc817b0b7405f148b",
+    "issue.md": "946e81fd753ad5a45476d02e89aa4c2bc73a35c9f94273c4080eafc70730eca1"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 2,
+    "wrong_fix_fail_runs": 4,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 10,
+    "mutant_total": 10
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "case_id": "case_21017",
+  "requirements": [
+    {
+      "req_id": "R1",
+      "issue_clause": "Item 1: Longest-prefix overlapping aperture decode, full-width M_ADDR_WIDTH==ADDR_WIDTH, wide M_CONNECT (S_COUNT*M_COUNT>32), and post-winner M_SECURE isolation",
+      "modules": ["code/axil_crossbar_addr.v"],
+      "test_coverage": ["tb.sv::T1_overlapping_longest_prefix", "tb.sv::T2_security_aperture_isolation", "tb.sv::T3_wide_6x6_m_connect"]
+    },
+    {
+      "req_id": "R2",
+      "issue_clause": "Item 2: Top-level M_*_REG_TYPE forwarding, 1xM / Sx1 degenerate geometries, and deadlock-free coupled AW+W write arbitration",
+      "modules": ["code/axil_crossbar.v", "code/axil_crossbar_wr.v", "code/axil_crossbar_rd.v"],
+      "test_coverage": ["tb.sv::T4_degenerate_1x4_and_4x1", "tb.sv::T5_stalled_aw_coupled_slave_no_deadlock"]
+    },
+    {
+      "req_id": "R3",
+      "issue_clause": "Item 3: Synthesis zero-latch/zero-loop cleanliness and initializer-stripped ASIC gate-level Zero-X parity",
+      "modules": ["code/axil_crossbar.v", "code/axil_crossbar_addr.v", "code/axil_crossbar_wr.v", "code/axil_crossbar_rd.v"],
+      "test_coverage": ["run.py::yosys_synth_latch_loop_check", "tb_gl.sv::gl_zero_x_and_parity"]
+    }
+  ]
+}

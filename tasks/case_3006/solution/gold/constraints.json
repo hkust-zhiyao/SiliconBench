@@ -1,0 +1,22 @@
+{
+  "max_delays": [
+    {
+      "from": [
+        "mpu_region_in"
+      ],
+      "to": [
+        "mpu_region_out"
+      ],
+      "ns": 8.85
+    },
+    {
+      "from": [
+        "hart_dbg_in"
+      ],
+      "to": [
+        "hart_dbg_out"
+      ],
+      "ns": 9.65
+    }
+  ]
+}

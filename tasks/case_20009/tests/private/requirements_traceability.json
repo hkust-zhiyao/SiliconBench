@@ -1,0 +1,19 @@
+{
+  "requirements": [
+    {
+      "id": "R1",
+      "issue_section": "1",
+      "summary": "Lossless 2-way 8KiB AXI4 LLC protocol, coherency, Tag BIST, bypass, and dynamic SPM partitioning with RTL-vs-GL parity"
+    },
+    {
+      "id": "R2",
+      "issue_section": "2",
+      "summary": "Complete native constraints/axi_llc.sdc at 9.50ns with sync I/O delays, async/strap false paths, and [-0.50, -0.45]ns macro A_CLK balance"
+    },
+    {
+      "id": "R3",
+      "issue_section": "3",
+      "summary": "Zero setup/hold WNS and TNS violations across all three IHP SG13G2 + hard-SRAM corners (SS 1.08V 125C, TT 1.20V 25C, FF 1.32V -40C)"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "case_id": "case_25002",
+  "repo_id": "repo_50",
+  "origin": "https://github.com/chipsalliance/caliptra-rtl",
+  "commit": "a2192d99327a94ade30929315a94fe28bba598df",
+  "archive_sha256": "ed4b2037d16be0ff8f31ba350d73c60084b191c453a93b50c5191e67e5245384",
+  "license": "Apache-2.0; see public/code/LICENSE and source headers",
+  "native_sources": [
+    "src/doe/rtl/doe_ctrl.sv",
+    "src/doe/rtl/doe_cbc.sv",
+    "src/doe/rtl/doe_fsm.sv",
+    "src/doe/rtl/doe_core_cbc.sv",
+    "src/doe/rtl/doe_key_mem.sv",
+    "src/doe/rtl/doe_encipher_block.sv",
+    "src/doe/rtl/doe_decipher_block.sv",
+    "src/doe/rtl/doe_sbox.sv",
+    "src/doe/rtl/doe_inv_sbox.sv",
+    "src/doe/rtl/doe_reg.sv",
+    "src/doe/rtl/doe_reg_pkg.sv",
+    "src/doe/rtl/doe_defines_pkg.sv",
+    "src/keyvault/rtl/kv_defines_pkg.sv",
+    "src/keyvault/rtl/kv_write_rule_check.sv",
+    "src/libs/rtl/ahb_defines_pkg.sv",
+    "src/libs/rtl/ahb_slv_sif.sv",
+    "src/caliptra_prim/rtl/caliptra_prim_sparse_fsm_flop.sv"
+  ],
+  "editable_files": [
+    "code/doe_fsm.sv",
+    "code/doe_ctrl.sv",
+    "code/doe_key_mem.sv"
+  ],
+  "qualification": "upstream/repo_50",
+  "build_scope": "Full Caliptra AES-256-CBC Deobfuscation Engine hierarchy (doe_ctrl -> ahb_slv_sif + doe_cbc -> doe_reg + doe_fsm + doe_core_cbc -> doe_key_mem/sbox/encipher/decipher) evaluated across RTL simulation and Yosys Nangate45 gate-level synthesis + single-bit state-flip fault injection.",
+  "tool": "Verilator 5.038 + Yosys 0.70 (-m slang) + Nangate45 Liberty + Icarus Verilog v13"
+}

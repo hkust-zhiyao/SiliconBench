@@ -1,0 +1,122 @@
+{
+  "case_id": "case_22007",
+  "task_id": "case_22007",
+  "version": 1,
+  "title": "RedMulE Input Feature Buffer Parameterized Elaboration, Multi-Tile Padding, and 4-State Gate-Level Parity",
+  "repo_id": "repo_30",
+  "repository": "pulp-platform/redmule",
+  "topic": "verification_debug",
+  "family": "functional",
+  "flow_scenario": "S2_elab_synth_sim_parity",
+  "coupling_mode": "deep_stage_authentic",
+  "editable_files": [
+    "code/x_buffer/redmule_x_buffer.sv",
+    "code/x_buffer/redmule_x_buffer_scm.sv",
+    "code/x_buffer/redmule_x_pad_scm.sv"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_22007",
+    "version": 1,
+    "frozen_utc": "2026-11-11T18:50:29.875612+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/x_buffer/redmule_x_buffer.sv",
+      "code/x_buffer/redmule_x_buffer_scm.sv",
+      "code/x_buffer/redmule_x_pad_scm.sv"
+    ],
+    "public_hashes": {
+      "BUILD.md": "b5afc723fe0888826c1948861073be80b68869d5a419f6775ef0adc7bf64ad70",
+      "code/LICENSE": "6527a46225891b976fa94f634f6ee0cd22e1c7129d6f11c5c98c997627625fc7",
+      "code/fpnew_pkg.sv": "69001fae0d82846c80c2f56bb8830a38acd2703590de132a8700865eea4acb1d",
+      "code/hci_package.sv": "15b735c27e33246c6dc7a4248ffba9541b5109759d9c918e09ba66ec36172d69",
+      "code/hwpe_ctrl_package.sv": "e72d76ae18f2adc4d8c9e6e3b5e5bc686f98e3ccb7afd834f46bd0302482d77b",
+      "code/hwpe_stream_package.sv": "c2f7b0efcb60cd4dbeeb31552578588b15a941bd886c0501e38f68d8680e91f4",
+      "code/redmule_pkg.sv": "454f594b41b2429536c33cf1a87cb94cebe577a2544e9c1c679188af020be67a",
+      "code/tc_clk.sv": "93e9747504fa1da6473560341febbfae6c5e917768633a84fc9ef12299293207",
+      "code/x_buffer/redmule_x_buffer.sv": "2d649451e42562c283fb67626a8f0071aa388c2d0c49ace3b5f43559793eb5fd",
+      "code/x_buffer/redmule_x_buffer_scm.sv": "a8bfc7fe30af7f42d202574cc7a788de0b80e099782e367ad47bc62479f64df1",
+      "code/x_buffer/redmule_x_pad_scm.sv": "b67877e2e645e7914c8123f15fa6af809cf349dd61af3ef92b9f24ac1821d814",
+      "issue.md": "4bbca71fa15253b50f78d283868aafcb93634247ae419482909ec454b1bbada8"
+    },
+    "gold_hashes": {
+      "code/LICENSE": "6527a46225891b976fa94f634f6ee0cd22e1c7129d6f11c5c98c997627625fc7",
+      "code/fpnew_pkg.sv": "69001fae0d82846c80c2f56bb8830a38acd2703590de132a8700865eea4acb1d",
+      "code/hci_package.sv": "15b735c27e33246c6dc7a4248ffba9541b5109759d9c918e09ba66ec36172d69",
+      "code/hwpe_ctrl_package.sv": "e72d76ae18f2adc4d8c9e6e3b5e5bc686f98e3ccb7afd834f46bd0302482d77b",
+      "code/hwpe_stream_package.sv": "c2f7b0efcb60cd4dbeeb31552578588b15a941bd886c0501e38f68d8680e91f4",
+      "code/redmule_pkg.sv": "454f594b41b2429536c33cf1a87cb94cebe577a2544e9c1c679188af020be67a",
+      "code/tc_clk.sv": "93e9747504fa1da6473560341febbfae6c5e917768633a84fc9ef12299293207",
+      "code/x_buffer/redmule_x_buffer.sv": "3a8006774def219a66e5f5f2e43ff362913bbe02c5a6c923777d3c1c9c569952",
+      "code/x_buffer/redmule_x_buffer_scm.sv": "a64dc838e32fac427f79c2768d4339d912c0476f7fbffc28e00c1d9ace5c3284",
+      "code/x_buffer/redmule_x_pad_scm.sv": "935fd2fcaece002e79759b05e3e9ca16dcc8ff2a1e729891f7971440c474b6dc"
+    },
+    "grader_hashes": {
+      "run.py": "6401168d06c22b33667315a2c386db8f757d95e3725af9289ac4fcf320680782"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 2,
+      "wrong_fix_fail_runs": 3,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 8,
+      "mutant_total": 10
+    }
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT4_GateLevel_Security_CDC",
+  "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+  "primary_domain": "Vector_GPU_NPU_Accelerators",
+  "multi_domains": [
+    "Vector_GPU_NPU_Accelerators"
+  ],
+  "pdk_profile": {
+    "pdk_id": "rtl_dual_sim_standard",
+    "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+    "location": "Unified base image (/opt/siliconbench/tools)",
+    "customized": false,
+    "notes": "Pure RTL/protocol/synthesis check without external PDK Liberty files."
+  },
+  "public_hashes": {
+    "BUILD.md": "b5afc723fe0888826c1948861073be80b68869d5a419f6775ef0adc7bf64ad70",
+    "code/LICENSE": "6527a46225891b976fa94f634f6ee0cd22e1c7129d6f11c5c98c997627625fc7",
+    "code/fpnew_pkg.sv": "69001fae0d82846c80c2f56bb8830a38acd2703590de132a8700865eea4acb1d",
+    "code/hci_package.sv": "15b735c27e33246c6dc7a4248ffba9541b5109759d9c918e09ba66ec36172d69",
+    "code/hwpe_ctrl_package.sv": "e72d76ae18f2adc4d8c9e6e3b5e5bc686f98e3ccb7afd834f46bd0302482d77b",
+    "code/hwpe_stream_package.sv": "c2f7b0efcb60cd4dbeeb31552578588b15a941bd886c0501e38f68d8680e91f4",
+    "code/redmule_pkg.sv": "454f594b41b2429536c33cf1a87cb94cebe577a2544e9c1c679188af020be67a",
+    "code/tc_clk.sv": "93e9747504fa1da6473560341febbfae6c5e917768633a84fc9ef12299293207",
+    "code/x_buffer/redmule_x_buffer.sv": "2d649451e42562c283fb67626a8f0071aa388c2d0c49ace3b5f43559793eb5fd",
+    "code/x_buffer/redmule_x_buffer_scm.sv": "a8bfc7fe30af7f42d202574cc7a788de0b80e099782e367ad47bc62479f64df1",
+    "code/x_buffer/redmule_x_pad_scm.sv": "b67877e2e645e7914c8123f15fa6af809cf349dd61af3ef92b9f24ac1821d814",
+    "issue.md": "4bbca71fa15253b50f78d283868aafcb93634247ae419482909ec454b1bbada8"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 2,
+    "wrong_fix_fail_runs": 3,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 8,
+    "mutant_total": 10
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "gold_pass_runs": 2,
+  "alternate_gold_pass_runs": 2,
+  "baseline_fail_runs": 2,
+  "wrong_fix_fail_runs": 5,
+  "anti_hack_fail_runs": 5,
+  "mutant_killed": 10,
+  "mutant_total": 10
+}

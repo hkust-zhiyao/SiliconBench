@@ -1,0 +1,45 @@
+{
+  "case_id": "case_22013",
+  "obligations": [
+    {
+      "id": "REQ-BURST-SPLIT-4KB-MAXLEN",
+      "behavior": "Split unit-stride vector load/store bursts cleanly at both 4 KiB (`0x1000`) AXI page boundaries and the 256-beat `AXI_MAX_BURST_LEN` limit across `EW8..EW64` and `AxiDataWidth=64/128`, accounting for initial unaligned beat byte offset so no burst crosses a 4 KiB page or loses tail beats when `num_bytes < max_burst_bytes < start_offset + num_bytes`.",
+      "public_source": "public/issue.md item 1, public/code/addrgen.sv",
+      "verified_by": [
+        "private/tests/tb.sv (SUITE1_4KB_UNALIGNED, SUITE2_MAX_BURST_UNALIGNED, AXI AR/AW 4KB boundary protocol assertions)",
+        "wf1_only_burst_split",
+        "wf2_only_vstart_vldu",
+        "m01_unaligned_max_burst_overflow",
+        "m02_broken_4kb_mask_addrgen"
+      ]
+    },
+    {
+      "id": "REQ-LANE-ROTATE-VSTART-COMMIT",
+      "behavior": "Correctly rotate and commit non-aligned and `vstart > 0` byte streams across 4 64-bit lanes in `vldu.sv` and `vstu.sv` (including transfers `< 32` bytes wrapping across two VRF words, `vm=0` masked loads/stores, and back-to-back pipelined loads with differing `vstart`), preserving prestart, tail, and inactive elements without deadlock or premature commit.",
+      "public_source": "public/issue.md item 2, public/code/vldu.sv, public/code/vstu.sv",
+      "verified_by": [
+        "private/tests/tb.sv (SUITE3_VSTART_MASK_PIPELINE, SUITE6_RANDOM_STRESS)",
+        "wf1_only_burst_split",
+        "m03_vldu_vstart_word_wrap",
+        "m04_vstu_vstart_word_wrap",
+        "m05_vldu_shared_first_payload_race",
+        "m06_vldu_premature_commit_cmp"
+      ]
+    },
+    {
+      "id": "REQ-MULTIBURST-B-AND-SCATTER-GATHER-ORDER",
+      "behavior": "Hold `store_pending_o` and defer `store_complete_o` / `pe_resp_o.vinsn_done` until all W bursts and B responses of a multi-burst vector store complete; enforce RAW (store-before-load) and WAR (load-before-store) AXI ordering across `vlsu.sv` and `addrgen.sv` for overlapping unit-stride and indexed scatter/gather (`VLXE`/`VSXE`) instructions; consume indexed lane offset words using `eew_vs2` without over-popping back-to-back indexed ops; and report exact `addrgen_exception_vstart_o` on misaligned active indexed elements.",
+      "public_source": "public/issue.md item 3, public/code/vlsu.sv, public/code/addrgen.sv, public/code/vstu.sv",
+      "verified_by": [
+        "private/tests/tb.sv (SUITE4A_MULTIBURST_B_COMMIT, SUITE5A_RAW_VSE_TO_VLXE, SUITE5B_RAW_VSXE_TO_VLXE, SUITE5C_WAR_VLE_TO_VSXE, SUITE5D_BACK2BACK_VLXE, SUITE5E_VLXE_VSTART4, SUITE5E_IDX_EXC_VSTART4)",
+        "wf2_only_vstart_vldu",
+        "wf3_b_track_no_raw_interlock",
+        "wf4_latch_in_addrgen",
+        "m07_vstu_early_b_commit",
+        "m08_no_raw_store_to_load_interlock",
+        "m09_no_war_load_to_store_interlock",
+        "m10_idx_eew_vs2_and_vstart_exc"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "case_id": "case_1014",
+  "task_id": "case_1014",
+  "version": 1,
+  "title": "OpenTitan Entropy Complex GEN Abort Uninstantiation, Boot-Mode Uninstantiate Sequence, Endpoint Ack Immediate Pop, and Timing/Area Closure",
+  "repo_id": "repo_01",
+  "repository": "lowRISC/opentitan",
+  "topic": "entropy_csrng_edn_cmd_ppa_sta",
+  "family": "rtl_to_sta",
+  "editable_files": [
+    "code/csrng_cmd_stage.sv",
+    "code/edn_main_sm.sv",
+    "code/edn_ack_sm.sv"
+  ],
+  "editable": [
+    "code/csrng_cmd_stage.sv",
+    "code/edn_main_sm.sv",
+    "code/edn_ack_sm.sv"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_1014",
+    "version": 1,
+    "frozen_utc": "2026-11-04T18:32:40.135480+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/csrng_cmd_stage.sv",
+      "code/edn_main_sm.sv",
+      "code/edn_ack_sm.sv"
+    ],
+    "public_hashes": {
+      "BUILD.md": "199f0306731aa7892797c565fa5f164bd93977bddd9b15f29408afe2ef77dd59",
+      "code/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "code/csrng_cmd_stage.sv": "350f9c83307af03fa589b2bc41205dbeadc14d58384f2b920a0c6388e79f4e5f",
+      "code/csrng_main_sm.sv": "d9c4d6a4686d377a658e91a05c19bac9fe5a24efa89bb34b56f9b4e6b0e576db",
+      "code/csrng_pkg.sv": "44919e11dc923b7f5bb14404066400ba852e25b0b5d7b1b1a9aa76fd9448cc22",
+      "code/csrng_reg_pkg.sv": "2e4eed0f2e4d35bb23e8d0a4be4af25e277abcf13881c2563c3feb32ad93e50e",
+      "code/edn_ack_sm.sv": "124d5b3a70c096f37ed60091a424aae761ab6917dd4a043367214c46c1cad6ec",
+      "code/edn_main_sm.sv": "de10ee38d5ab0500b21d33aee81fef70f628024142ce977f82fbaf7f8f26a7cd",
+      "code/edn_pkg.sv": "06c6fdf4b850ca5c35b8cf35ebcd7c1baa30910bcff7b2b5903ec0691465f03d",
+      "code/entropy_src_pkg.sv": "fedf4b990ab61316a366e164d036bd5c117842b1c221cdfca2067d36c79d31ec",
+      "code/ot_entropy_cmd_top.sv": "8f81e01d72288f7894475b60918fe2a13f01dd271b7b7ef96f69d31914f5447e",
+      "code/prim_assert.sv": "d717d5dbcba3b5aa8a731ef9f8af18b036b49edef282f0a43a51f5ad2dd9bb40",
+      "code/prim_assert_dummy_macros.svh": "cac4a930105da662547de873f0b80246074fb22df9a398663e1c8ac3e7998218",
+      "code/prim_assert_sec_cm.svh": "25db89fe5f250c1bcbd808d0b4808206b9e85ac337b26e4ebb23f2ad569e1a13",
+      "code/prim_assert_standard_macros.svh": "4835706249e017eae999256ea807c526a39a49729196fc0aa18bb8818de86ab6",
+      "code/prim_assert_yosys_macros.svh": "d1fd8c350785a7c6d8cccc0b0c385392b71575397e7dc58c70f07716c8f9f3a3",
+      "code/prim_buf.sv": "9b00bd8ac203169268262ac9337076781fa962b19beed36f28dde54e360aaaf5",
+      "code/prim_count.sv": "b48580aefff674a48a674489c9b21a98d5399ca5b4c7623f3a7c907a75d8f0cb",
+      "code/prim_count_pkg.sv": "8e465ed25b7d59f29faf0f315243a774cf0e50d178ec2068d8c71983cb2f18df",
+      "code/prim_fifo_assert.svh": "4d695096c6582de1e723474e06ca002d3aa2cc87f85e9ffd25bb8c8275ff6118",
+      "code/prim_fifo_sync.sv": "2655befe56a70ee672c2f1259a82ef2beb2adf429ed0405bcf26bea7c4de3630",
+      "code/prim_fifo_sync_cnt.sv": "33b87939c31a6d71ccd2fe005e5a5dcaaeb343990f9425568cb8686def9f4fb7",
+      "code/prim_flop.sv": "6645d657b107b024f9211d3a0134890d1e20146f68ba1772bf62575f7b4e5549",
+      "code/prim_flop_en.sv": "68854581eaa23a57f00c4b49ee0ce972147ffca9f2800da2859d1fe38cc5b476",
+      "code/prim_flop_macros.sv": "2e8e6c2ee484899ae5d0020eaf0c9732c31537c60c30cb2a0a0acd2e92baee03",
+      "code/prim_mubi_pkg.sv": "11a2f1a16ddaf750d859c95e07fc48c54743fe6ad3b5c5eabe2e14a51d9fb1af",
+      "code/prim_sec_anchor_buf.sv": "073be7f3daa8a738add627e1055704cc94d82cfb8ff11f6952c644abde20c702",
+      "code/prim_sec_anchor_flop.sv": "7bb3cb240164715f3956831e35e95f1a3e7e901deae02cc1297669318986d7bf",
+      "code/prim_sparse_fsm_flop.sv": "7c9fdf97523bb5eac16f0d219668811a790c2b5bc591660340e75b1cf429d11f",
+      "code/prim_util_pkg.sv": "12ec73502dc8115cf1e6051f10cba6fc73259f066581722d9d895d1e634676b2",
+      "code/top_pkg.sv": "5f8a0e366b9e6f300dc58552e693342173b4e0a716221b583a2a55550785b55f",
+      "issue.md": "9165a19eb9ec2b69857d6a01317bbdf72e5010e7a08dfbd6c8c4871a17e0ae02",
+      "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+      "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+      "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+      "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+    },
+    "gold_hashes": {
+      "code/csrng_cmd_stage.sv": "fa1bde489fb88d0eaa3565090dbf61dca8b80afed0508077382edfdeb53e090a",
+      "code/edn_ack_sm.sv": "af44397b552768303a03685ab29e208f559a8bcdab24c75408b6755b07384f52",
+      "code/edn_main_sm.sv": "5fb3da5e25a18158936155e067789239319a00cff0dcfea40530af5686fab417"
+    },
+    "grader_hashes": {
+      "run.py": "3bb4b0cc2abef9e31e54dde88061c72f23e02f135be83ca37b1f8c890e3b60f2"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 12,
+      "mutant_total": 12
+    },
+    "test_hashes": {
+      "tb.sv": "2b79b384a7a538cd31e9770b4e8dc63e9a951cc67b40a75c30227d653b760c4c"
+    },
+    "grader_revalidated_utc": "2026-11-16T10:17:42.058352+00:00"
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT4_GateLevel_Security_CDC",
+  "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+  "primary_domain": "reset_rdc",
+  "multi_domains": [
+    "reset_rdc",
+    "rtl_integration",
+    "rtl_semantics",
+    "synthesis_qor"
+  ],
+  "pdk_profile": {
+    "pdk_id": "nangate45_plus_multicorner_lib",
+    "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+    "location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+    "customized": true,
+    "notes": "Uses shared Nangate45 library for synthesis plus task-bundled fast/slow/scan corner timing views."
+  },
+  "public_hashes": {
+    "BUILD.md": "199f0306731aa7892797c565fa5f164bd93977bddd9b15f29408afe2ef77dd59",
+    "code/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "code/csrng_cmd_stage.sv": "350f9c83307af03fa589b2bc41205dbeadc14d58384f2b920a0c6388e79f4e5f",
+    "code/csrng_main_sm.sv": "d9c4d6a4686d377a658e91a05c19bac9fe5a24efa89bb34b56f9b4e6b0e576db",
+    "code/csrng_pkg.sv": "44919e11dc923b7f5bb14404066400ba852e25b0b5d7b1b1a9aa76fd9448cc22",
+    "code/csrng_reg_pkg.sv": "2e4eed0f2e4d35bb23e8d0a4be4af25e277abcf13881c2563c3feb32ad93e50e",
+    "code/edn_ack_sm.sv": "124d5b3a70c096f37ed60091a424aae761ab6917dd4a043367214c46c1cad6ec",
+    "code/edn_main_sm.sv": "de10ee38d5ab0500b21d33aee81fef70f628024142ce977f82fbaf7f8f26a7cd",
+    "code/edn_pkg.sv": "06c6fdf4b850ca5c35b8cf35ebcd7c1baa30910bcff7b2b5903ec0691465f03d",
+    "code/entropy_src_pkg.sv": "fedf4b990ab61316a366e164d036bd5c117842b1c221cdfca2067d36c79d31ec",
+    "code/ot_entropy_cmd_top.sv": "8f81e01d72288f7894475b60918fe2a13f01dd271b7b7ef96f69d31914f5447e",
+    "code/prim_assert.sv": "d717d5dbcba3b5aa8a731ef9f8af18b036b49edef282f0a43a51f5ad2dd9bb40",
+    "code/prim_assert_dummy_macros.svh": "cac4a930105da662547de873f0b80246074fb22df9a398663e1c8ac3e7998218",
+    "code/prim_assert_sec_cm.svh": "25db89fe5f250c1bcbd808d0b4808206b9e85ac337b26e4ebb23f2ad569e1a13",
+    "code/prim_assert_standard_macros.svh": "4835706249e017eae999256ea807c526a39a49729196fc0aa18bb8818de86ab6",
+    "code/prim_assert_yosys_macros.svh": "d1fd8c350785a7c6d8cccc0b0c385392b71575397e7dc58c70f07716c8f9f3a3",
+    "code/prim_buf.sv": "9b00bd8ac203169268262ac9337076781fa962b19beed36f28dde54e360aaaf5",
+    "code/prim_count.sv": "b48580aefff674a48a674489c9b21a98d5399ca5b4c7623f3a7c907a75d8f0cb",
+    "code/prim_count_pkg.sv": "8e465ed25b7d59f29faf0f315243a774cf0e50d178ec2068d8c71983cb2f18df",
+    "code/prim_fifo_assert.svh": "4d695096c6582de1e723474e06ca002d3aa2cc87f85e9ffd25bb8c8275ff6118",
+    "code/prim_fifo_sync.sv": "2655befe56a70ee672c2f1259a82ef2beb2adf429ed0405bcf26bea7c4de3630",
+    "code/prim_fifo_sync_cnt.sv": "33b87939c31a6d71ccd2fe005e5a5dcaaeb343990f9425568cb8686def9f4fb7",
+    "code/prim_flop.sv": "6645d657b107b024f9211d3a0134890d1e20146f68ba1772bf62575f7b4e5549",
+    "code/prim_flop_en.sv": "68854581eaa23a57f00c4b49ee0ce972147ffca9f2800da2859d1fe38cc5b476",
+    "code/prim_flop_macros.sv": "2e8e6c2ee484899ae5d0020eaf0c9732c31537c60c30cb2a0a0acd2e92baee03",
+    "code/prim_mubi_pkg.sv": "11a2f1a16ddaf750d859c95e07fc48c54743fe6ad3b5c5eabe2e14a51d9fb1af",
+    "code/prim_sec_anchor_buf.sv": "073be7f3daa8a738add627e1055704cc94d82cfb8ff11f6952c644abde20c702",
+    "code/prim_sec_anchor_flop.sv": "7bb3cb240164715f3956831e35e95f1a3e7e901deae02cc1297669318986d7bf",
+    "code/prim_sparse_fsm_flop.sv": "7c9fdf97523bb5eac16f0d219668811a790c2b5bc591660340e75b1cf429d11f",
+    "code/prim_util_pkg.sv": "12ec73502dc8115cf1e6051f10cba6fc73259f066581722d9d895d1e634676b2",
+    "code/top_pkg.sv": "5f8a0e366b9e6f300dc58552e693342173b4e0a716221b583a2a55550785b55f",
+    "issue.md": "9165a19eb9ec2b69857d6a01317bbdf72e5010e7a08dfbd6c8c4871a17e0ae02",
+    "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+    "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+    "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+    "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 12,
+    "mutant_total": 12
+  }
+}

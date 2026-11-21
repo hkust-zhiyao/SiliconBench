@@ -1,0 +1,64 @@
+{
+  "case_id": "case_21015",
+  "obligations": [
+    {
+      "id": "REQ-BURST-SPLIT-4K",
+      "behavior": "Every AXI4 AR and AW burst emitted by axi_dma_rd and axi_dma_wr must obey ARLEN/AWLEN < AXI_MAX_BURST_LEN and never cross a 4KB address boundary under aligned or unaligned addresses (including >= 4096B transfers and wide 256-bit buses), preserving exact byte placement and surrounding memory bytes.",
+      "public_source": "public/issue.md Required Contract item 1",
+      "verified_by": [
+        "private/tests/sim_main.cpp (Phase 2 & Phase 8 + continuous AW/AR 4KB & max-burst protocol monitors)",
+        "private/tests/tb_iverilog_params.sv (Test C: 256-bit AXI_MAX_BURST_LEN=128 4500B unaligned transfer)",
+        "wf_02_broken_unaligned_4k_split",
+        "m01_wr_unaligned_max_burst_no_offset",
+        "m02_rd_unaligned_max_burst_no_offset",
+        "m03_wr_4k_boundary_off_by_one"
+      ]
+    },
+    {
+      "id": "REQ-ZERO-LEN-ORDER",
+      "behavior": "Zero-length descriptors (len == 0) on axi_dma_rd and axi_dma_wr must issue zero AXI4 AR/AW/W bursts and zero AXI-Stream data transfers while completing strictly in descriptor order with preserved tag, error=0, and zeroed write status sidebands.",
+      "public_source": "public/issue.md Required Contract item 2",
+      "verified_by": [
+        "private/tests/sim_main.cpp (Phase 5 & Phase 8 interleaved zero-length write and read ordering checks)",
+        "m04_wr_zero_len_bypass_fifo_order",
+        "m05_rd_zero_len_skip_status"
+      ]
+    },
+    {
+      "id": "REQ-WR-FRAMING-FLUSH-DRAIN",
+      "behavior": "With AXIS_LAST_ENABLE=1, axi_dma_wr must terminate short frames cleanly without consuming the opening beat of a back-to-back packet across unaligned burst splits, and for oversized frames must write only desc_len bytes, drain excess beats through s_axis_write_data_tlast, flush sub-word state, and hold status_valid until both AXI B completion and terminal tlast handshake while reporting terminal tlast tid/tdest/tuser.",
+      "public_source": "public/issue.md Required Contract item 3",
+      "verified_by": [
+        "private/tests/sim_main.cpp (Phase 3 short back-to-back, Phase 4 oversized delayed-tlast, Phase 7 WREADY stall, Phase 8)",
+        "wf_03_premature_oversized_status",
+        "wf_05_inferred_latch_in_drop",
+        "m06_wr_start_ignore_save_tlast",
+        "m07_wr_oversized_no_hold_until_tlast",
+        "m08_wr_oversized_keep_stale_id"
+      ]
+    },
+    {
+      "id": "REQ-STICKY-AXI-ERR",
+      "behavior": "Across split bursts or beats of a single descriptor, axi_dma_rd and axi_dma_wr must preserve sticky error severity DECERR > SLVERR > OKAY/EXOKAY and reset error state cleanly between descriptors.",
+      "public_source": "public/issue.md Required Contract item 4",
+      "verified_by": [
+        "private/tests/sim_main.cpp (Phase 6 multi-burst DECERR+SLVERR+OKAY sequences on write and read engines)",
+        "wf_04_error_severity_downgrade",
+        "m09_wr_bresp_overwrite_decerr",
+        "m10_rd_rresp_overwrite_decerr"
+      ]
+    },
+    {
+      "id": "REQ-DESC-MUX-SKID-PORTS",
+      "behavior": "axi_dma_desc_mux must elaborate and operate cleanly for all PORTS >= 1 (including PORTS=1 and PORTS=3) and M_TAG_WIDTH >= S_TAG_WIDTH + (PORTS>1 ? $clog2(PORTS) : 0), preserve full M_TAG_WIDTH tags across skid backpressure, and demux completion status exclusively to the originating port.",
+      "public_source": "public/issue.md Required Contract item 5",
+      "verified_by": [
+        "private/tests/sim_main.cpp (Phase 1 & Phase 8 4-port mux with M_TAG_WIDTH=12 > 8+2 under skid stalls)",
+        "private/tests/tb_iverilog_params.sv (Test A PORTS=1, Test B PORTS=3 with M_TAG_WIDTH=10 and out-of-range port=3 guard)",
+        "wf_01_no_skid_or_ports1",
+        "m11_mux_skid_drop_port_bits",
+        "m12_mux_demux_top_bits_slice"
+      ]
+    }
+  ]
+}

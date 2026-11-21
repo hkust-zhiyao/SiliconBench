@@ -1,0 +1,20 @@
+{
+  "case_id": "case_4010",
+  "repo_id": "repo_04",
+  "upstream": "https://github.com/openhwfoundation/cv32e41p",
+  "commit": "b5d1ba149f06f0d5e02717df849afccb61ef4e15",
+  "archive_sha256": "e8aafb0f5689f502b6852ca3442c80cedd02790758bfda3ef25c05ef4201d799",
+  "license": "Solderpad Hardware License 0.51 and 2.0 (see public/code/LICENSE); Nangate45 Open Cell Library (see public/lib/LICENSE.Nangate45)",
+  "native_source": [
+    "rtl/include/cv32e41p_pkg.sv",
+    "rtl/cv32e41p_int_controller.sv",
+    "rtl/cv32e41p_hwloop_regs.sv",
+    "rtl/cv32e41p_controller.sv"
+  ],
+  "tooling": {
+    "simulator": "Verilator 5.053 (OSS CAD Suite)",
+    "synthesis": "Yosys 0.70+286 with Slang frontend",
+    "sta": "OpenROAD 26Q2-1164-g08f67ee5ec"
+  },
+  "oracle": "Four-stage isolated grader: (1) strict candidate path, read-only file SHA-256, and RTL policy screening; (2) Verilator functional simulation across directed and seed-driven random tests; (3) Yosys/Slang latch-free and Nangate45 mapped area checks for cv32e41p_int_controller (<= 181.5 um^2) and cv32e41p_ctrl_subsystem (<= 3,275.0 um^2); (4) OpenROAD STA on cv32e41p_ctrl_subsystem at 1.92 ns clock (WNS >= 0.00 ns, WHS >= 0.00 ns)."
+}

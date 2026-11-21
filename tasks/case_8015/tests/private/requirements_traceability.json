@@ -1,0 +1,47 @@
+{
+  "case_id": "case_8015",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "public_section": "issue.md#1",
+      "description": "Implement Smepmp CSR WARL masking, mseccfg.RLB lock override, MML executable rule creation guard, and TOR neighbor pmpaddr locking in el2_dec_pmp_ctl.sv.",
+      "verified_by": "private/tests/tb.sv (Phase 1, Phase 2, Phase 4) and Yosys synthesis",
+      "wrong_fix_or_mutant_caught": [
+        "baseline",
+        "wrong_fix_1_missing_tor_neighbor_lock",
+        "mutant_01_warl_r0w1_not_masked_when_mml0",
+        "mutant_02_warl_reserved_bits_6_5_not_masked",
+        "mutant_03_rlb_ignored_on_lock",
+        "mutant_04_mml_locked_exec_rule_wr_not_blocked"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "public_section": "issue.md#2",
+      "description": "Implement 3-channel TOR/NAPOT range matching, lowest-entry static priority, MMWP/MML default deny, MPRV effective privilege split, and Smepmp shared-region permissions in el2_pmp.sv.",
+      "verified_by": "private/tests/tb.sv (Phase 3, Phase 4) and Yosys synthesis",
+      "wrong_fix_or_mutant_caught": [
+        "wrong_fix_2_reversed_priority_order",
+        "wrong_fix_3_missing_smepmp_shared_ro",
+        "mutant_05_tor_strict_gt_instead_of_ge",
+        "mutant_06_napot_mask_disabled",
+        "mutant_07_mmwp_ignored_on_unmatched",
+        "mutant_08_mml_unmatched_mmode_exec_allowed",
+        "mutant_09_mprv_exec_uses_priv_mode_eff"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "public_section": "issue.md#3",
+      "description": "Configure constraints.json max_delays so external-delay-compensated internal combinational delay budgets are 1.25 ns for fault_in->fault_out and 2.25 ns for trace_in->trace_out across 10 ns and 12 ns clocks without adding timing exceptions to registered CSR or PMP ports.",
+      "verified_by": "private/grader/run.py OpenROAD/OpenSTA stage",
+      "wrong_fix_or_mutant_caught": [
+        "wrong_fix_4_raw_internal_delay_without_io_delays",
+        "wrong_fix_5_registered_port_in_max_delays",
+        "mutant_10_swapped_fault_trace_budgets",
+        "mutant_11_missing_trace_channel_constraint",
+        "mutant_12_missing_output_delay_in_budget"
+      ]
+    }
+  ]
+}

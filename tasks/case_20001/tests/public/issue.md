@@ -1,0 +1,24 @@
+# Dual-Issue Dispatch, Scoreboard Qualification, and Exception/Redirect Isolation in `biriscv_issue`
+
+`code/biriscv_issue.v` implements dual-issue instruction dispatch, register hazard scoreboarding, multi-stage operand forwarding, and branch-predictor feedback for the 32-bit superscalar `biRISC-V` processor core.
+
+During verification of mixed dual-issue instruction streams combined with memory stalls, fetch/page faults, interrupts, and frontend bubbles, several dispatch and hazard-tracking defects were observed. Update `code/biriscv_issue.v` while preserving its module port interface and parameters (`SUPPORT_MULDIV`, `SUPPORT_DUAL_ISSUE`, `SUPPORT_LOAD_BYPASS`, `SUPPORT_MUL_BYPASS`, `SUPPORT_REGFILE_XILINX`) so that all of the following architectural requirements hold:
+
+1. **Register Scoreboard Qualification & `x0` Immunity**:
+   - Architectural register `x0` (`5'd0`) must never be marked busy in the scoreboard or stall subsequent instructions, including when an in-flight E1/E2 load or multiply has destination `x0` under both `SUPPORT_LOAD_BYPASS = 1/0` and `SUPPORT_MUL_BYPASS = 1/0`.
+   - WAW hazard checks on instruction bits `[11:7]` must only block dispatch when the candidate instruction genuinely writes a non-zero destination register (`rd_valid` asserted, no fetch/page fault, and not marked invalid).
+   - RAW hazard checks on `rs1` (`[19:15]`) and `rs2` (`[24:20]`) must only block dispatch when the RV32IM/Zicsr encoding actually reads that source operand (`LUI`, `AUIPC`, `JAL`, `FENCE`, `FENCE.I`, immediate CSR ops `CSRRWI`/`CSRRSI`/`CSRRCI`, and system instructions `ECALL`/`EBREAK`/`ERET`/`WFI` do not read `rs1`; only R-type ALU/mul/div instructions, stores `SB`/`SH`/`SW`, conditional branches, and `SFENCE.VMA` read `rs2`; instructions carrying fetch/page faults or marked invalid must not stall on register indices).
+   - Cross-slot RAW and WAW dependencies from Slot 0 to Slot 1 in the same cycle must continue to serialize Slot 1 cleanly.
+
+2. **Dual-Issue Legality & Post-LSU Serialization Across Both Slots**:
+   - Preserve legal dual-issue concurrency (`ALU`/`LSU`/`MUL` paired with `ALU`/`BRANCH`, `ALU`/`MUL` paired with `LSU`, `ALU`/`LSU` paired with `MUL`) when `SUPPORT_DUAL_ISSUE = 1`.
+   - Enforce the post-LSU single-cycle exclusion rule across **both** issue slots: in the cycle immediately following an active E1 load or store (in either pipe), `MUL`, `DIV`, `CSR`, and fetch-faulting operations must not dispatch in Slot 0 **or** Slot 1. In particular, if Slot 0 holds an eligible ALU/branch instruction and Slot 1 holds a `MUL` while an older load/store is in E1, Slot 0 must still be allowed to single-issue while Slot 1 is held back.
+   - Never dual-issue Slot 1 when either Slot 0 or Slot 1 carries a fetch fault, instruction page fault, or invalid-instruction indication; furthermore, after a fetch-faulting instruction dispatches into Pipe 0, hold subsequent instructions from dispatching until the fault squashes/flushes the pipeline.
+
+3. **Functional-Unit Valid Strobes & Interrupt/Fault Side-Effect Suppression**:
+   - Assert each execution-unit valid output (`exec0_opcode_valid_o`, `exec1_opcode_valid_o`, `lsu_opcode_valid_o`, `mul_opcode_valid_o`, `div_opcode_valid_o`, `csr_opcode_valid_o`) **only** when the corresponding slot actually dispatches an operation belonging to that unit (`exec` or `branch` for `exec0`/`exec1`; `lsu` for `lsu`; `mul` for `mul`; `div` for `div`; `csr` or invalid instruction without fetch/page fault for `csr`).
+   - Suppress all functional-unit valid outputs (and prevent spurious multi-cycle `div`/`csr` pending lockups) whenever `take_interrupt_i` is asserted or when the slot carries a fetch/page fault (`fault_fetch` / `fault_page`).
+   - Qualify `interrupt_inhibit_o` so that incoming CSR decode flags only inhibit interrupts when the primary issue slot actually holds a valid non-faulting CSR/invalid instruction (or while an issued CSR instruction is still pending in the pipeline), never from idle/unselected fetch inputs.
+
+4. **Misprediction Predictor Feedback (`branch_info_*_o`) Across Fetch Bubbles**:
+   - When a branch or jump resolves in E1 (`pipe0` or `pipe1`), if neither `fetch0_valid_i` nor `fetch1_valid_i` is asserted on that cycle, retain the resolved branch metadata (`is_taken`, `is_not_taken`, `is_call`, `is_ret`, `is_jmp`, `source`, `pc`) until the next valid fetch parcel arrives (unless cleared earlier by reset, `branch_csr_request_i`, or a pipeline squash). If that arriving fetch parcel triggers a misprediction redirect (`branch_info_request_o`), drive `branch_info_*_o` with the retained branch attributes; once a valid fetch parcel arrives without misprediction (or after reporting the misprediction), clear the retained state so stale attributes are never replayed on a later branch.

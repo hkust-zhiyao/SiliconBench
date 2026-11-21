@@ -1,0 +1,131 @@
+{
+  "case_id": "case_22006",
+  "task_id": "case_22006",
+  "version": 1,
+  "title": "RedMulE CORE-V-XIF Speculative Matrix ISA Offload, Split Operand Assembly, and Queued Controller Synchronization",
+  "repo_id": "repo_30",
+  "repository": "pulp-platform/redmule",
+  "target_repo_name": "pulp-platform/redmule",
+  "topic": "spec_to_rtl",
+  "family": "functional",
+  "flow_scenario": "S1_spec_to_rtl_feature",
+  "coupling_mode": "deep_stage_authentic",
+  "editable_files": [
+    "code/redmule_inst_decoder.sv",
+    "code/redmule_ctrl.sv"
+  ],
+  "editable": [
+    "code/redmule_inst_decoder.sv",
+    "code/redmule_ctrl.sv"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 360,
+    "verifier_timeout_seconds": 720,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "name": "seed_101",
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "name": "seed_202",
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_22006",
+    "version": 1,
+    "frozen_utc": "2026-11-11T23:15:55.062238+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/redmule_inst_decoder.sv",
+      "code/redmule_ctrl.sv"
+    ],
+    "public_hashes": {
+      "BUILD.md": "a8f1e829dad81d86cf6c4153d9cc60559b3352f7d7a85a67ad96ba9453e42294",
+      "code/LICENSE": "6527a46225891b976fa94f634f6ee0cd22e1c7129d6f11c5c98c997627625fc7",
+      "code/cf_math_pkg.sv": "d986ff4e1079a600dd760416b36f539b36a29c67c3bdbdf10b9be0663447676a",
+      "code/fpnew_pkg.sv": "69001fae0d82846c80c2f56bb8830a38acd2703590de132a8700865eea4acb1d",
+      "code/hci_package.sv": "15b735c27e33246c6dc7a4248ffba9541b5109759d9c918e09ba66ec36172d69",
+      "code/hwpe_ctrl_package.sv": "e72d76ae18f2adc4d8c9e6e3b5e5bc686f98e3ccb7afd834f46bd0302482d77b",
+      "code/hwpe_stream_package.sv": "c2f7b0efcb60cd4dbeeb31552578588b15a941bd886c0501e38f68d8680e91f4",
+      "code/include/common_cells/assertions.svh": "d39c7afa893656e235b0019233c1bcf12491cd421639791c827cc53236bd4841",
+      "code/include/common_cells/registers.svh": "532dfd1723d2936421b921235abdafcc8ca407990224992ca13575fdb620053a",
+      "code/redmule_config_fifo.sv": "d11492e5e3268d2a33beeca273d7a27852c49b1c2d72f06da9641f0d3cab8dca",
+      "code/redmule_ctrl.sv": "2cbc888c4c762e5609c6dd3b51a9e8e81b78d211e5f1520a7aa805872ad31296",
+      "code/redmule_inst_decoder.sv": "396f051efba75a13e4c4e389757dd8d178213daddf2a1295be2ac5617fddc2ef",
+      "code/redmule_pkg.sv": "454f594b41b2429536c33cf1a87cb94cebe577a2544e9c1c679188af020be67a",
+      "code/redmule_tiler.sv": "9413faea2df4dfa93e26ae63b1ef79de5cc4870f39b1dec2012e7d54bb37135d",
+      "code/redmule_xif_offload_subsys.sv": "ddb6b6f9cdb61a1be80e9930278c515e68682f0d282fb7239508739a5b35fa4d",
+      "code/redmule_xif_pkg.sv": "53cb49691563b34787d4e8d07a5833af1e09ef2acb968299de191c08f2780292",
+      "code/tc_clk.sv": "da4d25b91e621065e14205e46e1785e1369a894fef2690edd0a1b0b8dd01d3d4",
+      "issue.md": "db0160da50cdb67960241267f03855e3991d4763a6823542b79dfdc50f350184"
+    },
+    "gold_hashes": {
+      "code/redmule_ctrl.sv": "2be168bae3084dfbf80282dca93d5059fe211076048229bb050326aa948f8f1f",
+      "code/redmule_inst_decoder.sv": "c3f48953812697a07efa2d3cb5365797727e46f48dd75e4a7a8a0daed41a6c52"
+    },
+    "grader_hashes": {
+      "run.py": "22641e0362a54e81385b6a698a5a15daa1c42ec3f7e93a53227e04ce08905b07"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 2,
+      "wrong_fix_fail_runs": 4,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 9,
+      "mutant_total": 10
+    }
+  },
+  "eda_stage": "stage1_rtl_sim",
+  "eda_stage_name": "Stage 1: Frontend RTL Design & Functional Simulation",
+  "eda_track": "stage1_rtl_sim",
+  "eda_track_name": "Stage 1: Frontend RTL Design & Functional Simulation",
+  "problem_type": "PT2_New_Feature_ISA_Impl",
+  "problem_type_label": "New ISA & Subsystem Feature Implementation",
+  "primary_domain": "Vector_GPU_NPU_Accelerators",
+  "multi_domains": [
+    "Vector_GPU_NPU_Accelerators"
+  ],
+  "pdk_profile": {
+    "pdk_id": "rtl_dual_sim_standard",
+    "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+    "location": "Unified base image (/opt/siliconbench/tools)",
+    "customized": false,
+    "notes": "Pure RTL/protocol/synthesis check without external PDK Liberty files."
+  },
+  "public_hashes": {
+    "BUILD.md": "a8f1e829dad81d86cf6c4153d9cc60559b3352f7d7a85a67ad96ba9453e42294",
+    "code/LICENSE": "6527a46225891b976fa94f634f6ee0cd22e1c7129d6f11c5c98c997627625fc7",
+    "code/cf_math_pkg.sv": "d986ff4e1079a600dd760416b36f539b36a29c67c3bdbdf10b9be0663447676a",
+    "code/fpnew_pkg.sv": "69001fae0d82846c80c2f56bb8830a38acd2703590de132a8700865eea4acb1d",
+    "code/hci_package.sv": "15b735c27e33246c6dc7a4248ffba9541b5109759d9c918e09ba66ec36172d69",
+    "code/hwpe_ctrl_package.sv": "e72d76ae18f2adc4d8c9e6e3b5e5bc686f98e3ccb7afd834f46bd0302482d77b",
+    "code/hwpe_stream_package.sv": "c2f7b0efcb60cd4dbeeb31552578588b15a941bd886c0501e38f68d8680e91f4",
+    "code/include/common_cells/assertions.svh": "d39c7afa893656e235b0019233c1bcf12491cd421639791c827cc53236bd4841",
+    "code/include/common_cells/registers.svh": "532dfd1723d2936421b921235abdafcc8ca407990224992ca13575fdb620053a",
+    "code/redmule_config_fifo.sv": "d11492e5e3268d2a33beeca273d7a27852c49b1c2d72f06da9641f0d3cab8dca",
+    "code/redmule_ctrl.sv": "2cbc888c4c762e5609c6dd3b51a9e8e81b78d211e5f1520a7aa805872ad31296",
+    "code/redmule_inst_decoder.sv": "396f051efba75a13e4c4e389757dd8d178213daddf2a1295be2ac5617fddc2ef",
+    "code/redmule_pkg.sv": "454f594b41b2429536c33cf1a87cb94cebe577a2544e9c1c679188af020be67a",
+    "code/redmule_tiler.sv": "9413faea2df4dfa93e26ae63b1ef79de5cc4870f39b1dec2012e7d54bb37135d",
+    "code/redmule_xif_offload_subsys.sv": "ddb6b6f9cdb61a1be80e9930278c515e68682f0d282fb7239508739a5b35fa4d",
+    "code/redmule_xif_pkg.sv": "53cb49691563b34787d4e8d07a5833af1e09ef2acb968299de191c08f2780292",
+    "code/tc_clk.sv": "da4d25b91e621065e14205e46e1785e1369a894fef2690edd0a1b0b8dd01d3d4",
+    "issue.md": "db0160da50cdb67960241267f03855e3991d4763a6823542b79dfdc50f350184"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 2,
+    "wrong_fix_fail_runs": 4,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 9,
+    "mutant_total": 10
+  }
+}

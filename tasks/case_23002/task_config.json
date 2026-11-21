@@ -1,0 +1,181 @@
+{
+  "case_id": "case_23002",
+  "task_id": "case_23002",
+  "version": 1,
+  "title": "SIMT Warp Control-Flow Divergence, IPDOM Stack Unwinding, and Multi-Packet Mask Coherency",
+  "repo_id": "repo_37",
+  "repository": "vortexgpgpu/vortex",
+  "topic": "pipeline_hazard_memory_order",
+  "family": "functional",
+  "editable_files": [
+    "code/VX_wctl_unit.sv",
+    "code/VX_split_join.sv",
+    "code/VX_ipdom_stack.sv"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 420,
+    "verifier_timeout_seconds": 840,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_23002",
+    "version": 1,
+    "frozen_utc": "2026-11-11T19:52:05.054871+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/VX_wctl_unit.sv",
+      "code/VX_split_join.sv",
+      "code/VX_ipdom_stack.sv"
+    ],
+    "public_hashes": {
+      "BUILD.md": "8533e9ca9dc4874bbd88b9406023fa8657e4b3872218b36fce958e32e7391714",
+      "code/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "code/VX_async_ram_patch.sv": "20102a7946a36a130e0071677b88e3bb11e012423ccd88e0e60565c77c786d8c",
+      "code/VX_config.vh": "dcb7c44f168c695f3866a8b6bf963ea2a72b95e4a7a7b306a21a24faf0c5c230",
+      "code/VX_define.vh": "5ba471fae5408cb9194f3cbc5ddb0ca67c8d53d84fcec0c2a63dd131289f94f2",
+      "code/VX_dp_ram.sv": "24d13a43029bd1bae2c9dc937621ee822349f084b6f32b00d923b01e44991fef",
+      "code/VX_dp_ram_asic.v": "2ec9a1561845a6a40e93fff43f81560f383aa09e5ad7ac7f1e206c5f4b4f5b12",
+      "code/VX_elastic_buffer.sv": "2ad0357a2a819f99b17aad1fbd824f6007bf23dc97590d3920b150c8d392a96f",
+      "code/VX_execute_if.sv": "5902b04e31dd787cebb400f6dbba4ac5dfbdfeeb25b6d493155d8fbfdade2084",
+      "code/VX_fifo_queue.sv": "521c9e4f10959a3b9ab1f79c9332f9d819e2c4f8c3922b749c6bfc1648e04c28",
+      "code/VX_find_first.sv": "148dbbfbc0eba6b9bb53a3a6ef656556a90fb71b5630329b206bfbd132cdee90",
+      "code/VX_gpu_pkg.sv": "fb7fb9cabd22db5d96e0f0cefc9bf8ce4934b8050083b666ba23b4c2b6a87422",
+      "code/VX_ipdom_stack.sv": "c10a8ab0778fab1ac5afe2539d7d43adff05ef57b3f53065b462b148c4c380cb",
+      "code/VX_lzc.sv": "a25a05951796e2877886d5ade96304a71d130539fba125376cc14594d1f9eed8",
+      "code/VX_onehot_encoder.sv": "0a6126e4509848399439ce33e06c04ed9ca3a971b9a941a522e2056d4a7ecada",
+      "code/VX_pipe_buffer.sv": "9dc112a68135aaa751218e516df9ca7ab85c20ebd8f90ccfb2ec77920da9b4b6",
+      "code/VX_pipe_register.sv": "5fbb98c7dec6f3a9907cf83cc31e510380286fc34591a052786a0a103bd65cd3",
+      "code/VX_platform.vh": "d6e8bdfa10311f43d8379f82c828978326b6bbac28445015e1dc7fd2add857be",
+      "code/VX_popcount.sv": "4f9de6af2cfc56820889a5562a9060a5c9373c5b61eddcff375fdf392da8bc1c",
+      "code/VX_priority_encoder.sv": "f8bd9d4a4cb3b3ffaa39fe058d9ee083c50b80c38d607f64fc842977e53a576a",
+      "code/VX_result_if.sv": "c0250e2df689dd8e1998c9bd2ebe6791ceeffa099e4bf46abc78937939a2e275",
+      "code/VX_scan.sv": "4e3135ee950e57734b5e673610231b8dcf2dd163828cbc1fe97de5130e95744d",
+      "code/VX_scope.vh": "14994f4f9bb6591bf03f2e52ded64351e9859c558919a14e83fe2c72d8fd9008",
+      "code/VX_split_join.sv": "5c629b926aad74856d2be11dfde4d06d27d97269c703fba5faec05e51de93b8c",
+      "code/VX_stream_buffer.sv": "fd666046b48547e812d10f19d79ef1caa61e53cb265dd21aa5520d388dda5c1c",
+      "code/VX_txbar_bus_if.sv": "e98de56d5e3967b6c8fcd3ff73a733dbc04b639333b3d0294b384f1be3120730",
+      "code/VX_types.vh": "a1c68dfeb6527dbe2a6bacbf32dc8e67feadc5dad674f9f4a787b7c54abc1a47",
+      "code/VX_warp_ctl_if.sv": "bf726e2d0a8453c974e792ebae4a6df2cd7ece29b45d15f75020beff0175d1df",
+      "code/VX_wctl_ipdom_top.sv": "e48df3ade741454982a70df20e7421b32dd9c2379432091ab87b95d7576ebeb6",
+      "code/VX_wctl_unit.sv": "a256fa8f008ddeb0d9223d50621d3678f7c1be8c904b69d5579f466b0817803c",
+      "issue.md": "a49cb945138f690b0eacb85b089d831c36f50a093aefb3d508951bff217efaf6"
+    },
+    "gold_hashes": {
+      "code/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "code/VX_async_ram_patch.sv": "20102a7946a36a130e0071677b88e3bb11e012423ccd88e0e60565c77c786d8c",
+      "code/VX_config.vh": "dcb7c44f168c695f3866a8b6bf963ea2a72b95e4a7a7b306a21a24faf0c5c230",
+      "code/VX_define.vh": "5ba471fae5408cb9194f3cbc5ddb0ca67c8d53d84fcec0c2a63dd131289f94f2",
+      "code/VX_dp_ram.sv": "24d13a43029bd1bae2c9dc937621ee822349f084b6f32b00d923b01e44991fef",
+      "code/VX_dp_ram_asic.v": "2ec9a1561845a6a40e93fff43f81560f383aa09e5ad7ac7f1e206c5f4b4f5b12",
+      "code/VX_elastic_buffer.sv": "2ad0357a2a819f99b17aad1fbd824f6007bf23dc97590d3920b150c8d392a96f",
+      "code/VX_execute_if.sv": "5902b04e31dd787cebb400f6dbba4ac5dfbdfeeb25b6d493155d8fbfdade2084",
+      "code/VX_fifo_queue.sv": "521c9e4f10959a3b9ab1f79c9332f9d819e2c4f8c3922b749c6bfc1648e04c28",
+      "code/VX_find_first.sv": "148dbbfbc0eba6b9bb53a3a6ef656556a90fb71b5630329b206bfbd132cdee90",
+      "code/VX_gpu_pkg.sv": "fb7fb9cabd22db5d96e0f0cefc9bf8ce4934b8050083b666ba23b4c2b6a87422",
+      "code/VX_ipdom_stack.sv": "5c05bf8a6678e8398ae5ad9829d20bef11c7ea896548117bbcf367b81ecdd7af",
+      "code/VX_lzc.sv": "a25a05951796e2877886d5ade96304a71d130539fba125376cc14594d1f9eed8",
+      "code/VX_onehot_encoder.sv": "0a6126e4509848399439ce33e06c04ed9ca3a971b9a941a522e2056d4a7ecada",
+      "code/VX_pipe_buffer.sv": "9dc112a68135aaa751218e516df9ca7ab85c20ebd8f90ccfb2ec77920da9b4b6",
+      "code/VX_pipe_register.sv": "5fbb98c7dec6f3a9907cf83cc31e510380286fc34591a052786a0a103bd65cd3",
+      "code/VX_platform.vh": "d6e8bdfa10311f43d8379f82c828978326b6bbac28445015e1dc7fd2add857be",
+      "code/VX_popcount.sv": "4f9de6af2cfc56820889a5562a9060a5c9373c5b61eddcff375fdf392da8bc1c",
+      "code/VX_priority_encoder.sv": "f8bd9d4a4cb3b3ffaa39fe058d9ee083c50b80c38d607f64fc842977e53a576a",
+      "code/VX_result_if.sv": "c0250e2df689dd8e1998c9bd2ebe6791ceeffa099e4bf46abc78937939a2e275",
+      "code/VX_scan.sv": "4e3135ee950e57734b5e673610231b8dcf2dd163828cbc1fe97de5130e95744d",
+      "code/VX_scope.vh": "14994f4f9bb6591bf03f2e52ded64351e9859c558919a14e83fe2c72d8fd9008",
+      "code/VX_split_join.sv": "db03634d495b146ff5a5a687f76dd8d576f6145f6009f82f54bb0f7ccc5bfc3a",
+      "code/VX_stream_buffer.sv": "fd666046b48547e812d10f19d79ef1caa61e53cb265dd21aa5520d388dda5c1c",
+      "code/VX_txbar_bus_if.sv": "e98de56d5e3967b6c8fcd3ff73a733dbc04b639333b3d0294b384f1be3120730",
+      "code/VX_types.vh": "a1c68dfeb6527dbe2a6bacbf32dc8e67feadc5dad674f9f4a787b7c54abc1a47",
+      "code/VX_warp_ctl_if.sv": "bf726e2d0a8453c974e792ebae4a6df2cd7ece29b45d15f75020beff0175d1df",
+      "code/VX_wctl_ipdom_top.sv": "e48df3ade741454982a70df20e7421b32dd9c2379432091ab87b95d7576ebeb6",
+      "code/VX_wctl_unit.sv": "6ecddf6217cd903197b5c11a23ae3825de1922e93418d456fba28973ac8f4068"
+    },
+    "grader_hashes": {
+      "run.py": "336cfcdbbb5c3be9a0c45a6a5fedb9342db0101cb1f89d5ef8c8a7d29a40ec7b"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 2,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 5,
+      "mutant_killed": 12,
+      "mutant_total": 12
+    },
+    "test_hashes": {
+      "tb.sv": "01b62cfb8d2801e4bcbc9eb9555c5b469e4ff8f4201cc82482099ff60bbe58e6"
+    },
+    "grader_revalidated_utc": "2026-11-13T20:03:55.623117+00:00"
+  },
+  "eda_stage": "stage1_rtl_sim",
+  "eda_stage_name": "Stage 1: Frontend RTL Design & Functional Simulation",
+  "eda_track": "stage1_rtl_sim",
+  "eda_track_name": "Stage 1: Frontend RTL Design & Functional Simulation",
+  "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+  "problem_type_label": "Architectural & Protocol Bug Repair",
+  "primary_domain": "Vector_GPU_NPU_Accelerators",
+  "multi_domains": [
+    "Vector_GPU_NPU_Accelerators"
+  ],
+  "pdk_profile": {
+    "pdk_id": "rtl_dual_sim_standard",
+    "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+    "location": "Unified base image (/opt/siliconbench/tools)",
+    "customized": false,
+    "notes": "Pure RTL/protocol/synthesis check without external PDK Liberty files."
+  },
+  "public_hashes": {
+    "BUILD.md": "8533e9ca9dc4874bbd88b9406023fa8657e4b3872218b36fce958e32e7391714",
+    "code/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "code/VX_async_ram_patch.sv": "20102a7946a36a130e0071677b88e3bb11e012423ccd88e0e60565c77c786d8c",
+    "code/VX_config.vh": "dcb7c44f168c695f3866a8b6bf963ea2a72b95e4a7a7b306a21a24faf0c5c230",
+    "code/VX_define.vh": "5ba471fae5408cb9194f3cbc5ddb0ca67c8d53d84fcec0c2a63dd131289f94f2",
+    "code/VX_dp_ram.sv": "24d13a43029bd1bae2c9dc937621ee822349f084b6f32b00d923b01e44991fef",
+    "code/VX_dp_ram_asic.v": "2ec9a1561845a6a40e93fff43f81560f383aa09e5ad7ac7f1e206c5f4b4f5b12",
+    "code/VX_elastic_buffer.sv": "2ad0357a2a819f99b17aad1fbd824f6007bf23dc97590d3920b150c8d392a96f",
+    "code/VX_execute_if.sv": "5902b04e31dd787cebb400f6dbba4ac5dfbdfeeb25b6d493155d8fbfdade2084",
+    "code/VX_fifo_queue.sv": "521c9e4f10959a3b9ab1f79c9332f9d819e2c4f8c3922b749c6bfc1648e04c28",
+    "code/VX_find_first.sv": "148dbbfbc0eba6b9bb53a3a6ef656556a90fb71b5630329b206bfbd132cdee90",
+    "code/VX_gpu_pkg.sv": "fb7fb9cabd22db5d96e0f0cefc9bf8ce4934b8050083b666ba23b4c2b6a87422",
+    "code/VX_ipdom_stack.sv": "c10a8ab0778fab1ac5afe2539d7d43adff05ef57b3f53065b462b148c4c380cb",
+    "code/VX_lzc.sv": "a25a05951796e2877886d5ade96304a71d130539fba125376cc14594d1f9eed8",
+    "code/VX_onehot_encoder.sv": "0a6126e4509848399439ce33e06c04ed9ca3a971b9a941a522e2056d4a7ecada",
+    "code/VX_pipe_buffer.sv": "9dc112a68135aaa751218e516df9ca7ab85c20ebd8f90ccfb2ec77920da9b4b6",
+    "code/VX_pipe_register.sv": "5fbb98c7dec6f3a9907cf83cc31e510380286fc34591a052786a0a103bd65cd3",
+    "code/VX_platform.vh": "d6e8bdfa10311f43d8379f82c828978326b6bbac28445015e1dc7fd2add857be",
+    "code/VX_popcount.sv": "4f9de6af2cfc56820889a5562a9060a5c9373c5b61eddcff375fdf392da8bc1c",
+    "code/VX_priority_encoder.sv": "f8bd9d4a4cb3b3ffaa39fe058d9ee083c50b80c38d607f64fc842977e53a576a",
+    "code/VX_result_if.sv": "c0250e2df689dd8e1998c9bd2ebe6791ceeffa099e4bf46abc78937939a2e275",
+    "code/VX_scan.sv": "4e3135ee950e57734b5e673610231b8dcf2dd163828cbc1fe97de5130e95744d",
+    "code/VX_scope.vh": "14994f4f9bb6591bf03f2e52ded64351e9859c558919a14e83fe2c72d8fd9008",
+    "code/VX_split_join.sv": "5c629b926aad74856d2be11dfde4d06d27d97269c703fba5faec05e51de93b8c",
+    "code/VX_stream_buffer.sv": "fd666046b48547e812d10f19d79ef1caa61e53cb265dd21aa5520d388dda5c1c",
+    "code/VX_txbar_bus_if.sv": "e98de56d5e3967b6c8fcd3ff73a733dbc04b639333b3d0294b384f1be3120730",
+    "code/VX_types.vh": "a1c68dfeb6527dbe2a6bacbf32dc8e67feadc5dad674f9f4a787b7c54abc1a47",
+    "code/VX_warp_ctl_if.sv": "bf726e2d0a8453c974e792ebae4a6df2cd7ece29b45d15f75020beff0175d1df",
+    "code/VX_wctl_ipdom_top.sv": "e48df3ade741454982a70df20e7421b32dd9c2379432091ab87b95d7576ebeb6",
+    "code/VX_wctl_unit.sv": "a256fa8f008ddeb0d9223d50621d3678f7c1be8c904b69d5579f466b0817803c",
+    "issue.md": "a49cb945138f690b0eacb85b089d831c36f50a093aefb3d508951bff217efaf6"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 2,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 5,
+    "mutant_killed": 12,
+    "mutant_total": 12
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "case_id": "case_24010",
+  "obligations": [
+    {
+      "id": "REQ_SG_BURST_RRESP_AND_ID_FIFO",
+      "behavior": "Qualify 6-beat descriptor capture with rvalid && rready, drain non-OKAY RRESP bursts to rlast before discarding, and size descriptor ID FIFO for >= 16 queued descriptors.",
+      "public_source": "public/issue.md#1",
+      "verified_by": [
+        "tb_sg_dmac.sv",
+        "wf2",
+        "m01..m03"
+      ]
+    },
+    {
+      "id": "REQ_SYNC_START_AND_EARLY_TLAST_REWIND",
+      "behavior": "Accept and discard pre-sync AXI4-Stream beats without gating s_axis_ready on sync, and terminate/rewind cleanly on early s_axis_last across clock domains.",
+      "public_source": "public/issue.md#2",
+      "verified_by": [
+        "tb_sg_dmac.sv",
+        "wf1",
+        "wf3",
+        "m04..m09"
+      ]
+    },
+    {
+      "id": "REQ_ASYM_BURST_MEM_WARM_RESET_AND_STA",
+      "behavior": "Preserve 32->64 final-beat byte strobes, recover cleanly after mid-burst warm reset, and meet WNS >= 0 ns across Slow (1.35x) and Fast (0.72x) Nangate45 OpenSTA.",
+      "public_source": "public/issue.md#3",
+      "verified_by": [
+        "tb_sg_dmac.sv",
+        "run.py#timing",
+        "wf4",
+        "m10..m12"
+      ]
+    }
+  ]
+}

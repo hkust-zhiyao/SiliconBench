@@ -1,0 +1,146 @@
+{
+  "case_id": "case_2003",
+  "task_id": "case_2003",
+  "version": 1,
+  "title": "Ibex Load-Store Unit, Writeback Stage, and Smepmp Memory Protection Closure",
+  "repo_id": "repo_02",
+  "repository": "lowRISC/ibex",
+  "topic": "multi_module_rtl_and_ppa_timing_closure",
+  "family": "rtl_datapath_and_ppa_closure",
+  "editable_files": [
+    "code/ibex_load_store_unit.sv",
+    "code/ibex_wb_stage.sv",
+    "code/ibex_pmp.sv"
+  ],
+  "editable": [
+    "code/ibex_load_store_unit.sv",
+    "code/ibex_wb_stage.sv",
+    "code/ibex_pmp.sv"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_2003",
+    "version": 1,
+    "frozen_utc": "2026-11-04T05:53:21.886543+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/ibex_load_store_unit.sv",
+      "code/ibex_wb_stage.sv",
+      "code/ibex_pmp.sv"
+    ],
+    "public_hashes": {
+      "BUILD.md": "d7b38c62cefe45bbd9bad778f6dee556c9b70d1fab90605fb4f87386eeb83499",
+      "code/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "code/dv_fcov_macros.svh": "d8d02ae47a12d78f611e15e4ab6e14775b55a0bdbb0815f36fbe8ddb242984ae",
+      "code/ibex_cheriot_pkg.sv": "2bb73146800d94b54e350b0c84216ef0ea0bb82049032ec83b64b6afd0717823",
+      "code/ibex_load_store_unit.sv": "d667df80886bf056a1f0c201744658a898227ddeb7d42e6499327c0779290f95",
+      "code/ibex_lsu_wb_pmp_top.sv": "25c0370bb152443e43e68d108c5670f46d5422319c84f1303a9781c70b24f77c",
+      "code/ibex_pkg.sv": "18c986c83664daee64660dab3a57796d9b6ae2cb95fd4fc76543753cfe57110e",
+      "code/ibex_pmp.sv": "83b88faaea9f81a84e3369450e4d53f19c487079c3956f60a2d55db9356d3d37",
+      "code/ibex_wb_stage.sv": "8a288174633122f3005af4e6b297226da457d1f8a2ebe7a5fe1f98d315e96826",
+      "code/prim_assert.sv": "d717d5dbcba3b5aa8a731ef9f8af18b036b49edef282f0a43a51f5ad2dd9bb40",
+      "code/prim_assert_dummy_macros.svh": "cac4a930105da662547de873f0b80246074fb22df9a398663e1c8ac3e7998218",
+      "code/prim_assert_sec_cm.svh": "25db89fe5f250c1bcbd808d0b4808206b9e85ac337b26e4ebb23f2ad569e1a13",
+      "code/prim_assert_standard_macros.svh": "4835706249e017eae999256ea807c526a39a49729196fc0aa18bb8818de86ab6",
+      "code/prim_assert_yosys_macros.svh": "d1fd8c350785a7c6d8cccc0b0c385392b71575397e7dc58c70f07716c8f9f3a3",
+      "code/prim_buf.sv": "9b00bd8ac203169268262ac9337076781fa962b19beed36f28dde54e360aaaf5",
+      "code/prim_flop_macros.sv": "2e8e6c2ee484899ae5d0020eaf0c9732c31537c60c30cb2a0a0acd2e92baee03",
+      "code/prim_secded_inc.svh": "59591eea595305d0ece809e980ee080990d52f1c4fef564e1a6e9c4f54812c3d",
+      "code/prim_secded_inv_39_32_dec.sv": "f07f26fd2375952e4ec7cfc1641cebcea373a8030d82dd5977a76f81c430cb12",
+      "code/prim_secded_inv_39_32_enc.sv": "4588fda3fd5ebdd711c98f6900caaaaddddf1257337c5b931ca86de7fb0ef8ff",
+      "code/prim_secded_pkg.sv": "bcbd03333a30e7a1cb01195d1c40c7d0e736f91d9f73c2347ef5b0bd9dc3c82b",
+      "code/prim_util_pkg.sv": "f71235ef5b92eaa3d2ed5c676f76108082df93b8aae8f9baa816584d1d285208",
+      "issue.md": "74b4b38feaef0c2c09fc2e14b2e60a6262d225c1299b6b95247cd4a52a075759",
+      "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+      "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+      "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+    },
+    "gold_hashes": {
+      "code/ibex_load_store_unit.sv": "94f83a5aa2b71d301a70db812986300b991f250f737a14266bfd377011acbe34",
+      "code/ibex_pmp.sv": "a564fb312d5337b0875d16f434e8b69348e12c2560548fad93f9270f9c4b9176",
+      "code/ibex_wb_stage.sv": "d8f5f966cbd0a261a93d680ebf5a6a429371688950e5f7e20184561f1b418123"
+    },
+    "grader_hashes": {
+      "run.py": "e49511a51b0cd493b938d9d18652bfc696ef80ea26ac63ee75386381b26b84c5"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 3,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 10,
+      "mutant_total": 10
+    }
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+  "problem_type_label": "Architectural & Protocol Bug Repair",
+  "primary_domain": "rtl_integration",
+  "multi_domains": [
+    "rtl_integration",
+    "rtl_semantics",
+    "verification_debug"
+  ],
+  "pdk_profile": {
+    "pdk_id": "nangate45_plus_multicorner_lib",
+    "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+    "location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+    "customized": true,
+    "notes": "Uses shared Nangate45 library for synthesis plus task-bundled fast/slow/scan corner timing views."
+  },
+  "public_hashes": {
+    "BUILD.md": "d7b38c62cefe45bbd9bad778f6dee556c9b70d1fab90605fb4f87386eeb83499",
+    "code/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "code/dv_fcov_macros.svh": "d8d02ae47a12d78f611e15e4ab6e14775b55a0bdbb0815f36fbe8ddb242984ae",
+    "code/ibex_cheriot_pkg.sv": "2bb73146800d94b54e350b0c84216ef0ea0bb82049032ec83b64b6afd0717823",
+    "code/ibex_load_store_unit.sv": "d667df80886bf056a1f0c201744658a898227ddeb7d42e6499327c0779290f95",
+    "code/ibex_lsu_wb_pmp_top.sv": "25c0370bb152443e43e68d108c5670f46d5422319c84f1303a9781c70b24f77c",
+    "code/ibex_pkg.sv": "18c986c83664daee64660dab3a57796d9b6ae2cb95fd4fc76543753cfe57110e",
+    "code/ibex_pmp.sv": "83b88faaea9f81a84e3369450e4d53f19c487079c3956f60a2d55db9356d3d37",
+    "code/ibex_wb_stage.sv": "8a288174633122f3005af4e6b297226da457d1f8a2ebe7a5fe1f98d315e96826",
+    "code/prim_assert.sv": "d717d5dbcba3b5aa8a731ef9f8af18b036b49edef282f0a43a51f5ad2dd9bb40",
+    "code/prim_assert_dummy_macros.svh": "cac4a930105da662547de873f0b80246074fb22df9a398663e1c8ac3e7998218",
+    "code/prim_assert_sec_cm.svh": "25db89fe5f250c1bcbd808d0b4808206b9e85ac337b26e4ebb23f2ad569e1a13",
+    "code/prim_assert_standard_macros.svh": "4835706249e017eae999256ea807c526a39a49729196fc0aa18bb8818de86ab6",
+    "code/prim_assert_yosys_macros.svh": "d1fd8c350785a7c6d8cccc0b0c385392b71575397e7dc58c70f07716c8f9f3a3",
+    "code/prim_buf.sv": "9b00bd8ac203169268262ac9337076781fa962b19beed36f28dde54e360aaaf5",
+    "code/prim_flop_macros.sv": "2e8e6c2ee484899ae5d0020eaf0c9732c31537c60c30cb2a0a0acd2e92baee03",
+    "code/prim_secded_inc.svh": "59591eea595305d0ece809e980ee080990d52f1c4fef564e1a6e9c4f54812c3d",
+    "code/prim_secded_inv_39_32_dec.sv": "f07f26fd2375952e4ec7cfc1641cebcea373a8030d82dd5977a76f81c430cb12",
+    "code/prim_secded_inv_39_32_enc.sv": "4588fda3fd5ebdd711c98f6900caaaaddddf1257337c5b931ca86de7fb0ef8ff",
+    "code/prim_secded_pkg.sv": "bcbd03333a30e7a1cb01195d1c40c7d0e736f91d9f73c2347ef5b0bd9dc3c82b",
+    "code/prim_util_pkg.sv": "f71235ef5b92eaa3d2ed5c676f76108082df93b8aae8f9baa816584d1d285208",
+    "issue.md": "74b4b38feaef0c2c09fc2e14b2e60a6262d225c1299b6b95247cd4a52a075759",
+    "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+    "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+    "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 3,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 10,
+    "mutant_total": 10
+  }
+}

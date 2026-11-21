@@ -1,0 +1,29 @@
+{
+  "case_id": "case_2003",
+  "obligations": [
+    {
+      "id": "REQ-PMP-SMEPMP-AND-TOR",
+      "behavior": "Enforce Smepmp shared/locked permissions, unmatched M-mode exec default deny, Debug-Module bypass, and magnitude-comparator TOR matching in ibex_pmp.sv.",
+      "public_source": "public/issue.md item 1",
+      "enforced_by": "private/tests/tb.sv (Test 1), killed by wrong_fix_3, mutant_08, mutant_09, mutant_10"
+    },
+    {
+      "id": "REQ-LSU-MISALIGNED-AND-CAP-FAULT",
+      "behavior": "Preserve initial unaligned address in addr_last_o when the first beat of a split access faults, and invalidate lsu_rcap_o on LSW bus error or MSW SECDED integrity error.",
+      "public_source": "public/issue.md item 2",
+      "enforced_by": "private/tests/tb.sv (Test 2, Test 3, Test 4), killed by wrong_fix_4, mutant_01..05"
+    },
+    {
+      "id": "REQ-WB-CHERIOT-WAIT-AND-RETIRE",
+      "behavior": "Hold wb_valid_q for pending CHERIoT capability loads/stores until lsu_resp_valid_o and suppress perf_instr_ret_wb_o on LSU response errors.",
+      "public_source": "public/issue.md item 3",
+      "enforced_by": "private/tests/tb.sv (Test 4 & Test 5), killed by wrong_fix_5, mutant_06, mutant_07"
+    },
+    {
+      "id": "REQ-PPA-AREA-AND-STA-CLOSURE",
+      "behavior": "Achieve mapped Nangate45 cell area <= 5750.0 um^2 and WNS >= 0.00 ns, WHS >= 0.00 ns at 2.05 ns clock in OpenROAD.",
+      "public_source": "public/issue.md item 3, public/BUILD.md §3-4",
+      "enforced_by": "private/grader/run.py (Yosys area & OpenROAD STA), killed by wrong_fix_1 and wrong_fix_2"
+    }
+  ]
+}

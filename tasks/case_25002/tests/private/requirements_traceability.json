@@ -1,0 +1,43 @@
+{
+  "case_id": "case_25002",
+  "obligations": [
+    {
+      "id": "REQ-SPARSE-FSM-GATE-FAULT-CONTAINMENT",
+      "behavior": "Maintain a >=10-bit Hamming-distance >=3 sparse state encoding on kv_doe_fsm_ps that survives Yosys Nangate45 synthesis without state-bit pruning or combinational SCC loops, and on any single-bit gate-level state flip immediately suppress kv_write/core strobes, latch sticky DOE_ERROR across zeroize until reset, and wipe round-key/IV/CBC secrets within 1 cycle.",
+      "public_source": "public/issue.md Requirement 1, public/BUILD.md Sections 2-3",
+      "verified_by": [
+        "private/grader/run.py (Yosys Nangate45 synthesis + sparse state FF audit + iverilog gate-level single-bit state-flip fault-injection testbench)",
+        "wf1_unprotected_enum_pruned_by_synth",
+        "wf2_zeroize_clears_sticky_fsm_error",
+        "m01_fsm_error_not_triggering_sec_wipe",
+        "m02_allow_kv_write_during_fsm_error"
+      ]
+    },
+    {
+      "id": "REQ-POLICY-AND-STICKY-FLOW-LOCKS",
+      "behavior": "Enforce pre-dispatch UDS/FE (slots 0..15) and HEK (slot 22 with ocp_lock_en=1) authorization, reject invalid/locked/out-of-policy commands in DOE_IDLE with ERROR+VALID without expanding keys or writing KV, retain UDS/FE/HEK flow locks across warm resets and DOE_CLEAR (clearing only on !cptra_pwrgood/!hard_rst_b), and abort without locking on kv_wr_resp.error.",
+      "public_source": "public/issue.md Requirement 2",
+      "verified_by": [
+        "private/tests/tb.sv (T1, T2)",
+        "wf3_warm_reset_clears_flow_locks",
+        "m03_allow_hek_when_ocp_lock_disabled",
+        "m04_allow_uds_to_nonstandard_slot_16",
+        "m05_set_uds_lock_despite_kv_wr_error",
+        "m06_hang_on_reserved_cmd_in_idle"
+      ]
+    },
+    {
+      "id": "REQ-CSR-LOCKOUT-AND-KEYMEM-ZEROIZE",
+      "behavior": "Block AHB writes to DOE_IV and DOE_CTRL under doe_cmd_lock or doe_fsm_error and block mid-flight DOE_IV / non-CLEAR DOE_CTRL writes while busy_o=1; wipe all 15 AES-256 round keys (0..14), prev_key0_reg, prev_key1_reg, and rcon_reg on zeroize while masking round_key/sboxw combinationally and recovering cleanly to non-zero slots.",
+      "public_source": "public/issue.md Requirements 3-4",
+      "verified_by": [
+        "private/tests/tb.sv (T3, T4, T5)",
+        "wf4_partial_aes128_keymem_zeroize",
+        "m07_allow_iv_write_while_busy",
+        "m08_allow_ctrl_write_when_cmd_locked",
+        "m09_leak_prev_key_regs_on_zeroize",
+        "m10_leak_comb_round_key_on_zeroize"
+      ]
+    }
+  ]
+}

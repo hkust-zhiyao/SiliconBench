@@ -1,0 +1,140 @@
+{
+  "case_id": "case_10012",
+  "task_id": "case_10012",
+  "version": 1,
+  "title": "OpenPiton 8-Port Chipset I/O Crossbar Route Decoding, 8-Bit Payload Framing, Output Arbitration Fairness, and Timing Closure",
+  "repo_id": "repo_10",
+  "repository": "princetonuniversity/openpiton",
+  "source_commit": "1c6bfd2d2ea53ddd7b6f933fa2d439d1a540e207",
+  "license": "BSD-3-Clause",
+  "family": "rtl_and_synthesis_timing",
+  "topic": "io_xbar_8port_router_control_arbitration_ppa_sta",
+  "editable_files": [
+    "code/rtl/io_xbar_input_route_request_calc.v",
+    "code/rtl/io_xbar_input_control.v",
+    "code/rtl/io_xbar_output_control.v"
+  ],
+  "editable": [
+    "code/rtl/io_xbar_input_route_request_calc.v",
+    "code/rtl/io_xbar_input_control.v",
+    "code/rtl/io_xbar_output_control.v"
+  ],
+  "grading": {
+    "eda_class": "heavy",
+    "grader_timeout_seconds": 600,
+    "verifier_timeout_seconds": 1200,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 1,
+        "extra_args": []
+      },
+      {
+        "seed": 2,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_10012",
+    "version": 1,
+    "frozen_utc": "2026-11-04T10:40:56.926386+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/rtl/io_xbar_input_route_request_calc.v",
+      "code/rtl/io_xbar_input_control.v",
+      "code/rtl/io_xbar_output_control.v"
+    ],
+    "public_hashes": {
+      "BUILD.md": "75e63fe83b06b8f9010ad67dc2e08c93be834456f999d0eda40dac3a7b3921e0",
+      "code/LICENSE": "dfd7ca7e83697b770341ad20bbf21b2f584ed2afcf2038e49eac53b5bc8ab2fd",
+      "code/include/define.tmp.h": "ccf44933d59e5d4c8297a3b4e54d422b5f2c1a54b50818e7e4f2ba6a953fac8f",
+      "code/include/network_define.v": "58f3166346f70d3d6cf59af54f36d360460b104874a54cd72c711a9e3ebe3128",
+      "code/rtl/bus_compare_equal.v": "adeedf937c04176211c9b46163692c521372dffb4e66b076b29abf2677e5040e",
+      "code/rtl/flip_bus.v": "187c28de4937c1649a717308f3accc9c0cd7615fb50575e3766c878d9be56d86",
+      "code/rtl/io_xbar_input_control.v": "51cefb19cd1c3ee5dca38045cdb41aa419f762fd8e921ebd1eb08e0b0beda230",
+      "code/rtl/io_xbar_input_route_request_calc.v": "ec1d389fb5092443e9aeb41dbf999aa2880427f89b460efbbfb3e0d1bb9eb61b",
+      "code/rtl/io_xbar_output_control.v": "d10a33c19c52d28a7a7cc6c13a9fb7ff479d0b7f00ebd3270fbc0d62bedf9903",
+      "code/rtl/io_xbar_output_datapath.v": "af457c22b04df21dfd118b1cae5cfa52e2389ea1f47059b14be8c57b5909f818",
+      "code/rtl/io_xbar_output_top.v": "33518ae1e1c76dc93976c7cb477ef381e7524a705d9788dff98e2a8f6188f4a1",
+      "code/rtl/net_dff.v": "118e1259a21e9f7808ec6beb22e20eae5fed1dfb896469ef350eb392aa17dae8",
+      "code/rtl/one_of_eight.v": "ddaf31732e034bfaae2751317a8adcadd2462a71cc4b69be9204fb9e7d670311",
+      "code/rtl/space_avail_top.v": "acf352d4b04910d61e7897f0336e66158573e5ed6b35b54bd5067279eae6a102",
+      "issue.md": "ba9925c85fa44b186d73459fdc331d25d25fb28726de9f2be2ad76906f8322d4",
+      "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+      "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+      "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+      "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+    },
+    "gold_hashes": {
+      "code/rtl/io_xbar_input_control.v": "b42c3cd8b8daa56713cd5794dac618c8a58b8183e20468f162d35017b645c3c6",
+      "code/rtl/io_xbar_input_route_request_calc.v": "e8a6cb7380c05b85c85e131672347687cfc5ea6c026a0878f968d03c60c21b13",
+      "code/rtl/io_xbar_output_control.v": "b3f016236747e3285f51a494a2cba8f5dad7754a17c4705e751cad3c0df98dbd"
+    },
+    "grader_hashes": {
+      "run.py": "9c1dc7c433e7130350a2b8c3e2f54564798da318246e86f14849310d814ae932"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 4,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 10,
+      "mutant_total": 10
+    },
+    "test_hashes": {
+      "tb.sv": "82037d178a0f1b22955205fc15e4b3cf46a6edbcca28ce68845b216892e37bdc"
+    },
+    "grader_revalidated_utc": "2026-11-16T10:17:42.058352+00:00"
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+  "problem_type_label": "Architectural & Protocol Bug Repair",
+  "primary_domain": "parameters_widths",
+  "multi_domains": [
+    "parameters_widths",
+    "protocol_control",
+    "rtl_integration"
+  ],
+  "pdk_profile": {
+    "pdk_id": "nangate45_plus_multicorner_lib",
+    "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+    "location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+    "customized": true,
+    "notes": "Uses shared Nangate45 library for synthesis plus task-bundled fast/slow/scan corner timing views."
+  },
+  "public_hashes": {
+    "BUILD.md": "75e63fe83b06b8f9010ad67dc2e08c93be834456f999d0eda40dac3a7b3921e0",
+    "code/LICENSE": "dfd7ca7e83697b770341ad20bbf21b2f584ed2afcf2038e49eac53b5bc8ab2fd",
+    "code/include/define.tmp.h": "ccf44933d59e5d4c8297a3b4e54d422b5f2c1a54b50818e7e4f2ba6a953fac8f",
+    "code/include/network_define.v": "58f3166346f70d3d6cf59af54f36d360460b104874a54cd72c711a9e3ebe3128",
+    "code/rtl/bus_compare_equal.v": "adeedf937c04176211c9b46163692c521372dffb4e66b076b29abf2677e5040e",
+    "code/rtl/flip_bus.v": "187c28de4937c1649a717308f3accc9c0cd7615fb50575e3766c878d9be56d86",
+    "code/rtl/io_xbar_input_control.v": "51cefb19cd1c3ee5dca38045cdb41aa419f762fd8e921ebd1eb08e0b0beda230",
+    "code/rtl/io_xbar_input_route_request_calc.v": "ec1d389fb5092443e9aeb41dbf999aa2880427f89b460efbbfb3e0d1bb9eb61b",
+    "code/rtl/io_xbar_output_control.v": "d10a33c19c52d28a7a7cc6c13a9fb7ff479d0b7f00ebd3270fbc0d62bedf9903",
+    "code/rtl/io_xbar_output_datapath.v": "af457c22b04df21dfd118b1cae5cfa52e2389ea1f47059b14be8c57b5909f818",
+    "code/rtl/io_xbar_output_top.v": "33518ae1e1c76dc93976c7cb477ef381e7524a705d9788dff98e2a8f6188f4a1",
+    "code/rtl/net_dff.v": "118e1259a21e9f7808ec6beb22e20eae5fed1dfb896469ef350eb392aa17dae8",
+    "code/rtl/one_of_eight.v": "ddaf31732e034bfaae2751317a8adcadd2462a71cc4b69be9204fb9e7d670311",
+    "code/rtl/space_avail_top.v": "acf352d4b04910d61e7897f0336e66158573e5ed6b35b54bd5067279eae6a102",
+    "issue.md": "ba9925c85fa44b186d73459fdc331d25d25fb28726de9f2be2ad76906f8322d4",
+    "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+    "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+    "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+    "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 4,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 10,
+    "mutant_total": 10
+  }
+}

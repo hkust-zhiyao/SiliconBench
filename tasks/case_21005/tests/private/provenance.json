@@ -1,0 +1,24 @@
+{
+  "case_id": "case_21005",
+  "slot_id": "builder_02_smartnic_axi_fabric__P05",
+  "blueprint_id": "bp_s02_011",
+  "repo_id": "repo_39",
+  "origin": "https://github.com/corundum/corundum",
+  "commit": "1ca0151b97af85aa5dd306d74b6bcec65904d2ce",
+  "license": "BSD-2-Clause; see public/code/LICENSE",
+  "native_sources": [
+    "snapshot/fpga/common/rtl/tdma_scheduler.v",
+    "snapshot/fpga/common/rtl/tx_scheduler_ctrl_tdma.v",
+    "snapshot/fpga/common/rtl/tx_scheduler_rr.v",
+    "snapshot/fpga/lib/eth/lib/axis/rtl/axis_fifo.v",
+    "snapshot/fpga/lib/eth/lib/axis/rtl/priority_encoder.v"
+  ],
+  "editable_files": [
+    "code/tdma_scheduler.v",
+    "code/tx_scheduler_ctrl_tdma.v",
+    "code/tx_scheduler_rr.v"
+  ],
+  "qualification": "upstream/repo_39",
+  "build_scope": "TSN/TDMA transmit scheduler chain verified across Icarus Verilog 13.0, Verilator 5.038, Yosys 0.70+286 ASIC Zero-X gate-level simulation, and Nangate45 OpenSTA 1.50ns timing/area signoff.",
+  "tool": "Icarus Verilog 13.0 + Verilator 5.038 + Yosys 0.70+286 + OpenSTA 3.1.0"
+}

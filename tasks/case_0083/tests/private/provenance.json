@@ -1,0 +1,13 @@
+{
+  "upstream": "https://github.com/pulp-platform/idma",
+  "commit": "a6b1d6657c03998b6df0baf905d7babd006ba614",
+  "archive_sha256": "8c4adb40cb40b8feca6a33bf5ebfaf9672e8d7575793777b5bfe39cf38f0aeab",
+  "license": "Solderpad Hardware License 0.51 (SHL-0.51)",
+  "rtl": [
+    "src/midend/idma_nd_midend.sv",
+    "src/backend/idma_legalizer_page_splitter.sv",
+    "src/backend/tpl/idma_legalizer.sv.tpl"
+  ],
+  "pdk": "NangateOpenCellLibrary 45nm typical (lib/NangateOpenCellLibrary_typical.lib)",
+  "tools": "Verilator 5.038 + Yosys (slang) + OpenROAD/OpenSTA"
+}

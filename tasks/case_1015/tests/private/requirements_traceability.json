@@ -1,0 +1,16 @@
+{
+  "obligations": [
+    {
+      "obligation": "Perform two-round random secure wipe via OtbnStartStopStateUrndRefresh and latch rma_ack_d = rma_req_i in otbn_start_stop_control",
+      "source": "public/issue.md"
+    },
+    {
+      "obligation": "Assert loop_at_end_err and prioritize loop_stack_push_req on loop_stack_commit in otbn_loop_controller, and support simultaneous push+pop replacement on full/non-empty stack in otbn_stack",
+      "source": "public/issue.md"
+    },
+    {
+      "obligation": "Achieve Nangate45 mapped area <= 8550.0 um^2 and OpenROAD setup/hold slack >= 0.0 ns at 2.20 ns clock period",
+      "source": "public/issue.md"
+    }
+  ]
+}

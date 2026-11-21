@@ -1,0 +1,54 @@
+{
+  "case_id": "case_25018",
+  "obligations": [
+    {
+      "id": "REQ-ROT-AXI-GUARD-AND-WINDOW-LOCK",
+      "behavior": "Validate AXI4 AxSIZE <= 2, AxBURST != 2'b11, AxUSER allowlist, and < 8 KB bounds, block AXI writes overlapping an active SHA-512 mailbox_mode window while permitting reads and disjoint writes, mask errored read beats to 0 with SLVERR, and drain errored write bursts without mutating SRAM.",
+      "public_source": "public/issue.md Functional, Security & ECC Contracts item 1",
+      "verified_by": [
+        "private/tests/tb_rot_staging.sv",
+        "wf1_no_active_sha_window_lock",
+        "m01_axi_rd_ignore_illegal_burst",
+        "m02_axi_wr_suppress_slverr",
+        "m03_axi_allow_unauth_user"
+      ]
+    },
+    {
+      "id": "REQ-ROT-SECDED-RMW-AND-SCRUB",
+      "behavior": "Maintain C_LAT=2 across 8 RM_IHPSG13_1P_256x64_c2_bm_bist macros with zero latches, execute ECC-checked sub-dword RMW (aborting on 2-bit ECC pre-read fault), and perform 1-cycle clean codeword scrub writeback on single-bit ECC reads while pulsing fault telemetry.",
+      "public_source": "public/issue.md Functional, Security & ECC Contracts item 2",
+      "verified_by": [
+        "private/tests/tb_rot_staging.sv",
+        "wf2_subword_blind_overwrite_corrupts_ecc",
+        "m04_no_single_bit_scrub",
+        "m05_rmw_ignore_double_ecc"
+      ]
+    },
+    {
+      "id": "REQ-ROT-SHA512-DIRECT-QUARANTINE-ZEROIZE",
+      "behavior": "Support DLEN==0 in streaming and mailbox modes, enforce mailbox START_ADDRESS/DLEN alignment and bounds (error1_sts), quarantine 2-bit ECC SRAM faults (error2_sts, DIGEST==0, VALID==0), restrict CONTROL writes to lock owner / unlocked local FW, and persistently wipe state on CONTROL.ZEROIZE.",
+      "public_source": "public/issue.md Functional, Security & ECC Contracts item 3",
+      "verified_by": [
+        "private/tests/tb_rot_staging.sv",
+        "wf3_sha_ignore_2bit_ecc_quarantine",
+        "m06_unauth_soc_zeroize",
+        "m07_no_empty_msg_support",
+        "m08_mbox_bounds_no_err1"
+      ]
+    },
+    {
+      "id": "REQ-ROT-SG13G2-PNR-SIGNOFF",
+      "behavior": "Synthesize zero-latch netlist preserving 8x RM_IHPSG13_1P_256x64_c2_bm_bist macros, place legally on 2600x1750um die (>=20um core margin & spacing), constrain clk <= 15.5ns with >=1.5ns I/O delays, and close OpenROAD PDN, GRT overflow <= 15, wirelength <= 4,500,000 um, and post-GRT WNS/hold >= 0.0 ns.",
+      "public_source": "public/issue.md Physical Implementation & Signoff Targets",
+      "verified_by": [
+        "private/grader/run.py",
+        "wf4_inferred_latch_sram_ctrl",
+        "wf5_unroutable_stacked_macro_plan",
+        "m09_macro_spacing_violation",
+        "m10_macro_invalid_orientation",
+        "m11_sdc_period_too_slow",
+        "m12_sdc_illegal_false_path"
+      ]
+    }
+  ]
+}

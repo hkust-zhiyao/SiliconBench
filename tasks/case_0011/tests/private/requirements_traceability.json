@@ -1,0 +1,57 @@
+{
+  "case_id": "case_0011",
+  "requirements": [
+    {
+      "id": "REQ-FUNC-WIDTHS",
+      "source": "public/issue.md",
+      "description": "Exact unsigned product and two's-complement negation across (AW=32, BW=32, MULT_BITS=4), (AW=17, BW=11, MULT_BITS=4), and (AW=24, BW=16, MULT_BITS=4), including non-multiple AW padding and closed-loop stride accumulation in hwpe_ctrl_uloop.",
+      "verified_by": "private/tests/tb.sv (u_cfg_32_32, u_cfg_17_11, u_cfg_24_16 and u_loop checks)",
+      "negative_controls": [
+        "wrong_fix_3_odd_aw_padding_bug",
+        "wrong_fix_5_carry_sign_leakage",
+        "mutant_01_drop_invert_carry_in",
+        "mutant_02_drop_prod_xor_invert",
+        "mutant_05_chunk_missing_msb",
+        "mutant_07_shift_left_instead_of_right",
+        "mutant_10_truncate_b_msb"
+      ]
+    },
+    {
+      "id": "REQ-FUNC-HANDSHAKE-LATENCY",
+      "source": "public/issue.md",
+      "description": "Exact N_STEPS = AW_PAD / MULT_BITS cycle latency, ready_o/valid_o handshake, back-to-back start_i on the valid_o completion cycle, asynchronous reset (~rst_ni), and mid-operation synchronous clear (clear_i).",
+      "verified_by": "private/tests/tb.sv (tick, run_op with hold_idle=0/1, mid-op clear loop, async reset checks)",
+      "negative_controls": [
+        "wrong_fix_2_extra_negate_cycle",
+        "wrong_fix_4_back_to_back_start_bug",
+        "mutant_03_wrong_step_count_minus2",
+        "mutant_04_missing_clear_reset_prod",
+        "mutant_06_no_start_acc_clear",
+        "mutant_08_ready_stuck_high",
+        "mutant_09_valid_cleared_when_idle"
+      ]
+    },
+    {
+      "id": "REQ-QOR-AREA",
+      "source": "public/issue.md & public/BUILD.md",
+      "description": "Mapped standard-cell area <= 1620.0 um^2 on NangateOpenCellLibrary_typical.lib for AW=32, BW=32, MULT_BITS=4.",
+      "verified_by": "private/grader/run.py (Yosys/Slang + ABC stat -liberty check)",
+      "negative_controls": [
+        "baseline (2305.954 um^2)",
+        "wrong_fix_1_barrel_shifter_kept (2067.352 um^2)",
+        "wrong_fix_6_horner_64bit_adder (1721.552 um^2)"
+      ]
+    },
+    {
+      "id": "REQ-QOR-TIMING",
+      "source": "public/issue.md & public/BUILD.md",
+      "description": "OpenROAD placement-estimated worst setup slack >= 0.0 ns and worst hold slack >= 0.0 ns at 3.1 ns clock period, 0.25 ns I/O delays, and 5.0 fF output load, with clean check_setup audit.",
+      "verified_by": "private/grader/run.py and private/tests/flow.tcl",
+      "negative_controls": [
+        "baseline (-1.64 ns setup slack at 3.1 ns)",
+        "wrong_fix_1_barrel_shifter_kept (-1.06 ns setup slack at 3.1 ns)",
+        "wrong_fix_6_horner_64bit_adder (-0.18 ns setup slack at 3.1 ns)"
+      ]
+    }
+  ]
+}

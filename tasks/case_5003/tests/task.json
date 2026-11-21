@@ -1,0 +1,145 @@
+{
+  "case_id": "case_5003",
+  "task_id": "case_5003",
+  "version": 1,
+  "title": "CVA6 Sv39+Svnapot MMU Shared-TLB Arbitration, NAPOT Set Indexing, PLRU Refill, and PTW Flush Control",
+  "repo_id": "repo_05",
+  "repository": "openhwfoundation/cva6",
+  "topic": "mmu_svnapot_shared_tlb_plru_and_ptw_flush",
+  "family": "functional_and_synthesis",
+  "editable_files": [
+    "code/cva6_tlb.sv",
+    "code/cva6_shared_tlb.sv",
+    "code/cva6_ptw.sv"
+  ],
+  "editable": [
+    "code/cva6_tlb.sv",
+    "code/cva6_shared_tlb.sv",
+    "code/cva6_ptw.sv"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_5003",
+    "version": 1,
+    "frozen_utc": "2026-11-04T17:45:27.073416+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/cva6_tlb.sv",
+      "code/cva6_shared_tlb.sv",
+      "code/cva6_ptw.sv"
+    ],
+    "public_hashes": {
+      "BUILD.md": "0e19c50f06b399f5f0c05ed5d3d8944ed686d4d463ac7f07f88de9534df62e52",
+      "DEPENDENCIES.md": "38b6c37defaccfc5d58413c40780bb41ec676d4705d90c514176655d76780556",
+      "UPSTREAM_README.md": "4be930811b673dfbf2a917699758a36a1363b4c15b2a78eb197a0d4703184143",
+      "code/LICENSE": "b41106a9d0de1cf6ab4ea56bedf677503085c0570248f37fe2cdf657a5e72601",
+      "code/ariane_pkg.sv": "f492b1dda7044c4d202df1a1e4609a53fbecc94ad3f08b5d6d9a150b4569d2d7",
+      "code/cf_math_pkg.sv": "bbf0614771ceb9526356bb8e5234787324ef215884bc11b4aa27e91fc3cc8910",
+      "code/config_pkg.sv": "f6f193daa7dfe1161689f651d6aa6e2b1fdec6560fc83c1313385e944ce4c97c",
+      "code/cv64a60ax_config_pkg.sv": "6b2bd15f21283ff8eac2c8daa62030b7be5d2b342437f4b863baa0c74b88688c",
+      "code/cva6_mmu.sv": "c675ab0c4097d748cea13a77b4918b9c89fd80da2b330516e8eb27b37fd0391c",
+      "code/cva6_ptw.sv": "f35281da93be70ebdf0f15df221b483e6b1c0c68977c71f3f2b0fe0dbaab937a",
+      "code/cva6_shared_tlb.sv": "3ac49fb19105e711fe25a83a730657a23df1ddde1a30b4d2e75212140adb73a4",
+      "code/cva6_tlb.sv": "2390206bffb5d5b40193a8482ab71b849347866c08e716c3b4dd9c39da2ffe52",
+      "code/lfsr.sv": "91f6c37be706ca7648cb66635e3f46a210e517f7addb8569ec28e4738599f7d7",
+      "code/lzc.sv": "f31989be4369ea7c4809c0c3d61df28581e9ac7666005fde6e476a975d1acd07",
+      "code/pmp.sv": "9c2dce5d4bd2390a617882c282080dbf191c54f016b36b5e719672382c15c7b6",
+      "code/pmp_data_if.sv": "e047297208ef695786304c51bd91bed7d6a85724de37352865baa0c74b49bd9a",
+      "code/pmp_entry.sv": "d460cad15eafe78c9c1de689238ec4579279ef28c556d8ac231715afff84c702",
+      "code/riscv_pkg.sv": "225881e0df4c08d0d9768999408c7c93186a59270955a391bccd63f34b95777a",
+      "code/sram.sv": "3350a570916eb2170edf374d6611de21eb320e979e7f50b3797fa5f76f7b2f16",
+      "code/tc_sram.sv": "32e9cb89cf89902e9fa566a66f931f6fe00a616cd426ba440b1e634d0caeb607",
+      "code/tc_sram_wrapper.sv": "9aa0ccac1617b8d2a13edd050999f18869738898f72c653d0c9edba6090eb6b8",
+      "include/common_cells/LICENSE.Apache-2.0": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "include/common_cells/assertions.svh": "d39c7afa893656e235b0019233c1bcf12491cd421639791c827cc53236bd4841",
+      "issue.md": "5f139a8e51fdd48c14abd3e63f17fdb39cbbe0a8ff41795a3444f99cdf1d5767"
+    },
+    "gold_hashes": {
+      "code/cva6_ptw.sv": "3c1119ffedc077e0ad3736ee7ed0f1ddccfcfb645ca237b446a5088e04bb0055",
+      "code/cva6_shared_tlb.sv": "67a09e8a43a9512ac5fc8e781fd85145218a683c8f513710c63b504e0778f990",
+      "code/cva6_tlb.sv": "89771cc2260902d46fd0e9ff0e439e0518f05ac2aaf29a8fc68fb7b15999388d"
+    },
+    "grader_hashes": {
+      "run.py": "5621455b0a4912db7b9551ab1a610641f53d903610d0494dd20aea81c5e9a76c"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 4,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 10,
+      "mutant_total": 10
+    }
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+  "problem_type_label": "Architectural & Protocol Bug Repair",
+  "primary_domain": "rtl_integration",
+  "multi_domains": [
+    "gatelevel_physical_effects",
+    "protocol_control",
+    "reset_rdc",
+    "rtl_integration"
+  ],
+  "pdk_profile": {
+    "pdk_id": "nangate45_45nm_shared",
+    "pdk_name": "Nangate45 45nm Open Cell Library (Shared Base Image)",
+    "location": "/opt/siliconbench/pdk/Nangate45 (bundled in environments/pdk/Nangate45)",
+    "customized": false,
+    "notes": "Uses unified Nangate45 typical Liberty and LEF from base image."
+  },
+  "public_hashes": {
+    "BUILD.md": "0e19c50f06b399f5f0c05ed5d3d8944ed686d4d463ac7f07f88de9534df62e52",
+    "DEPENDENCIES.md": "38b6c37defaccfc5d58413c40780bb41ec676d4705d90c514176655d76780556",
+    "UPSTREAM_README.md": "4be930811b673dfbf2a917699758a36a1363b4c15b2a78eb197a0d4703184143",
+    "code/LICENSE": "b41106a9d0de1cf6ab4ea56bedf677503085c0570248f37fe2cdf657a5e72601",
+    "code/ariane_pkg.sv": "f492b1dda7044c4d202df1a1e4609a53fbecc94ad3f08b5d6d9a150b4569d2d7",
+    "code/cf_math_pkg.sv": "bbf0614771ceb9526356bb8e5234787324ef215884bc11b4aa27e91fc3cc8910",
+    "code/config_pkg.sv": "f6f193daa7dfe1161689f651d6aa6e2b1fdec6560fc83c1313385e944ce4c97c",
+    "code/cv64a60ax_config_pkg.sv": "6b2bd15f21283ff8eac2c8daa62030b7be5d2b342437f4b863baa0c74b88688c",
+    "code/cva6_mmu.sv": "c675ab0c4097d748cea13a77b4918b9c89fd80da2b330516e8eb27b37fd0391c",
+    "code/cva6_ptw.sv": "f35281da93be70ebdf0f15df221b483e6b1c0c68977c71f3f2b0fe0dbaab937a",
+    "code/cva6_shared_tlb.sv": "3ac49fb19105e711fe25a83a730657a23df1ddde1a30b4d2e75212140adb73a4",
+    "code/cva6_tlb.sv": "2390206bffb5d5b40193a8482ab71b849347866c08e716c3b4dd9c39da2ffe52",
+    "code/lfsr.sv": "91f6c37be706ca7648cb66635e3f46a210e517f7addb8569ec28e4738599f7d7",
+    "code/lzc.sv": "f31989be4369ea7c4809c0c3d61df28581e9ac7666005fde6e476a975d1acd07",
+    "code/pmp.sv": "9c2dce5d4bd2390a617882c282080dbf191c54f016b36b5e719672382c15c7b6",
+    "code/pmp_data_if.sv": "e047297208ef695786304c51bd91bed7d6a85724de37352865baa0c74b49bd9a",
+    "code/pmp_entry.sv": "d460cad15eafe78c9c1de689238ec4579279ef28c556d8ac231715afff84c702",
+    "code/riscv_pkg.sv": "225881e0df4c08d0d9768999408c7c93186a59270955a391bccd63f34b95777a",
+    "code/sram.sv": "3350a570916eb2170edf374d6611de21eb320e979e7f50b3797fa5f76f7b2f16",
+    "code/tc_sram.sv": "32e9cb89cf89902e9fa566a66f931f6fe00a616cd426ba440b1e634d0caeb607",
+    "code/tc_sram_wrapper.sv": "9aa0ccac1617b8d2a13edd050999f18869738898f72c653d0c9edba6090eb6b8",
+    "include/common_cells/LICENSE.Apache-2.0": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "include/common_cells/assertions.svh": "d39c7afa893656e235b0019233c1bcf12491cd421639791c827cc53236bd4841",
+    "issue.md": "5f139a8e51fdd48c14abd3e63f17fdb39cbbe0a8ff41795a3444f99cdf1d5767"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 4,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 10,
+    "mutant_total": 10
+  }
+}

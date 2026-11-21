@@ -1,0 +1,123 @@
+{
+  "case_id": "case_8015",
+  "task_id": "case_8015",
+  "version": 1,
+  "title": "VeeR EL2 Smepmp CSR Lock/WARL Enforcement, TOR/NAPOT Priority Access Checker, and Transparent Sideband Timing Budgets",
+  "repo_id": "repo_08",
+  "repository": "chipsalliance/cores-veer-el2",
+  "source_commit": "45c9b425f4c666c095a17e21fce4d3b0721cbfa0",
+  "license": "Apache-2.0",
+  "family": "rtl_and_sta_constraints",
+  "topic": "el2_smepmp_csr_tor_napot_priority_and_sta_exceptions",
+  "editable_files": [
+    "code/el2_dec_pmp_ctl.sv",
+    "code/el2_pmp.sv",
+    "constraints.json"
+  ],
+  "editable": [
+    "code/el2_dec_pmp_ctl.sv",
+    "code/el2_pmp.sv",
+    "constraints.json"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 1,
+        "extra_args": []
+      },
+      {
+        "seed": 2,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_8015",
+    "version": 1,
+    "frozen_utc": "2026-11-04T08:37:35.665089+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/el2_dec_pmp_ctl.sv",
+      "code/el2_pmp.sv",
+      "constraints.json"
+    ],
+    "public_hashes": {
+      "BUILD.md": "bd1b847f7a69d38d9829b03d0b30f0f9f3a9ee91b4b0ab7e3ebb59d45bb78188",
+      "code/LICENSE": "eb3203ed1cc2086e377b0d6cc7603be45d19739d47101ee2f8813f724be9c353",
+      "code/beh_lib.sv": "e8ee31b4883c3e3d5f9bac003183e74344af604eed918be3f0c73b223ffcc41d",
+      "code/common_defines.vh": "8ed4b81fd8999b4c24fdacc1c67c7896ccc7053787c94a76c70ffcca846d40f2",
+      "code/el2_dec_pmp_ctl.sv": "e0589b5a63af2d26cf7883daede4afefee3d351815b2564dad408a085c0af9f0",
+      "code/el2_def.sv": "3cd80efbf48788104ecc3f1d2c0c69ed9433e36a85e2f9a0a21a8ac2abeb9dc6",
+      "code/el2_param.vh": "f447f16936e9e42585fbe09f2694e93a6127b02b07cd4dab7ac2b220c852ea9f",
+      "code/el2_pdef.vh": "58be52c90842066f023d89b4ca59992b8dc3d870b8a66f80cee5ea783a362d0e",
+      "code/el2_pmp.sv": "0cd81ef7c7e12ff84d8303d2ff9439dab40a2f408826ce6a3e37c25f1206a536",
+      "code/top.sv": "a86cbce382153b302220b6199674f73b1488d529c6d594905aa58298becce762",
+      "constraints.json": "f4113f6d3e1f5b35e8418d90742838706a5e31e21612dff0e724bdf0df420191",
+      "issue.md": "499747e8c0b33436ba07e317359227ab7dc01d41b54a299d5183969ab335e02d"
+    },
+    "gold_hashes": {
+      "code/el2_dec_pmp_ctl.sv": "63537fb664ffdc290e67bb9f161d76725bb727ab8b50908ed7c38ab640645f95",
+      "code/el2_pmp.sv": "a520a697ccbe6413781298905f2a5e97e3c91a4243d820eb665e43149838f5b9",
+      "constraints.json": "1793426677008753a17d239049e5707af7b31d051ee2a8a09dbaf1e5ef81b30a"
+    },
+    "grader_hashes": {
+      "run.py": "00dba69cfff3cf4f5bfaf02266a36c6ffc089e0f4e7f592d325c9b5c33166ed4"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 12,
+      "mutant_total": 12
+    }
+  },
+  "eda_stage": "stage3_sta_cdc",
+  "eda_stage_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "eda_track": "stage3_sta_cdc",
+  "eda_track_name": "Stage 3: Static Timing (STA) & CDC/RDC Closure",
+  "problem_type": "PT4_GateLevel_Security_CDC",
+  "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+  "primary_domain": "verification_debug",
+  "multi_domains": [
+    "rtl_integration",
+    "rtl_semantics",
+    "sdc_sta",
+    "verification_debug"
+  ],
+  "pdk_profile": {
+    "pdk_id": "nangate45_45nm_shared",
+    "pdk_name": "Nangate45 45nm Open Cell Library (Shared Base Image)",
+    "location": "/opt/siliconbench/pdk/Nangate45 (bundled in environments/pdk/Nangate45)",
+    "customized": false,
+    "notes": "Uses unified Nangate45 typical Liberty and LEF from base image."
+  },
+  "public_hashes": {
+    "BUILD.md": "bd1b847f7a69d38d9829b03d0b30f0f9f3a9ee91b4b0ab7e3ebb59d45bb78188",
+    "code/LICENSE": "eb3203ed1cc2086e377b0d6cc7603be45d19739d47101ee2f8813f724be9c353",
+    "code/beh_lib.sv": "e8ee31b4883c3e3d5f9bac003183e74344af604eed918be3f0c73b223ffcc41d",
+    "code/common_defines.vh": "8ed4b81fd8999b4c24fdacc1c67c7896ccc7053787c94a76c70ffcca846d40f2",
+    "code/el2_dec_pmp_ctl.sv": "e0589b5a63af2d26cf7883daede4afefee3d351815b2564dad408a085c0af9f0",
+    "code/el2_def.sv": "3cd80efbf48788104ecc3f1d2c0c69ed9433e36a85e2f9a0a21a8ac2abeb9dc6",
+    "code/el2_param.vh": "f447f16936e9e42585fbe09f2694e93a6127b02b07cd4dab7ac2b220c852ea9f",
+    "code/el2_pdef.vh": "58be52c90842066f023d89b4ca59992b8dc3d870b8a66f80cee5ea783a362d0e",
+    "code/el2_pmp.sv": "0cd81ef7c7e12ff84d8303d2ff9439dab40a2f408826ce6a3e37c25f1206a536",
+    "code/top.sv": "a86cbce382153b302220b6199674f73b1488d529c6d594905aa58298becce762",
+    "constraints.json": "f4113f6d3e1f5b35e8418d90742838706a5e31e21612dff0e724bdf0df420191",
+    "issue.md": "499747e8c0b33436ba07e317359227ab7dc01d41b54a299d5183969ab335e02d"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 12,
+    "mutant_total": 12
+  }
+}

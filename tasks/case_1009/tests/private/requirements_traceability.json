@@ -1,0 +1,16 @@
+{
+  "obligations": [
+    {
+      "obligation": "Gate fifo_wdata_sel_o increment on fifo_wready_i in StPushToMsgFifo and clear reg_hash_process_flag on abort_i in hmac_core",
+      "source": "public/issue.md"
+    },
+    {
+      "obligation": "Gate inc_txcount on fifo_rvalid_i && shaf_rready_i in StFifoReceive and transition directly to StLenHi at the 416-bit boundary (9'h1a0) in prim_sha2_pad",
+      "source": "public/issue.md"
+    },
+    {
+      "obligation": "Achieve Nangate45 mapped area <= 4280.0 um^2 and OpenROAD setup/hold slack >= 0.0 ns at 2.95 ns clock period",
+      "source": "public/issue.md"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "case_id": "case_7003",
+  "obligations": [
+    {
+      "id": "REQ-A2H-FORCE-HALT-AND-ERROR",
+      "behavior": "axi4_to_ahb latches dec_tlu_force_halt across bus_clk_en=0 to clear wrbuf and buf_state, and captures ahb_hresp_q into slvbuf_error to return AXI SLVERR (2'b10).",
+      "public_source": "public/issue.md paragraph 1",
+      "enforced_by": "private/tests/tb.sv Test 3 & Test 4; killed by wrong_fix_4, mutant_01..mutant_03"
+    },
+    {
+      "id": "REQ-H2A-TWO-CYCLE-HRESP-AND-RERR",
+      "behavior": "ahb_to_axi4 generates a compliant 2-cycle AHB HRESP error on address range/size/alignment faults or downstream AXI read errors (|axi_rresp[1:0] in PEND) and clears cmdbuf_vld on errored reads.",
+      "public_source": "public/issue.md paragraph 1",
+      "enforced_by": "private/tests/tb.sv Test 3a..3c; killed by wrong_fix_5, mutant_04..mutant_06"
+    },
+    {
+      "id": "REQ-STA-TRANSPARENT-BUDGETS",
+      "behavior": "constraints.json sets max_delays on qos_in->qos_out (10.75 ns) and region_in->region_out (11.75 ns) so internal combinational budgets are 1.75 ns and 2.75 ns under 5.0 ns input and 4.0 ns output external delays across 10 ns and 12 ns clocks without excepting registered bridge ports.",
+      "public_source": "public/issue.md paragraph 2, public/BUILD.md §3",
+      "enforced_by": "private/grader/run.py; killed by wrong_fix_1..wrong_fix_3, mutant_07..mutant_12"
+    }
+  ]
+}

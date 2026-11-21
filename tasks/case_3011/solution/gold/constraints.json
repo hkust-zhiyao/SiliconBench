@@ -1,0 +1,22 @@
+{
+  "max_delays": [
+    {
+      "from": [
+        "clint_timer_in"
+      ],
+      "to": [
+        "clint_timer_out"
+      ],
+      "ns": 7.5
+    },
+    {
+      "from": [
+        "eu_event_in"
+      ],
+      "to": [
+        "eu_event_out"
+      ],
+      "ns": 8.25
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "macros": [
+    {
+      "instance": "u_ro_cache.i_lookup.g_sets[0].i_data.gen_data_macros.g_bank[0].u_sram",
+      "x": 140.0,
+      "y": 95.0,
+      "orientation": "R180"
+    },
+    {
+      "instance": "u_ro_cache.i_lookup.g_sets[0].i_data.gen_data_macros.g_bank[1].u_sram",
+      "x": 140.0,
+      "y": 395.0,
+      "orientation": "MY"
+    },
+    {
+      "instance": "u_ro_cache.i_lookup.g_sets[0].i_tag.gen_tag_macro.u_sram",
+      "x": 140.0,
+      "y": 695.0,
+      "orientation": "R180"
+    },
+    {
+      "instance": "u_ro_cache.i_lookup.g_sets[0].i_data.gen_data_macros.g_bank[2].u_sram",
+      "x": 140.0,
+      "y": 995.0,
+      "orientation": "MY"
+    },
+    {
+      "instance": "u_ro_cache.i_lookup.g_sets[0].i_data.gen_data_macros.g_bank[3].u_sram",
+      "x": 140.0,
+      "y": 1295.0,
+      "orientation": "R180"
+    },
+    {
+      "instance": "u_ro_cache.i_lookup.g_sets[1].i_data.gen_data_macros.g_bank[0].u_sram",
+      "x": 1620.0,
+      "y": 220.0,
+      "orientation": "MX"
+    },
+    {
+      "instance": "u_ro_cache.i_lookup.g_sets[1].i_data.gen_data_macros.g_bank[1].u_sram",
+      "x": 1620.0,
+      "y": 520.0,
+      "orientation": "R0"
+    },
+    {
+      "instance": "u_ro_cache.i_lookup.g_sets[1].i_tag.gen_tag_macro.u_sram",
+      "x": 1620.0,
+      "y": 820.0,
+      "orientation": "MX"
+    },
+    {
+      "instance": "u_ro_cache.i_lookup.g_sets[1].i_data.gen_data_macros.g_bank[2].u_sram",
+      "x": 1620.0,
+      "y": 1120.0,
+      "orientation": "R0"
+    },
+    {
+      "instance": "u_ro_cache.i_lookup.g_sets[1].i_data.gen_data_macros.g_bank[3].u_sram",
+      "x": 1620.0,
+      "y": 1420.0,
+      "orientation": "MX"
+    }
+  ]
+}

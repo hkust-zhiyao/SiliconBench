@@ -1,0 +1,173 @@
+{
+  "case_id": "case_22009",
+  "task_id": "case_22009",
+  "version": 1,
+  "title": "RedMulE Systolic Wave-Front Small-Tile Promotion, Leftover Boundary Synchronization, and Multi-Pass Loopback Scheduling",
+  "repo_id": "repo_30",
+  "repository": "pulp-platform/redmule",
+  "target_repo_name": "pulp-platform/redmule",
+  "topic": "verification_debug",
+  "family": "functional",
+  "flow_scenario": "S3_pipeline_hazard_memory_order",
+  "coupling_mode": "deep_stage_authentic",
+  "editable_files": [
+    "code/redmule_tiler.sv",
+    "code/redmule_scheduler.sv",
+    "code/redmule_memory_scheduler.sv"
+  ],
+  "editable": [
+    "code/redmule_tiler.sv",
+    "code/redmule_scheduler.sv",
+    "code/redmule_memory_scheduler.sv"
+  ],
+  "grading": {
+    "eda_class": "light",
+    "grader_timeout_seconds": 300,
+    "verifier_timeout_seconds": 600,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "name": "seed_101",
+        "seed": 101,
+        "extra_args": []
+      },
+      {
+        "name": "seed_202",
+        "seed": 202,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_22009",
+    "version": 1,
+    "frozen_utc": "2026-11-11T19:13:01.917629+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/redmule_tiler.sv",
+      "code/redmule_scheduler.sv",
+      "code/redmule_memory_scheduler.sv"
+    ],
+    "public_hashes": {
+      "BUILD.md": "48e475d5575a866ec36e473c7525f776cb7da8e259d749282bb4678804988688",
+      "code/LICENSE": "6527a46225891b976fa94f634f6ee0cd22e1c7129d6f11c5c98c997627625fc7",
+      "code/cf_math_pkg.sv": "d986ff4e1079a600dd760416b36f539b36a29c67c3bdbdf10b9be0663447676a",
+      "code/edge_detect.sv": "19a0f7b1139701c6f2d718a24f0775062011372a1ab42e377079275d5abd7411",
+      "code/fpnew_classifier.sv": "cfff43772aea7d918cb0ab3c2e0e996ea34b8740d8edb43f359582ce9978546f",
+      "code/fpnew_pkg.sv": "69001fae0d82846c80c2f56bb8830a38acd2703590de132a8700865eea4acb1d",
+      "code/fpnew_rounding.sv": "56df50bb28d6179efc36284b2366403f060586a8aa5c51b0afb41014be14c465",
+      "code/hci_package.sv": "15b735c27e33246c6dc7a4248ffba9541b5109759d9c918e09ba66ec36172d69",
+      "code/hwpe_ctrl_package.sv": "e72d76ae18f2adc4d8c9e6e3b5e5bc686f98e3ccb7afd834f46bd0302482d77b",
+      "code/hwpe_stream_fifo.sv": "22ee160e07d85096afefe38b89f4c1904289424d750d7b30be3e291bd087a569",
+      "code/hwpe_stream_package.sv": "c2f7b0efcb60cd4dbeeb31552578588b15a941bd886c0501e38f68d8680e91f4",
+      "code/include/common_cells/assertions.svh": "d39c7afa893656e235b0019233c1bcf12491cd421639791c827cc53236bd4841",
+      "code/include/common_cells/registers.svh": "532dfd1723d2936421b921235abdafcc8ca407990224992ca13575fdb620053a",
+      "code/lzc.sv": "f0a1d2d56db0990c0e86b6528c780b6424c4c84bcb5a9e88646038a73072a043",
+      "code/redmule_config_fifo.sv": "d11492e5e3268d2a33beeca273d7a27852c49b1c2d72f06da9641f0d3cab8dca",
+      "code/redmule_ctrl.sv": "2cbc888c4c762e5609c6dd3b51a9e8e81b78d211e5f1520a7aa805872ad31296",
+      "code/redmule_engine.sv": "79b526ae5e67071d4f52b8ae49e47c16823f0a75f90ce59a6eff206fd63fff16",
+      "code/redmule_fma.sv": "cb20c6c7516a0d35fb8b5c2fac34f1959b54f9733434c7faa1b3ede3fa8553bc",
+      "code/redmule_memory_scheduler.sv": "c8ad2271a924d2a6f568811470b0eb08a949190b953d27e145207a19934ab90f",
+      "code/redmule_pkg.sv": "454f594b41b2429536c33cf1a87cb94cebe577a2544e9c1c679188af020be67a",
+      "code/redmule_row.sv": "e66606ce5b0f69fdab5860dab8a179bf6d7d28560c2dc4b70c81de8ceb2c3bdd",
+      "code/redmule_scheduler.sv": "4e9d437aee582f7f576ea78d7bacfefd01d51fc5932b898bffa8859b25e569e4",
+      "code/redmule_subsys.sv": "d7ef8a396740891c5b1d2200fce4c1112f682c67d93e12dbbb810e7438b59404",
+      "code/redmule_tiler.sv": "788c9141797b36ab2b6fc3339e79081e3240051d2f2a4ab646f7626cf47477f9",
+      "code/sync.sv": "cc7605468d124b0af0d4b2d17323ade1f4093bc96999fab037b9dacac5fe5956",
+      "code/sync_wedge.sv": "34986e9cac22e62599322185f5cde14d0a610d6fea1dc4fab8425711d904e0dd",
+      "code/tc_clk.sv": "da4d25b91e621065e14205e46e1785e1369a894fef2690edd0a1b0b8dd01d3d4",
+      "code/w_buffer/redmule_w_buffer.sv": "54b787c29147362010fe1e974e762d5a49922d4837ae0d74609e2a2bb8adcc43",
+      "code/w_buffer/redmule_w_buffer_scm.sv": "72b1aaa5af5982b7bbbbc4a6c8ae98cbae448efcbce0b16eb5b8bc2991aae31a",
+      "code/x_buffer/redmule_x_buffer.sv": "2d649451e42562c283fb67626a8f0071aa388c2d0c49ace3b5f43559793eb5fd",
+      "code/x_buffer/redmule_x_buffer_scm.sv": "a8bfc7fe30af7f42d202574cc7a788de0b80e099782e367ad47bc62479f64df1",
+      "code/x_buffer/redmule_x_pad_scm.sv": "b67877e2e645e7914c8123f15fa6af809cf349dd61af3ef92b9f24ac1821d814",
+      "code/z_buffer/redmule_z_buffer.sv": "b5c1f53f63f774f9e64c7d196c10af40ea73e8e8d9213203dc7027fabc85a6e1",
+      "code/z_buffer/redmule_z_buffer_scm.sv": "bbc53098e70952fd81b5fdf294e46bb187af2d76888c56221d6f2122641a94d0",
+      "issue.md": "54f7703242a3d69c2cb36d11bef5ea20e1ea98a936ba1312e54c173dfbaf5641"
+    },
+    "gold_hashes": {
+      "code/redmule_memory_scheduler.sv": "ef533de1220dc23bfaa8cc98ff4750b7b82db76263f77ac825d73c4c66e2b781",
+      "code/redmule_scheduler.sv": "043accceefa164f1b12386598138a5fc979c7c803c323f29fdd8524bc89c7be3",
+      "code/redmule_tiler.sv": "95b27405c73623a8733f4205f06ddd8efe3a603435e19d95285bcba927661d3f"
+    },
+    "grader_hashes": {
+      "run.py": "55be1f9d2628d2d6ba2c34068035ed957097910e35a6eddd23ff426a129af2d9"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 2,
+      "wrong_fix_fail_runs": 3,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 7,
+      "mutant_total": 10
+    },
+    "test_hashes": {
+      "tb.sv": "4e601bf43612e0deddb7aee5493efd85e808f669800b7909ede1ed2f99c766c8"
+    },
+    "grader_revalidated_utc": "2026-11-16T10:17:42.058352+00:00"
+  },
+  "eda_stage": "stage1_rtl_sim",
+  "eda_stage_name": "Stage 1: Frontend RTL Design & Functional Simulation",
+  "eda_track": "stage1_rtl_sim",
+  "eda_track_name": "Stage 1: Frontend RTL Design & Functional Simulation",
+  "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+  "problem_type_label": "Architectural & Protocol Bug Repair",
+  "primary_domain": "Vector_GPU_NPU_Accelerators",
+  "multi_domains": [
+    "Vector_GPU_NPU_Accelerators"
+  ],
+  "pdk_profile": {
+    "pdk_id": "rtl_dual_sim_standard",
+    "pdk_name": "Standard IEEE 1800-2017 SystemVerilog Dual-Simulator + Yosys Slang",
+    "location": "Unified base image (/opt/siliconbench/tools)",
+    "customized": false,
+    "notes": "Pure RTL/protocol/synthesis check without external PDK Liberty files."
+  },
+  "public_hashes": {
+    "BUILD.md": "48e475d5575a866ec36e473c7525f776cb7da8e259d749282bb4678804988688",
+    "code/LICENSE": "6527a46225891b976fa94f634f6ee0cd22e1c7129d6f11c5c98c997627625fc7",
+    "code/cf_math_pkg.sv": "d986ff4e1079a600dd760416b36f539b36a29c67c3bdbdf10b9be0663447676a",
+    "code/edge_detect.sv": "19a0f7b1139701c6f2d718a24f0775062011372a1ab42e377079275d5abd7411",
+    "code/fpnew_classifier.sv": "cfff43772aea7d918cb0ab3c2e0e996ea34b8740d8edb43f359582ce9978546f",
+    "code/fpnew_pkg.sv": "69001fae0d82846c80c2f56bb8830a38acd2703590de132a8700865eea4acb1d",
+    "code/fpnew_rounding.sv": "56df50bb28d6179efc36284b2366403f060586a8aa5c51b0afb41014be14c465",
+    "code/hci_package.sv": "15b735c27e33246c6dc7a4248ffba9541b5109759d9c918e09ba66ec36172d69",
+    "code/hwpe_ctrl_package.sv": "e72d76ae18f2adc4d8c9e6e3b5e5bc686f98e3ccb7afd834f46bd0302482d77b",
+    "code/hwpe_stream_fifo.sv": "22ee160e07d85096afefe38b89f4c1904289424d750d7b30be3e291bd087a569",
+    "code/hwpe_stream_package.sv": "c2f7b0efcb60cd4dbeeb31552578588b15a941bd886c0501e38f68d8680e91f4",
+    "code/include/common_cells/assertions.svh": "d39c7afa893656e235b0019233c1bcf12491cd421639791c827cc53236bd4841",
+    "code/include/common_cells/registers.svh": "532dfd1723d2936421b921235abdafcc8ca407990224992ca13575fdb620053a",
+    "code/lzc.sv": "f0a1d2d56db0990c0e86b6528c780b6424c4c84bcb5a9e88646038a73072a043",
+    "code/redmule_config_fifo.sv": "d11492e5e3268d2a33beeca273d7a27852c49b1c2d72f06da9641f0d3cab8dca",
+    "code/redmule_ctrl.sv": "2cbc888c4c762e5609c6dd3b51a9e8e81b78d211e5f1520a7aa805872ad31296",
+    "code/redmule_engine.sv": "79b526ae5e67071d4f52b8ae49e47c16823f0a75f90ce59a6eff206fd63fff16",
+    "code/redmule_fma.sv": "cb20c6c7516a0d35fb8b5c2fac34f1959b54f9733434c7faa1b3ede3fa8553bc",
+    "code/redmule_memory_scheduler.sv": "c8ad2271a924d2a6f568811470b0eb08a949190b953d27e145207a19934ab90f",
+    "code/redmule_pkg.sv": "454f594b41b2429536c33cf1a87cb94cebe577a2544e9c1c679188af020be67a",
+    "code/redmule_row.sv": "e66606ce5b0f69fdab5860dab8a179bf6d7d28560c2dc4b70c81de8ceb2c3bdd",
+    "code/redmule_scheduler.sv": "4e9d437aee582f7f576ea78d7bacfefd01d51fc5932b898bffa8859b25e569e4",
+    "code/redmule_subsys.sv": "d7ef8a396740891c5b1d2200fce4c1112f682c67d93e12dbbb810e7438b59404",
+    "code/redmule_tiler.sv": "788c9141797b36ab2b6fc3339e79081e3240051d2f2a4ab646f7626cf47477f9",
+    "code/sync.sv": "cc7605468d124b0af0d4b2d17323ade1f4093bc96999fab037b9dacac5fe5956",
+    "code/sync_wedge.sv": "34986e9cac22e62599322185f5cde14d0a610d6fea1dc4fab8425711d904e0dd",
+    "code/tc_clk.sv": "da4d25b91e621065e14205e46e1785e1369a894fef2690edd0a1b0b8dd01d3d4",
+    "code/w_buffer/redmule_w_buffer.sv": "54b787c29147362010fe1e974e762d5a49922d4837ae0d74609e2a2bb8adcc43",
+    "code/w_buffer/redmule_w_buffer_scm.sv": "72b1aaa5af5982b7bbbbc4a6c8ae98cbae448efcbce0b16eb5b8bc2991aae31a",
+    "code/x_buffer/redmule_x_buffer.sv": "2d649451e42562c283fb67626a8f0071aa388c2d0c49ace3b5f43559793eb5fd",
+    "code/x_buffer/redmule_x_buffer_scm.sv": "a8bfc7fe30af7f42d202574cc7a788de0b80e099782e367ad47bc62479f64df1",
+    "code/x_buffer/redmule_x_pad_scm.sv": "b67877e2e645e7914c8123f15fa6af809cf349dd61af3ef92b9f24ac1821d814",
+    "code/z_buffer/redmule_z_buffer.sv": "b5c1f53f63f774f9e64c7d196c10af40ea73e8e8d9213203dc7027fabc85a6e1",
+    "code/z_buffer/redmule_z_buffer_scm.sv": "bbc53098e70952fd81b5fdf294e46bb187af2d76888c56221d6f2122641a94d0",
+    "issue.md": "54f7703242a3d69c2cb36d11bef5ea20e1ea98a936ba1312e54c173dfbaf5641"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 2,
+    "wrong_fix_fail_runs": 3,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 7,
+    "mutant_total": 10
+  }
+}

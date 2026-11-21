@@ -1,0 +1,12 @@
+{
+  "case_id": "case_20006",
+  "slot_id": "builder_01_superscalar_cache__P06",
+  "blueprint_id": "bp_s01_023",
+  "repo_id": "repo_26",
+  "upstream": "https://github.com/pulp-platform/axi_llc",
+  "commit": "31059c4be62985f81bc46138f09e442d996aa3f3",
+  "archive_sha256": "8625fb6e351d9ec28f339fcf4e95d71340f2ad3142480e54cc5013478e0131ad",
+  "license": "SHL-0.51",
+  "flow_scenario": "S2_elab_synth_sim_parity",
+  "coupling_mode": "deep_stage_authentic"
+}

@@ -1,0 +1,24 @@
+{
+  "case_id": "case_23011",
+  "repo_id": "repo_37",
+  "origin": "https://github.com/vortexgpgpu/vortex",
+  "commit": "90a626217597099e2667b1bf3395c70b1965c1e",
+  "archive_sha256": "afb7869c698c7291de07249f4609a51107b3d0278fd11a19838735b0e4318af5",
+  "license": "Apache License 2.0; see public/code/LICENSE",
+  "native_sources": [
+    "hw/rtl/core/VX_bar_unit.sv",
+    "hw/rtl/mem/VX_gbar_unit.sv",
+    "hw/rtl/mem/VX_gbar_arb.sv",
+    "hw/rtl/interfaces/VX_gbar_bus_if.sv",
+    "hw/rtl/libs/VX_dp_ram.sv",
+    "hw/rtl/libs/VX_stream_arb.sv",
+    "hw/rtl/libs/VX_stream_fork.sv"
+  ],
+  "editable_files": [
+    "code/VX_bar_unit.sv",
+    "code/VX_gbar_unit.sv",
+    "code/VX_gbar_arb.sv"
+  ],
+  "qualification": "upstream/repo_37",
+  "build_scope": "Vortex multi-core split-phase local + global barrier subsystem (VX_cluster_bar_subsys) verified across (C=4, W=4) and (C=2, W=8) configurations in Verilator plus Yosys+slang + Nangate45 ABC + OpenROAD STA signoff."
+}

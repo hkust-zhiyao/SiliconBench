@@ -1,0 +1,64 @@
+{
+  "macros": [
+    {
+      "instance": "u_ro_cache.i_lookup.g_sets[0].i_tag.gen_tag_macro.u_sram",
+      "x": 95.0,
+      "y": 95.0,
+      "orientation": "R0"
+    },
+    {
+      "instance": "u_ro_cache.i_lookup.g_sets[1].i_data.gen_data_macros.g_bank[3].u_sram",
+      "x": 95.0,
+      "y": 223.0,
+      "orientation": "R0"
+    },
+    {
+      "instance": "u_ro_cache.i_lookup.g_sets[1].i_data.gen_data_macros.g_bank[2].u_sram",
+      "x": 95.0,
+      "y": 351.0,
+      "orientation": "R0"
+    },
+    {
+      "instance": "u_ro_cache.i_lookup.g_sets[1].i_data.gen_data_macros.g_bank[1].u_sram",
+      "x": 95.0,
+      "y": 479.0,
+      "orientation": "R0"
+    },
+    {
+      "instance": "u_ro_cache.i_lookup.g_sets[1].i_data.gen_data_macros.g_bank[0].u_sram",
+      "x": 95.0,
+      "y": 607.0,
+      "orientation": "R0"
+    },
+    {
+      "instance": "u_ro_cache.i_lookup.g_sets[1].i_tag.gen_tag_macro.u_sram",
+      "x": 1680.0,
+      "y": 1560.0,
+      "orientation": "MX"
+    },
+    {
+      "instance": "u_ro_cache.i_lookup.g_sets[0].i_data.gen_data_macros.g_bank[3].u_sram",
+      "x": 1680.0,
+      "y": 1432.0,
+      "orientation": "MX"
+    },
+    {
+      "instance": "u_ro_cache.i_lookup.g_sets[0].i_data.gen_data_macros.g_bank[2].u_sram",
+      "x": 1680.0,
+      "y": 1304.0,
+      "orientation": "MX"
+    },
+    {
+      "instance": "u_ro_cache.i_lookup.g_sets[0].i_data.gen_data_macros.g_bank[1].u_sram",
+      "x": 1680.0,
+      "y": 1176.0,
+      "orientation": "MX"
+    },
+    {
+      "instance": "u_ro_cache.i_lookup.g_sets[0].i_data.gen_data_macros.g_bank[0].u_sram",
+      "x": 1680.0,
+      "y": 1048.0,
+      "orientation": "MX"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "max_delays": [
+    {"from": ["qos_in[0]"], "to": ["qos_out[0]"], "ns": 6.15},
+    {"from": ["qos_in[1]"], "to": ["qos_out[1]"], "ns": 6.15},
+    {"from": ["qos_in[2]"], "to": ["qos_out[2]"], "ns": 6.15},
+    {"from": ["qos_in[3]"], "to": ["qos_out[3]"], "ns": 6.15},
+    {"from": ["qos_in[4]"], "to": ["qos_out[4]"], "ns": 6.15},
+    {"from": ["qos_in[5]"], "to": ["qos_out[5]"], "ns": 6.15},
+    {"from": ["qos_in[6]"], "to": ["qos_out[6]"], "ns": 6.15},
+    {"from": ["qos_in[7]"], "to": ["qos_out[7]"], "ns": 6.15},
+    {"from": ["region_in[0]"], "to": ["region_out[0]"], "ns": 6.95},
+    {"from": ["region_in[1]"], "to": ["region_out[1]"], "ns": 6.95},
+    {"from": ["region_in[2]"], "to": ["region_out[2]"], "ns": 6.95},
+    {"from": ["region_in[3]"], "to": ["region_out[3]"], "ns": 6.95},
+    {"from": ["region_in[4]"], "to": ["region_out[4]"], "ns": 6.95},
+    {"from": ["region_in[5]"], "to": ["region_out[5]"], "ns": 6.95},
+    {"from": ["region_in[6]"], "to": ["region_out[6]"], "ns": 6.95},
+    {"from": ["region_in[7]"], "to": ["region_out[7]"], "ns": 6.95}
+  ]
+}

@@ -1,0 +1,339 @@
+// Copyright lowRISC contributors (OpenTitan project).
+// Licensed under the Apache License, Version 2.0, see LICENSE for details.
+// SPDX-License-Identifier: Apache-2.0
+//
+// SHA-256/Multi-Mode SHA-2 Padding logic (Alternate Gold)
+
+`include "prim_assert.sv"
+
+module prim_sha2_pad import prim_sha2_pkg::*;
+#(
+  parameter bit MultimodeEn = 1
+ ) (
+  input clk_i,
+  input rst_ni,
+
+  input                 fifo_rvalid_i,
+  input  sha_fifo64_t   fifo_rdata_i,
+  output logic          fifo_rready_o,
+  output logic          shaf_rvalid_o,
+  output sha_word64_t   shaf_rdata_o,
+  input                 shaf_rready_i,
+  input                 sha_en_i,
+  input                 hash_start_i,
+  input                 hash_stop_i,
+  input                 hash_continue_i,
+  input digest_mode_e   digest_mode_i,
+  input                 hash_process_i,
+  input                 hash_done_i,
+  input        [127:0]  message_length_i,
+  output logic          msg_feed_complete_o
+);
+
+  function automatic logic [58:0] inc59_tree12(input logic [58:0] x);
+    logic [4:0]  c_grp;
+    logic [4:0]  c_in;
+    logic [59:0] xp, yp;
+    xp = {1'b0, x};
+    for (int g = 0; g < 5; g++) begin
+      c_grp[g] = &xp[12*g +: 12];
+    end
+    c_in[0] = 1'b1;
+    c_in[1] = c_grp[0];
+    c_in[2] = &c_grp[1:0];
+    c_in[3] = &c_grp[2:0];
+    c_in[4] = &c_grp[3:0];
+    for (int g = 0; g < 5; g++) begin
+      yp[12*g +: 12] = xp[12*g +: 12] + {11'b0, c_in[g]};
+    end
+    inc59_tree12 = yp[58:0];
+  endfunction
+
+  logic [127:0] tx_count_d, tx_count;
+  logic         inc_txcount;
+  logic         fifo_partial;
+  logic         txcnt_eq_1a0;
+  logic         txcnt_eq_msg_len;
+  logic         hash_go;
+
+  logic         hash_stop_flag_d, hash_stop_flag_q;
+  logic         hash_process_flag_d, hash_process_flag_q;
+  digest_mode_e digest_mode_flag_d,  digest_mode_flag_q;
+
+  assign hash_go = hash_start_i | hash_continue_i;
+
+  if (!MultimodeEn) begin : gen_tie_unused
+    logic unused_signals;
+    assign unused_signals = ^{message_length_i[127:64]};
+  end
+
+  assign fifo_partial = MultimodeEn ? ~&fifo_rdata_i.mask :
+                                      ~&fifo_rdata_i.mask[3:0];
+
+  assign txcnt_eq_1a0 = (digest_mode_flag_q == SHA2_256   || ~MultimodeEn)               ?
+                                                                        (tx_count[8:0] == 9'h1a0)  :
+                        ((digest_mode_flag_q == SHA2_384) || (digest_mode_flag_q == SHA2_512)) ?
+                                                                        (tx_count[9:0] == 10'h340) :
+                                                                        '0;
+
+  if (MultimodeEn) begin : gen_txcnt_comp_multimode
+    assign txcnt_eq_msg_len = (tx_count == message_length_i);
+  end else begin : gen_txcnt_comp_no_multimode
+    assign txcnt_eq_msg_len = (tx_count[63:0] == message_length_i[63:0]);
+  end
+
+  assign hash_stop_flag_d = (~sha_en_i || hash_go || hash_done_i) ? 1'b0 :
+                            hash_stop_i                           ? 1'b1 :
+                                                                    hash_stop_flag_q;
+
+  assign hash_process_flag_d = (~sha_en_i || hash_go || hash_done_i) ? 1'b0 :
+                               hash_process_i                        ? 1'b1 :
+                                                                       hash_process_flag_q;
+
+  always_ff @(posedge clk_i or negedge rst_ni) begin
+    if (!rst_ni) begin
+      hash_stop_flag_q    <= 1'b0;
+      hash_process_flag_q <= 1'b0;
+    end else begin
+      hash_stop_flag_q    <= hash_stop_flag_d;
+      hash_process_flag_q <= hash_process_flag_d;
+    end
+  end
+
+  typedef enum logic [2:0] {
+    FifoIn,
+    Pad80,
+    Pad00,
+    LenHi,
+    LenLo
+  } sel_data_e;
+  sel_data_e sel_data;
+
+  always_comb begin
+    unique case (sel_data)
+      FifoIn: begin
+        shaf_rdata_o = fifo_rdata_i.data;
+      end
+
+      Pad80: begin
+        if ((digest_mode_flag_q == SHA2_256) || ~MultimodeEn) begin
+          unique case (message_length_i[4:3])
+            2'b 00:  shaf_rdata_o = 64'h 0000_0000_8000_0000;
+            2'b 01:  shaf_rdata_o = {32'h 0000_0000, fifo_rdata_i.data[31:24], 24'h 8000_00};
+            2'b 10:  shaf_rdata_o = {32'h 0000_0000, fifo_rdata_i.data[31:16], 16'h 8000};
+            default: shaf_rdata_o = {32'h 0000_0000, fifo_rdata_i.data[31: 8],  8'h 80};
+          endcase
+        end else begin
+          unique case (message_length_i[5:3])
+            3'b 000: shaf_rdata_o = 64'h 8000_0000_0000_0000;
+            3'b 001: shaf_rdata_o = {fifo_rdata_i.data[63:56], 56'h 8000_0000_0000_00};
+            3'b 010: shaf_rdata_o = {fifo_rdata_i.data[63:48], 48'h 8000_0000_0000};
+            3'b 011: shaf_rdata_o = {fifo_rdata_i.data[63:40], 40'h 8000_0000_00};
+            3'b 100: shaf_rdata_o = {fifo_rdata_i.data[63:32], 32'h 8000_0000};
+            3'b 101: shaf_rdata_o = {fifo_rdata_i.data[63:24], 24'h 8000_00};
+            3'b 110: shaf_rdata_o = {fifo_rdata_i.data[63:16], 16'h 8000};
+            default: shaf_rdata_o = {fifo_rdata_i.data[63:8],  8'h 80};
+          endcase
+        end
+      end
+
+      Pad00: begin
+        shaf_rdata_o = '0;
+      end
+
+      LenHi: begin
+        shaf_rdata_o = ((digest_mode_flag_q == SHA2_256) || ~MultimodeEn) ?
+                       {32'b0, message_length_i[63:32]} :
+                       message_length_i[127:64];
+      end
+
+      LenLo: begin
+        shaf_rdata_o = ((digest_mode_flag_q == SHA2_256) || ~MultimodeEn) ?
+                       {32'b0, message_length_i[31:0]} :
+                       message_length_i[63:0];
+      end
+
+      default: begin
+        shaf_rdata_o = '0;
+      end
+    endcase
+
+    if (!MultimodeEn) shaf_rdata_o [63:32] = 32'b0;
+  end
+
+  typedef enum logic [2:0] {
+    StIdle,
+    StFifoReceive,
+    StPad80,
+    StPad00,
+    StLenHi,
+    StLenLo
+  } pad_st_e;
+
+  pad_st_e st_q, st_d;
+
+  always_ff @(posedge clk_i or negedge rst_ni) begin
+    if (!rst_ni) st_q <= StIdle;
+    else         st_q <= st_d;
+  end
+
+  always_comb begin
+    shaf_rvalid_o = 1'b0;
+    inc_txcount   = 1'b0;
+    sel_data      = FifoIn;
+    fifo_rready_o = 1'b0;
+    st_d          = StIdle;
+
+    unique case (st_q)
+      StIdle: begin
+        sel_data      = FifoIn;
+        shaf_rvalid_o = 1'b0;
+        if (sha_en_i && hash_go) begin
+          inc_txcount = 1'b0;
+          st_d        = StFifoReceive;
+        end else begin
+          st_d        = StIdle;
+        end
+      end
+
+      StFifoReceive: begin
+        sel_data = FifoIn;
+        if (fifo_partial && fifo_rvalid_i) begin
+          shaf_rvalid_o = 1'b0;
+          inc_txcount   = 1'b0;
+          fifo_rready_o = 1'b0;
+          st_d = StPad80;
+        end else if (!hash_process_flag_q) begin
+          fifo_rready_o = shaf_rready_i;
+          shaf_rvalid_o = fifo_rvalid_i;
+          inc_txcount   = shaf_rready_i && fifo_rvalid_i;
+          st_d = StFifoReceive;
+        end else if (txcnt_eq_msg_len) begin
+          shaf_rvalid_o = 1'b0;
+          inc_txcount   = 1'b0;
+          fifo_rready_o = 1'b0;
+          st_d = StPad80;
+        end else begin
+          shaf_rvalid_o = fifo_rvalid_i;
+          fifo_rready_o = shaf_rready_i;
+          inc_txcount   = shaf_rready_i && fifo_rvalid_i;
+          st_d = StFifoReceive;
+        end
+
+        if (txcnt_eq_msg_len && hash_stop_flag_q) begin
+          shaf_rvalid_o = 1'b0;
+          inc_txcount   = 1'b0;
+          fifo_rready_o = 1'b0;
+          st_d = StIdle;
+        end
+      end
+
+      StPad80: begin
+        sel_data      = Pad80;
+        shaf_rvalid_o = 1'b1;
+        fifo_rready_o = (digest_mode_flag_q == SHA2_256 || ~MultimodeEn) ?
+                        shaf_rready_i && |message_length_i[4:3] :
+                        shaf_rready_i && |message_length_i[5:3];
+
+        if (shaf_rready_i && txcnt_eq_1a0) begin
+          st_d        = StLenHi;
+          inc_txcount = 1'b1;
+        end else if (shaf_rready_i && !txcnt_eq_1a0) begin
+          st_d        = StPad00;
+          inc_txcount = 1'b1;
+        end else begin
+          st_d        = StPad80;
+          inc_txcount = 1'b0;
+        end
+      end
+
+      StPad00: begin
+        sel_data      = Pad00;
+        shaf_rvalid_o = 1'b1;
+
+        if (shaf_rready_i) begin
+          inc_txcount = 1'b1;
+          if (txcnt_eq_1a0) st_d = StLenHi;
+          else              st_d = StPad00;
+        end else begin
+          st_d = StPad00;
+        end
+      end
+
+      StLenHi: begin
+        sel_data      = LenHi;
+        shaf_rvalid_o = 1'b1;
+
+        st_d = StLenHi;
+        inc_txcount = 1'b0;
+
+        if (shaf_rready_i) begin
+          st_d = StLenLo;
+          inc_txcount = 1'b1;
+        end
+      end
+
+      StLenLo: begin
+        sel_data        = LenLo;
+        shaf_rvalid_o   = 1'b1;
+
+        st_d        = StLenLo;
+        inc_txcount = 1'b0;
+
+        if (shaf_rready_i) begin
+          st_d        = StIdle;
+          inc_txcount = 1'b1;
+        end
+      end
+
+      default: begin
+        st_d = StIdle;
+      end
+    endcase
+
+    if (!sha_en_i) begin
+      st_d = StIdle;
+    end else if (hash_go && (st_q inside {StIdle, StFifoReceive})) begin
+      st_d = StFifoReceive;
+    end
+  end
+
+  always_comb begin
+    tx_count_d = tx_count;
+
+    if (hash_start_i) begin
+      tx_count_d = '0;
+    end else if (hash_continue_i) begin
+      tx_count_d = message_length_i;
+    end else if (inc_txcount) begin
+      if (!MultimodeEn) begin
+        tx_count_d[63:5]   = inc59_tree12(tx_count[63:5]);
+        tx_count_d[127:64] = '0;
+      end else if (digest_mode_flag_q == SHA2_256) begin
+        tx_count_d[127:5] = tx_count[127:5] + 1'b1;
+      end else begin
+        tx_count_d[127:6] = tx_count[127:6] + 1'b1;
+      end
+    end
+  end
+
+  always_ff @(posedge clk_i or negedge rst_ni) begin
+    if (!rst_ni) tx_count <= '0;
+    else         tx_count <= MultimodeEn ? tx_count_d : {64'b0, tx_count_d[63:0]};
+  end
+
+  assign digest_mode_flag_d = (hash_start_i || hash_continue_i) ? digest_mode_i  :
+                              hash_done_i                       ? SHA2_None      :
+                                                                  digest_mode_flag_q;
+
+  always_ff @(posedge clk_i or negedge rst_ni) begin
+    if (!rst_ni)  digest_mode_flag_q <= SHA2_None;
+    else          digest_mode_flag_q <= digest_mode_flag_d;
+  end
+
+  assign msg_feed_complete_o = (hash_process_flag_q || hash_stop_flag_q) && (st_q == StIdle);
+
+  `ASSERT(ValidDigestModeFlag_A, sel_data inside {Pad80, LenHi, LenLo} || inc_txcount |->
+      digest_mode_flag_q inside {SHA2_256, SHA2_384, SHA2_512})
+
+endmodule

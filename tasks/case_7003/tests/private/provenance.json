@@ -1,0 +1,14 @@
+{
+  "case_id": "case_7003",
+  "repo_id": "repo_07",
+  "upstream": "https://github.com/chipsalliance/cores-veer-eh2",
+  "commit": "32bdfe24c0194a5b625a70624144e4c6dec5f682",
+  "license": "Apache-2.0; Nangate45 Apache-2.0 / Si2 Open Cell Library License",
+  "native_source": "design/lib/axi4_to_ahb.sv, design/lib/ahb_to_axi4.sv, design/lib/beh_lib.sv, design/lib/eh2_lib.sv, design/include/eh2_def.sv",
+  "tooling": {
+    "simulator": "Verilator 5.038",
+    "synthesis": "Yosys 0.70+286 with Slang frontend",
+    "timing": "OpenROAD 26Q2 / OpenSTA"
+  },
+  "oracle": "Verilator functional simulation of coupled axi4_to_ahb and ahb_to_axi4 bridges in top.sv, followed by Yosys/Slang synthesis to Nangate45 and OpenROAD/OpenSTA timing verification across 10 ns and 12 ns clocks."
+}

@@ -1,0 +1,22 @@
+{
+  "case_id": "case_2002",
+  "repo_id": "repo_02",
+  "upstream": "https://github.com/lowRISC/ibex",
+  "commit": "1b29dae8866e6c0f0a3cd9dead53a77b4f45e357",
+  "archive_sha256": "e3e6741a4f11f4cdea7775c063246b3d98f213f2e21e0b1469cdc6d6f0089007",
+  "license": "Apache-2.0 (see public/code/LICENSE); PULP common_cells SHL-0.51",
+  "native_source": [
+    "rtl/ibex_trvk.sv",
+    "rtl/ibex_cheriot_pkg.sv",
+    "vendor/pulp_common_cells/rtl/stream_fork.sv",
+    "vendor/pulp_common_cells/rtl/stream_join_dynamic.sv",
+    "vendor/lowrisc_ip/ip/prim/rtl/prim_fifo_sync.sv",
+    "vendor/lowrisc_ip/ip/prim/rtl/prim_secded_inv_39_32_dec.sv"
+  ],
+  "constructed_source": "ibex_trvk_bridge_top.sv integrates ibex_trvk with two 8-bit zero-cut transparent alert/trace channels for Nangate45 synthesis and OpenROAD/OpenSTA timing evaluation.",
+  "tooling": {
+    "simulator": "Verilator 5.038",
+    "synthesis": "Yosys 0.70+286 with Slang frontend",
+    "sta": "OpenROAD 26Q2-1164-g08f67ee5ec"
+  }
+}

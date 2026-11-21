@@ -1,0 +1,54 @@
+{
+  "case_id": "case_22009",
+  "obligations": [
+    {
+      "id": "REQ-SMALL-N-PROMOTE-AND-ZERO-GATE",
+      "behavior": "When `n_size <= Height` (`1 <= N <= 4`), `redmule_tiler` promotes `w_rows_iter` / `w_rows_lftovr` to `MinimumSizeN = 8` while keeping `X` column transfers at `n_size`, and `redmule_scheduler` maintains `x_buffer` slot rotation (`D`) while zero-gating `cntrl_w_buffer_o.height` on padded `W` rows `[n_size .. MinimumSizeN-1]`.",
+      "public_source": "public/issue.md Observed Bugs item 1, Matrix Layout & Functional Contract",
+      "verified_by": [
+        "private/tests/tb.sv (T2a_small_n1_matmul_8x1x16, T2b_small_n3_gemm_8x3x24_bp, T2c_small_n4_matmul_12x4x16, T6b, T7b, T8a)",
+        "wf1_tiler_promote_without_w_gate",
+        "m01_tiler_no_small_n_promote",
+        "m02_tiler_promote_x_cols_iter",
+        "m11_sched_no_small_n_x_slots"
+      ]
+    },
+    {
+      "id": "REQ-W-LEFTOVER-AND-ODD-K-DRAIN",
+      "behavior": "When `N > Height` has leftover rows (`w_rows_lftovr != 0`, including `N % Height == 1`), `redmule_scheduler` clamps `cntrl_w_buffer_o.height` across the entire final `Height`-row group (`w_rows_iter - H`), and exits `WAIT` to `IDLE` when `w_done && z_avail_clr` fires on odd-`K` leftover tiles (`K % 2 == 1`).",
+      "public_source": "public/issue.md Observed Bugs item 2",
+      "verified_by": [
+        "private/tests/tb.sv (T3a_nlft1_matmul_8x5x16, T3b_nlft1_gemm_8x9x24_bp, T4a_odd_k5_matmul_4x8x5, T4c_odd_k13_gemm_8x8x13_bp, T4d_odd_k1_gemm_4x12x1)",
+        "wf2_missing_wait_state_drain_exit",
+        "m09_sched_numpiperegs_w_lftovr_cmp"
+      ]
+    },
+    {
+      "id": "REQ-M-LEFTOVER-OOB-AND-GEMM-YZ-SYNC",
+      "behavior": "For non-divisible `M` (`M % Width != 0`) and `K` leftovers in `MATMUL` and `GEMM`, `redmule_tiler`, `redmule_memory_scheduler`, and `redmule_scheduler` clamp `Y`/`Z` row-block stream lengths and `z_width`/`z_height` strobes to valid `[0..M-1] x [0..K-1]` elements without overwriting out-of-bounds rows >= M or advancing `Z` store tile iterators on `Y`-bias preloads.",
+      "public_source": "public/issue.md Observed Bugs item 3, Matrix Layout & Functional Contract",
+      "verified_by": [
+        "private/tests/tb.sv (T5a_mlft_matmul_6x8x16, T5b_mlft_gemm_5x8x16_bp, T5c_mlft_gemm_1x8x16, T6a_prime_gemm_5x11x19_bp, T6c_prime_matmul_6x9x17_bp)",
+        "wf3_monolithic_yz_memory_scheduler",
+        "wf4_gemm_ungated_z_store_empty",
+        "m04_tiler_wrong_yz_tot_len",
+        "m05_memsched_no_m_lftovr_clamp",
+        "m06_memsched_wrong_yz_row_stride",
+        "m10_sched_z_rows_cmp_w_rows_iter"
+      ]
+    },
+    {
+      "id": "REQ-LOOPBACK-QUEUE-AND-CLEAR-SAFETY",
+      "behavior": "Two-pass `loopback_w` (`w_cols_offset != 0`), back-to-back queued jobs in `i_config_fifo`, and mid-job `target_clear_i` aborts preserve in-flight tiler/stream configurations, guard all configuration FIFOs against empty pops, and flush/reset all scheduler and memory-scheduler state cleanly.",
+      "public_source": "public/issue.md Observed Bugs item 4, Matrix Layout & Functional Contract",
+      "verified_by": [
+        "private/tests/tb.sv (T7a_loopback_gemm_6x11x21_bp, T7b_loopback_matmul_5x3x24_bp, T7c_loopback_gemm_7x9x27_bp, T8a_queued_loopback_then_smalln, T8b_queued_1word_matmul_then_gemm, T9_midjob_clear_recovery)",
+        "wf5_queued_loopback_cfg_overwrite",
+        "m03_tiler_wrong_loopback_k_sub",
+        "m07_memsched_ungated_y_fifo_pop",
+        "m08_memsched_no_clear_blk_idx",
+        "m12_sched_no_clear_config_fifos"
+      ]
+    }
+  ]
+}

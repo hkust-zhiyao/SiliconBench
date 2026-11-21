@@ -1,0 +1,50 @@
+{
+  "max_delays": [
+    {
+      "from": [
+        "clint_timer_in[0]",
+        "clint_timer_in[1]",
+        "clint_timer_in[2]",
+        "clint_timer_in[3]",
+        "clint_timer_in[4]",
+        "clint_timer_in[5]",
+        "clint_timer_in[6]",
+        "clint_timer_in[7]"
+      ],
+      "to": [
+        "clint_timer_out[0]",
+        "clint_timer_out[1]",
+        "clint_timer_out[2]",
+        "clint_timer_out[3]",
+        "clint_timer_out[4]",
+        "clint_timer_out[5]",
+        "clint_timer_out[6]",
+        "clint_timer_out[7]"
+      ],
+      "ns": 7.5
+    },
+    {
+      "from": [
+        "eu_event_in[0]",
+        "eu_event_in[1]",
+        "eu_event_in[2]",
+        "eu_event_in[3]",
+        "eu_event_in[4]",
+        "eu_event_in[5]",
+        "eu_event_in[6]",
+        "eu_event_in[7]"
+      ],
+      "to": [
+        "eu_event_out[0]",
+        "eu_event_out[1]",
+        "eu_event_out[2]",
+        "eu_event_out[3]",
+        "eu_event_out[4]",
+        "eu_event_out[5]",
+        "eu_event_out[6]",
+        "eu_event_out[7]"
+      ],
+      "ns": 8.25
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "case_id": "case_1004",
+  "task_id": "case_1004",
+  "version": 1,
+  "title": "Two-Channel OpenTitan SRAM Crossbar Stall Stability, Bounded Fairness, and Atomic Store Forwarding",
+  "repo_id": "repo_01",
+  "topic": "protocol_arbitration_and_ppa_sta",
+  "family": "xbar_arbitration_ppa_sta",
+  "editable_files": [
+    "code/prim_arbiter_tree.sv",
+    "code/prim_sram_arbiter.sv"
+  ],
+  "editable": [
+    "code/prim_arbiter_tree.sv",
+    "code/prim_sram_arbiter.sv"
+  ],
+  "grading": {
+    "eda_class": "pnr",
+    "grader_timeout_seconds": 600,
+    "verifier_timeout_seconds": 1200,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 1,
+        "extra_args": []
+      },
+      {
+        "seed": 2,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_1004",
+    "version": 1,
+    "frozen_utc": "2026-11-03T20:40:29.603957+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/prim_arbiter_tree.sv",
+      "code/prim_sram_arbiter.sv"
+    ],
+    "public_hashes": {
+      "BUILD.md": "87acef2ed334f2d289acf489af60bcaf7d7e8d5619ac1fc4dea5c105a3c8264d",
+      "code/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "code/ot_sram_xbar_2ch.sv": "ab0d6b5564c527ff1fa420642577adace7f0f5c62892f4bfea392975c417d6b5",
+      "code/prim_arbiter_tree.sv": "a637336699b18d60e5b6fc8dfaf6f7bfc55776d0fe96830bf6e27c8f7603d184",
+      "code/prim_assert.sv": "d717d5dbcba3b5aa8a731ef9f8af18b036b49edef282f0a43a51f5ad2dd9bb40",
+      "code/prim_assert_dummy_macros.svh": "cac4a930105da662547de873f0b80246074fb22df9a398663e1c8ac3e7998218",
+      "code/prim_assert_sec_cm.svh": "25db89fe5f250c1bcbd808d0b4808206b9e85ac337b26e4ebb23f2ad569e1a13",
+      "code/prim_assert_standard_macros.svh": "4835706249e017eae999256ea807c526a39a49729196fc0aa18bb8818de86ab6",
+      "code/prim_assert_yosys_macros.svh": "d1fd8c350785a7c6d8cccc0b0c385392b71575397e7dc58c70f07716c8f9f3a3",
+      "code/prim_count.sv": "b48580aefff674a48a674489c9b21a98d5399ca5b4c7623f3a7c907a75d8f0cb",
+      "code/prim_count_pkg.sv": "8e465ed25b7d59f29faf0f315243a774cf0e50d178ec2068d8c71983cb2f18df",
+      "code/prim_fifo_assert.svh": "4d695096c6582de1e723474e06ca002d3aa2cc87f85e9ffd25bb8c8275ff6118",
+      "code/prim_fifo_sync.sv": "2655befe56a70ee672c2f1259a82ef2beb2adf429ed0405bcf26bea7c4de3630",
+      "code/prim_fifo_sync_cnt.sv": "33b87939c31a6d71ccd2fe005e5a5dcaaeb343990f9425568cb8686def9f4fb7",
+      "code/prim_flop.sv": "6645d657b107b024f9211d3a0134890d1e20146f68ba1772bf62575f7b4e5549",
+      "code/prim_flop_macros.sv": "2e8e6c2ee484899ae5d0020eaf0c9732c31537c60c30cb2a0a0acd2e92baee03",
+      "code/prim_mubi_pkg.sv": "11a2f1a16ddaf750d859c95e07fc48c54743fe6ad3b5c5eabe2e14a51d9fb1af",
+      "code/prim_sram_arbiter.sv": "328705fbdddc127c6aa0a5246e9dfe955cfa986a8e78e6ded5a3f26387249e07",
+      "code/prim_util_pkg.sv": "12ec73502dc8115cf1e6051f10cba6fc73259f066581722d9d895d1e634676b2",
+      "issue.md": "5921543ae7e7e35d8ebe56d4319b6672d8689f7da8499daa149b1330464961c4",
+      "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+      "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+      "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+      "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+    },
+    "gold_hashes": {
+      "code/prim_arbiter_tree.sv": "fc2c68b0fbcad6dc1914c0857897a5fc2b32dd72ad657456531874b3cac8adf8",
+      "code/prim_sram_arbiter.sv": "98e74c74b75ab1430230871e56bf5151c1f60b29a17b052587ff32c03e9edd46"
+    },
+    "grader_hashes": {
+      "run.py": "106ad63f9ff994b14447f9a05286ed5c4702310865b62bda537dbcfc938ba941"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 12,
+      "mutant_total": 12
+    }
+  },
+  "repository": "lowRISC/opentitan",
+  "eda_stage": "stage4_macro_pnr",
+  "eda_stage_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+  "eda_track": "stage4_macro_pnr",
+  "eda_track_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+  "problem_type": "PT1_Arch_Protocol_Bug_Repair",
+  "problem_type_label": "Architectural & Protocol Bug Repair",
+  "primary_domain": "protocol_control",
+  "multi_domains": [
+    "gatelevel_physical_effects",
+    "protocol_control",
+    "rtl_integration",
+    "rtl_semantics"
+  ],
+  "pdk_profile": {
+    "pdk_id": "nangate45_plus_multicorner_lib",
+    "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+    "location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+    "customized": true,
+    "notes": "Uses shared Nangate45 library for synthesis plus task-bundled fast/slow/scan corner timing views."
+  },
+  "public_hashes": {
+    "BUILD.md": "87acef2ed334f2d289acf489af60bcaf7d7e8d5619ac1fc4dea5c105a3c8264d",
+    "code/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "code/ot_sram_xbar_2ch.sv": "ab0d6b5564c527ff1fa420642577adace7f0f5c62892f4bfea392975c417d6b5",
+    "code/prim_arbiter_tree.sv": "a637336699b18d60e5b6fc8dfaf6f7bfc55776d0fe96830bf6e27c8f7603d184",
+    "code/prim_assert.sv": "d717d5dbcba3b5aa8a731ef9f8af18b036b49edef282f0a43a51f5ad2dd9bb40",
+    "code/prim_assert_dummy_macros.svh": "cac4a930105da662547de873f0b80246074fb22df9a398663e1c8ac3e7998218",
+    "code/prim_assert_sec_cm.svh": "25db89fe5f250c1bcbd808d0b4808206b9e85ac337b26e4ebb23f2ad569e1a13",
+    "code/prim_assert_standard_macros.svh": "4835706249e017eae999256ea807c526a39a49729196fc0aa18bb8818de86ab6",
+    "code/prim_assert_yosys_macros.svh": "d1fd8c350785a7c6d8cccc0b0c385392b71575397e7dc58c70f07716c8f9f3a3",
+    "code/prim_count.sv": "b48580aefff674a48a674489c9b21a98d5399ca5b4c7623f3a7c907a75d8f0cb",
+    "code/prim_count_pkg.sv": "8e465ed25b7d59f29faf0f315243a774cf0e50d178ec2068d8c71983cb2f18df",
+    "code/prim_fifo_assert.svh": "4d695096c6582de1e723474e06ca002d3aa2cc87f85e9ffd25bb8c8275ff6118",
+    "code/prim_fifo_sync.sv": "2655befe56a70ee672c2f1259a82ef2beb2adf429ed0405bcf26bea7c4de3630",
+    "code/prim_fifo_sync_cnt.sv": "33b87939c31a6d71ccd2fe005e5a5dcaaeb343990f9425568cb8686def9f4fb7",
+    "code/prim_flop.sv": "6645d657b107b024f9211d3a0134890d1e20146f68ba1772bf62575f7b4e5549",
+    "code/prim_flop_macros.sv": "2e8e6c2ee484899ae5d0020eaf0c9732c31537c60c30cb2a0a0acd2e92baee03",
+    "code/prim_mubi_pkg.sv": "11a2f1a16ddaf750d859c95e07fc48c54743fe6ad3b5c5eabe2e14a51d9fb1af",
+    "code/prim_sram_arbiter.sv": "328705fbdddc127c6aa0a5246e9dfe955cfa986a8e78e6ded5a3f26387249e07",
+    "code/prim_util_pkg.sv": "12ec73502dc8115cf1e6051f10cba6fc73259f066581722d9d895d1e634676b2",
+    "issue.md": "5921543ae7e7e35d8ebe56d4319b6672d8689f7da8499daa149b1330464961c4",
+    "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+    "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+    "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+    "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 12,
+    "mutant_total": 12
+  }
+}

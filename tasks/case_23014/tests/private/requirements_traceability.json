@@ -1,0 +1,55 @@
+{
+  "case_id": "case_23014",
+  "obligations": [
+    {
+      "id": "REQ-CACHE-PLRU-VICTIM",
+      "behavior": "Initialize per-set Tree-PLRU state, advance PLRU on both lookup hits and line fills across all 4 ways, and forward same-set hit/fill updates cleanly to consecutive victim reads.",
+      "public_source": "public/issue.md Architectural & Protocol Contract item 1",
+      "verified_by": [
+        "private/tests/tb.sv",
+        "wf1_plru_no_fill_advance",
+        "m01_plru_corrupt_leaf_mask",
+        "m02_plru_corrupt_right_leaf",
+        "m03_plru_invert_root_bit"
+      ]
+    },
+    {
+      "id": "REQ-CACHE-TAGS-SECTOR-AMO",
+      "behavior": "Integrate u_tag_sram with expanded 64-bit way bit-masks and mutually exclusive WEN/REN, preserve sibling valid sectors on sector refills, and forward same-set fills and non-LLC AMO hit invalidations cleanly.",
+      "public_source": "public/issue.md Architectural & Protocol Contract item 2",
+      "verified_by": [
+        "private/tests/tb.sv",
+        "wf2_missing_amo_hit_inval",
+        "m04_tags_unexpanded_bm",
+        "m05_tags_simul_wen_ren",
+        "m06_tags_ignore_sector_valid",
+        "m07_tags_drop_refill_merge",
+        "m08_tags_inval_wrong_sector"
+      ]
+    },
+    {
+      "id": "REQ-CACHE-DATA-WAYFOLD-SLICES",
+      "behavior": "Address u_data_slice_0..3 via folded {way, line_idx}, expand 8-bit byte masks to 64-bit A_BM, restrict fills/writes to target sector/word slices, and gate single-word reads to at most 1 active slice per bank.",
+      "public_source": "public/issue.md Architectural & Protocol Contract item 3",
+      "verified_by": [
+        "private/tests/tb.sv",
+        "wf3_all_data_slices_active_rd",
+        "m09_data_unexpanded_bm",
+        "m10_data_corrupt_way_addr",
+        "m11_data_fill_all_sectors",
+        "m12_data_write_all_words"
+      ]
+    },
+    {
+      "id": "REQ-CACHE-PNR-STA-SIGNOFF",
+      "behavior": "Place all 10 SRAM macros legally inside core bounds, constrain clk <= 17.0 ns with >= 1.5 ns I/O delays, and close OpenROAD PDN, post-GRT WNS/hold >= 0.0 ns, overflow <= 25, and wirelength <= 6,200,000 um.",
+      "public_source": "public/issue.md Physical Floorplan & Signoff Timing Targets",
+      "verified_by": [
+        "private/grader/run.py",
+        "wf4_macro_halo_overlap",
+        "wf5_relaxed_sdc_period",
+        "wf6_disjoint_cross_corner_macros"
+      ]
+    }
+  ]
+}

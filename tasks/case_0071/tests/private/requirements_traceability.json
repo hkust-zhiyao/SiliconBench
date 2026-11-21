@@ -1,0 +1,20 @@
+{
+  "obligations": [
+    {
+      "obligation": "Maintain exact four-state fetch-buffer occupancy across ifu_fb_consume1 and ifu_fb_consume2 (including consume2 with hitting fetch), allow ifc_fetch_req_bf when a buffer is freed, redirect on flush/BTB hit, and stall on DMA/write stalls",
+      "source": "public/issue.md"
+    },
+    {
+      "obligation": "Align 16-bit and 32-bit instructions across the three 32-bit fetch buffers, shift f1 halfword offset on split 32-bit consumption, attribute second-halfword access/ECC faults and fault types, and lock alignment during stalls or async error until flush",
+      "source": "public/issue.md"
+    },
+    {
+      "obligation": "Synthesize halted debug GPR/CSR read and write instructions in el2_dec_ib_ctl when dbg_cmd_valid is high and dbg_cmd_type != 2'h2, asserting dec_debug_wdata_rs1_d on writes and dec_debug_fence_d on CSR write to 12'h7c4",
+      "source": "public/issue.md"
+    },
+    {
+      "obligation": "Achieve latch-free synthesis, Nangate45 mapped area <= 5165.0 um^2, and OpenROAD STA WNS >= 0.00 ns and WHS >= 0.00 ns at a 4.45 ns clock period",
+      "source": "public/issue.md"
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+# SiliconBench Standardized Harbor Benchmark Suite Configuration
+version = "1.0"
+name = "siliconbench"
+title = "SiliconBench: A Full-Stack Agent Benchmark for Real-World Hardware Engineering"
+description = "94 full-stack hardware engineering tasks curated from 30 real-world open-source SystemVerilog repositories in the two-container Harbor architecture."
+total_tasks = 94
+
+[defaults.agent]
+timeout_sec = 5400
+
+[defaults.environment]
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+dockerfile = "environments/siliconbench-eda/Dockerfile"
+workdir = "/workspace"
+allow_internet = false
+cpus = 4
+memory_mb = 16384
+
+[defaults.environment.variables]
+OMP_NUM_THREADS = "1"
+OPENBLAS_NUM_THREADS = "1"
+MKL_NUM_THREADS = "1"
+MAKEFLAGS = "-j1"
+SILICONBENCH_TOOLS = "/opt/siliconbench/tools"
+SILICONBENCH_NANGATE45 = "/opt/siliconbench/pdk/Nangate45"
+
+[defaults.verifier]
+environment_mode = "separate"
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+entrypoint = "/tests/test.sh"
+reward_file = "/logs/verifier/reward.txt"
+reward_json = "/logs/verifier/reward.json"
+
+[defaults.verifier.environment]
+allow_internet = false
+
+[dataset]
+tasks = [
+  "tasks/case_0009",
+  "tasks/case_0011",
+  "tasks/case_0013",
+  "tasks/case_0033",
+  "tasks/case_0045",
+  "tasks/case_0071",
+  "tasks/case_0083",
+  "tasks/case_0088",
+  "tasks/case_0091",
+  "tasks/case_0095",
+  "tasks/case_0103",
+  "tasks/case_1003",
+  "tasks/case_1004",
+  "tasks/case_1009",
+  "tasks/case_1011",
+  "tasks/case_1012",
+  "tasks/case_1013",
+  "tasks/case_1014",
+  "tasks/case_1015",
+  "tasks/case_2001",
+  "tasks/case_2002",
+  "tasks/case_2003",
+  "tasks/case_2008",
+  "tasks/case_3003",
+  "tasks/case_3004",
+  "tasks/case_3005",
+  "tasks/case_3006",
+  "tasks/case_3011",
+  "tasks/case_4010",
+  "tasks/case_5003",
+  "tasks/case_5007",
+  "tasks/case_5010",
+  "tasks/case_5011",
+  "tasks/case_5013",
+  "tasks/case_5014",
+  "tasks/case_6003",
+  "tasks/case_6006",
+  "tasks/case_6012",
+  "tasks/case_7001",
+  "tasks/case_7003",
+  "tasks/case_7004",
+  "tasks/case_8015",
+  "tasks/case_8017",
+  "tasks/case_9014",
+  "tasks/case_10002",
+  "tasks/case_10004",
+  "tasks/case_10012",
+  "tasks/case_20001",
+  "tasks/case_20003",
+  "tasks/case_20006",
+  "tasks/case_20009",
+  "tasks/case_20011",
+  "tasks/case_20017",
+  "tasks/case_20020",
+  "tasks/case_21005",
+  "tasks/case_21007",
+  "tasks/case_21008",
+  "tasks/case_21009",
+  "tasks/case_21014",
+  "tasks/case_21015",
+  "tasks/case_21017",
+  "tasks/case_21021",
+  "tasks/case_21023",
+  "tasks/case_22003",
+  "tasks/case_22005",
+  "tasks/case_22006",
+  "tasks/case_22007",
+  "tasks/case_22009",
+  "tasks/case_22011",
+  "tasks/case_22012",
+  "tasks/case_22013",
+  "tasks/case_22016",
+  "tasks/case_22017",
+  "tasks/case_23002",
+  "tasks/case_23006",
+  "tasks/case_23010",
+  "tasks/case_23011",
+  "tasks/case_23013",
+  "tasks/case_23014",
+  "tasks/case_23015",
+  "tasks/case_23016",
+  "tasks/case_24001",
+  "tasks/case_24005",
+  "tasks/case_24009",
+  "tasks/case_24010",
+  "tasks/case_24016",
+  "tasks/case_25002",
+  "tasks/case_25004",
+  "tasks/case_25005",
+  "tasks/case_25010",
+  "tasks/case_25011",
+  "tasks/case_25015",
+  "tasks/case_25017",
+  "tasks/case_25018"
+]

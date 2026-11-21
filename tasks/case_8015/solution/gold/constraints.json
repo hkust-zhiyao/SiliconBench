@@ -1,0 +1,14 @@
+{
+  "max_delays": [
+    {
+      "from": ["fault_in"],
+      "to": ["fault_out"],
+      "ns": 9.25
+    },
+    {
+      "from": ["trace_in"],
+      "to": ["trace_out"],
+      "ns": 10.25
+    }
+  ]
+}

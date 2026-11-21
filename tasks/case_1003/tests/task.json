@@ -1,0 +1,187 @@
+{
+  "case_id": "case_1003",
+  "task_id": "case_1003",
+  "version": 1,
+  "title": "OpenTitan KMAC Message Packer, FIFO Flush Control, and Error Checker Closure",
+  "repo_id": "repo_01",
+  "repository": "lowRISC/opentitan",
+  "family": "synthesis_and_datapath",
+  "topic": "kmac_packer_msgfifo_errchk_ppa_sta",
+  "editable_files": [
+    "code/prim_packer.sv",
+    "code/kmac_msgfifo.sv",
+    "code/kmac_errchk.sv"
+  ],
+  "editable": [
+    "code/prim_packer.sv",
+    "code/kmac_msgfifo.sv",
+    "code/kmac_errchk.sv"
+  ],
+  "grading": {
+    "eda_class": "pnr",
+    "grader_timeout_seconds": 600,
+    "verifier_timeout_seconds": 1200,
+    "accepts_seed": true,
+    "configurations": [
+      {
+        "seed": 1,
+        "extra_args": []
+      },
+      {
+        "seed": 2,
+        "extra_args": []
+      }
+    ]
+  },
+  "frozen_record": {
+    "case_id": "case_1003",
+    "version": 1,
+    "frozen_utc": "2026-11-04T17:43:00.976423+00:00",
+    "solver_budget_seconds": 5400,
+    "editable_files": [
+      "code/prim_packer.sv",
+      "code/kmac_msgfifo.sv",
+      "code/kmac_errchk.sv"
+    ],
+    "public_hashes": {
+      "BUILD.md": "a97f1653a98e21a3dd245a7d4683350834ce1a42a103be68644e5abecd56bafc",
+      "code/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "code/kmac_errchk.sv": "b29ec806f10b6ff3b9db755bbfe4eee4f82c700f76f960ce42b4ca6ceb1f55bb",
+      "code/kmac_msg_err_top.sv": "294697e173beac2923250d5404d0ae6ada0eade1058231bbb016c55e5c872f49",
+      "code/kmac_msgfifo.sv": "58171c7fa32fff572f287b41c481931af23c195f73bc67479eea77c15bad97c6",
+      "code/kmac_pkg.sv": "e03b0b72bcd62ba23ce09a140aa500ac677015b4931adcfa0117a38615e88719",
+      "code/lc_ctrl_pkg.sv": "a6115eb69cfdf6a6ceefdb8eecba4945aa97cbd89d360a667d72e9d8a9122e9d",
+      "code/lc_ctrl_reg_pkg.sv": "6d17262d4a278f20d1606f1e6068c03ba7849b8fced03b7081ee0b040c60b3e1",
+      "code/lc_ctrl_state_pkg.sv": "160e409e85aa8d41af98b6c1fff94415f5b437220f88c7c3ebe9118bb3645ff7",
+      "code/prim_assert.sv": "d717d5dbcba3b5aa8a731ef9f8af18b036b49edef282f0a43a51f5ad2dd9bb40",
+      "code/prim_assert_dummy_macros.svh": "cac4a930105da662547de873f0b80246074fb22df9a398663e1c8ac3e7998218",
+      "code/prim_assert_sec_cm.svh": "25db89fe5f250c1bcbd808d0b4808206b9e85ac337b26e4ebb23f2ad569e1a13",
+      "code/prim_assert_standard_macros.svh": "4835706249e017eae999256ea807c526a39a49729196fc0aa18bb8818de86ab6",
+      "code/prim_assert_yosys_macros.svh": "d1fd8c350785a7c6d8cccc0b0c385392b71575397e7dc58c70f07716c8f9f3a3",
+      "code/prim_count.sv": "b48580aefff674a48a674489c9b21a98d5399ca5b4c7623f3a7c907a75d8f0cb",
+      "code/prim_count_pkg.sv": "8e465ed25b7d59f29faf0f315243a774cf0e50d178ec2068d8c71983cb2f18df",
+      "code/prim_fifo_assert.svh": "4d695096c6582de1e723474e06ca002d3aa2cc87f85e9ffd25bb8c8275ff6118",
+      "code/prim_fifo_sync.sv": "2655befe56a70ee672c2f1259a82ef2beb2adf429ed0405bcf26bea7c4de3630",
+      "code/prim_fifo_sync_cnt.sv": "33b87939c31a6d71ccd2fe005e5a5dcaaeb343990f9425568cb8686def9f4fb7",
+      "code/prim_flop.sv": "6645d657b107b024f9211d3a0134890d1e20146f68ba1772bf62575f7b4e5549",
+      "code/prim_flop_macros.sv": "2e8e6c2ee484899ae5d0020eaf0c9732c31537c60c30cb2a0a0acd2e92baee03",
+      "code/prim_mubi_pkg.sv": "11a2f1a16ddaf750d859c95e07fc48c54743fe6ad3b5c5eabe2e14a51d9fb1af",
+      "code/prim_packer.sv": "9aa7dd6e7cda2a97a355885d8e0b3d11e1cfc8abae3755622dd66c9321d89324",
+      "code/prim_sparse_fsm_flop.sv": "7c9fdf97523bb5eac16f0d219668811a790c2b5bc591660340e75b1cf429d11f",
+      "code/prim_util_pkg.sv": "12ec73502dc8115cf1e6051f10cba6fc73259f066581722d9d895d1e634676b2",
+      "code/sha3_pkg.sv": "0c9bc11cc1a353fbe4e9cd814fe8f3cc8300644d19f2eecb3b79bc81ba7fd461",
+      "issue.md": "bb6df8a28b4747683c0ef26e16610fc802f5553ac6fe4374b4ed3f47764a5ce0",
+      "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+      "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+      "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+      "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+    },
+    "gold_hashes": {
+      "code/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "code/kmac_errchk.sv": "b7a075c32196697bccd32601fed79c5f06a31fd07f522c55353b9dd36f2fdcae",
+      "code/kmac_msg_err_top.sv": "294697e173beac2923250d5404d0ae6ada0eade1058231bbb016c55e5c872f49",
+      "code/kmac_msgfifo.sv": "82ae1ec665793b3dba666c4f2a9283a0a93c18803e7f9bd96a3bae56377bacbf",
+      "code/kmac_pkg.sv": "e03b0b72bcd62ba23ce09a140aa500ac677015b4931adcfa0117a38615e88719",
+      "code/lc_ctrl_pkg.sv": "a6115eb69cfdf6a6ceefdb8eecba4945aa97cbd89d360a667d72e9d8a9122e9d",
+      "code/lc_ctrl_reg_pkg.sv": "6d17262d4a278f20d1606f1e6068c03ba7849b8fced03b7081ee0b040c60b3e1",
+      "code/lc_ctrl_state_pkg.sv": "160e409e85aa8d41af98b6c1fff94415f5b437220f88c7c3ebe9118bb3645ff7",
+      "code/prim_assert.sv": "d717d5dbcba3b5aa8a731ef9f8af18b036b49edef282f0a43a51f5ad2dd9bb40",
+      "code/prim_assert_dummy_macros.svh": "cac4a930105da662547de873f0b80246074fb22df9a398663e1c8ac3e7998218",
+      "code/prim_assert_sec_cm.svh": "25db89fe5f250c1bcbd808d0b4808206b9e85ac337b26e4ebb23f2ad569e1a13",
+      "code/prim_assert_standard_macros.svh": "4835706249e017eae999256ea807c526a39a49729196fc0aa18bb8818de86ab6",
+      "code/prim_assert_yosys_macros.svh": "d1fd8c350785a7c6d8cccc0b0c385392b71575397e7dc58c70f07716c8f9f3a3",
+      "code/prim_count.sv": "b48580aefff674a48a674489c9b21a98d5399ca5b4c7623f3a7c907a75d8f0cb",
+      "code/prim_count_pkg.sv": "8e465ed25b7d59f29faf0f315243a774cf0e50d178ec2068d8c71983cb2f18df",
+      "code/prim_fifo_assert.svh": "4d695096c6582de1e723474e06ca002d3aa2cc87f85e9ffd25bb8c8275ff6118",
+      "code/prim_fifo_sync.sv": "2655befe56a70ee672c2f1259a82ef2beb2adf429ed0405bcf26bea7c4de3630",
+      "code/prim_fifo_sync_cnt.sv": "33b87939c31a6d71ccd2fe005e5a5dcaaeb343990f9425568cb8686def9f4fb7",
+      "code/prim_flop.sv": "6645d657b107b024f9211d3a0134890d1e20146f68ba1772bf62575f7b4e5549",
+      "code/prim_flop_macros.sv": "2e8e6c2ee484899ae5d0020eaf0c9732c31537c60c30cb2a0a0acd2e92baee03",
+      "code/prim_mubi_pkg.sv": "11a2f1a16ddaf750d859c95e07fc48c54743fe6ad3b5c5eabe2e14a51d9fb1af",
+      "code/prim_packer.sv": "9245cd128e12a95ed6c42b18099a62270b00964b63f96b4fcb6286fb24e52122",
+      "code/prim_sparse_fsm_flop.sv": "7c9fdf97523bb5eac16f0d219668811a790c2b5bc591660340e75b1cf429d11f",
+      "code/prim_util_pkg.sv": "12ec73502dc8115cf1e6051f10cba6fc73259f066581722d9d895d1e634676b2",
+      "code/sha3_pkg.sv": "0c9bc11cc1a353fbe4e9cd814fe8f3cc8300644d19f2eecb3b79bc81ba7fd461"
+    },
+    "grader_hashes": {
+      "run.py": "5c9d6c37111ee52cceb606daaa73ac20628d7647be1f5403a13b7b913c5638d7"
+    },
+    "selfcheck_summary": {
+      "gold_pass_runs": 2,
+      "alternate_gold_pass_runs": 2,
+      "baseline_fail_runs": 1,
+      "wrong_fix_fail_runs": 5,
+      "anti_hack_fail_runs": 4,
+      "mutant_killed": 10,
+      "mutant_total": 10
+    },
+    "test_hashes": {
+      "flow.tcl": "afd4b5c0e0a8abe442cfb4f646b630b77afb7dabfb8660c8fd6f2c136f7504b3",
+      "tb.sv": "9eb37b3614346e769cc11dbfe177b067319b60eb30f1d82b35aece846e203a88"
+    },
+    "grader_revalidated_utc": "2026-11-16T10:17:42.058352+00:00"
+  },
+  "eda_stage": "stage4_macro_pnr",
+  "eda_stage_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+  "eda_track": "stage4_macro_pnr",
+  "eda_track_name": "Stage 4: Hard-SRAM Floorplanning, CTS & Routing (PnR)",
+  "problem_type": "PT4_GateLevel_Security_CDC",
+  "problem_type_label": "Gate-Level Equivalence, Security & CDC/RDC",
+  "primary_domain": "protocol_control",
+  "multi_domains": [
+    "parameters_widths",
+    "protocol_control",
+    "reset_rdc",
+    "rtl_integration",
+    "verification_debug"
+  ],
+  "pdk_profile": {
+    "pdk_id": "nangate45_plus_multicorner_lib",
+    "pdk_name": "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC",
+    "location": "/opt/siliconbench/pdk/Nangate45 + task multi-corner .lib/.sdc collateral",
+    "customized": true,
+    "notes": "Uses shared Nangate45 library for synthesis plus task-bundled fast/slow/scan corner timing views."
+  },
+  "public_hashes": {
+    "BUILD.md": "a97f1653a98e21a3dd245a7d4683350834ce1a42a103be68644e5abecd56bafc",
+    "code/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "code/kmac_errchk.sv": "b29ec806f10b6ff3b9db755bbfe4eee4f82c700f76f960ce42b4ca6ceb1f55bb",
+    "code/kmac_msg_err_top.sv": "294697e173beac2923250d5404d0ae6ada0eade1058231bbb016c55e5c872f49",
+    "code/kmac_msgfifo.sv": "58171c7fa32fff572f287b41c481931af23c195f73bc67479eea77c15bad97c6",
+    "code/kmac_pkg.sv": "e03b0b72bcd62ba23ce09a140aa500ac677015b4931adcfa0117a38615e88719",
+    "code/lc_ctrl_pkg.sv": "a6115eb69cfdf6a6ceefdb8eecba4945aa97cbd89d360a667d72e9d8a9122e9d",
+    "code/lc_ctrl_reg_pkg.sv": "6d17262d4a278f20d1606f1e6068c03ba7849b8fced03b7081ee0b040c60b3e1",
+    "code/lc_ctrl_state_pkg.sv": "160e409e85aa8d41af98b6c1fff94415f5b437220f88c7c3ebe9118bb3645ff7",
+    "code/prim_assert.sv": "d717d5dbcba3b5aa8a731ef9f8af18b036b49edef282f0a43a51f5ad2dd9bb40",
+    "code/prim_assert_dummy_macros.svh": "cac4a930105da662547de873f0b80246074fb22df9a398663e1c8ac3e7998218",
+    "code/prim_assert_sec_cm.svh": "25db89fe5f250c1bcbd808d0b4808206b9e85ac337b26e4ebb23f2ad569e1a13",
+    "code/prim_assert_standard_macros.svh": "4835706249e017eae999256ea807c526a39a49729196fc0aa18bb8818de86ab6",
+    "code/prim_assert_yosys_macros.svh": "d1fd8c350785a7c6d8cccc0b0c385392b71575397e7dc58c70f07716c8f9f3a3",
+    "code/prim_count.sv": "b48580aefff674a48a674489c9b21a98d5399ca5b4c7623f3a7c907a75d8f0cb",
+    "code/prim_count_pkg.sv": "8e465ed25b7d59f29faf0f315243a774cf0e50d178ec2068d8c71983cb2f18df",
+    "code/prim_fifo_assert.svh": "4d695096c6582de1e723474e06ca002d3aa2cc87f85e9ffd25bb8c8275ff6118",
+    "code/prim_fifo_sync.sv": "2655befe56a70ee672c2f1259a82ef2beb2adf429ed0405bcf26bea7c4de3630",
+    "code/prim_fifo_sync_cnt.sv": "33b87939c31a6d71ccd2fe005e5a5dcaaeb343990f9425568cb8686def9f4fb7",
+    "code/prim_flop.sv": "6645d657b107b024f9211d3a0134890d1e20146f68ba1772bf62575f7b4e5549",
+    "code/prim_flop_macros.sv": "2e8e6c2ee484899ae5d0020eaf0c9732c31537c60c30cb2a0a0acd2e92baee03",
+    "code/prim_mubi_pkg.sv": "11a2f1a16ddaf750d859c95e07fc48c54743fe6ad3b5c5eabe2e14a51d9fb1af",
+    "code/prim_packer.sv": "9aa7dd6e7cda2a97a355885d8e0b3d11e1cfc8abae3755622dd66c9321d89324",
+    "code/prim_sparse_fsm_flop.sv": "7c9fdf97523bb5eac16f0d219668811a790c2b5bc591660340e75b1cf429d11f",
+    "code/prim_util_pkg.sv": "12ec73502dc8115cf1e6051f10cba6fc73259f066581722d9d895d1e634676b2",
+    "code/sha3_pkg.sv": "0c9bc11cc1a353fbe4e9cd814fe8f3cc8300644d19f2eecb3b79bc81ba7fd461",
+    "issue.md": "bb6df8a28b4747683c0ef26e16610fc802f5553ac6fe4374b4ed3f47764a5ce0",
+    "lib/LICENSE.Nangate45": "361e9d7d8c20713015e441b6d22193b134e06cdc7f407be9625d243f68d5ae8e",
+    "lib/NangateOpenCellLibrary.macro.mod.lef": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef",
+    "lib/NangateOpenCellLibrary.tech.lef": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2",
+    "lib/NangateOpenCellLibrary_typical.lib": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"
+  },
+  "selfcheck_summary": {
+    "gold_pass_runs": 2,
+    "alternate_gold_pass_runs": 2,
+    "baseline_fail_runs": 1,
+    "wrong_fix_fail_runs": 5,
+    "anti_hack_fail_runs": 4,
+    "mutant_killed": 10,
+    "mutant_total": 10
+  }
+}

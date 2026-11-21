@@ -1,0 +1,38 @@
+{
+  "case_id": "case_25004",
+  "repo_id": "repo_50",
+  "origin": "https://github.com/chipsalliance/caliptra-rtl",
+  "commit": "a2192d99327a94ade30929315a94fe28bba598df",
+  "archive_sha256": "ed4b2037d16be0ff8f31ba350d73c60084b191c453a93b50c5191e67e5245384",
+  "license": "Apache-2.0 (see public/code/LICENSE and RTL SPDX headers); sha512_*_constants.v carry Secworks BSD-2-Clause headers from upstream repo_50/src/sha512_masked/rtl/",
+  "native_sources": [
+    "src/ecc/rtl/ecc_dsa_ctrl.sv",
+    "src/ecc/rtl/ecc_scalar_blinding.sv",
+    "src/ecc/rtl/ecc_hmac_drbg_interface.sv",
+    "src/ecc/rtl/ecc_top.sv",
+    "src/ecc/rtl/ecc_reg.sv",
+    "src/ecc/rtl/ecc_reg_pkg.sv",
+    "src/ecc/rtl/ecc_dsa_sequencer.sv",
+    "src/ecc/rtl/ecc_arith_unit.sv",
+    "src/ecc/rtl/ecc_params_pkg.sv",
+    "src/ecc/rtl/ecc_defines_pkg.sv",
+    "src/ecc/rtl/ecc_dsa_uop_pkg.sv",
+    "src/ecc/rtl/ecc_pm_uop_pkg.sv",
+    "src/hmac_drbg/rtl/hmac_drbg.sv",
+    "src/hmac/rtl/hmac_core.sv",
+    "src/hmac/rtl/hmac_param_pkg.sv",
+    "src/keyvault/rtl/kv_defines_pkg.sv",
+    "src/keyvault/rtl/kv_read_client.sv",
+    "src/keyvault/rtl/kv_write_client.sv",
+    "src/libs/rtl/ahb_slv_sif.sv",
+    "src/caliptra_prim/rtl/caliptra_prim_lfsr.sv"
+  ],
+  "editable_files": [
+    "code/ecc_dsa_ctrl.sv",
+    "code/ecc_scalar_blinding.sv",
+    "code/ecc_hmac_drbg_interface.sv"
+  ],
+  "qualification": "upstream/repo_50",
+  "build_scope": "Caliptra P-384 ECDSA/ECDH controller (ecc_top, ecc_reg, ecc_dsa_ctrl, ecc_dsa_sequencer, ecc_scalar_blinding, ecc_hmac_drbg_interface, kv_read_client, kv_write_client, hmac_drbg) verified with multi-seed Verilator simulation and Yosys-slang latch-free, combinational-loop-free synthesis sign-off.",
+  "tool": "Verilator 5.038 (--binary --timing -Wno-fatal -DSYNTHESIS) + Yosys 0.70+286 (-m slang; proc; opt; check -assert; scc -expect 0)"
+}

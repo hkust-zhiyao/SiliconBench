@@ -1,0 +1,57 @@
+version = "1.0"
+
+[metadata]
+task_id = "case_1009"
+title = "OpenTitan HMAC Core and SHA-256 Padding Backpressure, Abort Recovery, and Timing/Area Closure"
+repository = "lowRISC/opentitan"
+repo_id = "repo_01"
+split = "test"
+eda_stage = "stage3_sta_cdc"
+eda_stage_name = "Stage 3: Static Timing (STA) & CDC/RDC Closure"
+problem_type = "PT4_GateLevel_Security_CDC"
+problem_type_label = "Gate-Level Equivalence, Security & CDC/RDC"
+primary_domain = "reset_rdc"
+domains = ["reset_rdc", "rtl_integration", "synthesis_qor"]
+public_rtl_files = 10
+public_rtl_loc = 1761
+editable_files_count = 2
+editable_loc = 816
+
+[agent]
+timeout_sec = 5400
+
+[environment]
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+workdir = "/workspace"
+allow_internet = false
+cpus = 4
+memory_mb = 16384
+
+[environment.variables]
+OMP_NUM_THREADS = "1"
+OPENBLAS_NUM_THREADS = "1"
+MKL_NUM_THREADS = "1"
+MAKEFLAGS = "-j1"
+SILICONBENCH_TOOLS = "/opt/siliconbench/tools"
+SILICONBENCH_NANGATE45 = "/opt/siliconbench/pdk/Nangate45"
+
+[verifier]
+environment_mode = "separate"
+image = "siliconbench-eda:1.0"
+docker_image = "siliconbench-eda:1.0"
+timeout_sec = 600
+entrypoint = "/tests/test.sh"
+reward_file = "/logs/verifier/reward.txt"
+reward_json = "/logs/verifier/reward.json"
+
+[verifier.environment]
+allow_internet = false
+
+[siliconbench]
+allowed_edits = ["code/hmac_core.sv", "code/prim_sha2_pad.sv"]
+pdk_id = "nangate45_plus_multicorner_lib"
+pdk_name = "Nangate45 45nm Open Cell Library + Task Multi-Corner Liberty/SDC"
+pdk_customized = true
+accepts_seed = true
+grading_seeds = [101, 202]

@@ -1,0 +1,50 @@
+{
+  "max_delays": [
+    {
+      "from": [
+        "mpu_region_in[0]",
+        "mpu_region_in[1]",
+        "mpu_region_in[2]",
+        "mpu_region_in[3]",
+        "mpu_region_in[4]",
+        "mpu_region_in[5]",
+        "mpu_region_in[6]",
+        "mpu_region_in[7]"
+      ],
+      "to": [
+        "mpu_region_out[0]",
+        "mpu_region_out[1]",
+        "mpu_region_out[2]",
+        "mpu_region_out[3]",
+        "mpu_region_out[4]",
+        "mpu_region_out[5]",
+        "mpu_region_out[6]",
+        "mpu_region_out[7]"
+      ],
+      "ns": 8.85
+    },
+    {
+      "from": [
+        "hart_dbg_in[0]",
+        "hart_dbg_in[1]",
+        "hart_dbg_in[2]",
+        "hart_dbg_in[3]",
+        "hart_dbg_in[4]",
+        "hart_dbg_in[5]",
+        "hart_dbg_in[6]",
+        "hart_dbg_in[7]"
+      ],
+      "to": [
+        "hart_dbg_out[0]",
+        "hart_dbg_out[1]",
+        "hart_dbg_out[2]",
+        "hart_dbg_out[3]",
+        "hart_dbg_out[4]",
+        "hart_dbg_out[5]",
+        "hart_dbg_out[6]",
+        "hart_dbg_out[7]"
+      ],
+      "ns": 9.65
+    }
+  ]
+}
